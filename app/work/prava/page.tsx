@@ -8,6 +8,9 @@ import pravaCockpit from "@/public/images/prava-cockpit.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
 
+const APP_STORE_URL =
+  "https://apps.apple.com/us/app/faith-journal-prava/id6759777699";
+
 const heroScreens = [
   {
     src: pravaHome,
@@ -104,6 +107,27 @@ export default function PravaPage() {
                 <dd>Founder &amp; sole developer</dd>
               </div>
               <div>
+                <dt>Links</dt>
+                <dd className="specLinks">
+                  <a href={APP_STORE_URL} target="_blank" rel="noopener">
+                    App Store{" "}
+                    <span className="linkArrow" aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                  <a
+                    href="https://joinprava.com"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    joinprava.com{" "}
+                    <span className="linkArrow" aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                </dd>
+              </div>
+              <div>
                 <dt>Stack</dt>
                 <dd>
                   TypeScript · Next.js · Capacitor · Postgres/Prisma ·
@@ -116,7 +140,11 @@ export default function PravaPage() {
               </div>
               <div>
                 <dt>Status</dt>
-                <dd>Live on the App Store</dd>
+                <dd>
+                  <a href={APP_STORE_URL} target="_blank" rel="noopener">
+                    Live on the App Store
+                  </a>
+                </dd>
               </div>
             </dl>
           </div>
@@ -330,6 +358,21 @@ export default function PravaPage() {
                 has paying subscribers on both monthly and annual plans. I keep
                 the specific numbers off the internet on purpose. Happy to talk
                 specifics in an interview.
+              </p>
+              <p>
+                Prava is{" "}
+                <a href={APP_STORE_URL} target="_blank" rel="noopener">
+                  on the App Store
+                </a>
+                , and the product site is at{" "}
+                <a
+                  href="https://joinprava.com"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  joinprava.com
+                </a>
+                .
               </p>
             </div>
           </section>

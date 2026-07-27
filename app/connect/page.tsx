@@ -55,6 +55,14 @@ export default function ConnectPage() {
           </dd>
         </div>
         <div>
+          <dt>Prava</dt>
+          <dd>
+            <a href="https://joinprava.com" target="_blank" rel="noopener">
+              joinprava.com
+            </a>
+          </dd>
+        </div>
+        <div>
           <dt>Resume</dt>
           <dd>
             <a href="/resume.pdf" download>

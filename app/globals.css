@@ -180,7 +180,8 @@ a {
 /* Text links: static accent-bright underline, plus an accent line that
    grows from the left on hover/focus (two background layers, no layout shift) */
 .prose a,
-.factList a {
+.factList a,
+.specCard a {
   color: var(--ink);
   text-decoration: none;
   background-image: linear-gradient(var(--accent), var(--accent)),
@@ -193,16 +194,36 @@ a {
 .prose a:hover,
 .prose a:focus-visible,
 .factList a:hover,
-.factList a:focus-visible {
+.factList a:focus-visible,
+.specCard a:hover,
+.specCard a:focus-visible {
   color: var(--accent);
   background-size: 100% 1px, 100% 1px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .prose a,
-  .factList a {
+  .factList a,
+  .specCard a {
     transition: color 150ms var(--ease-hover),
       background-size 150ms var(--ease-hover);
+  }
+}
+
+/* Trailing arrow inside a text link — nudges right on hover/focus */
+.linkArrow {
+  display: inline-block;
+  color: var(--accent-bright);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .linkArrow {
+    transition: transform 150ms var(--ease-hover);
+  }
+
+  a:hover .linkArrow,
+  a:focus-visible .linkArrow {
+    transform: translateX(4px);
   }
 }
 
@@ -430,6 +451,14 @@ a {
   line-height: 1.55;
   color: var(--ink);
   margin-top: 0.25rem;
+}
+
+/* Outbound links row: one link per line, underline hugs the text */
+.specLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
 }
 
 /* Full-width raised strip: the designed surface screenshots will sit on */
