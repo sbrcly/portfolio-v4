@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Todo from "@/components/todo/Todo";
 import pravaHome from "@/public/images/prava-home.png";
 import pravaLectio from "@/public/images/prava-lectio.png";
 import pravaJournal from "@/public/images/prava-journal.png";
@@ -235,7 +236,64 @@ export default function PravaPage() {
           </section>
 
           <section className="section">
-            <p className="eyebrow">04: Outcomes</p>
+            <p className="eyebrow">04: The back office</p>
+            <div className="prose">
+              <p>
+                A product this size runs on a second product nobody sees.
+                Prava&apos;s cockpit is eleven internal tools built on the same
+                stack as the app: an analytics dashboard, authoring surfaces for
+                prayers, teaching, and the lectionary, and the operational tools
+                that keep the AI honest. Three earn a closer look.
+              </p>
+              <p>
+                The Prompt Lab versions every system prompt behind the
+                app&apos;s thirteen AI surfaces. Each surface reads its prompt
+                from Postgres with an in-code fallback bound by snapshot tests,
+                and the Lab shows history, diffs, and drift between the two.
+                When a prompt changes, there is a record of what changed and
+                when.
+              </p>
+              <p>
+                The Profile Simulator tests the personalization engine without
+                waiting on real users. Build a user profile from life contexts,
+                run the selection algorithm, and see exactly which commitments
+                it would serve that person, scores included. It turned tuning
+                the matcher from guesswork into an afternoon.
+              </p>
+              <p>
+                The lectionary tools manage the appointed Sunday readings
+                across two traditions and seven Bible translations, with
+                per-reading rights flags and a staging to production pipeline.
+                Scripture licensing is a legal constraint, so the workflow
+                enforces it: text only enters the app through cleared lanes.
+              </p>
+            </div>
+            <div className="screenshotBand">
+              <Todo>
+                Back-office screenshots pending. Expected files:
+                public/images/prava-cockpit.png (alt: &ldquo;Prava&apos;s admin
+                home: a grid of eleven internal tool cards including Analytics,
+                Commitments, Memory Verse, Prayers and Creeds, Lectionary,
+                Teaching, Discovery, Prompt Lab, and more.&rdquo; caption:
+                &ldquo;The cockpit: eleven tools, one stack.&rdquo;),
+                public/images/prava-prompt-lab.png (alt: &ldquo;The Prompt Lab:
+                versioned system prompt surfaces with history, diffs, and
+                drift between database and in-code fallback.&rdquo; caption:
+                &ldquo;Prompt Lab: versioned prompts, diffed and
+                drift-checked.&rdquo;), and public/images/prava-simulator.png
+                (alt: &ldquo;The Profile Simulator: a built user profile on the
+                left, simulation results and a scored daily selection preview
+                on the right.&rdquo; caption: &ldquo;Profile Simulator: the
+                matching algorithm, testable in an afternoon.&rdquo;). Wire as
+                a raised band with the cockpit full-width on its own row and
+                the other two side by side beneath (stacking on mobile) when
+                the files land.
+              </Todo>
+            </div>
+          </section>
+
+          <section className="section">
+            <p className="eyebrow">05: Outcomes</p>
             <h2 className="sectionTitle">
               Live, growing, and paying for itself.
             </h2>
