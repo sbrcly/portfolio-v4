@@ -174,11 +174,15 @@ export default function PravaPage() {
               <p>
                 Prava is a native-feeling iOS app with a daily journal, prayer
                 and scripture surfaces, a weekly lectionary, and social
-                accountability circles. AI runs through the product: reflective
-                journaling prompts, scripture guidance, and a voice prayer
-                pipeline that records audio in the browser layer, stores it in
-                Cloudflare R2, transcribes it with Whisper, and returns an
-                LLM-written reflection.
+                accountability circles. The AI is a teaching and reflection
+                layer. It responds to what you read, write, and pray:
+                interpreting the week&apos;s scripture, drawing observations
+                from your journal entries, and helping you put your own prayers
+                into words. One rule governs every surface: the AI teaches and
+                reflects, but it never touches the Church&apos;s fixed texts.
+                The creeds and historic prayers render exactly as the Church
+                wrote them, enforced by CI scanners rather than good
+                intentions.
               </p>
             </div>
             <dl className="factList" style={{ marginTop: "2rem" }}>
@@ -199,13 +203,18 @@ export default function PravaPage() {
               <div>
                 <dt>AI</dt>
                 <dd>
-                  Anthropic models across five product surfaces, plus a voice
-                  prayer pipeline: MediaRecorder → Cloudflare R2 → Whisper → LLM
+                  Anthropic Claude across thirteen grounded surfaces, each
+                  reading versioned system prompts with snapshot-tested
+                  fallbacks
                 </dd>
               </div>
               <div>
                 <dt>Data</dt>
                 <dd>Neon Postgres with Prisma, additive-only migrations</dd>
+              </div>
+              <div>
+                <dt>Infra</dt>
+                <dd>Cloudflare R2 storage, Sentry error monitoring</dd>
               </div>
               <div>
                 <dt>Analytics</dt>
