@@ -28,7 +28,7 @@ const RECORD = [
   {
     href: "/experience",
     date: "2019–25",
-    name: "Caesars & Etainement",
+    name: "Caesars Sportsbook & Etainement",
     status: "Internal tools",
   },
 ];

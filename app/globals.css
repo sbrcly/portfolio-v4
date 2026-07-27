@@ -470,6 +470,21 @@ a {
   }
 }
 
+/* Back-office variant: lead shot full-width on its own row, two-up beneath */
+.screenshotGrid.backOffice {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.screenshotGrid.backOffice > figure:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  .screenshotGrid.backOffice {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Motion layer. Everything here is correct-by-construction for reduced
    motion: animation and transform rules live inside no-preference blocks,

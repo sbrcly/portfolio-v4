@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Todo from "@/components/todo/Todo";
 import pravaHome from "@/public/images/prava-home.png";
 import pravaLectio from "@/public/images/prava-lectio.png";
 import pravaJournal from "@/public/images/prava-journal.png";
 import pravaCircle from "@/public/images/prava-circle.png";
+import pravaCockpit from "@/public/images/prava-cockpit.png";
+import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
+import pravaSimulator from "@/public/images/prava-simulator.png";
 
 const heroScreens = [
   {
@@ -26,6 +28,27 @@ const heroScreens = [
     src: pravaCircle,
     caption: "A few people keeping the same week.",
     alt: "A Circle group screen: nine members reading Romans, this week's verse, and a feed of marks such as a member praying the Examen.",
+  },
+];
+
+const backOfficeScreens = [
+  {
+    src: pravaCockpit,
+    caption: "The cockpit: eleven tools, one stack.",
+    alt: "Prava's admin home: a grid of eleven internal tool cards including Analytics, Commitments, Memory Verse, Prayers and Creeds, Lectionary, Teaching, Discovery, Prompt Lab, and more.",
+    sizes: "(max-width: 959px) 100vw, 66vw",
+  },
+  {
+    src: pravaPromptLab,
+    caption: "Prompt Lab: versioned prompts, diffed and drift-checked.",
+    alt: "The Prompt Lab: versioned system prompt surfaces with history, diffs, and drift between database and in-code fallback.",
+    sizes: "(max-width: 800px) 100vw, (max-width: 959px) 50vw, 33vw",
+  },
+  {
+    src: pravaSimulator,
+    caption: "Profile Simulator: the matching algorithm, testable in an afternoon.",
+    alt: "The Profile Simulator: a built user profile on the left, simulation results and a scored daily selection preview on the right.",
+    sizes: "(max-width: 800px) 100vw, (max-width: 959px) 50vw, 33vw",
   },
 ];
 
@@ -269,26 +292,18 @@ export default function PravaPage() {
               </p>
             </div>
             <div className="screenshotBand">
-              <Todo>
-                Back-office screenshots pending. Expected files:
-                public/images/prava-cockpit.png (alt: &ldquo;Prava&apos;s admin
-                home: a grid of eleven internal tool cards including Analytics,
-                Commitments, Memory Verse, Prayers and Creeds, Lectionary,
-                Teaching, Discovery, Prompt Lab, and more.&rdquo; caption:
-                &ldquo;The cockpit: eleven tools, one stack.&rdquo;),
-                public/images/prava-prompt-lab.png (alt: &ldquo;The Prompt Lab:
-                versioned system prompt surfaces with history, diffs, and
-                drift between database and in-code fallback.&rdquo; caption:
-                &ldquo;Prompt Lab: versioned prompts, diffed and
-                drift-checked.&rdquo;), and public/images/prava-simulator.png
-                (alt: &ldquo;The Profile Simulator: a built user profile on the
-                left, simulation results and a scored daily selection preview
-                on the right.&rdquo; caption: &ldquo;Profile Simulator: the
-                matching algorithm, testable in an afternoon.&rdquo;). Wire as
-                a raised band with the cockpit full-width on its own row and
-                the other two side by side beneath (stacking on mobile) when
-                the files land.
-              </Todo>
+              <div className="screenshotGrid backOffice">
+                {backOfficeScreens.map((screen) => (
+                  <figure key={screen.caption}>
+                    <Image
+                      src={screen.src}
+                      alt={screen.alt}
+                      sizes={screen.sizes}
+                    />
+                    <figcaption>{screen.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </section>
 
