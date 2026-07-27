@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Lightbox from "@/components/lightbox/Lightbox";
 import incognitoBefore from "@/public/images/incognito-before.png";
 import incognitoAfter from "@/public/images/incognito-after.png";
 
@@ -94,9 +94,10 @@ export default function IncognitoWrapsPage() {
               <div className="screenshotGrid twoUp">
                 {beforeAfterScreens.map((screen) => (
                   <figure key={screen.caption}>
-                    <Image
+                    <Lightbox
                       src={screen.src}
                       alt={screen.alt}
+                      caption={screen.caption}
                       sizes="(max-width: 800px) 100vw, (max-width: 959px) 50vw, 33vw"
                     />
                     <figcaption>{screen.caption}</figcaption>

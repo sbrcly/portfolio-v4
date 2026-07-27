@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Lightbox from "@/components/lightbox/Lightbox";
 import pravaHome from "@/public/images/prava-home.png";
 import pravaLectio from "@/public/images/prava-lectio.png";
 import pravaJournal from "@/public/images/prava-journal.png";
@@ -81,9 +81,10 @@ export default function PravaPage() {
           <div className="screenshotGrid">
             {heroScreens.map((screen) => (
               <figure key={screen.caption}>
-                <Image
+                <Lightbox
                   src={screen.src}
                   alt={screen.alt}
+                  caption={screen.caption}
                   sizes="(max-width: 800px) 50vw, 25vw"
                 />
                 <figcaption>{screen.caption}</figcaption>
@@ -304,9 +305,10 @@ export default function PravaPage() {
               <div className="screenshotGrid backOffice">
                 {backOfficeScreens.map((screen) => (
                   <figure key={screen.caption}>
-                    <Image
+                    <Lightbox
                       src={screen.src}
                       alt={screen.alt}
+                      caption={screen.caption}
                       sizes={screen.sizes}
                     />
                     <figcaption>{screen.caption}</figcaption>

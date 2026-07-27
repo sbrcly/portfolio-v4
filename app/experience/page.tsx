@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Lightbox from "@/components/lightbox/Lightbox";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
 import inplayOdds from "@/public/images/inplay-odds.png";
 import tradingSchedule from "@/public/images/trading-schedule.png";
@@ -36,6 +36,12 @@ const mediaStyle: React.CSSProperties = {
 /* Prose blocks that follow a full-width band re-open outside it, so the
    band's own spacing rule can't cover them. */
 const afterBandStyle: React.CSSProperties = { marginTop: "2.5rem" };
+
+/* Shared between the band figcaption and the lightbox caption */
+const scheduleCaption = "Every game we offered, with an owner.";
+const inplayCaption =
+  "Implied probability, Brewers @ Cubs: our line vs. the market.";
+const arbitrageCaption = "Live arb detection across ~50 books.";
 
 function RepoLink({ slug }: { slug: string }) {
   return (
@@ -131,12 +137,12 @@ export default function ExperiencePage() {
           </p>
         </div>
 
-        <MediaBand caption="Every game we offered, with an owner.">
-          <Image
+        <MediaBand caption={scheduleCaption}>
+          <Lightbox
             src={tradingSchedule}
             alt="The trading schedule home screen: a table of upcoming games across sports with assigned traders."
+            caption={scheduleCaption}
             sizes="(max-width: 72rem) 100vw, 69rem"
-            style={mediaStyle}
           />
         </MediaBand>
 
@@ -151,12 +157,12 @@ export default function ExperiencePage() {
           </p>
         </div>
 
-        <MediaBand caption="Implied probability, Brewers @ Cubs: our line vs. the market.">
-          <Image
+        <MediaBand caption={inplayCaption}>
+          <Lightbox
             src={inplayOdds}
             alt="Chart of in-play implied probability for a Brewers at Cubs game, comparing Caesars' line against four competitors over two hours of updates."
+            caption={inplayCaption}
             sizes="(max-width: 72rem) 100vw, 69rem"
-            style={mediaStyle}
           />
         </MediaBand>
 
@@ -176,12 +182,12 @@ export default function ExperiencePage() {
           </p>
         </div>
 
-        <MediaBand caption="Live arb detection across ~50 books.">
-          <Image
+        <MediaBand caption={arbitrageCaption}>
+          <Lightbox
             src={arbitrageTable}
             alt="The arbitrage calculator's live table, with flagged arbitrage opportunities against competitor sportsbooks."
+            caption={arbitrageCaption}
             sizes="(max-width: 72rem) 100vw, 69rem"
-            style={mediaStyle}
           />
         </MediaBand>
       </section>
