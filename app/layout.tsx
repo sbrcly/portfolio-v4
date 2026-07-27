@@ -24,7 +24,6 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  // TODO: replace with the real production domain before deploying.
   metadataBase: new URL("https://scottbarclay.dev"),
   title: {
     default: "Scott Barclay · Software engineer & founder",
@@ -32,10 +31,16 @@ export const metadata: Metadata = {
   },
   description:
     "Software engineer and founder. Most recently: Prava, an AI faith journal for iOS. Designed, built, and shipped solo, from first commit to the App Store.",
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     siteName: "Scott Barclay",
     type: "website",
     locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
