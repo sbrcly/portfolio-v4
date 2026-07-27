@@ -23,7 +23,7 @@ const RECORD = [
     href: "/work/incognito-wraps",
     date: "2026",
     name: "Incognito Wraps",
-    status: "In progress",
+    status: "In staging",
   },
   {
     href: "/experience",

@@ -470,6 +470,18 @@ a {
   }
 }
 
+/* Before/after variant: two-up, top-aligned, stacking on mobile */
+.screenshotGrid.twoUp {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .screenshotGrid.twoUp {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* Back-office variant: lead shot full-width on its own row, two-up beneath */
 .screenshotGrid.backOffice {
   grid-template-columns: repeat(2, minmax(0, 1fr));

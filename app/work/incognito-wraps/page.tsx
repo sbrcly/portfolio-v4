@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
-import Todo from "@/components/todo/Todo";
+import Image from "next/image";
+import incognitoBefore from "@/public/images/incognito-before.png";
+import incognitoAfter from "@/public/images/incognito-after.png";
+
+const beforeAfterScreens = [
+  {
+    src: incognitoBefore,
+    caption: "Before: the site the business had.",
+    alt: "The previous Incognito Wraps website, a dated 90s-era layout.",
+  },
+  {
+    src: incognitoAfter,
+    caption: "After: the rebuild in staging.",
+    alt: "The rebuilt Incognito Wraps homepage: flat black hero with bold type reading Wrap it. Protect it. Drive it. over a photo of a wrapped truck.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Incognito Wraps: client rebuild",
@@ -76,17 +91,18 @@ export default function IncognitoWrapsPage() {
               </p>
             </div>
             <div className="screenshotBand">
-              <Todo>
-                Before/after screenshots pending. Expected files:
-                public/images/incognito-before.png (alt: &ldquo;The previous
-                Incognito Wraps website, a dated 90s-era layout.&rdquo; caption:
-                &ldquo;Before: the site the business had.&rdquo;) and
-                public/images/incognito-after.png (alt: &ldquo;The rebuilt
-                Incognito Wraps homepage: flat black hero with bold type
-                reading Wrap it. Protect it. Drive it. over a photo of a
-                wrapped truck.&rdquo; caption: &ldquo;After: the rebuild in
-                staging.&rdquo;). Wire as a two-up raised band when both exist.
-              </Todo>
+              <div className="screenshotGrid twoUp">
+                {beforeAfterScreens.map((screen) => (
+                  <figure key={screen.caption}>
+                    <Image
+                      src={screen.src}
+                      alt={screen.alt}
+                      sizes="(max-width: 800px) 100vw, (max-width: 959px) 50vw, 33vw"
+                    />
+                    <figcaption>{screen.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </section>
 
