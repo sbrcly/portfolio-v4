@@ -1,0 +1,583 @@
+/* ---------------------------------------------------------------------------
+   Design tokens — "The Record": light paper, dense structured information,
+   monospace data voice. Depth comes from --paper-raised + hairlines only.
+--------------------------------------------------------------------------- */
+
+:root {
+  --paper: #faf8f4;
+  --paper-raised: #f1ede5;
+  --ink: #141310;
+  --ink-dim: #5f5b53;
+  --line: #e3dfd4;
+  --accent: #8f621c;
+  --accent-bright: #b07c24;
+
+  --font-display: var(--font-schibsted), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", monospace;
+
+  --container: 72rem;
+  --prose: 62ch;
+  --space-page-x: 1.5rem;
+  --radius: 6px;
+
+  /* Motion: one easing per job, used everywhere — no ad-hoc curves */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-hover: ease;
+}
+
+/* ---------------------------------------------------------------------------
+   Reset
+--------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Route transitions become the browser's default hard cut */
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Shared page primitives
+--------------------------------------------------------------------------- */
+
+/* Column that keeps the footer at the viewport bottom on short pages */
+.siteFrame {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  /* Above the fixed lamplight layer */
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-page-x);
+}
+
+/* Mono eyebrow label — on every content page */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.page {
+  padding-block: 6rem 6rem;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-top: 1rem;
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: var(--prose);
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  color: var(--ink-dim);
+  text-wrap: pretty;
+}
+
+.lede strong,
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Long-form copy */
+.prose {
+  max-width: var(--prose);
+}
+
+.prose p + p,
+.prose ul + p,
+.prose p + ul {
+  margin-top: 1.1em;
+}
+
+/* Text links: static accent-bright underline, plus an accent line that
+   grows from the left on hover/focus (two background layers, no layout shift) */
+.prose a,
+.factList a {
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent-bright), var(--accent-bright));
+  background-repeat: no-repeat;
+  background-size: 0 1px, 100% 1px;
+  background-position: 0 100%, 0 100%;
+}
+
+.prose a:hover,
+.prose a:focus-visible,
+.factList a:hover,
+.factList a:focus-visible {
+  color: var(--accent);
+  background-size: 100% 1px, 100% 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .prose a,
+  .factList a {
+    transition: color 150ms var(--ease-hover),
+      background-size 150ms var(--ease-hover);
+  }
+}
+
+.prose ul {
+  list-style: none;
+}
+
+.prose ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-top: 0.5em;
+}
+
+.prose ul li::before {
+  content: "·";
+  position: absolute;
+  left: 0.3rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Section pattern: hairline + eyebrow + display heading */
+.section {
+  margin-top: 4.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0.75rem 0 1.25rem;
+  text-wrap: balance;
+}
+
+.subheading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  margin: 2rem 0 0.5rem;
+}
+
+/* Mono-labelled fact rows — the site's data voice */
+.factList {
+  max-width: var(--prose);
+  border-top: 1px solid var(--line);
+}
+
+.factList > div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 1rem;
+  padding-block: 0.875rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.factList dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  padding-top: 0.2em;
+}
+
+.factList dd {
+  color: var(--ink);
+}
+
+@media (max-width: 480px) {
+  .factList > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+/* Link CTAs styled as buttons (always <a>/<Link>, never nested in <button>) */
+.button {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background-color 120ms var(--ease-hover),
+    border-color 120ms var(--ease-hover), color 120ms var(--ease-hover);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition: background-color 120ms var(--ease-hover),
+      border-color 120ms var(--ease-hover), color 120ms var(--ease-hover),
+      transform 120ms var(--ease-hover);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .button:active {
+    transform: translateY(0);
+  }
+}
+
+.buttonPrimary {
+  background: var(--accent-bright);
+  color: var(--ink);
+}
+
+.buttonPrimary:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.buttonSecondary {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.buttonSecondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------------
+   Case-study layout: prose column + sticky mono spec sidebar
+--------------------------------------------------------------------------- */
+
+.caseLayout {
+  display: grid;
+  grid-template-areas:
+    "spec"
+    "main";
+  gap: 2.5rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.caseMain {
+  grid-area: main;
+  min-width: 0;
+}
+
+/* First section inside the column shouldn't double up on the layout rule */
+.caseMain > .section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.caseAside {
+  grid-area: spec;
+  min-width: 0;
+}
+
+@media (min-width: 960px) {
+  .caseLayout {
+    grid-template-areas: "main spec";
+    grid-template-columns: minmax(0, 1fr) 17rem;
+    column-gap: 4rem;
+    align-items: start;
+  }
+
+  .caseAside {
+    position: sticky;
+    /* Clears the sticky header */
+    top: 5.5rem;
+  }
+}
+
+.specCard {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 0.5rem;
+  transition: border-color 150ms var(--ease-hover);
+}
+
+/* Reference material, not a control — hover only warms the hairline */
+.specCard:hover {
+  border-color: var(--accent-bright);
+}
+
+.specLabel {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.specCard dl > div {
+  padding-block: 0.75rem;
+}
+
+.specCard dl > div + div {
+  border-top: 1px solid var(--line);
+}
+
+.specCard dt {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.specCard dd {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-top: 0.25rem;
+}
+
+/* Full-width raised strip: the designed surface screenshots will sit on */
+.screenshotBand {
+  background: var(--paper-raised);
+  border-block: 1px solid var(--line);
+  padding: 2.5rem 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.screenshotBand > * {
+  margin-top: 0;
+}
+
+/* App-screen grid inside a band: four across, two-by-two on narrow screens */
+.screenshotGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.screenshotGrid img {
+  width: 100%;
+  height: auto;
+}
+
+.screenshotGrid figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--ink-dim);
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 800px) {
+  .screenshotGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion layer. Everything here is correct-by-construction for reduced
+   motion: animation and transform rules live inside no-preference blocks,
+   and every element's resting CSS is fully visible (no JS-added hiding).
+--------------------------------------------------------------------------- */
+
+/* Content-page entrance: eyebrow + title rise behind a mask, body fades in.
+   The mask parent gets a hair of bottom padding so descenders never clip. */
+.entranceMask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.entranceMask > span {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .entranceMask > span {
+    animation: entrance-line 450ms var(--ease-entrance) backwards;
+  }
+
+  .pageTitle.entranceMask > span {
+    animation-delay: 90ms;
+  }
+
+  .page > :not(header):not(.entranceMask),
+  .page > header > :not(.entranceMask) {
+    animation: entrance-fade 400ms var(--ease-hover) 180ms backwards;
+  }
+}
+
+@keyframes entrance-line {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+}
+
+@keyframes entrance-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Scroll reveals: pre-animation state is added by ScrollReveal (JS) only for
+   below-viewport elements, only when motion is allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  .revealInit {
+    opacity: 0;
+    translate: 0 12px;
+  }
+
+  .revealIn {
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 500ms var(--ease-entrance),
+      translate 500ms var(--ease-entrance);
+  }
+}
+
+/* Route transitions: old page fades slightly down, new page rises 8px.
+   Header, footer, and root are pinned so only page content moves.
+   No View Transitions support → these rules never apply → hard cut. */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(.vt-page-exit) {
+    animation: 90ms var(--ease-hover) both vt-out;
+  }
+
+  ::view-transition-new(.vt-page-enter) {
+    animation: 140ms var(--ease-entrance) 60ms both vt-in;
+  }
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}
+
+::view-transition-group(site-header),
+::view-transition-group(site-footer),
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-group(site-header) {
+  z-index: 10;
+}
+
+::view-transition-old(site-header),
+::view-transition-old(site-footer),
+::view-transition-old(root) {
+  display: none;
+}
+
+::view-transition-new(site-header),
+::view-transition-new(site-footer),
+::view-transition-new(root) {
+  animation: none;
+}

@@ -1,0 +1,21 @@
+.todo {
+  max-width: var(--prose);
+  margin-top: 1.5rem;
+  padding: 0.875rem 1rem;
+  background: var(--paper-raised);
+  border: 1px dashed var(--accent-bright);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--accent);
+}
+
+.label {
+  display: inline-block;
+  margin-right: 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
