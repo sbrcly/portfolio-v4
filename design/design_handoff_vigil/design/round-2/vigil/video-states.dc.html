@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <title>Vigil r2 · Video plate states</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0B0F0D;color:#E4DBCB;} a{color:#E4DBCB;text-decoration:none;} a:hover{color:#F3C77E;}</style>
+</helmet>
+<div data-screen-label="Video states" style="padding:64px;background:#0B0F0D;color:#E4DBCB;font-family:'Spectral',Georgia,serif;display:flex;flex-direction:column;gap:56px;width:max-content;">
+  <div style="max-width:760px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;display:flex;gap:16px;"><span>Round 2</span><span style="color:#E0AE62;">Video plate · three states</span></div>
+    <h1 style="margin:20px 0 0;font-weight:300;font-size:32px;line-height:1.2;">Resting, playing, ended. The plate is 1120 wide at 1440; the rim is the only chrome.</h1>
+    <p style="margin:12px 0 0;font-size:17px;line-height:1.55;font-weight:300;color:#A89F90;">The poster is the first frame of odds-display-demo.mp4 (the file is on main but larger than this tool can import; the striped field stands in for it here and is labeled). The poster is served as a real image via the video's poster attribute so the plate paints before the mp4 loads.</p>
+  </div>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <div style="display:flex;gap:24px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#E0AE62;">1</span><h2 style="margin:0;font-weight:300;font-size:24px;">Resting</h2><span style="font-size:15px;font-weight:300;color:#A89F90;max-width:760px;">Poster frame at full brightness. One play mark (72px ring, 1px brass, filled 55% ground so it reads on any frame). Mono meta bottom left: filename in bone, duration and "silent" muted. Rim at resting strength (1px at 35%, 72px halo at 10%). Whole plate is the button; focus ring is the rim stepping to 60%.</span></div>
+    <div style="position:relative;width:1120px;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#1A2520 0 14px,#1D2924 14px 28px);box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);display:flex;align-items:center;justify-content:center;">
+      <span style="position:absolute;top:20px;left:24px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;">Poster: first frame of odds-display-demo.mp4</span>
+      <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border:1px solid #E0AE62;border-radius:50%;background:rgba(18,26,22,.55);"><span style="display:block;width:0;height:0;border-left:18px solid #E0AE62;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px;"></span></span>
+      <span style="position:absolute;left:24px;bottom:20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#E4DBCB;">odds-display-demo.mp4 <span style="color:#A89F90;">· 33 s · silent</span></span>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <div style="display:flex;gap:24px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#E0AE62;">2</span><h2 style="margin:0;font-weight:300;font-size:24px;">Playing (hover shown)</h2><span style="font-size:15px;font-weight:300;color:#A89F90;max-width:760px;">Play mark and meta fade out over 200 ms. Rim rises to the lit strength (1px at 60%, 96px halo at 18%) over 600 ms. Native controls are hidden; on hover or focus they fade in over 160 ms as a thin bar at the bottom, and a mono time counter "0:12 / 0:33" sits bottom right. No custom scrubber.</span></div>
+    <div style="position:relative;width:1120px;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#1A2520 0 14px,#1D2924 14px 28px);box-shadow:0 0 0 1px rgba(224,174,98,.6),0 0 96px rgba(224,174,98,.18);">
+      <span style="position:absolute;top:20px;left:24px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;">Frame 0:12 of odds-display-demo.mp4</span>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:44px;background:linear-gradient(to top,rgba(18,26,22,.85),rgba(18,26,22,0));display:flex;align-items:center;gap:16px;padding:0 24px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#E4DBCB;">
+        <span style="display:block;width:0;height:0;border-left:8px solid #E4DBCB;border-top:5px solid transparent;border-bottom:5px solid transparent;"></span>
+        <span style="flex:1;height:1px;background:#2E3B34;position:relative;"><span style="position:absolute;left:0;top:0;height:1px;width:36%;background:#E0AE62;"></span></span>
+        <span style="color:#A89F90;">0:12 <span style="color:#4A5A50;">/</span> 0:33</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <div style="display:flex;gap:24px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#E0AE62;">3</span><h2 style="margin:0;font-weight:300;font-size:24px;">Ended</h2><span style="font-size:15px;font-weight:300;color:#A89F90;max-width:760px;">Holds the last frame (no reset to poster). Rim settles back to resting over 400 ms so the end is visible without a control. The play mark returns over 200 ms; meta returns reading "Replay" in brass with the duration. Autoplay plays exactly one loop then ends here; a click replays once more.</span></div>
+    <div style="position:relative;width:1120px;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#1A2520 0 14px,#1D2924 14px 28px);box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);display:flex;align-items:center;justify-content:center;">
+      <span style="position:absolute;top:20px;left:24px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;">Last frame, 0:33, held</span>
+      <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border:1px solid #E0AE62;border-radius:50%;background:rgba(18,26,22,.55);"><span style="display:block;width:0;height:0;border-left:18px solid #E0AE62;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px;"></span></span>
+      <span style="position:absolute;left:24px;bottom:20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#E0AE62;">Replay <span style="color:#A89F90;">· 33 s · silent</span></span>
+    </div>
+  </section>
+
+  <section style="max-width:760px;">
+    <h2 style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">Rules</h2>
+    <ul style="margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;font-weight:300;">
+      <li>Autoplay: muted, starts when 60% of the plate is in view, pauses when it leaves, never restarts from zero on re-entry. Reduced motion or Save-Data: no autoplay, resting state only.</li>
+      <li>Phone (390): the plate bleeds to the viewport edge; the play ring is 52px; meta is 10px; the poster frame is the same image. Tap toggles play; controls appear on tap, hide after 2 s idle.</li>
+      <li>Accessibility: the plate is a button labeled "Play the odds console recording, 33 seconds, silent"; while playing the label changes to "Pause". Captions are not needed (no audio), stated in the label.</li>
+    </ul>
+  </section>
+</div>
+</x-dc>
+</body>
+</html>

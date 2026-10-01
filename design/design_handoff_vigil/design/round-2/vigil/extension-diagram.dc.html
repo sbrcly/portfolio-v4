@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <title>Vigil r2 · Extension diagram options</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0B0F0D;color:#E4DBCB;} a{color:#E4DBCB;text-decoration:none;} a:hover{color:#F3C77E;}</style>
+</helmet>
+<div style="padding:64px;background:#0B0F0D;color:#E4DBCB;font-family:'Spectral',Georgia,serif;display:flex;flex-direction:column;gap:64px;width:max-content;">
+  <div style="max-width:760px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;display:flex;gap:16px;"><span>Round 2</span><span style="color:#E0AE62;">Marketplace extension plate</span></div>
+    <h1 style="margin:20px 0 0;font-weight:300;font-size:32px;line-height:1.2;">Two diagrams for the four-part flow. Each at 1120 (the 1440 column) and 350 (the 390 column).</h1>
+    <p style="margin:12px 0 0;font-size:17px;line-height:1.55;font-weight:300;color:#A89F90;">Option 1 is on the home pages. Both are mono on the plate surface with the brass rim; all strokes 1px; dashed strokes mark origin boundaries; brass marks the thing Scott built.</p>
+  </div>
+
+  <!-- Option 1: boundary -->
+  <section data-screen-label="Diagram option 1" style="display:flex;flex-direction:column;gap:24px;background:#0B0F0D;">
+    <div style="display:flex;gap:24px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#E0AE62;">1</span><h2 style="margin:0;font-weight:300;font-size:24px;">Origin boundary</h2><span style="font-size:15px;font-weight:300;color:#A89F90;max-width:720px;">Two dashed origins, the extension straddling the boundary between them, the message port drawn as the only thing that crosses. The numbered steps run beneath. It says cross-origin before anyone reads a word.</span></div>
+    <div style="display:flex;gap:40px;align-items:flex-start;">
+      <figure style="margin:0;width:1120px;padding:48px;box-sizing:border-box;background:#1A2520;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;">
+        <div style="display:grid;grid-template-columns:1fr 160px 1fr;align-items:stretch;">
+          <div style="border:1px dashed #4A5A50;padding:24px;display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;justify-content:space-between;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin A</span><span>portal.brokerage.internal</span></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Pricing portal</div><div style="margin-top:8px;">Buyers write purchase rules: sections, price ceilings, quantities.</div></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Rules API</div><div style="margin-top:8px;color:#A89F90;">GET /rules?event=… JSON, authenticated by session cookie.</div></div>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+            <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+            <div style="position:relative;width:100%;border:1px solid #E0AE62;background:#1A2520;padding:16px 14px;text-align:center;">
+              <div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Extension</div>
+              <div style="margin-top:10px;padding:10px 8px;border:1px solid #2E3B34;">Background worker</div>
+              <div style="margin:6px 0;color:#A89F90;font-size:11px;">chrome.runtime<br>message port</div>
+              <div style="padding:10px 8px;border:1px solid #2E3B34;">Content script</div>
+            </div>
+            <div style="position:absolute;top:-28px;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">origin boundary</div>
+          </div>
+          <div style="border:1px dashed #4A5A50;padding:24px;display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;justify-content:space-between;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin B</span><span>ticketmaster.com</span></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Marketplace page</div><div style="margin-top:8px;">Venue map DOM, rendered by the site's own app. Hostile to automation.</div></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Rewritten map</div><div style="margin-top:8px;color:#A89F90;">Seats outside the rules dimmed; matching seats and ceilings annotated in place.</div></div>
+          </div>
+        </div>
+        <ol style="margin:32px 0 0;padding:20px 0 0;border-top:1px solid #2E3B34;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;list-style:none;color:#A89F90;">
+          <li><span style="color:#E0AE62;">1</span>&nbsp; Buyer saves rules in the portal.</li><li><span style="color:#E0AE62;">2</span>&nbsp; Worker fetches rules on tab load, caches per event, refreshes on a timer.</li><li><span style="color:#E0AE62;">3</span>&nbsp; Content script receives rules over the port; observes the map with a MutationObserver.</li><li><span style="color:#E0AE62;">4</span>&nbsp; Map rewritten in place; state echoed back so the portal knows what was bought.</li>
+        </ol>
+      </figure>
+      <figure style="margin:0;width:350px;padding:24px 20px;box-sizing:border-box;background:#1A2520;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 56px rgba(224,174,98,.10);font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.55;">
+        <div style="border:1px dashed #4A5A50;padding:16px;"><div style="display:flex;justify-content:space-between;color:#A89F90;font-size:10px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin A</span><span>portal.brokerage.internal</span></div><div style="margin-top:12px;border:1px solid #2E3B34;padding:12px 14px;background:#121A16;"><div style="color:#E0AE62;font-size:10px;letter-spacing:.12em;text-transform:uppercase;">Pricing portal</div><div style="margin-top:6px;">Buyers write purchase rules.</div></div><div style="margin-top:10px;border:1px solid #2E3B34;padding:12px 14px;background:#121A16;"><div style="color:#E0AE62;font-size:10px;letter-spacing:.12em;text-transform:uppercase;">Rules API</div><div style="margin-top:6px;color:#A89F90;">GET /rules?event=… JSON</div></div></div>
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center;padding:16px 0;"><div style="position:absolute;left:0;right:0;top:50%;height:1px;background:repeating-linear-gradient(90deg,#4A5A50 0 6px,transparent 6px 12px);"></div><div style="position:relative;width:200px;border:1px solid #E0AE62;background:#1A2520;padding:12px;text-align:center;"><div style="color:#E0AE62;font-size:10px;letter-spacing:.12em;text-transform:uppercase;">Extension</div><div style="margin-top:8px;padding:8px;border:1px solid #2E3B34;">Background worker</div><div style="margin:4px 0;color:#A89F90;font-size:10px;">chrome.runtime port</div><div style="padding:8px;border:1px solid #2E3B34;">Content script</div></div><span style="position:relative;margin-top:8px;color:#A89F90;font-size:10px;letter-spacing:.12em;text-transform:uppercase;">origin boundary</span></div>
+        <div style="border:1px dashed #4A5A50;padding:16px;"><div style="display:flex;justify-content:space-between;color:#A89F90;font-size:10px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin B</span><span>ticketmaster.com</span></div><div style="margin-top:12px;border:1px solid #2E3B34;padding:12px 14px;background:#121A16;"><div style="color:#E0AE62;font-size:10px;letter-spacing:.12em;text-transform:uppercase;">Marketplace page</div><div style="margin-top:6px;">Venue map DOM, rendered by the site's own app.</div></div><div style="margin-top:10px;border:1px solid #2E3B34;padding:12px 14px;background:#121A16;"><div style="color:#E0AE62;font-size:10px;letter-spacing:.12em;text-transform:uppercase;">Rewritten map</div><div style="margin-top:6px;color:#A89F90;">Non-matching seats dimmed; ceilings annotated.</div></div></div>
+        <ol style="margin:20px 0 0;padding:16px 0 0;border-top:1px solid #2E3B34;display:flex;flex-direction:column;gap:8px;list-style:none;color:#A89F90;"><li><span style="color:#E0AE62;">1</span>&nbsp; Buyer saves rules in the portal.</li><li><span style="color:#E0AE62;">2</span>&nbsp; Worker fetches rules, caches per event.</li><li><span style="color:#E0AE62;">3</span>&nbsp; Content script receives rules; observes the map.</li><li><span style="color:#E0AE62;">4</span>&nbsp; Map rewritten; state echoed to the portal.</li></ol>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Option 2: sequence -->
+  <section data-screen-label="Diagram option 2" style="display:flex;flex-direction:column;gap:24px;background:#0B0F0D;">
+    <div style="display:flex;gap:24px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#E0AE62;">2</span><h2 style="margin:0;font-weight:300;font-size:24px;">Sequence</h2><span style="font-size:15px;font-weight:300;color:#A89F90;max-width:720px;">Four lifelines, messages drawn as rules between them with the payload named on each. Reads as a sequence diagram from any engineer's whiteboard. On the phone the lifelines become rows and the messages a vertical list.</span></div>
+    <div style="display:flex;gap:40px;align-items:flex-start;">
+      <figure style="margin:0;width:1120px;padding:48px;box-sizing:border-box;background:#1A2520;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;">
+        <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);column-gap:24px;">
+          <div style="border:1px solid #2E3B34;padding:14px 16px;text-align:center;background:#121A16;"><div style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Pricing portal</div><div style="margin-top:4px;color:#A89F90;font-size:11px;">portal.brokerage.internal</div></div>
+          <div style="border:1px solid #E0AE62;padding:14px 16px;text-align:center;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Background worker</div><div style="margin-top:4px;color:#A89F90;font-size:11px;">extension, MV3 service worker</div></div>
+          <div style="border:1px solid #E0AE62;padding:14px 16px;text-align:center;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Content script</div><div style="margin-top:4px;color:#A89F90;font-size:11px;">extension, injected per tab</div></div>
+          <div style="border:1px solid #2E3B34;padding:14px 16px;text-align:center;background:#121A16;"><div style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Marketplace page</div><div style="margin-top:4px;color:#A89F90;font-size:11px;">ticketmaster.com, venue map DOM</div></div>
+          <!-- lifelines -->
+          <div style="grid-column:1/5;position:relative;height:400px;margin-top:0;">
+            <div style="position:absolute;top:0;bottom:0;left:calc(12.5% - 9px);width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+            <div style="position:absolute;top:0;bottom:0;left:calc(37.5% - 3px);width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+            <div style="position:absolute;top:0;bottom:0;left:calc(62.5% + 3px);width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+            <div style="position:absolute;top:0;bottom:0;left:calc(87.5% + 9px);width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+            <!-- messages -->
+            <div style="position:absolute;top:56px;left:calc(12.5% - 9px);width:25%;border-top:1px solid #E4DBCB;"><span style="position:absolute;top:-22px;left:-60px;right:-60px;text-align:center;white-space:nowrap;color:#E4DBCB;"><span style="color:#E0AE62;">1</span>&nbsp; rules saved · POST /rules</span><span style="position:absolute;right:-1px;top:-5px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #E4DBCB;"></span></div>
+            <div style="position:absolute;top:136px;left:calc(12.5% - 9px);width:25%;border-top:1px solid #E4DBCB;"><span style="position:absolute;top:-22px;left:-60px;right:-60px;text-align:center;white-space:nowrap;"><span style="color:#E0AE62;">2</span>&nbsp; GET /rules?event · JSON, cached per event</span><span style="position:absolute;left:-1px;top:-5px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-right:7px solid #E4DBCB;"></span></div>
+            <div style="position:absolute;top:216px;left:calc(37.5% - 3px);width:25%;border-top:1px solid #E0AE62;"><span style="position:absolute;top:-22px;left:-60px;right:-60px;text-align:center;white-space:nowrap;color:#E0AE62;"><span>3</span>&nbsp; chrome.runtime port · rules for this tab</span><span style="position:absolute;right:-1px;top:-5px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #E0AE62;"></span></div>
+            <div style="position:absolute;top:296px;left:calc(62.5% + 3px);width:25%;border-top:1px solid #E4DBCB;"><span style="position:absolute;top:-22px;left:-60px;right:-60px;text-align:center;white-space:nowrap;"><span style="color:#E0AE62;">4</span>&nbsp; MutationObserver · rewrite venue map in place</span><span style="position:absolute;right:-1px;top:-5px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #E4DBCB;"></span></div>
+            <div style="position:absolute;top:376px;left:calc(12.5% - 9px);width:50%;border-top:1px dashed #A89F90;"><span style="position:absolute;top:-22px;left:-60px;right:-60px;text-align:center;white-space:nowrap;color:#A89F90;">purchases echoed back · portal state stays in sync</span><span style="position:absolute;left:-1px;top:-5px;border-top:4px solid transparent;border-bottom:4px solid transparent;border-right:7px solid #A89F90;"></span></div>
+          </div>
+        </div>
+      </figure>
+      <figure style="margin:0;width:350px;padding:24px 20px;box-sizing:border-box;background:#1A2520;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 56px rgba(224,174,98,.10);font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.55;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="border:1px solid #2E3B34;padding:10px;text-align:center;background:#121A16;color:#A89F90;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Pricing portal</div>
+          <div style="border:1px solid #E0AE62;padding:10px;text-align:center;background:#121A16;color:#E0AE62;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Background worker</div>
+          <div style="border:1px solid #E0AE62;padding:10px;text-align:center;background:#121A16;color:#E0AE62;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Content script</div>
+          <div style="border:1px solid #2E3B34;padding:10px;text-align:center;background:#121A16;color:#A89F90;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Marketplace page</div>
+        </div>
+        <ol style="margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;">
+          <li style="padding:12px 0;border-top:1px solid #2E3B34;"><div style="color:#A89F90;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Portal → Worker</div><div style="margin-top:4px;"><span style="color:#E0AE62;">1</span>&nbsp; rules saved · POST /rules</div></li>
+          <li style="padding:12px 0;border-top:1px solid #2E3B34;"><div style="color:#A89F90;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Worker → Portal</div><div style="margin-top:4px;"><span style="color:#E0AE62;">2</span>&nbsp; GET /rules?event · JSON, cached per event</div></li>
+          <li style="padding:12px 0;border-top:1px solid #2E3B34;"><div style="color:#A89F90;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Worker → Content script</div><div style="margin-top:4px;color:#E0AE62;">3&nbsp; chrome.runtime port · rules for this tab</div></li>
+          <li style="padding:12px 0;border-top:1px solid #2E3B34;"><div style="color:#A89F90;font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Content script → Page</div><div style="margin-top:4px;"><span style="color:#E0AE62;">4</span>&nbsp; MutationObserver · rewrite venue map in place</div></li>
+          <li style="padding:12px 0;border-top:1px solid #2E3B34;border-bottom:1px solid #2E3B34;color:#A89F90;"><div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;">Content script → Portal</div><div style="margin-top:4px;">purchases echoed back · state stays in sync</div></li>
+        </ol>
+      </figure>
+    </div>
+  </section>
+</div>
+</x-dc>
+</body>
+</html>

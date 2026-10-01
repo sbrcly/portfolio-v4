@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r2 · Spec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0B0F0D;color:#E4DBCB;} a{color:#E4DBCB;text-decoration:none;} a:hover{color:#F3C77E;}</style>
+</helmet>
+<div style="max-width:1200px;margin:0 auto;padding:48px 32px 120px;background:#0B0F0D;color:#E4DBCB;font-family:'Spectral',Georgia,serif;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;display:flex;gap:16px;align-items:center;flex-wrap:wrap;"><span>Round 2</span><span style="color:#E0AE62;">Vigil spec</span><span style="flex:1;height:1px;background:#2E3B34;"></span><a href="home-1440.dc.html" style="color:#A89F90;">Home 1440</a><a href="home-1920.dc.html" style="color:#A89F90;">1920</a><a href="home-1024.dc.html" style="color:#A89F90;">1024</a><a href="home-390.dc.html" style="color:#A89F90;">390</a><a href="prava-1440.dc.html" style="color:#A89F90;">Prava</a><a href="hero-options.dc.html" style="color:#A89F90;">Hero options</a><a href="extension-diagram.dc.html" style="color:#A89F90;">Diagram</a><a href="video-states.dc.html" style="color:#A89F90;">Video</a></div>
+  <h1 style="margin:32px 0 0;font-weight:300;font-size:36px;line-height:1.15;">Entrance, numerals, nav, breakpoints, motion.</h1>
+
+  <!-- ENTRANCE -->
+  <section style="margin-top:72px;">
+    <h2 style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Entrance · "Ember" · 1400 ms · once per session · skippable</h2>
+    <p style="margin:16px 0 0;max-width:760px;font-size:17px;line-height:1.55;font-weight:300;color:#A89F90;">An overlay on top of content that is already in the DOM. Keyed on sessionStorage. Click, tap, Esc, or any key skips to the handoff. The light ends on the hero's lit rule, not the name. A working reference implementation runs on home-1440 (tweaks: replay, reduced motion).</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.55;color:#A89F90;">
+      <div><div style="aspect-ratio:16/10;background:#121A16;border:1px solid #2E3B34;display:flex;align-items:center;justify-content:center;"><span style="display:block;width:6px;height:2px;background:#F3C77E;box-shadow:0 0 8px rgba(243,199,126,.9);"></span></div><div style="margin-top:8px;color:#E4DBCB;">0 to 400 ms</div>Veil is the ground color, nothing else. A 2px rule, 120px wide, draws from its center outward: scaleX 0 to 1, hot brass #F3C77E, glow at peak (0 0 10px .9, 0 0 32px .5). cubic-bezier(.22,1,.36,1).</div>
+      <div><div style="aspect-ratio:16/10;background:#121A16;border:1px solid #2E3B34;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;"><span style="font-size:12px;letter-spacing:.18em;color:rgba(228,219,203,.5);">|SB|</span><span style="display:block;width:48px;height:2px;background:#F3C77E;box-shadow:0 0 8px rgba(243,199,126,.7);"></span></div><div style="margin-top:8px;color:#E4DBCB;">300 to 700 ms</div>The bracket mark fades in above the rule, bone, no glow, opacity 0 to 1, linear. The rule is the only lit thing on screen.</div>
+      <div><div style="aspect-ratio:16/10;background:#121A16;border:1px solid #2E3B34;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;"><span style="font-size:12px;letter-spacing:.18em;color:#E4DBCB;">|SB|</span><span style="display:block;width:48px;height:2px;background:#E0AE62;"></span></div><div style="margin-top:8px;color:#E4DBCB;">700 to 1000 ms</div>The rule cools: #F3C77E to #E0AE62, glow to zero. ease-in-out. An ember settling. Mark holds at full.</div>
+      <div><div style="aspect-ratio:16/10;background:#121A16;border:1px solid #2E3B34;display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;"><span style="display:block;width:30px;height:2px;background:#F3C77E;box-shadow:0 0 8px rgba(243,199,126,.6);"></span></div><div style="margin-top:8px;color:#E4DBCB;">1000 to 1400 ms</div>Veil opacity 1 to 0, cubic-bezier(.4,0,.2,1). At 1250 the hero's rule (flat brass until now) warms to #F3C77E and takes its glow over 150 ms. The ember moves from the mark to the page.</div>
+      <div><div style="aspect-ratio:16/10;background:#121A16;border:1px solid #2E3B34;padding:10px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;"><span style="display:block;width:30px;height:2px;background:#F3C77E;box-shadow:0 0 8px rgba(243,199,126,.6);"></span><span style="font-family:'Spectral',serif;font-size:13px;font-weight:200;color:#E4DBCB;">Scott Barclay</span></div><div style="margin-top:8px;color:#E4DBCB;">1400 ms</div>Overlay removed from the DOM. Skip jumps to 1000 and runs the last 400 ms. Nothing on the page moved; the only state change is the hero rule's color.</div>
+      <div><div style="aspect-ratio:16/10;background:#121A16;border:1px solid #2E3B34;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;"><span style="font-size:12px;letter-spacing:.18em;color:#E4DBCB;">|SB|</span><span style="display:block;width:48px;height:2px;background:#E0AE62;"></span></div><div style="margin-top:8px;color:#E4DBCB;">Reduced motion</div>Mark and rule appear together at full, flat brass, no draw, no color change. Hold 900 ms, veil fades 300 ms (opacity only). Hero rule is lit from first paint. Total 1200 ms, same skip rules.</div>
+    </div>
+  </section>
+
+  <!-- NUMERALS -->
+  <section style="margin-top:96px;">
+    <h2 style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Dim chapter numerals · decorative, never the heading</h2>
+    <p style="margin:16px 0 0;max-width:760px;font-size:17px;line-height:1.55;font-weight:300;color:#A89F90;">Markup: the mono label is the <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#E4DBCB;">h2</span> and the section's <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#E4DBCB;">aria-labelledby</span> target; the numeral is a <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#E4DBCB;">span aria-hidden="true"</span>. The nav carries the numeral and the chapter name as one link text, so a screen reader hears "II About" once, in the nav, and "About" as the heading. The numeral's 2.3:1 contrast is allowed because it conveys nothing the label does not.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;">
+      <div style="padding:24px;background:#121A16;border:1px solid #2E3B34;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">1440 (and 1920)</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;"><span aria-hidden="true" style="font-weight:200;font-size:140px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;">III</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Work · five entries</span></div>
+        <p style="margin:16px 0 0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#A89F90;">Opener grid 280 + 64 + 776 in an 1120 column. Numeral 140px / .85, tracking -.04em. "III" at Spectral 200 measures about 212px, inside 280 with 68 to spare. Label 12px, 12px below. Measure starts at x=344, so nothing can touch.</p>
+      </div>
+      <div style="padding:24px;background:#121A16;border:1px solid #2E3B34;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">1024</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;"><span aria-hidden="true" style="font-weight:200;font-size:96px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;">III</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Work · five entries</span></div>
+        <p style="margin:16px 0 0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#A89F90;">Grid 200 + 40 + 720 in a 960 column. Numeral 96px; "III" about 146px wide, 54 to spare. Hero name 88px. Work titles 36px. Switches at a 1200px viewport: below it the 280 column would push the measure under 640.</p>
+      </div>
+      <div style="padding:24px;background:#121A16;border:1px solid #2E3B34;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">390</div>
+        <div style="display:flex;align-items:flex-end;gap:16px;margin-top:16px;"><span aria-hidden="true" style="font-weight:200;font-size:72px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;">III</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;padding-bottom:4px;">Work · five entries</span></div>
+        <p style="margin:16px 0 0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#A89F90;">Below 720px the grid stacks: numeral and label share one row (numeral 72px, label baseline-aligned beside it), the ruled measure follows underneath. "III" about 110px, label fits in the remaining 224. Round 1 used 88px here; 72 keeps "III" and the longest label on one line.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <section style="margin-top:96px;">
+    <h2 style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Nav · ruled table and the sticky fade</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;align-items:start;">
+      <div>
+        <div style="position:relative;height:160px;background:#121A16;border:1px solid #2E3B34;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(#1A2520 0 2px,transparent 2px 18px);opacity:.7;"></div>
+          <div style="position:absolute;left:0;right:0;top:0;height:96px;background:linear-gradient(to bottom,#121A16 0%,#121A16 56%,rgba(18,26,22,.72) 78%,rgba(18,26,22,0) 100%);"></div>
+          <div style="position:absolute;left:24px;right:24px;top:0;height:72px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;">|SB|</span>
+            <span style="display:flex;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid #2E3B34;"><span style="color:#A89F90;padding:9px 16px;border-right:1px solid #2E3B34;"><span style="color:#E0AE62;">I</span>&nbsp; Home</span><span style="color:#A89F90;padding:9px 16px;border-right:1px solid #2E3B34;"><span style="color:#E0AE62;">II</span>&nbsp; About</span><span style="color:#F3C77E;padding:9px 16px;border-right:1px solid #2E3B34;">III&nbsp; Work</span><span style="color:#A89F90;padding:9px 16px;border-right:1px solid #2E3B34;"><span style="color:#E0AE62;">IV</span>&nbsp; Contact</span><span style="color:#A89F90;padding:9px 16px;"><span style="color:#E0AE62;">V</span>&nbsp; Resume</span></span>
+          </div>
+          <div style="position:absolute;left:24px;top:54px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#4A5A50;letter-spacing:.1em;">54: solid ends</div>
+          <div style="position:absolute;left:24px;top:84px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#4A5A50;letter-spacing:.1em;">96: transparent</div>
+        </div>
+      </div>
+      <dl style="margin:0;display:grid;grid-template-columns:140px 1fr;row-gap:12px;column-gap:20px;font-size:15px;line-height:1.55;font-weight:300;">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Table</dt><dd style="margin:0;">One cell per chapter, 1px #2E3B34 outer border and dividers, padding 9px 16px, JetBrains Mono 12 uppercase .08em. Numeral brass #E0AE62, label muted #A89F90. Current chapter: both numeral and label step to #F3C77E with no glow, so the nav is never the lit element. aria-current="page" on it. Hover: label to bone, 160 ms.</dd>
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Fade</dt><dd style="margin:0;">The sticky element is 96px tall with the 72px bar inside it. Background: linear-gradient(to bottom, #121A16 0%, #121A16 56%, rgba(18,26,22,.72) 78%, rgba(18,26,22,0) 100%). Solid behind the type, gone 24px below it, no backdrop blur and no border, so content passing under never meets an edge. The 96px region has pointer-events none except the bar.</dd>
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Phone</dt><dd style="margin:0;">Bar 60, sticky 80, same gradient stops. Numerals only (I II III IV V), 12px, 18px gaps, each link labeled "II About" etc. for assistive tech. Current numeral #F3C77E.</dd>
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">1024</dt><dd style="margin:0;">Full ruled table still fits (about 560px). Padding stays 9px 16px; bar inset 32 instead of 48.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- BREAKPOINTS -->
+  <section style="margin-top:96px;">
+    <h2 style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Breakpoints · where the opener grid gives</h2>
+    <dl style="margin:24px 0 0;display:grid;grid-template-columns:200px 1fr;row-gap:14px;column-gap:24px;font-size:15px;line-height:1.55;font-weight:300;max-width:960px;">
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">1920 and up</dt><dd style="margin:0;">Column stays 1120, centered; the dark widens on both sides. Hero min-height 100svh, chapter padding 25svh. Nothing scales up; a 1120 measure at 24px body is already the top of comfortable.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">1200 to 1919</dt><dd style="margin:0;">As 1440. Column min(1120, 100vw - 160).</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">1199, the first break</dt><dd style="margin:0;">At 1199 the 1120 column no longer fits with 40px margins and the 280 + 64 opener would leave a measure under 640. Opener becomes 200 + 40, numeral 96, hero name 88, work titles 36, plate padding 32, caption row stays two columns. The 1024 render shows this state; it holds down to 720.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">719, the second break</dt><dd style="margin:0;">Opener stacks (numeral 72 inline with the label, measure below). Caption rows go single column: sentence, then the mono spec run. Plates bleed to the viewport edge. Hero top row wraps to two lines. The 390 render shows this state.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Tablet 1024 x 768</dt><dd style="margin:0;">Hero min-height 768 with the chapter row at 96; the name at 88px leaves 2 lines of statement above the fold. The extension diagram keeps three columns with the center at 140. Four Prava screens stay four across at 32 padding and 16 gap (each about 200 wide).</dd>
+    </dl>
+  </section>
+
+  <!-- MOTION -->
+  <section style="margin-top:96px;">
+    <h2 style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Motion · unchanged from round 1 plus the plate handover</h2>
+    <dl style="margin:24px 0 0;display:grid;grid-template-columns:200px 1fr;row-gap:14px;column-gap:24px;font-size:15px;line-height:1.55;font-weight:300;max-width:960px;">
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">One lit thing</dt><dd style="margin:0;">Home: the rule. About: nothing glows (the chapter is text). Work: exactly one plate rim. Contact: the email. The handover between any two is cool 400 ms, dark 200 ms, warm 600 ms, cubic-bezier(.16,1,.3,1), never overlapping.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Plate to plate</dt><dd style="margin:0;">Resting rim: 0 0 0 1px rgba(224,174,98,.35), 0 0 72px rgba(224,174,98,.10). Lit rim: 0 0 0 1px rgba(224,174,98,.6), 0 0 96px rgba(224,174,98,.18). The lit plate is the one whose center is nearest the viewport center, measured by an IntersectionObserver with thresholds every 10% plus a scroll-end check. Hysteresis: a new plate must be at least 10% of viewport height nearer the center than the current one before the light moves. Transition is on the shadow alpha (animate a CSS variable, not box-shadow keyframes), 600 ms up, 400 ms down, with the 200 ms dark gap enforced by delaying the incoming plate.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">390, two plates visible</dt><dd style="margin:0;">At 390 the plates are short (about 208px for 16:9) and two can share the viewport. Same rule, nearest center wins, with the hysteresis preventing a flip while a thumb is still on the glass. While the user is actively scrolling (scroll events within the last 120 ms) no handover starts; it resolves on scroll end. If neither plate is within 35% of center (reading a caption between two plates), the current one stays lit rather than going dark.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Video and light</dt><dd style="margin:0;">A playing video forces its plate lit regardless of position. On end it releases and the nearest-center rule resumes.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Reveals</dt><dd style="margin:0;">Opener numeral opacity 0 to 1 over 900 ms, no movement. Measure and plate: opacity and 12px rise, 600 ms, staggered 120 / 200 ms. Fire once at 20% visibility, unobserve, never replay. Hidden pre-state applied by JS to below-fold elements only.</dd>
+      <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;padding-top:3px;">Reduced motion</dt><dd style="margin:0;">No translate; reveals 200 ms opacity; rim handover is an instant swap after the 200 ms gap; no video autoplay; entrance per the reduced variant above.</dd>
+    </dl>
+  </section>
+</div>
+</x-dc>
+</body>
+</html>

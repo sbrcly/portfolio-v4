@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r2 · Home 1024</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;background:#121A16;color:#E4DBCB;} a{color:#E4DBCB;text-decoration:none;} a:hover{color:#F3C77E;}
+    @keyframes vgVeil{0%,72%{opacity:1}100%{opacity:0;visibility:hidden}}
+    @keyframes vgRule{0%{transform:scaleX(0);background:#F3C77E;box-shadow:0 0 10px rgba(243,199,126,.9),0 0 32px rgba(224,174,98,.5)}28%{transform:scaleX(1);background:#F3C77E;box-shadow:0 0 10px rgba(243,199,126,.9),0 0 32px rgba(224,174,98,.5)}50%{background:#F3C77E;box-shadow:0 0 10px rgba(243,199,126,.9),0 0 32px rgba(224,174,98,.5)}72%,100%{transform:scaleX(1);background:#E0AE62;box-shadow:0 0 0 rgba(243,199,126,0),0 0 0 rgba(224,174,98,0)}}
+    @keyframes vgMark{0%,21%{opacity:0}50%,100%{opacity:1}}
+    @keyframes vgHeroRule{0%,89%{background:#E0AE62;box-shadow:none}100%{background:#F3C77E;box-shadow:0 0 8px rgba(243,199,126,.6),0 0 24px rgba(224,174,98,.35)}}
+  </style>
+</helmet>
+<div data-screen-label="Vigil r2 home 1024" style="position:relative;width:1024px;margin:0 auto;background:#121A16;color:#E4DBCB;font-family:'Spectral',Georgia,serif;overflow:hidden;">
+  {{ entranceOverlay }}
+
+  <!-- still frame: bar 72 + 24 fade -->
+  <header style="position:sticky;top:0;z-index:5;height:96px;margin-bottom:-96px;pointer-events:none;background:linear-gradient(to bottom,#121A16 0%,#121A16 56%,rgba(18,26,22,.72) 78%,rgba(18,26,22,0) 100%);">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 32px;pointer-events:auto;">
+      <a href="#i" aria-label="Scott Barclay, home" style="display:inline-flex;flex-direction:column;align-items:center;gap:3px;">
+        <span style="display:block;width:1px;height:5px;background:#E0AE62;"></span>
+        <span style="display:inline-flex;align-items:center;gap:7px;"><span style="display:block;width:1px;height:18px;background:#E0AE62;"></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;line-height:1;">SB</span><span style="display:block;width:1px;height:18px;background:#E0AE62;"></span></span>
+        <span style="display:block;width:1px;height:5px;background:#E0AE62;"></span>
+      </a>
+      <nav aria-label="Chapters" style="display:flex;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid #2E3B34;">
+        <a href="#i" aria-current="page" style="color:#F3C77E;padding:9px 16px;border-right:1px solid #2E3B34;"><span>I</span>&nbsp; Home</a>
+        <a href="#ii" style="color:#A89F90;padding:9px 16px;border-right:1px solid #2E3B34;"><span style="color:#E0AE62;">II</span>&nbsp; About</a>
+        <a href="#iii" style="color:#A89F90;padding:9px 16px;border-right:1px solid #2E3B34;"><span style="color:#E0AE62;">III</span>&nbsp; Work</a>
+        <a href="#iv" style="color:#A89F90;padding:9px 16px;border-right:1px solid #2E3B34;"><span style="color:#E0AE62;">IV</span>&nbsp; Contact</a>
+        <a href="#" style="color:#A89F90;padding:9px 16px;"><span style="color:#E0AE62;">V</span>&nbsp; Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- I. Home: option A, anchored to the vertical middle -->
+  <section id="i" data-screen-label="I. Home" aria-labelledby="h-i" style="position:relative;box-sizing:border-box;min-height:768px;display:flex;flex-direction:column;justify-content:center;width:960px;margin:0 auto;padding:120px 0;">
+    <div style="position:absolute;left:0;right:0;top:96px;display:flex;align-items:center;gap:20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;">
+      <span><span style="color:#E0AE62;">I</span>&nbsp; Home</span><span style="flex:1;height:1px;background:#2E3B34;"></span><a href="mailto:scottbarclay02@gmail.com" style="color:#E4DBCB;text-transform:none;letter-spacing:.04em;">scottbarclay02@gmail.com</a><span style="color:#2E3B34;">/</span><span>Seattle or remote</span><span style="color:#2E3B34;">/</span><span>Available late 2026</span>
+    </div>
+    {{ heroRule }}
+    <h1 id="h-i" style="margin:40px 0 0;font-weight:200;font-size:88px;line-height:1;letter-spacing:-.02em;">Scott Barclay</h1>
+    <p style="margin:40px 0 0;max-width:720px;font-size:24px;line-height:1.45;font-weight:300;text-wrap:pretty;">Software engineer. Trading desk tools for a Las Vegas sportsbook, a pricing portal and Chrome extension for a ticket brokerage, and an iOS app designed, built, and shipped alone.</p>
+  </section>
+
+  <!-- II -->
+  <section id="ii" data-screen-label="II. About" aria-labelledby="h-ii" style="box-sizing:border-box;width:960px;margin:0 auto;padding:192px 0;">
+    <div style="display:grid;grid-template-columns:200px 1fr;column-gap:40px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <span aria-hidden="true" style="font-weight:200;font-size:96px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;">II</span>
+        <h2 id="h-ii" style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">About</h2>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid #2E3B34;">
+        <p style="margin:28px 0 0;font-weight:300;font-size:32px;line-height:1.2;letter-spacing:-.01em;">Self-taught, starting from a trading desk.</p>
+        <div style="margin-top:32px;font-size:20px;line-height:1.6;font-weight:300;display:flex;flex-direction:column;gap:20px;text-wrap:pretty;max-width:680px;">
+          <p style="margin:0;">I priced sport for a living at a Las Vegas sportsbook. In the evenings I built a live odds console streamed over Socket.io from BigQuery, an arbitrage detector across about fifty books, and a schedule that assigned traders to games. The company moved me into an engineering role.</p>
+          <p style="margin:0;">Then three years of full-stack work at a ticket brokerage: a pricing portal, and a Chrome extension that runs inside marketplace sites and rewrites what buyers see.</p>
+          <p style="margin:0;">Most recently, Prava: an iOS prayer and scripture app, designed, built, and shipped alone, with versioned prompts, snapshot-tested fallbacks, and cost work that is measured rather than assumed.</p>
+          <p style="margin:0;color:#A89F90;">Away from work I read theology and philosophy and am teaching myself Latin.</p>
+        </div>
+        <div style="display:flex;gap:48px;margin-top:48px;padding-top:20px;border-top:1px solid #2E3B34;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;letter-spacing:.02em;">
+          <div><div style="color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Working in</div><div>TypeScript · Node · Postgres<br>Socket.io · BigQuery · Capacitor</div></div>
+          <div><div style="color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Looking for</div><div>Software engineer<br>Seattle-area or remote</div></div>
+          <div><div style="color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Verify</div><div><a href="#" style="border-bottom:1px solid #2E3B34;">github.com/sbrcly</a><br>App Store · public repos</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- III -->
+  <section id="iii" data-screen-label="III. Work" aria-labelledby="h-iii" style="box-sizing:border-box;width:960px;margin:0 auto;padding:192px 0;">
+    <div style="display:grid;grid-template-columns:200px 1fr;column-gap:40px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <span aria-hidden="true" style="font-weight:200;font-size:96px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;">III</span>
+        <h2 id="h-iii" style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Work · five entries</h2>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid #2E3B34;"><p style="margin:28px 0 0;font-weight:300;font-size:32px;line-height:1.2;letter-spacing:-.01em;">Five things built and shipped, most recent first.</p></div>
+    </div>
+
+    <!-- 01 Prava -->
+    <article aria-labelledby="w-01" style="margin-top:128px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+        <h3 id="w-01" style="margin:0;font-weight:300;font-size:36px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">01</span><a href="prava-1440.dc.html">Prava</a></h3>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">2025 to now · iOS · live on the App Store</span>
+      </div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px;background:#1A2520;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);">
+        <img src="../../../assets/prava-home.png" alt="Prava home: the week's readings and a verse card" style="width:100%;height:auto;display:block;">
+        <img src="../../../assets/prava-lectio.png" alt="Lectio Divina, Pray movement" style="width:100%;height:auto;display:block;">
+        <img src="../../../assets/prava-journal.png" alt="Daily journal, yes and no questions" style="width:100%;height:auto;display:block;">
+        <img src="../../../assets/prava-circle.png" alt="A Circle group keeping the same week" style="width:100%;height:auto;display:block;">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:64px;margin-top:32px;">
+        <p style="margin:0;font-size:20px;line-height:1.55;font-weight:300;text-wrap:pretty;">An iOS prayer and scripture app built around the Church's week rather than a streak. Thirteen AI surfaces read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API<br><a href="prava-1440.dc.html" style="color:#E0AE62;border-bottom:1px solid rgba(224,174,98,.4);">Read the case study</a> &nbsp;·&nbsp; <a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">App Store</a></div>
+      </div>
+    </article>
+
+    <!-- 02 Video, resting state -->
+    <article aria-labelledby="w-02" style="margin-top:176px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+        <h3 id="w-02" style="margin:0;font-weight:300;font-size:36px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">02</span>Live odds console</h3>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">2022 · sportsbook trading desk · 33 s recording</span>
+      </div>
+      <div role="button" aria-label="Play the odds console recording, 33 seconds, silent" style="position:relative;margin-top:40px;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#1A2520 0 14px,#1D2924 14px 28px);box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+        <span style="position:absolute;top:20px;left:24px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A89F90;">Poster: first frame of odds-display-demo.mp4</span>
+        <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border:1px solid #E0AE62;border-radius:50%;background:rgba(18,26,22,.55);"><span style="display:block;width:0;height:0;border-left:18px solid #E0AE62;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px;"></span></span>
+        <span style="position:absolute;left:24px;bottom:20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#E4DBCB;">odds-display-demo.mp4 <span style="color:#A89F90;">· 33 s · silent</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:64px;margin-top:32px;">
+        <p style="margin:0;font-size:20px;line-height:1.55;font-weight:300;text-wrap:pretty;">Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Node · Socket.io · BigQuery · MySQL<br><a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Odds-Display-Public</a></div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article aria-labelledby="w-03" style="margin-top:176px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+        <h3 id="w-03" style="margin:0;font-weight:300;font-size:36px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">03</span>Arbitrage detector</h3>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">2022 · about fifty books · one-minute cycle</span>
+      </div>
+      <img src="../../../assets/arbitrage-table.png" alt="Arbitrage detector: flagged prices against competitor books" style="display:block;width:100%;height:auto;margin-top:40px;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:64px;margin-top:32px;">
+        <p style="margin:0;font-size:20px;line-height:1.55;font-weight:300;text-wrap:pretty;">Every market the book offered, compared against about fifty competitors. Any price a bettor could lock in from both sides is flagged so a trader can move the line first.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Node · Socket.io · MySQL · GCP<br><a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Arbitrage-Public</a></div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article aria-labelledby="w-04" style="margin-top:176px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+        <h3 id="w-04" style="margin:0;font-weight:300;font-size:36px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">04</span>Trading schedule</h3>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">2022 · every game offered, with an owner</span>
+      </div>
+      <img src="../../../assets/trading-schedule.png" alt="Trading schedule: games across sports with assigned traders" style="display:block;width:100%;height:auto;margin-top:40px;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:64px;margin-top:32px;">
+        <p style="margin:0;font-size:20px;line-height:1.55;font-weight:300;text-wrap:pretty;">Pulls every game from the data feeds and assigns traders by shift and league coverage. A game nobody owns stays flagged until someone takes it.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Node · Express · MySQL · feed APIs<br><a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Trading-Schedule-Public</a></div>
+      </div>
+    </article>
+
+    <!-- 05 Extension: boundary diagram -->
+    <article aria-labelledby="w-05" style="margin-top:176px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+        <h3 id="w-05" style="margin:0;font-weight:300;font-size:36px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">05</span>Marketplace extension</h3>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">2023 to 2025 · ticket brokerage · proprietary</span>
+      </div>
+      <figure aria-label="Diagram: how the extension connects the pricing portal to the marketplace page" style="margin:40px 0 0;padding:48px;background:#1A2520;box-shadow:0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10);font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;">
+        <div style="display:grid;grid-template-columns:1fr 140px 1fr;column-gap:0;align-items:stretch;">
+          <!-- origin: portal -->
+          <div style="border:1px dashed #4A5A50;padding:24px;display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;justify-content:space-between;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin A</span><span>portal.brokerage.internal</span></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Pricing portal</div><div style="margin-top:8px;color:#E4DBCB;">Buyers write purchase rules: sections, price ceilings, quantities.</div></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Rules API</div><div style="margin-top:8px;color:#A89F90;">GET /rules?event=… JSON, authenticated by session cookie.</div></div>
+          </div>
+          <!-- boundary: extension -->
+          <div style="position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;">
+            <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+            <div style="position:relative;width:100%;border:1px solid #E0AE62;background:#1A2520;padding:16px 14px;text-align:center;">
+              <div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Extension</div>
+              <div style="margin-top:10px;padding:10px 8px;border:1px solid #2E3B34;color:#E4DBCB;">Background worker</div>
+              <div style="margin:6px 0;color:#A89F90;font-size:11px;">chrome.runtime<br>message port</div>
+              <div style="padding:10px 8px;border:1px solid #2E3B34;color:#E4DBCB;">Content script</div>
+            </div>
+            <div style="position:absolute;top:-28px;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;">origin boundary</div>
+          </div>
+          <!-- origin: marketplace -->
+          <div style="border:1px dashed #4A5A50;padding:24px;display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;justify-content:space-between;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin B</span><span>ticketmaster.com</span></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Marketplace page</div><div style="margin-top:8px;color:#E4DBCB;">Venue map DOM, rendered by the site's own app. Hostile to automation.</div></div>
+            <div style="border:1px solid #2E3B34;padding:18px 20px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Rewritten map</div><div style="margin-top:8px;color:#A89F90;">Seats outside the rules dimmed; matching seats and ceilings annotated in place.</div></div>
+          </div>
+        </div>
+        <ol style="margin:32px 0 0;padding:20px 0 0;border-top:1px solid #2E3B34;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;list-style:none;color:#A89F90;">
+          <li><span style="color:#E0AE62;">1</span>&nbsp; Buyer saves rules in the portal.</li>
+          <li><span style="color:#E0AE62;">2</span>&nbsp; Worker fetches rules on tab load, caches per event, refreshes on a timer.</li>
+          <li><span style="color:#E0AE62;">3</span>&nbsp; Content script receives rules over the port; observes the map with a MutationObserver.</li>
+          <li><span style="color:#E0AE62;">4</span>&nbsp; Map rewritten in place; state echoed back so the portal knows what was bought.</li>
+        </ol>
+      </figure>
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:64px;margin-top:32px;">
+        <p style="margin:0;font-size:20px;line-height:1.55;font-weight:300;text-wrap:pretty;">A Chrome extension that runs inside Ticketmaster and other marketplaces. Cross-origin messaging and DOM automation against sites built to resist it.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Chrome MV3 · TypeScript · Node<br>Walkthrough on request</div>
+      </div>
+    </article>
+  </section>
+
+  <!-- IV -->
+  <section id="iv" data-screen-label="IV. Contact" aria-labelledby="h-iv" style="box-sizing:border-box;width:960px;margin:0 auto;padding:192px 0;">
+    <div style="display:grid;grid-template-columns:200px 1fr;column-gap:40px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <span aria-hidden="true" style="font-weight:200;font-size:96px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;">IV</span>
+        <h2 id="h-iv" style="margin:0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Contact</h2>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid #2E3B34;">
+        <p style="margin:28px 0 0;font-weight:300;font-size:32px;line-height:1.2;">Email is the only channel.</p>
+        <a href="mailto:scottbarclay02@gmail.com" style="display:inline-block;margin-top:24px;font-weight:200;font-size:36px;letter-spacing:-.01em;color:#F3C77E;text-shadow:0 0 8px rgba(243,199,126,.45),0 0 28px rgba(224,174,98,.3);">scottbarclay02@gmail.com</a>
+        <p style="margin:24px 0 0;font-size:20px;line-height:1.55;font-weight:300;color:#A89F90;max-width:600px;">Replies within a day. Any project here can be walked through at whatever depth you want, including the proprietary ones.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="display:flex;align-items:center;justify-content:space-between;width:960px;margin:0 auto;padding:32px 0 40px;border-top:1px solid #2E3B34;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">
+    <span>Scott Barclay · 2026</span>
+    <div style="display:flex;gap:28px;"><a href="mailto:scottbarclay02@gmail.com" style="color:#A89F90;">scottbarclay02@gmail.com</a><a href="#" style="color:#A89F90;"><span style="color:#E0AE62;">V</span>&nbsp;Resume</a></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;replayEntrance&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Entrance&quot;},&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Entrance&quot;}}">
+class Component extends DCLogic {
+  state = { show: false, handed: false };
+  componentDidMount() {
+    const replay = this.props.replayEntrance ?? false;
+    let seen = false;
+    try { seen = sessionStorage.getItem('sb-vigil-entrance') === '1'; } catch (e) {}
+    if (replay || !seen) {
+      this.setState({ show: true });
+      try { sessionStorage.setItem('sb-vigil-entrance', '1'); } catch (e) {}
+      this.t = setTimeout(() => this.setState({ show: false, handed: true }), 1400);
+      this.onKey = (e) => this.skip();
+      window.addEventListener('keydown', this.onKey);
+    } else {
+      this.setState({ handed: true });
+    }
+  }
+  skip() { clearTimeout(this.t); this.setState({ show: false, handed: true }); }
+  componentWillUnmount() { clearTimeout(this.t); window.removeEventListener('keydown', this.onKey); }
+  renderVals() {
+    const h = React.createElement;
+    const rm = this.props.reducedMotion ?? false;
+    const lit = { background: '#F3C77E', boxShadow: '0 0 8px rgba(243,199,126,.6),0 0 24px rgba(224,174,98,.35)' };
+    const heroRule = h('div', {
+      key: 'hr', 'aria-hidden': 'true',
+      style: Object.assign({ width: 72, height: 2, background: '#E0AE62' },
+        this.state.show && !rm ? { animation: 'vgHeroRule 1.4s linear both' } : (this.state.handed || rm ? lit : {}))
+    });
+    const overlay = this.state.show ? h('div', {
+      key: 'veil', onClick: () => this.skip(), role: 'button', 'aria-label': 'Skip intro', tabIndex: 0,
+      style: { position: 'fixed', inset: 0, zIndex: 20, background: '#121A16', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+        animation: rm ? 'vgVeil 1.4s linear forwards' : 'vgVeil 1.4s cubic-bezier(.4,0,.2,1) forwards' }
+    },
+      h('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 } },
+        h('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, animation: rm ? 'none' : 'vgMark 1.4s linear both', opacity: rm ? 1 : undefined } },
+          h('span', { style: { width: 1, height: 8, background: '#E0AE62' } }),
+          h('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 14 } },
+            h('span', { style: { width: 1, height: 36, background: '#E0AE62' } }),
+            h('span', { style: { fontFamily: "'JetBrains Mono', monospace", fontSize: 24, letterSpacing: '.18em', color: '#E4DBCB' } }, 'SB'),
+            h('span', { style: { width: 1, height: 36, background: '#E0AE62' } })),
+          h('span', { style: { width: 1, height: 8, background: '#E0AE62' } })),
+        h('div', { style: { width: 120, height: 2, transformOrigin: '50% 50%', background: '#E0AE62',
+          animation: rm ? 'none' : 'vgRule 1.4s cubic-bezier(.22,1,.36,1) both' } }))
+    ) : null;
+    return { entranceOverlay: overlay, heroRule };
+  }
+}
+</script>
+</body>
+</html>
