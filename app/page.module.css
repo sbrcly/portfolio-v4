@@ -4,7 +4,117 @@
   padding: var(--chapter-pad) 0;
 }
 
-/* I Home fills the first viewport. */
-.chapter:first-child {
-  min-height: 100svh;
+/* II About */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 680px;
+  margin-top: 32px;
+  text-wrap: pretty;
+}
+
+.body p:last-child {
+  color: var(--muted);
+}
+
+.facts {
+  display: flex;
+  gap: 48px;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.facts dt {
+  font-size: var(--mono-small-size);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.facts a {
+  text-decoration-color: var(--rule);
+}
+
+.facts a:hover,
+.facts a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* Joins the two lines of a value when the line break is dropped on phone. */
+.join {
+  display: none;
+}
+
+/* IV Contact */
+
+.contactEmail {
+  display: inline-block;
+  margin-top: 24px;
+  font-weight: 200;
+  font-size: 48px;
+  line-height: normal;
+  letter-spacing: -0.01em;
+  color: var(--light-color);
+  text-shadow: var(--light-glow);
+}
+
+/* The lit element keeps its own color; hover only adds the underline. */
+.contactEmail:hover,
+.contactEmail:focus-visible {
+  color: var(--light-color);
+}
+
+.contactNote {
+  max-width: 600px;
+  margin-top: 24px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (max-width: 1199px) {
+  .contactEmail {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 719px) {
+  .body {
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+    padding-top: 16px;
+    letter-spacing: 0;
+  }
+
+  .softBreak {
+    display: none;
+  }
+
+  .join {
+    display: inline;
+  }
+
+  .contactEmail {
+    margin-top: 16px;
+    font-size: 26px;
+    word-break: break-all;
+  }
+
+  .contactNote {
+    margin-top: 16px;
+  }
 }

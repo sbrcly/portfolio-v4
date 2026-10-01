@@ -49,6 +49,10 @@ export const viewport: Viewport = {
   themeColor: "#121A16",
 };
 
+// Runs before first paint. The entrance plays only on the first page load of
+// a session, and only when that load is the home page.
+const entranceScript = `(function(){var s=false;try{s=sessionStorage.getItem("sb-vigil-entrance")==="1";sessionStorage.setItem("sb-vigil-entrance","1")}catch(e){}document.documentElement.dataset.entrance=!s&&location.pathname==="/"?"play":"skip"})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,7 +63,11 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       className={`${spectral.variable} ${spectralItalic.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: entranceScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );

@@ -59,6 +59,13 @@
   --frame-height: 96px;
   --bar-height: 72px;
   --bar-inset: 48px;
+  --hero-top: 112px; /* hero top row */
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --hero-top: 128px;
+  }
 }
 
 @media (max-width: 1199px) {
@@ -72,6 +79,7 @@
     --column: min(960px, 100vw - 64px);
     --footer-width: min(960px, 100vw - 64px);
     --bar-inset: 32px;
+    --hero-top: 96px;
   }
 }
 
@@ -81,6 +89,8 @@
     --statement-size: 28px;
     --title-size: 32px;
     --body-size: 17px;
+    --hero-statement-size: 18px;
+    --hero-statement-leading: 1.5;
     --mono-size: 11px;
     --mono-small-size: 10px;
 
@@ -91,5 +101,6 @@
     --frame-height: 80px;
     --bar-height: 60px;
     --bar-inset: 20px;
+    --hero-top: 84px;
   }
 }

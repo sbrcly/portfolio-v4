@@ -1,18 +1,109 @@
+import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
+import Entrance from "@/components/entrance/Entrance";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
-import { CHAPTERS } from "@/components/frame/chapters";
+import { EMAIL } from "@/components/frame/chapters";
+import Hero from "@/components/hero/Hero";
+import Light from "@/components/light/Light";
+import Reveals from "@/components/reveals/Reveals";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <>
+      <Entrance />
       <Frame />
       <main>
-        {CHAPTERS.map(({ id }) => (
-          <section key={id} id={id} className={styles.chapter} />
-        ))}
+        <Hero />
+
+        <section id="ii" className={styles.chapter} aria-labelledby="h-ii">
+          <ChapterOpener
+            numeral="II"
+            label="About"
+            headingId="h-ii"
+            statement="Self-taught, starting from a trading desk."
+          >
+            <div className={styles.body}>
+              <p>
+                I priced sport for a living at a Las Vegas sportsbook. In the
+                evenings I built a live odds console streamed over Socket.io
+                from BigQuery, an arbitrage detector across about fifty books,
+                and a schedule that assigned traders to games. The company
+                moved me into an engineering role.
+              </p>
+              <p>
+                Then three years of full-stack work at a ticket brokerage: a
+                pricing portal, and a Chrome extension that runs inside
+                marketplace sites and rewrites what buyers see.
+              </p>
+              <p>
+                Most recently, Prava: an iOS prayer and scripture app,
+                designed, built, and shipped alone, with versioned prompts,
+                snapshot-tested fallbacks, and cost work that is measured
+                rather than assumed.
+              </p>
+              <p>
+                Away from work I read theology and philosophy and am teaching
+                myself Latin.
+              </p>
+            </div>
+            <dl className={styles.facts}>
+              <div>
+                <dt>Working in</dt>
+                <dd>
+                  TypeScript · Node · Postgres
+                  <span className={styles.join}> · </span>
+                  <br className={styles.softBreak} />
+                  Socket.io · BigQuery · Capacitor
+                </dd>
+              </div>
+              <div>
+                <dt>Looking for</dt>
+                <dd>
+                  Software engineer
+                  <br />
+                  Seattle-area or remote
+                </dd>
+              </div>
+              <div>
+                <dt>Verify</dt>
+                <dd>
+                  <a href="https://github.com/sbrcly">github.com/sbrcly</a>
+                  <br />
+                  App Store · public repos
+                </dd>
+              </div>
+            </dl>
+          </ChapterOpener>
+        </section>
+
+        {/* III Work arrives in a later phase. */}
+        <section id="iii" className={styles.chapter} />
+
+        <section id="iv" className={styles.chapter} aria-labelledby="h-iv">
+          <ChapterOpener
+            numeral="IV"
+            label="Contact"
+            headingId="h-iv"
+            statement="Email is the only channel."
+          >
+            <a
+              href={`mailto:${EMAIL}`}
+              className={styles.contactEmail}
+              data-light="iv"
+            >
+              {EMAIL}
+            </a>
+            <p className={styles.contactNote}>
+              Replies within a day. Any project here can be walked through at
+              whatever depth you want, including the proprietary ones.
+            </p>
+          </ChapterOpener>
+        </section>
       </main>
       <Footer />
+      <Light />
+      <Reveals />
     </>
   );
 }

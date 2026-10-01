@@ -1,0 +1,114 @@
+.opener {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  column-gap: 64px;
+  align-items: start;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.numeral {
+  font-weight: 200;
+  font-size: 140px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--dim-numeral);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.measure {
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+.statement {
+  margin-top: 28px;
+  font-size: var(--statement-size);
+  line-height: var(--statement-leading);
+  letter-spacing: -0.01em;
+}
+
+/* Reveal. The hidden state is set by script on below-fold openers only;
+   transitions exist only on the way in, so hiding never animates. */
+
+.opener[data-reveal="hidden"] .numeral {
+  opacity: 0;
+}
+
+.opener[data-reveal="hidden"] .measure {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.opener[data-reveal="shown"] .numeral {
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.opener[data-reveal="shown"] .measure {
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) 120ms,
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opener[data-reveal="hidden"] .measure {
+    transform: none;
+  }
+
+  .opener[data-reveal="shown"] .numeral,
+  .opener[data-reveal="shown"] .measure {
+    transition: opacity 200ms;
+  }
+}
+
+@media (max-width: 1199px) {
+  .opener {
+    grid-template-columns: 200px 1fr;
+    column-gap: 40px;
+  }
+
+  .numeral {
+    font-size: 96px;
+  }
+}
+
+@media (max-width: 719px) {
+  .opener {
+    display: block;
+  }
+
+  .head {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .numeral {
+    font-size: 72px;
+  }
+
+  .label {
+    margin-bottom: 4px;
+  }
+
+  .measure {
+    margin-top: 20px;
+  }
+
+  .statement {
+    margin-top: 16px;
+    line-height: 1.25;
+  }
+}

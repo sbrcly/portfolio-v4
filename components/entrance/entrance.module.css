@@ -1,0 +1,141 @@
+/* Timings follow the reference implementation in home-1440.dc.html:
+   one 1400 ms timeline, keyframe stops at 21% (300), 28% (400), 50% (700),
+   72% (1000). */
+
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--ground);
+  cursor: pointer;
+}
+
+:global(html[data-entrance="play"]) .veil {
+  display: flex;
+  animation: veil 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  animation: mark 1.4s linear both;
+}
+
+.tick {
+  width: 1px;
+  height: 8px;
+  background: var(--brass);
+}
+
+.markRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vertical {
+  width: 1px;
+  height: 36px;
+  background: var(--brass);
+}
+
+.initials {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: 0.18em;
+  color: var(--text);
+}
+
+.rule {
+  --ember: 0;
+  width: 120px;
+  height: 2px;
+  transform-origin: 50% 50%;
+  background: color-mix(
+    in srgb,
+    var(--lit) calc(var(--ember) * 100%),
+    var(--brass)
+  );
+  box-shadow: 0 0 10px rgb(243 199 126 / calc(0.9 * var(--ember))),
+    0 0 32px rgb(224 174 98 / calc(0.5 * var(--ember)));
+  animation: rule 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes veil {
+  0%,
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes mark {
+  0%,
+  21% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rule {
+  0% {
+    transform: scaleX(0);
+    --ember: 1;
+  }
+  28% {
+    transform: scaleX(1);
+    --ember: 1;
+  }
+  50% {
+    --ember: 1;
+    animation-timing-function: ease-in-out;
+  }
+  72%,
+  100% {
+    transform: scaleX(1);
+    --ember: 0;
+  }
+}
+
+/* Reduced motion: mark and rule together in flat brass, hold 900, fade 300. */
+@media (prefers-reduced-motion: reduce) {
+  :global(html[data-entrance="play"]) .veil {
+    animation: veilReduced 1.2s linear forwards;
+  }
+
+  .mark,
+  .rule {
+    animation: none;
+  }
+}
+
+@keyframes veilReduced {
+  0%,
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -32,6 +32,12 @@
   flex-direction: column;
   align-items: center;
   gap: 3px;
+  text-decoration-line: none;
+}
+
+.mark:hover,
+.mark:focus-visible {
+  color: inherit;
 }
 
 .tick {
@@ -81,6 +87,7 @@
   padding: 9px 16px;
   border-right: 1px solid var(--rule);
   color: var(--muted);
+  text-decoration-line: none;
   transition: color 160ms;
 }
 
@@ -93,7 +100,8 @@
   transition: color 160ms;
 }
 
-.cell:hover {
+.cell:hover,
+.cell:focus-visible {
   color: var(--text);
 }
 

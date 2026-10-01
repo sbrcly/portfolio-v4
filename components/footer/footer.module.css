@@ -22,19 +22,6 @@
   color: var(--brass);
 }
 
-.email,
-.resume {
-  text-decoration: underline transparent;
-  text-underline-offset: 4px;
-  transition: color 160ms, text-decoration-color 160ms;
-}
-
-.email:hover,
-.resume:hover {
-  color: var(--brass);
-  text-decoration-color: currentColor;
-}
-
 /* Phone: email on its own row, then the colophon and resume link. */
 @media (max-width: 719px) {
   .footer {
