@@ -94,6 +94,7 @@
     --mono-size: 11px;
     --mono-small-size: 10px;
 
+    --space-entry: 112px;
     --chapter-pad: 150px;
 
     --column: calc(100vw - 40px);

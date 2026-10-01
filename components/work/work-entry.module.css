@@ -1,0 +1,143 @@
+.entry {
+  margin-top: var(--space-entry);
+}
+
+.entry:first-of-type {
+  margin-top: var(--space-128);
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.title {
+  font-size: var(--title-size);
+  line-height: var(--title-leading);
+  letter-spacing: -0.01em;
+}
+
+.index {
+  margin-right: 20px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  vertical-align: middle;
+  color: var(--muted);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: normal;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.media {
+  margin-top: 40px;
+}
+
+.caption {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 64px;
+  margin-top: 32px;
+}
+
+.sentence {
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.spec {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* Links in the spec run, used through the spec content. */
+.caseStudy {
+  color: var(--brass);
+  text-decoration-color: rgb(224 174 98 / 0.4);
+}
+
+.verify {
+  color: var(--text);
+  text-decoration-color: var(--rule);
+}
+
+.caseStudy:hover,
+.caseStudy:focus-visible,
+.verify:hover,
+.verify:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* Reveal: title row, plate, caption at 0 / 120 / 200 ms. Hidden state is
+   set by script on below-fold entries only (components/reveals). */
+
+.entry[data-reveal="hidden"] > * {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.entry[data-reveal="shown"] > * {
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.entry[data-reveal="shown"] > .media {
+  transition-delay: 120ms;
+}
+
+.entry[data-reveal="shown"] > .caption {
+  transition-delay: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry[data-reveal="hidden"] > * {
+    transform: none;
+  }
+
+  .entry[data-reveal="shown"] > *,
+  .entry[data-reveal="shown"] > .media,
+  .entry[data-reveal="shown"] > .caption {
+    transition: opacity 200ms;
+  }
+}
+
+@media (max-width: 719px) {
+  .entry:first-of-type {
+    margin-top: 72px;
+  }
+
+  /* Meta wraps under the title. */
+  .titleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 12px;
+  }
+
+  .media {
+    margin-top: 24px;
+  }
+
+  .caption {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .spec {
+    margin-top: 14px;
+  }
+}

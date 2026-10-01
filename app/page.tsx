@@ -6,6 +6,8 @@ import { EMAIL } from "@/components/frame/chapters";
 import Hero from "@/components/hero/Hero";
 import Light from "@/components/light/Light";
 import Reveals from "@/components/reveals/Reveals";
+import PlateLight from "@/components/work/PlateLight";
+import Work from "@/components/work/Work";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -77,8 +79,15 @@ export default function Home() {
           </ChapterOpener>
         </section>
 
-        {/* III Work arrives in a later phase. */}
-        <section id="iii" className={styles.chapter} />
+        <section id="iii" className={styles.chapter} aria-labelledby="h-iii">
+          <ChapterOpener
+            numeral="III"
+            label="Work · five"
+            headingId="h-iii"
+            statement="Five things built and shipped, most recent first."
+          />
+          <Work />
+        </section>
 
         <section id="iv" className={styles.chapter} aria-labelledby="h-iv">
           <ChapterOpener
@@ -103,6 +112,7 @@ export default function Home() {
       </main>
       <Footer />
       <Light />
+      <PlateLight />
       <Reveals />
     </>
   );

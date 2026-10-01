@@ -1,0 +1,19 @@
+/* The rim. --light (0 to 1, see globals.css) raises it from resting
+   (1px at .35, 72px at .10) to lit (1px at .6, 96px at .18). */
+.plate {
+  margin: 0;
+  box-shadow: 0 0 0 1px rgb(224 174 98 / calc(0.35 + 0.25 * var(--light))),
+    0 0 calc(72px + 24px * var(--light))
+      rgb(224 174 98 / calc(0.1 + 0.08 * var(--light)));
+}
+
+.plate > img {
+  width: 100%;
+}
+
+/* Phone: plates bleed to the viewport edge. */
+@media (max-width: 719px) {
+  .plate {
+    margin: 0 -20px;
+  }
+}
