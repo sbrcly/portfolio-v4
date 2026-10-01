@@ -1,0 +1,191 @@
+/* The plate is the button. The rim comes from plate.module.css. */
+.video {
+  position: relative;
+  display: block;
+  width: 100%;
+  /* The recording's own shape, 2062 x 1080. */
+  aspect-ratio: 2062 / 1080;
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Focus is the rim's 1px stepping to .6, not the global outline. */
+.video:focus-visible {
+  outline: none;
+  --rim-focus: 1;
+}
+
+.media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* Play ring */
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  background: rgb(18 26 22 / 0.55);
+  transition: opacity 200ms;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-left: 18px solid var(--brass);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+}
+
+/* Meta, bottom left */
+
+.meta {
+  position: absolute;
+  left: 24px;
+  bottom: 20px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  transition: opacity 200ms;
+}
+
+.metaQuiet {
+  color: var(--muted);
+}
+
+.replay {
+  color: var(--brass);
+}
+
+.video[data-state="playing"] .ring,
+.video[data-state="playing"] .meta {
+  opacity: 0;
+}
+
+/* Bar: display only, shown while playing on hover, focus, or tap. */
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 44px;
+  padding: 0 24px;
+  background: linear-gradient(
+    to top,
+    rgb(18 26 22 / 0.85),
+    rgb(18 26 22 / 0)
+  );
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 160ms;
+}
+
+.video[data-state="playing"]:focus-visible .bar,
+.video[data-state="playing"][data-bar="true"] .bar {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .video[data-state="playing"]:hover .bar {
+    opacity: 1;
+  }
+}
+
+.pauseGlyph {
+  width: 8px;
+  height: 10px;
+  border-left: 2px solid var(--text);
+  border-right: 2px solid var(--text);
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.elapsed {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  background: var(--brass);
+  transition: width 250ms linear;
+}
+
+.time {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.slash {
+  color: var(--dim-numeral);
+}
+
+/* Reduced motion: no fades. Changes land at once after the usual 200 ms. */
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .meta,
+  .bar {
+    transition: opacity 0s linear 200ms;
+  }
+
+  .elapsed {
+    transition: none;
+  }
+}
+
+@media (max-width: 719px) {
+  /* Bleeds with the plate's -20px margins. */
+  .video {
+    width: calc(100% + 40px);
+  }
+
+  .ring {
+    width: 52px;
+    height: 52px;
+    margin: -26px 0 0 -26px;
+  }
+
+  .triangle {
+    margin-left: 3px;
+    border-left-width: 12px;
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+  }
+
+  .meta {
+    left: 16px;
+    bottom: 12px;
+    font-size: 10px;
+  }
+
+  .bar {
+    padding: 0 16px;
+  }
+}

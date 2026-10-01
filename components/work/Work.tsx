@@ -8,6 +8,7 @@ import pravaLectio from "@/public/images/prava-lectio.png";
 import tradingSchedule from "@/public/images/trading-schedule.png";
 import ExtensionDiagram from "./ExtensionDiagram";
 import Plate from "./Plate";
+import VideoPlate from "./VideoPlate";
 import WorkEntry from "./WorkEntry";
 import entry from "./work-entry.module.css";
 import styles from "./work.module.css";
@@ -71,15 +72,7 @@ export default function Work() {
         title="Live odds console"
         meta="2022 · sportsbook trading desk · 33 s recording"
         media={
-          <Plate className={styles.poster}>
-            <span className={styles.posterLabel}>
-              Poster: first frame of odds-display-demo.mp4
-            </span>
-            <span className={styles.posterMeta}>
-              odds-display-demo.mp4{" "}
-              <span className={styles.posterMetaQuiet}>· 33 s · silent</span>
-            </span>
-          </Plate>
+          <VideoPlate />
         }
         sentence="Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk."
         spec={

@@ -7,39 +7,6 @@
   background: var(--surface);
 }
 
-/* 02 Live odds console: static poster slot until the video plate lands. */
-.poster {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: var(--surface);
-  font-family: var(--font-mono);
-  font-weight: 400;
-  line-height: normal;
-}
-
-.posterLabel {
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: var(--mono-small-size);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.posterMeta {
-  position: absolute;
-  left: 24px;
-  bottom: 20px;
-  font-size: var(--mono-size);
-  letter-spacing: 0.06em;
-  color: var(--text);
-}
-
-.posterMetaQuiet {
-  color: var(--muted);
-}
-
 @media (max-width: 1199px) {
   .screens {
     gap: 16px;
@@ -57,16 +24,5 @@
 
   .screens > img:nth-child(n + 3) {
     display: none;
-  }
-
-  .posterLabel {
-    top: 12px;
-    left: 16px;
-  }
-
-  .posterMeta {
-    left: 16px;
-    bottom: 12px;
-    font-size: var(--mono-small-size);
   }
 }

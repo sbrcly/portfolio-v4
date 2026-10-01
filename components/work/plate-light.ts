@@ -16,6 +16,7 @@ const HYSTERESIS = 0.1; // a new plate must be this much nearer than the lit one
 const REACH = 0.35; // beyond this from center, the lit plate keeps the light
 
 let forced: HTMLElement | null = null;
+let rested: HTMLElement | null = null;
 
 /**
  * Forces a plate lit regardless of position (a playing video), or releases
@@ -23,6 +24,17 @@ let forced: HTMLElement | null = null;
  */
 export function forcePlateLit(plate: HTMLElement | null) {
   forced = plate;
+  if (plate) rested = null;
+  requestLightUpdate();
+}
+
+/**
+ * Sends a plate back to its resting rim even though it may be nearest the
+ * center (a video that has ended). It stays dark until the light has moved
+ * to another plate, the chapter is left, or it is forced lit again.
+ */
+export function restPlate(plate: HTMLElement) {
+  rested = plate;
   requestLightUpdate();
 }
 
@@ -42,6 +54,7 @@ export function startPlateLight() {
 
   const resolve = () => {
     if (forced) return (current = forced);
+    if (rested && current === rested) current = null;
     // Mid-scroll the light stays put; the scroll-end check settles it.
     if (current && performance.now() - lastScroll < QUIET_MS) return current;
 
@@ -57,7 +70,11 @@ export function startPlateLight() {
     if (!nearest) return current;
 
     // Entering the chapter: light the nearest plate.
-    if (!current) return (current = nearest);
+    if (!current) {
+      if (nearest === rested) return null;
+      rested = null;
+      return (current = nearest);
+    }
 
     if (
       nearest !== current &&
@@ -83,7 +100,7 @@ export function startPlateLight() {
 
   // Outside the chapter no plate is lit, so re-entry starts fresh.
   const unsubscribe = subscribeChapter(() => {
-    if (getCurrentChapter() !== "iii") current = null;
+    if (getCurrentChapter() !== "iii") current = rested = null;
   });
   const unregister = setLightResolver("iii", resolve);
 

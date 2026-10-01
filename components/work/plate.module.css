@@ -1,8 +1,10 @@
 /* The rim. --light (0 to 1, see globals.css) raises it from resting
-   (1px at .35, 72px at .10) to lit (1px at .6, 96px at .18). */
+   (1px at .35, 72px at .10) to lit (1px at .6, 96px at .18). --rim-focus
+   steps only the 1px edge to .6 (the video plate's focus state). */
 .plate {
   margin: 0;
-  box-shadow: 0 0 0 1px rgb(224 174 98 / calc(0.35 + 0.25 * var(--light))),
+  box-shadow: 0 0 0 1px
+      rgb(224 174 98 / calc(0.35 + 0.25 * max(var(--light), var(--rim-focus, 0)))),
     0 0 calc(72px + 24px * var(--light))
       rgb(224 174 98 / calc(0.1 + 0.08 * var(--light)));
 }
