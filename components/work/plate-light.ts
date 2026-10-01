@@ -8,12 +8,13 @@ import {
 } from "@/components/light/handover";
 
 /**
- * Chooses chapter III's lit plate: the one whose center is nearest the
+ * Chooses a chapter's lit plate: the one whose center is nearest the
  * viewport center. Distances are fractions of the viewport height.
  */
 const QUIET_MS = 120; // no handover while scroll events are this recent
 const HYSTERESIS = 0.1; // a new plate must be this much nearer than the lit one
 const REACH = 0.35; // beyond this from center, the lit plate keeps the light
+const TIE = 0.02; // distances closer than this count as equal (covers the 12px reveal rise)
 
 let forced: HTMLElement | null = null;
 let rested: HTMLElement | null = null;
@@ -38,9 +39,10 @@ export function restPlate(plate: HTMLElement) {
   requestLightUpdate();
 }
 
-export function startPlateLight() {
+export function startPlateLight(chapter: string) {
+  forced = rested = null;
   const plates = [
-    ...document.querySelectorAll<HTMLElement>('[data-light="iii"]'),
+    ...document.querySelectorAll<HTMLElement>(`[data-light="${chapter}"]`),
   ];
   let current: HTMLElement | null = null;
   let lastScroll = -Infinity;
@@ -62,7 +64,8 @@ export function startPlateLight() {
     let nearestDistance = Infinity;
     for (const plate of plates) {
       const d = distance(plate);
-      if (d < nearestDistance) {
+      // Side-by-side plates tie; the first in document order wins.
+      if (d < nearestDistance - TIE) {
         nearest = plate;
         nearestDistance = d;
       }
@@ -100,9 +103,9 @@ export function startPlateLight() {
 
   // Outside the chapter no plate is lit, so re-entry starts fresh.
   const unsubscribe = subscribeChapter(() => {
-    if (getCurrentChapter() !== "iii") current = rested = null;
+    if (getCurrentChapter() !== chapter) current = rested = null;
   });
-  const unregister = setLightResolver("iii", resolve);
+  const unregister = setLightResolver(chapter, resolve);
 
   return () => {
     unregister();

@@ -10,11 +10,9 @@ import ExtensionDiagram from "./ExtensionDiagram";
 import Plate from "./Plate";
 import VideoPlate from "./VideoPlate";
 import WorkEntry from "./WorkEntry";
+import { APP_STORE_URL } from "./links";
 import entry from "./work-entry.module.css";
 import styles from "./work.module.css";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/us/app/faith-journal-prava/id6759777699";
 
 // Plates span the column: min(1120px, 100vw - 160px), 960 below 1200,
 // full bleed on phone.

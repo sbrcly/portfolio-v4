@@ -18,7 +18,12 @@ export default function Home() {
       <main>
         <Hero />
 
-        <section id="ii" className={styles.chapter} aria-labelledby="h-ii">
+        <section
+          id="ii"
+          className={styles.chapter}
+          aria-labelledby="h-ii"
+          data-chapter=""
+        >
           <ChapterOpener
             numeral="II"
             label="About"
@@ -79,7 +84,12 @@ export default function Home() {
           </ChapterOpener>
         </section>
 
-        <section id="iii" className={styles.chapter} aria-labelledby="h-iii">
+        <section
+          id="iii"
+          className={styles.chapter}
+          aria-labelledby="h-iii"
+          data-chapter=""
+        >
           <ChapterOpener
             numeral="III"
             label="Work · five"
@@ -89,7 +99,12 @@ export default function Home() {
           <Work />
         </section>
 
-        <section id="iv" className={styles.chapter} aria-labelledby="h-iv">
+        <section
+          id="iv"
+          className={styles.chapter}
+          aria-labelledby="h-iv"
+          data-chapter=""
+        >
           <ChapterOpener
             numeral="IV"
             label="Contact"

@@ -2,7 +2,6 @@ import {
   getCurrentChapter,
   subscribeChapter,
 } from "@/components/chapters/current-chapter";
-import type { ChapterId } from "@/components/frame/chapters";
 
 /**
  * One lit thing per viewport. An element opts in with data-light="<chapter>";
@@ -15,15 +14,15 @@ const DARK_MS = 200;
 
 type Resolver = () => HTMLElement | null;
 
-const resolvers = new Map<ChapterId, Resolver>();
+const resolvers = new Map<string, Resolver>();
 let update: (() => void) | null = null;
 
 /**
  * Lets a chapter with several candidates choose its own lit element (the
- * work plates in chapter III). Call requestLightUpdate() when the choice
+ * work plates in chapter III, the back-office plates on the Prava page). Call requestLightUpdate() when the choice
  * changes.
  */
-export function setLightResolver(chapter: ChapterId, resolver: Resolver) {
+export function setLightResolver(chapter: string, resolver: Resolver) {
   resolvers.set(chapter, resolver);
   update?.();
   return () => {
@@ -36,7 +35,7 @@ export function requestLightUpdate() {
   update?.();
 }
 
-function targetFor(chapter: ChapterId) {
+function targetFor(chapter: string) {
   const resolver = resolvers.get(chapter);
   if (resolver) return resolver();
   return document.querySelector<HTMLElement>(`[data-light="${chapter}"]`);

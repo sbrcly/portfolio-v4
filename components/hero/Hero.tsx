@@ -3,7 +3,12 @@ import styles from "./hero.module.css";
 
 export default function Hero() {
   return (
-    <section id="i" className={styles.hero} aria-labelledby="h-i">
+    <section
+      id="i"
+      className={styles.hero}
+      aria-labelledby="h-i"
+      data-chapter=""
+    >
       <div className={styles.topRow}>
         <span className={styles.chapter}>
           <span className={styles.numeral}>I</span>&nbsp; Home
