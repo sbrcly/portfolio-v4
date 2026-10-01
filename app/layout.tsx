@@ -1,36 +1,40 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, Schibsted_Grotesk } from "next/font/google";
-import MainNav from "@/components/main-nav/MainNav";
-import Footer from "@/components/footer/Footer";
-import Lamplight from "@/components/lamplight/Lamplight";
-import ScrollReveal from "@/components/scroll-reveal/ScrollReveal";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono, Spectral } from "next/font/google";
+import "./tokens.css";
 import "./globals.css";
 
-const schibsted = Schibsted_Grotesk({
-  variable: "--font-schibsted",
+const spectral = Spectral({
+  variable: "--font-spectral",
   subsets: ["latin"],
-  weight: ["500", "700"],
+  weight: ["200", "300", "400"],
+  display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+// Italic 200 and 300 only. Not preloaded: nothing above the fold is italic.
+const spectralItalic = Spectral({
+  variable: "--font-spectral-italic",
   subsets: ["latin"],
+  weight: ["200", "300"],
+  style: "italic",
+  display: "swap",
+  preload: false,
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://scottbarclay.dev"),
   title: {
-    default: "Scott Barclay · Software engineer & founder",
+    default: "Scott Barclay · Software engineer",
     template: "%s · Scott Barclay",
   },
   description:
-    "Software engineer and founder. Most recently: Prava, an AI faith journal for iOS. Designed, built, and shipped solo, from first commit to the App Store.",
+    "Software engineer. Trading desk tools, a marketplace Chrome extension, and an iOS app designed, built, and shipped alone.",
   alternates: {
     canonical: "./",
   },
@@ -39,9 +43,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
-  twitter: {
-    card: "summary_large_image",
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#121A16",
 };
 
 export default function RootLayout({
@@ -52,17 +57,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${schibsted.variable} ${inter.variable} ${plexMono.variable}`}
+      data-scroll-behavior="smooth"
+      className={`${spectral.variable} ${spectralItalic.variable} ${jetbrainsMono.variable}`}
     >
-      <body>
-        <Lamplight />
-        <ScrollReveal />
-        <div className="siteFrame">
-          <MainNav />
-          <main>{children}</main>
-          <Footer />
-        </div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

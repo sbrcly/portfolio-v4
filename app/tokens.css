@@ -1,0 +1,95 @@
+/* Vigil design tokens. Values come from design/design_handoff_vigil/README.md.
+   Breakpoints (custom properties can't be used in media queries):
+   1199px, the first break (rendered at 1024); 719px, the second (rendered at 390). */
+
+:root {
+  /* Palette */
+  --ground: #121a16;
+  --surface: #1a2520;
+  --rule: #2e3b34;
+  --dim-numeral: #4a5a50; /* decorative only, 2.3:1 on ground */
+  --text: #e4dbcb;
+  --muted: #a89f90;
+  --brass: #e0ae62;
+  --lit: #f3c77e;
+
+  /* Light. Glow goes on lit text (text-shadow) and the lit rule (box-shadow). */
+  --glow: 0 0 8px rgba(243, 199, 126, 0.6), 0 0 24px rgba(224, 174, 98, 0.35);
+  --rim-resting: 0 0 0 1px rgba(224, 174, 98, 0.35),
+    0 0 72px rgba(224, 174, 98, 0.1);
+  --rim-lit: 0 0 0 1px rgba(224, 174, 98, 0.6),
+    0 0 96px rgba(224, 174, 98, 0.18);
+
+  /* Type families (variables set by next/font in app/layout.tsx) */
+  --font-serif: var(--font-spectral), Georgia, serif;
+  --font-serif-italic: var(--font-spectral-italic), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Type scale at 1440 */
+  --name-size: 112px;
+  --name-leading: 1;
+  --statement-size: 40px;
+  --statement-leading: 1.2;
+  --title-size: 44px;
+  --title-leading: 1.1;
+  --body-size: 20px;
+  --body-leading: 1.6;
+  --hero-statement-size: 24px;
+  --hero-statement-leading: 1.45;
+  --mono-size: 12px;
+  --mono-small-size: 11px;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-128: 128px;
+  --space-entry: 176px; /* between work entries */
+  --chapter-pad: min(25svh, 225px);
+
+  /* Layout */
+  --column: min(1120px, 100vw - 160px);
+  --footer-width: min(1344px, 100vw - 96px);
+  --frame-height: 96px;
+  --bar-height: 72px;
+  --bar-inset: 48px;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --name-size: 88px;
+    --statement-size: 32px;
+    --title-size: 36px;
+
+    --chapter-pad: 192px;
+
+    --column: min(960px, 100vw - 64px);
+    --footer-width: min(960px, 100vw - 64px);
+    --bar-inset: 32px;
+  }
+}
+
+@media (max-width: 719px) {
+  :root {
+    --name-size: 60px;
+    --statement-size: 28px;
+    --title-size: 32px;
+    --body-size: 17px;
+    --mono-size: 11px;
+    --mono-small-size: 10px;
+
+    --chapter-pad: 150px;
+
+    --column: calc(100vw - 40px);
+    --footer-width: calc(100vw - 40px);
+    --frame-height: 80px;
+    --bar-height: 60px;
+    --bar-inset: 20px;
+  }
+}

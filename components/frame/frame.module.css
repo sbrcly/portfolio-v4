@@ -1,0 +1,147 @@
+.frame {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  height: var(--frame-height);
+  /* Content starts underneath the frame. */
+  margin-bottom: calc(-1 * var(--frame-height));
+  pointer-events: none;
+  /* The one gradient on the site: solid behind the bar, gone below it. */
+  background: linear-gradient(
+    to bottom,
+    #121a16 0%,
+    #121a16 56%,
+    rgba(18, 26, 22, 0.72) 78%,
+    rgba(18, 26, 22, 0) 100%
+  );
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--bar-height);
+  padding: 0 var(--bar-inset);
+  pointer-events: auto;
+}
+
+/* SB mark */
+
+.mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.tick {
+  display: block;
+  width: 1px;
+  height: 5px;
+  background: var(--brass);
+}
+
+.markRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.vertical {
+  display: block;
+  width: 1px;
+  height: 18px;
+  background: var(--brass);
+}
+
+.initials {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+/* Ruled nav table */
+
+.nav {
+  display: flex;
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cell {
+  display: flex;
+  gap: 1.5ch;
+  padding: 9px 16px;
+  border-right: 1px solid var(--rule);
+  color: var(--muted);
+  transition: color 160ms;
+}
+
+.cell:last-child {
+  border-right: 0;
+}
+
+.numeral {
+  color: var(--brass);
+  transition: color 160ms;
+}
+
+.cell:hover {
+  color: var(--text);
+}
+
+/* Current chapter: numeral and label both step to lit, no glow. */
+.cell[aria-current="page"],
+.cell[aria-current="page"] .numeral {
+  color: var(--lit);
+}
+
+@media (max-width: 719px) {
+  .tick {
+    height: 4px;
+  }
+
+  .markRow {
+    gap: 6px;
+  }
+
+  .vertical {
+    height: 16px;
+  }
+
+  .initials {
+    font-size: 11px;
+  }
+
+  /* Numerals only; each link keeps its full name in aria-label. */
+  .nav {
+    gap: 18px;
+    border: 0;
+    letter-spacing: 0.1em;
+  }
+
+  .cell {
+    /* Vertical padding fills the bar so the tap target is 60px tall;
+       horizontal padding is cancelled so the visual gap stays 18px. */
+    align-items: center;
+    height: var(--bar-height);
+    margin: 0 -9px;
+    padding: 0 9px;
+    border-right: 0;
+  }
+
+  .label {
+    display: none;
+  }
+
+  .numeral {
+    color: var(--muted);
+  }
+}

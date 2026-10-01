@@ -1,65 +1,53 @@
 .footer {
-  border-top: 1px solid var(--line);
-  margin-top: auto;
-}
-
-.inner {
-  width: 100%;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding: 1.5rem var(--space-page-x);
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  flex-wrap: wrap;
-}
-
-.name {
+  align-items: center;
+  gap: 28px;
+  width: var(--footer-width);
+  margin: 0 auto;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 1.5;
   letter-spacing: 0.06em;
-  color: var(--ink-dim);
+  color: var(--muted);
 }
 
-.link {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  color: var(--ink-dim);
-  text-decoration: none;
-  /* Static accent-bright underline + accent line growing from the left */
-  background-image: linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent-bright), var(--accent-bright));
-  background-repeat: no-repeat;
-  background-size: 0 1px, 100% 1px;
-  background-position: 0 100%, 0 100%;
-  padding-bottom: 0.15em;
+.colophon {
+  margin-right: auto;
 }
 
-.link:hover,
-.link:focus-visible {
-  color: var(--accent);
-  background-size: 100% 1px, 100% 1px;
+.numeral {
+  color: var(--brass);
 }
 
-.link span {
-  display: inline-block;
-  color: var(--accent-bright);
+.email,
+.resume {
+  text-decoration: underline transparent;
+  text-underline-offset: 4px;
+  transition: color 160ms, text-decoration-color 160ms;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .link {
-    transition: color 150ms var(--ease-hover),
-      background-size 150ms var(--ease-hover);
+.email:hover,
+.resume:hover {
+  color: var(--brass);
+  text-decoration-color: currentColor;
+}
+
+/* Phone: email on its own row, then the colophon and resume link. */
+@media (max-width: 719px) {
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px 0;
+    padding-top: 24px;
+    letter-spacing: 0;
   }
 
-  .link span {
-    transition: transform 150ms var(--ease-hover);
-  }
-
-  .link:hover span,
-  .link:focus-visible span {
-    transform: translateX(4px);
+  .email {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: start;
   }
 }
