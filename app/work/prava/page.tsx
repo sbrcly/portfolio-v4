@@ -54,10 +54,10 @@ const HALF_PLATE_SIZES =
 // The back-office plates share this chapter's light (see PlateLight below).
 const BACK_OFFICE = "back-office";
 
-// What the running margin reads. The title chapter has no numeral: the slot
-// stays open and 01 arrives above a label that does not move.
+// What the running margin reads. Nothing in the title chapter: the margin
+// arrives with 01 and empties again above it.
 const MARGIN: MarginChapter[] = [
-  { id: "prava-title", numeral: "", label: "Prava" },
+  { id: "prava-title", numeral: "", label: "" },
   { id: "problem", numeral: "01", label: "The problem" },
   { id: "built", numeral: "02", label: "What was built" },
   { id: "decisions", numeral: "03", label: "Three decisions" },

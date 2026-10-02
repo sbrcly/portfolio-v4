@@ -1,5 +1,6 @@
+/* The hero is a chapter opener like II to IV (components/chapter-opener):
+   the numeral's column, then the measure, centered in the first screen. */
 .hero {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,41 +11,39 @@
   padding: 120px 0;
 }
 
-.topRow {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: var(--hero-top);
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.opener {
+  display: grid;
+  grid-template-columns: var(--margin-width) 1fr;
+  column-gap: var(--margin-gap);
+  align-items: start;
+}
+
+/* From 960px the numeral and label are the running margin's
+   (components/margin); the column stays empty. */
+.head {
+  display: none;
+}
+
+.numeral {
+  font-weight: 200;
+  font-size: 96px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--dim-numeral);
+}
+
+.label {
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
   line-height: normal;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-.numeral {
-  color: var(--brass);
-}
-
-.fill {
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
-}
-
-.email {
-  color: var(--text);
-  letter-spacing: 0.04em;
-  text-transform: none;
-}
-
-.measureEmail {
-  display: none;
+.measure {
+  grid-column: 2;
 }
 
 .rule {
@@ -70,6 +69,22 @@
   text-wrap: pretty;
 }
 
+.email {
+  display: inline-block;
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: 0.04em;
+  text-decoration-color: var(--rule);
+}
+
+.email:hover,
+.email:focus-visible {
+  text-decoration-color: currentColor;
+}
+
 /* While the entrance plays, the rule is flat brass under the veil and takes
    the light as the veil clears (1250 to 1400 ms). */
 @media (prefers-reduced-motion: no-preference) {
@@ -88,39 +103,12 @@
   }
 }
 
-/* From 960px the hero is a chapter like the others: the running margin's
-   column, then the measure, centered. No top row; the email closes the
-   measure. */
-@media (min-width: 960px) {
-  .hero {
-    display: grid;
-    grid-template-columns: var(--margin-width) 1fr;
-    column-gap: var(--margin-gap);
-    align-items: center;
-  }
-
-  .topRow {
-    display: none;
-  }
-
-  .measure {
-    grid-column: 2;
-  }
-
-  .measureEmail {
-    display: inline-block;
-    margin-top: 40px;
-    font-family: var(--font-mono);
-    font-weight: 400;
-    font-size: 12px;
-    line-height: normal;
-    letter-spacing: 0.04em;
-    text-decoration-color: var(--rule);
-  }
-
-  .measureEmail:hover,
-  .measureEmail:focus-visible {
-    text-decoration-color: currentColor;
+/* The numeral in flow, as in the other openers. */
+@media (max-width: 959px) {
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
@@ -129,8 +117,26 @@
     padding: 96px 0 80px;
   }
 
-  .topRow {
-    gap: 12px;
+  .opener {
+    display: block;
+  }
+
+  .head {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .numeral {
+    font-size: 72px;
+  }
+
+  .label {
+    margin-bottom: 4px;
+  }
+
+  .measure {
+    margin-top: 20px;
   }
 
   .rule {
@@ -138,7 +144,8 @@
   }
 
   .name,
-  .statement {
+  .statement,
+  .email {
     margin-top: 28px;
   }
 }

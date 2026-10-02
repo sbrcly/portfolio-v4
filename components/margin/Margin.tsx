@@ -13,7 +13,7 @@ import styles from "./margin.module.css";
 
 export type MarginChapter = {
   id: string;
-  /** Empty for a chapter that leaves the numeral slot open. */
+  /** Both empty for a chapter in which the margin shows nothing. */
   numeral: string;
   label: string;
 };
@@ -28,15 +28,19 @@ const LOAD_MS = 300;
 /**
  * One slot of the margin. A change fades the old value out, leaves the slot
  * empty for the gap, then brings in the newest value. A change mid-handover
- * drops whatever was pending, so nothing in between is ever shown.
+ * drops whatever was pending, so nothing in between is ever shown. With
+ * `blank`, a slot showing a blank value has nothing to hand over from: the
+ * next value fades straight in.
  */
 function fader(
   el: HTMLElement,
   initial: string,
-  render: (value: string) => void
+  render: (value: string) => void,
+  blank?: (value: string) => boolean
 ) {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   let value = initial;
+  let shown = initial;
   let phase: "in" | "out" | "gap" = "in";
   let outEnd = 0;
   let timer: number | undefined;
@@ -45,6 +49,12 @@ function fader(
     phase = "gap";
     el.dataset.phase = "gap";
     render(value);
+    shown = value;
+    if (blank?.(shown)) {
+      phase = "in";
+      el.dataset.phase = "in";
+      return;
+    }
     timer = window.setTimeout(() => {
       phase = "in";
       el.dataset.phase = "in";
@@ -60,9 +70,20 @@ function fader(
       if (instant) {
         el.dataset.phase = "load";
         render(value);
+        shown = value;
         // Commit the swap before transitions come back.
         void el.offsetWidth;
         phase = "in";
+        el.dataset.phase = "in";
+        return;
+      }
+
+      if (phase === "in" && blank?.(shown)) {
+        // Mounted hidden, then in: no out, no gap.
+        el.dataset.phase = "gap";
+        render(value);
+        shown = value;
+        void el.offsetWidth;
         el.dataset.phase = "in";
         return;
       }
@@ -114,12 +135,22 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
       performance.now() - mounted < LOAD_MS ||
       document.documentElement.dataset.entrance === "play";
 
-    const headFader = fader(headEl, chapters[0].id, (id) => {
-      const chapter = chapters.find((candidate) => candidate.id === id);
-      if (!chapter) return;
-      numeralEl.textContent = chapter.numeral;
-      labelEl.textContent = chapter.label;
-    });
+    const find = (id: string) =>
+      chapters.find((candidate) => candidate.id === id);
+    const headFader = fader(
+      headEl,
+      chapters[0].id,
+      (id) => {
+        const chapter = find(id);
+        if (!chapter) return;
+        numeralEl.textContent = chapter.numeral;
+        labelEl.textContent = chapter.label;
+      },
+      (id) => {
+        const chapter = find(id);
+        return !chapter || (!chapter.numeral && !chapter.label);
+      }
+    );
     const entryFader = fader(entryEl, "", (text) => {
       entryEl.textContent = text;
     });
