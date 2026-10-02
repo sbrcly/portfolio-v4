@@ -65,14 +65,6 @@ export default function Home() {
                 </dd>
               </div>
               <div>
-                <dt>Looking for</dt>
-                <dd>
-                  Software engineer
-                  <br />
-                  Seattle-area or remote
-                </dd>
-              </div>
-              <div>
                 <dt>Verify</dt>
                 <dd>
                   <a href="https://github.com/sbrcly">github.com/sbrcly</a>

@@ -45,6 +45,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
+  // The image comes from app/opengraph-image.tsx (and the Prava route's own).
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export const viewport: Viewport = {

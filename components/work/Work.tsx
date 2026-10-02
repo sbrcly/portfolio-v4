@@ -26,6 +26,23 @@ function Verify({ href, children }: { href: string; children: string }) {
   );
 }
 
+/** A public repo that holds a write-up of proprietary work, not its code. */
+function WriteUp({ repo }: { repo: string }) {
+  return (
+    <>
+      Write-up:{" "}
+      <a
+        href={`https://github.com/sbrcly/${repo}`}
+        className={entry.verify}
+        target="_blank"
+        rel="noopener"
+      >
+        {repo}
+      </a>
+    </>
+  );
+}
+
 /** Chapter III's five entries, most recent first. */
 export default function Work() {
   return (
@@ -68,9 +85,7 @@ export default function Work() {
           <>
             Node · Socket.io · BigQuery · MySQL
             <br />
-            <Verify href="https://github.com/sbrcly/Odds-Display-Public">
-              Odds-Display-Public
-            </Verify>
+            <WriteUp repo="Odds-Display-Public" />
           </>
         }
       />
@@ -94,9 +109,7 @@ export default function Work() {
           <>
             Node · Socket.io · MySQL · GCP
             <br />
-            <Verify href="https://github.com/sbrcly/Arbitrage-Public">
-              Arbitrage-Public
-            </Verify>
+            <WriteUp repo="Arbitrage-Public" />
           </>
         }
       />
@@ -120,9 +133,7 @@ export default function Work() {
           <>
             Node · Express · MySQL · feed APIs
             <br />
-            <Verify href="https://github.com/sbrcly/Trading-Schedule-Public">
-              Trading-Schedule-Public
-            </Verify>
+            <WriteUp repo="Trading-Schedule-Public" />
           </>
         }
       />

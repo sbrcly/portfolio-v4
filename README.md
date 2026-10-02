@@ -1,107 +1,129 @@
-# scott-barclay: portfolio v4
+# scottbarclay.dev
 
-Personal portfolio for Scott Barclay: software engineer & founder. Built with
-Next.js (App Router, TypeScript) and CSS Modules. No canvas, no ambient
-animation.
+Scott Barclay's portfolio: one scrolling home page in four chapters (Home,
+About, Work, Contact, plus a resume link) and a case study page for Prava at
+`/work/prava`. The design direction is called Vigil: a green-black ground,
+bone text, brass used only as light, and one lit element per viewport.
 
 ## Stack
 
-- Next.js 16 / React 19, App Router, TypeScript
-- CSS Modules + one `app/globals.css` (design tokens, reset, shared primitives)
-- Fonts via `next/font/google`: Schibsted Grotesk (display), Inter (body),
-  IBM Plex Mono (the data voice: ledger, spec sidebars, eyebrows, nav, labels)
+- Next.js 16 (App Router, Turbopack) and React 19, TypeScript
+- CSS Modules, with two global stylesheets: `app/tokens.css` and
+  `app/globals.css`
+- Fonts through `next/font/google`, self-hosted: Spectral 200 and 300 (plus
+  italic 200 and 300) and JetBrains Mono
+- No animation library, no client data fetching, no analytics, no third
+  party scripts
+
+## Design reference
+
+`design/design_handoff_vigil/` is the handoff this site was built from.
+`README.md` there holds the tokens, layout, motion, and accessibility notes.
+The `.dc.html` files under `design/round-2/vigil/` are static mockups to
+measure against, not code to ship; `png/` has full-page exports of each.
+`reports/PORTFOLIO_DISCOVERY.md` is the audit of the previous site that the
+rebuild started from.
+
+## Tokens
+
+`app/tokens.css` is the single source for the palette (ground, surface,
+rule, dim numeral, text, muted, brass, lit), the glow and plate-rim shadow
+recipes, the spacing scale, the type scale, and the layout widths (column,
+footer, frame). Each breakpoint redefines the same custom properties, so
+components read a token and never repeat a media query for it.
+
+`app/globals.css` holds the reset, the link and focus styles, the skip link,
+and the `--light` property described below.
+
+## Entrance and light
+
+The entrance ("Ember") is a ground-colored veil over content that is already
+rendered. A small inline script in the root layout runs before first paint
+and sets `data-entrance` on `<html>`: it plays only on the first page load of
+a browser session, only when that load is the home page, and never when
+session storage is unusable. The 1400 ms timeline is plain CSS in
+`components/entrance/`: a rule draws from its center, the SB mark fades in,
+the rule cools, the veil clears, and the hero's own rule takes the light as
+it does. Any key or click skips to the handoff. Under reduced motion the mark
+and rule appear together, hold, and fade.
+
+The light is one registered custom property, `--light`, that runs from 0 to
+1 on any element marked `data-light`. It drives both the color and the glow,
+so nothing keyframes a shadow. `components/chapters/current-chapter.ts`
+tracks which chapter is crossing the middle of the viewport with a single
+IntersectionObserver, and `components/light/handover.ts` moves the light:
+the outgoing element cools over 400 ms, nothing is lit for 200 ms, and the
+incoming one warms over 600 ms, never overlapping. Chapters with several
+candidates (the work plates, the back-office plates on the Prava page) pick
+the plate nearest the viewport center in `components/work/plate-light.ts`. A
+playing video holds the light on its own plate until it ends.
+
+## Breakpoints
+
+| Width | What changes |
+| --- | --- |
+| 1200 and up | Column `min(1120px, 100vw - 160px)`, opener grid 280 + 64, chapter padding 25svh capped at 225px |
+| 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, titles 36, chapter padding 192 |
+| 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only, chapter padding 150 |
+
+The hero's top row also moves to 128px from the top at 1920 and wider.
 
 ## Structure
 
 ```
 app/
-  page.tsx                    Hero: positioning statement + shipping-record ledger
-  work/prava/                 Flagship case study (prose + sticky spec sidebar)
-  work/incognito-wraps/       Client case study (marked in progress)
-  experience/                 Proprietary professional work, prose only
-  about/
-  connect/
-  sitemap.ts, robots.ts       SEO routes
+  layout.tsx, tokens.css, globals.css
+  page.tsx                    Home: chapters I to IV
+  work/prava/                 Prava case study
+  icon.tsx, apple-icon.tsx    Generated icons (the SB mark)
+  opengraph-image.tsx         Generated share card (Prava has its own)
+  sitemap.ts, robots.ts
 components/
-  main-nav/                   Sticky nav, active-link logic, aria-current
+  frame/                      Sticky frame, SB mark, nav table
+  hero/, chapter-opener/      Chapter I and the opener used everywhere else
+  work/                       Work entries, plates, video plate, diagram
+  entrance/, light/, chapters/, reveals/
   footer/
-  todo/                       Visible TODO marker for unfinished content
+lib/                          Image generators for the icons and share cards
 ```
 
-## Design direction: "The Record"
-
-The site's product philosophy borrows from Prava's founding principle:
-*record, not score*. The portfolio is a precise, honest ledger of shipped
-work: light paper, dense structured information, monospace data voice, zero
-atmosphere or decoration. Spec sheet, not splash page.
-
-- **Tokens** (`globals.css`): warm-white `--paper` background, `--paper-raised`
-  for cards and screenshot bands, hairline `--line` rules, deep amber
-  `--accent` for text-sized accents (4.5:1 on paper), `--accent-bright` for
-  large/non-text uses only (underlines, hover arrows, the primary button fill).
-- **The ledger** (home hero): the signature element. Entirely IBM Plex Mono:
-  date / project / status / arrow rows, each row a full-width link into its
-  case study. Hairline rules between rows only.
-- **Motion layer**: everything is a response to something the visitor did.
-  Nothing loops or runs ambiently. No animation libraries: CSS keyframes and
-  transitions, one IntersectionObserver, and the View Transitions API.
-  Timing: micro-interactions 120–200 ms (`--ease-hover`), entrances
-  400–600 ms (`--ease-entrance`, ease-out-expo feel); the home load
-  choreography (header → masked hero lines → ledger label + rows → CTAs)
-  completes within ~900 ms. Details:
-  - *Lamplight* (`components/lamplight/`): a warm cursor-following glow,
-    `--accent-bright` at 5% over 500 px, desktop pointers only, one style
-    write per frame via rAF-coalesced `pointermove`.
-  - *Route transitions*: `experimental.viewTransition` + React's
-    `<ViewTransition>` in `app/template.tsx`; old page fades slightly down,
-    new page rises 8 px, ~200 ms; header/footer are pinned with their own
-    `view-transition-name`. No browser support → hard cut, no polyfill.
-  - *Scroll reveals* (`components/scroll-reveal/`): sections, spec sidebar,
-    and screenshot bands rise 12 px on first viewport entry, once; the
-    hidden pre-state is applied by JS only to below-fold elements, so
-    content is never hidden without JS.
-  - *Micro-interactions*: ledger group-dim via `:has()`, left-growing link
-    underlines, 4 px arrow nudges, 1 px button lift, all with keyboard
-    (`:focus-visible`) parity.
-  - *Reduced motion*: all movement lives inside
-    `@media (prefers-reduced-motion: no-preference)` blocks:
-    correct-by-construction disabled, not shortened; color/opacity feedback
-    remains.
-- **Case studies**: two-column on desktop, prose plus a sticky mono spec
-  sidebar (Role / Stack / Timeline / Status) on `--paper-raised`. Screenshot
-  TODOs sit in full-width `--paper-raised` bands.
-- **Restraint rules**: no shadows (depth = raised surface + hairlines), one
-  border-radius (6px, used sparingly), no gradients, no icon library: the
-  only icon is a typed `→`.
-
-## Content TODOs
-
-Every unfinished piece of content is marked in the UI by the `<Todo>`
-component (mono amber type, dashed border on the raised surface). Search for
-`<Todo>` to list them.
-Highlights:
-
-- Prava hero screenshots
-- Incognito Wraps before/after shots (project in progress)
-- Production domain swap in `app/layout.tsx`, `app/sitemap.ts`, and
-  `app/robots.ts` before deploy
-
-## Deploy checklist
-
-- [ ] Replace `https://scottbarclay.dev` placeholder domain in
-      `app/layout.tsx` (`metadataBase`), `app/sitemap.ts`, and `app/robots.ts`
-- [ ] Clear every visible `<Todo>` on the site
-- [ ] Add `public/resume.pdf`
-- [ ] Add a real favicon / OG image
-- [ ] `npm run build` clean, `npx eslint .` clean
-- [ ] Check at 390px wide, keyboard-only, and with reduced motion enabled
-
-## Commands
+## Run
 
 ```bash
-npm run dev     # dev server
-npm run build   # production build
-npm start       # serve the production build
-npx eslint .    # lint
+npm ci
+npm run dev      # development server
+npm run build    # production build
+npm start        # serve the production build
+npx tsc --noEmit
+npx eslint .
 ```
-# portfolio-v4
+
+Node 22. The build fetches glyph subsets from Google Fonts to draw the icons
+and share cards, so it needs network access.
+
+## Deploy
+
+The site is hosted on Vercel and deploys from `main`. CI
+(`.github/workflows/ci.yml`) runs the install, type check, lint, and build
+on every pull request and on pushes to `main`. `next.config.ts` sets three
+response headers: `X-Content-Type-Options`, `Referrer-Policy`, and
+`Permissions-Policy`. The canonical origin, `https://scottbarclay.dev`, is
+set in `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`.
+
+## Assets
+
+- `public/resume.pdf`: the resume behind "V Resume"
+- `public/videos/odds-display-demo.mp4`: the odds console recording, 33
+  seconds, silent, H.264, 2062 x 1080
+- `public/images/odds-console-poster.webp` and
+  `odds-console-poster-1200.webp`: the video's poster frame at full size and
+  for phones; `odds-console-poster.jpg` is the same frame as a JPEG, kept as
+  a source
+- `public/images/prava-home.png`, `prava-lectio.png`, `prava-journal.png`,
+  `prava-circle.png`: the four app screens
+- `public/images/prava-cockpit.png`, `prava-prompt-lab.png`,
+  `prava-simulator.png`: the back-office screens
+- `public/images/arbitrage-table.png`, `trading-schedule.png`: work entries
+  03 and 04
+- Three images from the previous site are still in `public/images/` and are
+  not referenced by any page

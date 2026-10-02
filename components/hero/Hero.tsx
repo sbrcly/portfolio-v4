@@ -17,14 +17,6 @@ export default function Hero() {
         <a href={`mailto:${EMAIL}`} className={styles.email}>
           {EMAIL}
         </a>
-        <span className={styles.separator} aria-hidden="true">
-          /
-        </span>
-        <span className={styles.location}>Seattle or remote</span>
-        <span className={styles.separator} aria-hidden="true">
-          /
-        </span>
-        <span className={styles.availability}>Available late 2026</span>
       </div>
       {/* The chapter's lit element. Lit in the markup so it is lit at first paint. */}
       <div

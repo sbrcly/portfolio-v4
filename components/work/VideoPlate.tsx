@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import poster from "@/public/images/odds-console-poster.webp";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import posterSmall from "@/public/images/odds-console-poster-1200.webp";
+import posterFull from "@/public/images/odds-console-poster.webp";
 import { forcePlateLit, restPlate } from "./plate-light";
 import plate from "./plate.module.css";
 import styles from "./video-plate.module.css";
@@ -11,6 +12,16 @@ const AUTOPLAY_RATIO = 0.6;
 const BAR_IDLE_MS = 2000;
 
 type State = "resting" | "playing" | "paused" | "ended";
+
+// The poster is chosen once, in the browser, before the video element
+// exists, so a phone never requests the full-size frame. The server render
+// has no video and so no poster to fetch.
+const noSubscription = () => () => {};
+const choosePoster = () =>
+  window.matchMedia("(max-width: 719px)").matches
+    ? posterSmall.src
+    : posterFull.src;
+const noPoster = () => null;
 
 function clock(seconds: number) {
   const whole = Math.floor(seconds);
@@ -36,6 +47,7 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(33);
   const [barShown, setBarShown] = useState(false);
+  const poster = useSyncExternalStore(noSubscription, choosePoster, noPoster);
 
   useEffect(() => {
     const el = button.current;
@@ -77,7 +89,7 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
       window.clearTimeout(barTimer.current);
       forcePlateLit(null);
     };
-  }, []);
+  }, [poster]);
 
   const toggle = () => {
     const media = video.current;
@@ -140,24 +152,26 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
       aria-describedby={describedBy}
       onClick={toggle}
     >
-      <video
-        ref={video}
-        className={styles.media}
-        src={SRC}
-        poster={poster.src}
-        width={poster.width}
-        height={poster.height}
-        muted
-        playsInline
-        preload="metadata"
-        onPlay={onPlay}
-        onPause={onPause}
-        onEnded={onEnded}
-        onTimeUpdate={(event) => setTime(event.currentTarget.currentTime)}
-        onLoadedMetadata={(event) =>
-          setDuration(event.currentTarget.duration)
-        }
-      />
+      {poster && (
+        <video
+          ref={video}
+          className={styles.media}
+          src={SRC}
+          poster={poster}
+          width={posterFull.width}
+          height={posterFull.height}
+          muted
+          playsInline
+          preload="metadata"
+          onPlay={onPlay}
+          onPause={onPause}
+          onEnded={onEnded}
+          onTimeUpdate={(event) => setTime(event.currentTarget.currentTime)}
+          onLoadedMetadata={(event) =>
+            setDuration(event.currentTarget.duration)
+          }
+        />
+      )}
 
       <span className={styles.ring} aria-hidden="true">
         <span className={styles.triangle} />
