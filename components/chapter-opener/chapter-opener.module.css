@@ -84,6 +84,24 @@
   }
 }
 
+/* From 960px the numeral and label are the running margin's
+   (components/margin). The column stays empty beside the measure; the h2
+   stays in place for headings and aria-labelledby. */
+@media (min-width: 960px) {
+  .numeral {
+    display: none;
+  }
+
+  .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 719px) {
   .opener {
     display: block;

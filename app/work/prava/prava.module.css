@@ -281,6 +281,30 @@
   }
 }
 
+/* Beside the running margin the back-office plates sit in the measure, one
+   under another. */
+@media (min-width: 960px) {
+  .section > .figure,
+  .pair {
+    margin-left: var(--measure-offset);
+  }
+
+  .pair {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-top: 64px;
+  }
+
+  .pair .figure {
+    margin-top: 0;
+  }
+
+  .pair .figure[data-reveal="shown"]:last-child {
+    transition-delay: 0ms;
+  }
+}
+
 @media (max-width: 719px) {
   .title {
     min-height: 640px;

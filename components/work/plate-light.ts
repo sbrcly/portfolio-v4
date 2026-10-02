@@ -8,8 +8,10 @@ import {
 } from "@/components/light/handover";
 
 /**
- * Chooses a chapter's lit plate: the one whose center is nearest the
- * viewport center. Distances are fractions of the viewport height.
+ * Chooses a chapter's lit plate: of the plates on screen, the one whose
+ * center is nearest the viewport center. Distances are fractions of the
+ * viewport height. With no plate on screen none is lit, so the running
+ * margin never names an entry the reader cannot see.
  */
 const QUIET_MS = 120; // no handover while scroll events are this recent
 const HYSTERESIS = 0.1; // a new plate must be this much nearer than the lit one
@@ -54,15 +56,24 @@ export function startPlateLight(chapter: string) {
     return Math.abs(center - window.innerHeight / 2) / window.innerHeight;
   };
 
+  const onScreen = (plate: HTMLElement) => {
+    const rect = plate.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  };
+
   const resolve = () => {
     if (forced) return (current = forced);
     if (rested && current === rested) current = null;
     // Mid-scroll the light stays put; the scroll-end check settles it.
     if (current && performance.now() - lastScroll < QUIET_MS) return current;
+    // A lit plate that has left the screen (scrolled off, or jumped away
+    // from) gives up the light.
+    if (current && !onScreen(current)) current = null;
 
     let nearest: HTMLElement | null = null;
     let nearestDistance = Infinity;
     for (const plate of plates) {
+      if (!onScreen(plate)) continue;
       const d = distance(plate);
       // Side-by-side plates tie; the first in document order wins.
       if (d < nearestDistance - TIE) {

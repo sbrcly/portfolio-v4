@@ -3,6 +3,8 @@ import styles from "./work-entry.module.css";
 type Props = {
   /** Decorative index, "01" to "05". */
   index: string;
+  /** Plain title. With the index it is the running margin's second line. */
+  name: string;
   /** id for the h3; the article points aria-labelledby at it. */
   headingId: string;
   title: React.ReactNode;
@@ -16,6 +18,7 @@ type Props = {
 
 export default function WorkEntry({
   index,
+  name,
   headingId,
   title,
   meta,
@@ -27,6 +30,7 @@ export default function WorkEntry({
     <article
       className={styles.entry}
       aria-labelledby={headingId}
+      data-entry={`${index} ${name}`}
       data-reveal=""
     >
       <div className={styles.titleRow}>

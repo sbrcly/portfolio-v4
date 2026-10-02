@@ -2,16 +2,9 @@
 .screens {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  padding: 48px;
+  gap: 16px;
+  padding: 32px;
   background: var(--surface);
-}
-
-@media (max-width: 1199px) {
-  .screens {
-    gap: 16px;
-    padding: 32px;
-  }
 }
 
 @media (max-width: 719px) {

@@ -1,0 +1,121 @@
+/* The running margin: one fixed element outside every section, pinned under
+   the frame on the column's left edge. Off below 960px, where the openers
+   carry their own numeral and label. */
+.margin {
+  position: fixed;
+  top: calc(var(--frame-height) + 24px);
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: none;
+  pointer-events: none;
+}
+
+@media (min-width: 960px) {
+  .margin {
+    display: block;
+  }
+}
+
+.column {
+  width: var(--column);
+  margin: 0 auto;
+}
+
+.head,
+.entry {
+  width: var(--margin-width);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.numeral {
+  /* Holds its height when a chapter has no numeral. */
+  display: block;
+  height: 0.85em;
+  font-weight: 200;
+  font-size: 140px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--dim-numeral);
+}
+
+.label,
+.entry {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--muted);
+}
+
+.label {
+  min-height: 16px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.entry {
+  display: block;
+  margin-top: 8px;
+  letter-spacing: 0.06em;
+}
+
+/* Handover, on the light's timing (Margin.tsx sets data-phase). In: 600 ms
+   back to resting. Out: 400 ms, fading and cooling. Gap: nothing. No
+   transform anywhere. */
+.head,
+.entry,
+.numeral,
+.label {
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.head[data-phase="out"],
+.entry[data-phase="out"],
+.head[data-phase="out"] > * {
+  transition-duration: 400ms;
+}
+
+.head[data-phase="out"],
+.head[data-phase="gap"],
+.entry[data-phase="out"],
+.entry[data-phase="gap"] {
+  opacity: 0;
+}
+
+.head:is([data-phase="out"], [data-phase="gap"]) .numeral {
+  color: var(--rule);
+}
+
+.head:is([data-phase="out"], [data-phase="gap"]) .label,
+.entry:is([data-phase="out"], [data-phase="gap"]) {
+  color: var(--dim-numeral);
+}
+
+/* The gap and a swap at load never animate. */
+.head:is([data-phase="gap"], [data-phase="load"]),
+.head:is([data-phase="gap"], [data-phase="load"]) > *,
+.entry:is([data-phase="gap"], [data-phase="load"]) {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .head,
+  .entry,
+  .numeral,
+  .label {
+    transition: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .numeral {
+    font-size: 96px;
+  }
+}

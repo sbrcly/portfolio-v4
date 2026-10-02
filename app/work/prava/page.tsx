@@ -5,6 +5,7 @@ import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import Light from "@/components/light/Light";
+import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
 import PlateLight from "@/components/work/PlateLight";
@@ -40,20 +41,35 @@ const decisions = [
   },
 ];
 
-// Column widths: min(1120px, 100vw - 160px), 960 below 1200, full bleed on phone.
+// The screens span the column: min(1120px, 100vw - 160px), 960 below 1200.
+// The back-office plates sit in the measure from 960px up (776 at 1440, the
+// column less 240 below 1200) and stack there; from 720 to 959 the last two
+// are side by side in the column. Everything bleeds on phone.
 const SCREEN_SIZES = "(max-width: 719px) 45vw, (max-width: 1199px) 22vw, 238px";
 const PLATE_SIZES =
-  "(max-width: 719px) 100vw, (max-width: 1199px) calc(100vw - 64px), 1120px";
+  "(max-width: 719px) 100vw, (max-width: 959px) calc(100vw - 64px), (max-width: 1199px) calc(100vw - 304px), 776px";
 const HALF_PLATE_SIZES =
-  "(max-width: 719px) 100vw, (max-width: 1199px) calc(50vw - 56px), 536px";
+  "(max-width: 719px) 100vw, (max-width: 959px) calc(50vw - 56px), (max-width: 1199px) calc(100vw - 304px), 776px";
 
 // The back-office plates share this chapter's light (see PlateLight below).
 const BACK_OFFICE = "back-office";
+
+// What the running margin reads. The title chapter has no numeral: the slot
+// stays open and 01 arrives above a label that does not move.
+const MARGIN: MarginChapter[] = [
+  { id: "prava-title", numeral: "", label: "Prava" },
+  { id: "problem", numeral: "01", label: "The problem" },
+  { id: "built", numeral: "02", label: "What was built" },
+  { id: "decisions", numeral: "03", label: "Three decisions" },
+  { id: BACK_OFFICE, numeral: "04", label: "The back office" },
+  { id: "outcome", numeral: "05", label: "Outcome" },
+];
 
 export default function PravaPage() {
   return (
     <>
       <Frame chapter="iii" />
+      <Margin chapters={MARGIN} />
       <main id="content">
         {/* Title and screens are one chapter for the light: the title rule
             stays lit until the reader reaches section 01. */}

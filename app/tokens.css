@@ -1,6 +1,7 @@
 /* Vigil design tokens. Values come from design/design_handoff_vigil/README.md.
    Breakpoints (custom properties can't be used in media queries):
-   1199px, the first break (rendered at 1024); 719px, the second (rendered at 390). */
+   1199px, the first break (rendered at 1024); 719px, the second (rendered at 390).
+   The running margin (design/design_handoff_margin) is pinned from 960px up. */
 
 :root {
   /* Palette */
@@ -60,6 +61,10 @@
   --bar-height: 72px;
   --bar-inset: 48px;
   --hero-top: 112px; /* hero top row */
+  /* The running margin's column and the gap to the measure, from 960px up. */
+  --margin-width: 280px;
+  --margin-gap: 64px;
+  --measure-offset: calc(var(--margin-width) + var(--margin-gap));
 }
 
 @supports (height: 1svh) {
@@ -86,6 +91,8 @@
     --footer-width: min(960px, 100vw - 64px);
     --bar-inset: 32px;
     --hero-top: 96px;
+    --margin-width: 200px;
+    --margin-gap: 40px;
   }
 }
 

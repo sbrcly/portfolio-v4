@@ -43,6 +43,10 @@
   text-transform: none;
 }
 
+.measureEmail {
+  display: none;
+}
+
 .rule {
   width: 72px;
   height: 2px;
@@ -81,6 +85,42 @@
   }
   100% {
     --light: 1;
+  }
+}
+
+/* From 960px the hero is a chapter like the others: the running margin's
+   column, then the measure, centered. No top row; the email closes the
+   measure. */
+@media (min-width: 960px) {
+  .hero {
+    display: grid;
+    grid-template-columns: var(--margin-width) 1fr;
+    column-gap: var(--margin-gap);
+    align-items: center;
+  }
+
+  .topRow {
+    display: none;
+  }
+
+  .measure {
+    grid-column: 2;
+  }
+
+  .measureEmail {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: 0.04em;
+    text-decoration-color: var(--rule);
+  }
+
+  .measureEmail:hover,
+  .measureEmail:focus-visible {
+    text-decoration-color: currentColor;
   }
 }
 

@@ -11,12 +11,12 @@ import { PRAVA_SCREENS } from "./prava-screens";
 import entry from "./work-entry.module.css";
 import styles from "./work.module.css";
 
-// Plates span the column: min(1120px, 100vw - 160px), 960 below 1200,
-// full bleed on phone.
+// Plates span the measure from 960px up (776 at 1440, the column less 240
+// below 1200), the column below that, and bleed on phone.
 const PLATE_SIZES =
-  "(max-width: 719px) 100vw, (max-width: 1199px) calc(100vw - 64px), 1120px";
-const SCREEN_SIZES = "(max-width: 719px) 45vw, (max-width: 1199px) 22vw, 238px";
-
+  "(max-width: 719px) 100vw, (max-width: 959px) calc(100vw - 64px), (max-width: 1199px) calc(100vw - 304px), 776px";
+const SCREEN_SIZES =
+  "(max-width: 719px) 45vw, (max-width: 959px) 22vw, (max-width: 1199px) 16vw, 166px";
 
 function Verify({ href, children }: { href: string; children: string }) {
   return (
@@ -49,6 +49,7 @@ export default function Work() {
     <>
       <WorkEntry
         index="01"
+        name="Prava"
         headingId="w-01"
         title={<Link href="/work/prava">Prava</Link>}
         meta="2025 to now · iOS · live on the App Store"
@@ -74,6 +75,7 @@ export default function Work() {
 
       <WorkEntry
         index="02"
+        name="Live odds console"
         headingId="w-02"
         title="Live odds console"
         meta="2022 · sportsbook trading desk · 33 s recording"
@@ -92,6 +94,7 @@ export default function Work() {
 
       <WorkEntry
         index="03"
+        name="Arbitrage detector"
         headingId="w-03"
         title="Arbitrage detector"
         meta="2022 · about fifty books · one-minute cycle"
@@ -116,6 +119,7 @@ export default function Work() {
 
       <WorkEntry
         index="04"
+        name="Trading schedule"
         headingId="w-04"
         title="Trading schedule"
         meta="2022 · every game offered, with an owner"
@@ -140,6 +144,7 @@ export default function Work() {
 
       <WorkEntry
         index="05"
+        name="Marketplace extension"
         headingId="w-05"
         title="Marketplace extension"
         meta="2023 to 2025 · ticket brokerage · proprietary"

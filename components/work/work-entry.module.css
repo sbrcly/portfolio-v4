@@ -116,6 +116,22 @@
   }
 }
 
+/* Beside the running margin: entries sit in the measure and the caption
+   stacks, sentence over spec. */
+@media (min-width: 960px) {
+  .entry {
+    margin-left: var(--measure-offset);
+  }
+
+  .caption {
+    display: block;
+  }
+
+  .spec {
+    margin-top: 16px;
+  }
+}
+
 @media (max-width: 719px) {
   .entry:first-of-type {
     margin-top: 72px;

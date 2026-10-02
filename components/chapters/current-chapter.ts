@@ -1,52 +1,150 @@
 import { useSyncExternalStore } from "react";
 
 /**
- * The current chapter, tracked by a single IntersectionObserver shared by
- * the nav and the light. Chapters are the elements marked data-chapter, in
- * document order, named by their id (i to iv on the home page). The root is
- * narrowed to the middle 20% of the viewport. When two chapters share that
- * band, the later one is current, so the handover happens at the same line
- * in both directions.
+ * The current chapter: the one source for the nav, the running margin, and
+ * the light. Chapters are the elements marked data-chapter, in document
+ * order, named by their id (i to iv on the home page).
+ *
+ * One boundary: the current chapter is the last one whose top is at or above
+ * the horizontal line at 50% of the viewport height. An IntersectionObserver
+ * rooted on the top half of the viewport fires as a chapter's top crosses
+ * that line in either direction; a recompute when scrolling ends covers a
+ * fast scroll or a jump. At scroll position zero it is always the first.
+ *
+ * An anchor jump (a nav click, a hash change, a load with a hash) sets its
+ * chapter at once and holds it until the scroll ends, so a smooth scroll
+ * never passes through the chapters in between.
  */
+const QUIET_MS = 150; // scroll end, where there is no scrollend event
+
 let current = "i";
-let observer: IntersectionObserver | null = null;
 let chapters: HTMLElement[] = [];
+let stop: (() => void) | null = null;
 const listeners = new Set<() => void>();
+
+function set(id: string) {
+  if (id === current) return;
+  current = id;
+  listeners.forEach((listener) => listener());
+}
+
+function resolve() {
+  const first = chapters[0]?.id ?? "i";
+  if (window.scrollY <= 0) return first;
+  const line = window.innerHeight / 2;
+  const last = chapters.findLast(
+    (chapter) => chapter.getBoundingClientRect().top <= line
+  );
+  return last?.id ?? first;
+}
 
 function start() {
   chapters = [...document.querySelectorAll<HTMLElement>("[data-chapter]")];
-  current = chapters[0]?.id ?? "i";
-  const inBand = new Set<Element>();
-  observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) inBand.add(entry.target);
-        else inBand.delete(entry.target);
-      }
-      const last = chapters.findLast((chapter) => inBand.has(chapter));
-      if (last && last.id !== current) {
-        current = last.id;
-        listeners.forEach((listener) => listener());
-      }
+  current = resolve();
+
+  // True from an anchor jump until its scroll ends.
+  let jumping = false;
+  let quietTimer: number | undefined;
+  const hasScrollEnd = "onscrollend" in window;
+
+  const settle = () => {
+    window.clearTimeout(quietTimer);
+    jumping = false;
+    set(resolve());
+  };
+  const settleSoon = () => {
+    window.clearTimeout(quietTimer);
+    quietTimer = window.setTimeout(settle, QUIET_MS);
+  };
+
+  const observer = new IntersectionObserver(
+    () => {
+      if (!jumping) set(resolve());
     },
-    { rootMargin: "-40% 0px -40% 0px" }
+    { rootMargin: "0px 0px -50% 0px", threshold: 0 }
   );
-  chapters.forEach((chapter) => observer?.observe(chapter));
+  chapters.forEach((chapter) => observer.observe(chapter));
+
+  const jumpTo = (hash: string) => {
+    const target = chapters.find((chapter) => `#${chapter.id}` === hash);
+    if (!target) return;
+    jumping = true;
+    set(target.id);
+    // If nothing scrolls (already there), this settles it.
+    settleSoon();
+  };
+
+  const onClick = (event: MouseEvent) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+    const link = (event.target as Element).closest?.<HTMLAnchorElement>(
+      "a[href]"
+    );
+    if (
+      link &&
+      link.hash &&
+      link.origin === location.origin &&
+      link.pathname === location.pathname
+    ) {
+      jumpTo(link.hash);
+    }
+  };
+  const onHashChange = () => jumpTo(location.hash);
+
+  const onScroll = () => {
+    // With scrollend, a jump is held until that event, however the scroll
+    // is paced; the timer only covers a jump that never scrolls.
+    if (hasScrollEnd && jumping) window.clearTimeout(quietTimer);
+    else if (!hasScrollEnd) settleSoon();
+  };
+  // The reader taking over ends a jump.
+  const onInput = () => {
+    if (jumping) settle();
+  };
+
+  document.addEventListener("click", onClick);
+  window.addEventListener("hashchange", onHashChange);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scrollend", settle);
+  window.addEventListener("wheel", onInput, { passive: true });
+  window.addEventListener("touchmove", onInput, { passive: true });
+  window.addEventListener("resize", settle);
+
+  // A load with a chapter in the URL scrolls to it like any other jump.
+  jumpTo(location.hash);
+
+  stop = () => {
+    observer.disconnect();
+    window.clearTimeout(quietTimer);
+    document.removeEventListener("click", onClick);
+    window.removeEventListener("hashchange", onHashChange);
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("scrollend", settle);
+    window.removeEventListener("wheel", onInput);
+    window.removeEventListener("touchmove", onInput);
+    window.removeEventListener("resize", settle);
+    stop = null;
+  };
 }
 
 export function subscribeChapter(listener: () => void) {
   listeners.add(listener);
   // Start, or start over when the observed page has been replaced.
-  if (!observer || !chapters[0]?.isConnected) {
-    observer?.disconnect();
+  if (!stop || !chapters[0]?.isConnected) {
+    stop?.();
     start();
   }
   return () => {
     listeners.delete(listener);
-    if (listeners.size === 0) {
-      observer?.disconnect();
-      observer = null;
-    }
+    if (listeners.size === 0) stop?.();
   };
 }
 

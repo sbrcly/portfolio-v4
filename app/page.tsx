@@ -5,16 +5,26 @@ import Frame from "@/components/frame/Frame";
 import { EMAIL } from "@/components/frame/chapters";
 import Hero from "@/components/hero/Hero";
 import Light from "@/components/light/Light";
+import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
 import PlateLight from "@/components/work/PlateLight";
 import Work from "@/components/work/Work";
 import styles from "./page.module.css";
+
+// What the running margin reads in each chapter: the openers' labels.
+const MARGIN: MarginChapter[] = [
+  { id: "i", numeral: "I", label: "Home" },
+  { id: "ii", numeral: "II", label: "About" },
+  { id: "iii", numeral: "III", label: "Work · five" },
+  { id: "iv", numeral: "IV", label: "Contact" },
+];
 
 export default function Home() {
   return (
     <>
       <Entrance />
       <Frame />
+      <Margin chapters={MARGIN} />
       <main id="content">
         <Hero />
 
