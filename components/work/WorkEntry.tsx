@@ -40,7 +40,9 @@ export default function WorkEntry({
       </div>
       <div className={styles.media}>{media}</div>
       <div className={styles.caption}>
-        <p className={styles.sentence}>{sentence}</p>
+        <p id={`${headingId}-summary`} className={styles.sentence}>
+          {sentence}
+        </p>
         <div className={styles.spec}>{spec}</div>
       </div>
     </article>

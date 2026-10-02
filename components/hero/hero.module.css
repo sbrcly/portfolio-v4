@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   width: var(--column);
+  min-height: 100vh;
   min-height: 100svh;
   margin: 0 auto;
   padding: 120px 0;

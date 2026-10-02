@@ -51,7 +51,7 @@
   --space-64: 64px;
   --space-128: 128px;
   --space-entry: 176px; /* between work entries */
-  --chapter-pad: min(25svh, 225px);
+  --chapter-pad: min(25vh, 225px); /* svh where supported, below */
 
   /* Layout */
   --column: min(1120px, 100vw - 160px);
@@ -60,6 +60,12 @@
   --bar-height: 72px;
   --bar-inset: 48px;
   --hero-top: 112px; /* hero top row */
+}
+
+@supports (height: 1svh) {
+  :root {
+    --chapter-pad: min(25svh, 225px);
+  }
 }
 
 @media (min-width: 1920px) {

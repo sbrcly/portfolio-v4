@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main
+      id="content"
       style={{
         width: "var(--column)",
         margin: "0 auto",

@@ -23,7 +23,7 @@ function clock(seconds: number) {
  * and meta gone, rim lit, bar on hover or focus), ended (last frame held,
  * ring back, meta reads Replay).
  */
-export default function VideoPlate() {
+export default function VideoPlate({ describedBy }: { describedBy?: string }) {
   const button = useRef<HTMLButtonElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const barTimer = useRef<number | undefined>(undefined);
@@ -49,6 +49,8 @@ export default function VideoPlate() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        // Off screen, state changes land without their fades.
+        el.toggleAttribute("data-away", !entry.isIntersecting);
         if (!entry.isIntersecting) {
           if (!media.paused) {
             pausedByExit.current = true;
@@ -135,6 +137,7 @@ export default function VideoPlate() {
           ? "Pause the odds console recording"
           : "Play the odds console recording, 33 seconds, silent"
       }
+      aria-describedby={describedBy}
       onClick={toggle}
     >
       <video

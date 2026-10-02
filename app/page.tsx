@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Entrance />
       <Frame />
-      <main>
+      <main id="content">
         <Hero />
 
         <section

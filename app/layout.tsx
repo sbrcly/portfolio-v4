@@ -6,7 +6,9 @@ import "./globals.css";
 const spectral = Spectral({
   variable: "--font-spectral",
   subsets: ["latin"],
-  weight: ["200", "300", "400"],
+  // 200 for display, 300 for text. 400 is in the design's type system but
+  // nothing uses it, and every weight listed here is preloaded.
+  weight: ["200", "300"],
   display: "swap",
 });
 
@@ -50,8 +52,9 @@ export const viewport: Viewport = {
 };
 
 // Runs before first paint. The entrance plays only on the first page load of
-// a session, and only when that load is the home page.
-const entranceScript = `(function(){var s=false;try{s=sessionStorage.getItem("sb-vigil-entrance")==="1";sessionStorage.setItem("sb-vigil-entrance","1")}catch(e){}document.documentElement.dataset.entrance=!s&&location.pathname==="/"?"play":"skip"})()`;
+// a session, and only when that load is the home page. Without session
+// storage there is no way to play it once, so it does not play.
+const entranceScript = `(function(){var s=true;try{s=sessionStorage.getItem("sb-vigil-entrance")==="1";sessionStorage.setItem("sb-vigil-entrance","1")}catch(e){s=true}document.documentElement.dataset.entrance=!s&&location.pathname==="/"?"play":"skip"})()`;
 
 export default function RootLayout({
   children,
@@ -68,7 +71,12 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: entranceScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <a href="#content" className="skip-link">
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

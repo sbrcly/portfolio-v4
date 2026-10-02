@@ -34,11 +34,11 @@ export default function Frame({ chapter }: Props) {
     <header className={styles.frame}>
       <div className={styles.bar}>
         {chapter ? (
-          <Link href="/" className={styles.mark} aria-label="Scott Barclay, home">
+          <Link href="/" className={styles.mark} aria-label="SB, Scott Barclay, home">
             {mark}
           </Link>
         ) : (
-          <a href="#i" className={styles.mark} aria-label="Scott Barclay, home">
+          <a href="#i" className={styles.mark} aria-label="SB, Scott Barclay, home">
             {mark}
           </a>
         )}

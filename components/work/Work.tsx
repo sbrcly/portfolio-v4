@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
-import pravaCircle from "@/public/images/prava-circle.png";
-import pravaHome from "@/public/images/prava-home.png";
-import pravaJournal from "@/public/images/prava-journal.png";
-import pravaLectio from "@/public/images/prava-lectio.png";
 import tradingSchedule from "@/public/images/trading-schedule.png";
 import ExtensionDiagram from "./ExtensionDiagram";
 import Plate from "./Plate";
 import VideoPlate from "./VideoPlate";
 import WorkEntry from "./WorkEntry";
 import { APP_STORE_URL } from "./links";
+import { PRAVA_SCREENS } from "./prava-screens";
 import entry from "./work-entry.module.css";
 import styles from "./work.module.css";
 
@@ -20,12 +17,6 @@ const PLATE_SIZES =
   "(max-width: 719px) 100vw, (max-width: 1199px) calc(100vw - 64px), 1120px";
 const SCREEN_SIZES = "(max-width: 719px) 45vw, (max-width: 1199px) 22vw, 238px";
 
-const pravaScreens = [
-  { src: pravaHome, alt: "Prava home: the week's readings and a verse card" },
-  { src: pravaLectio, alt: "Lectio Divina, Pray movement" },
-  { src: pravaJournal, alt: "Daily journal, yes and no questions" },
-  { src: pravaCircle, alt: "A Circle group keeping the same week" },
-];
 
 function Verify({ href, children }: { href: string; children: string }) {
   return (
@@ -46,7 +37,7 @@ export default function Work() {
         meta="2025 to now · iOS · live on the App Store"
         media={
           <Plate className={styles.screens}>
-            {pravaScreens.map(({ src, alt }) => (
+            {PRAVA_SCREENS.map(({ src, alt }) => (
               <Image key={alt} src={src} alt={alt} sizes={SCREEN_SIZES} />
             ))}
           </Plate>
@@ -70,7 +61,7 @@ export default function Work() {
         title="Live odds console"
         meta="2022 · sportsbook trading desk · 33 s recording"
         media={
-          <VideoPlate />
+          <VideoPlate describedBy="w-02-summary" />
         }
         sentence="Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk."
         spec={
@@ -93,7 +84,7 @@ export default function Work() {
           <Plate>
             <Image
               src={arbitrageTable}
-              alt="Arbitrage detector: flagged prices against competitor books"
+              alt="The arbitrage detector's live table: rows of flagged opportunities, each with the game, the market, the book's price, the competitor's price, and the percentage a bettor could lock in."
               sizes={PLATE_SIZES}
             />
           </Plate>
@@ -119,7 +110,7 @@ export default function Work() {
           <Plate>
             <Image
               src={tradingSchedule}
-              alt="Trading schedule: games across sports with assigned traders"
+              alt="The trading schedule's home screen: a table of upcoming games across sports, each with its assigned traders."
               sizes={PLATE_SIZES}
             />
           </Plate>

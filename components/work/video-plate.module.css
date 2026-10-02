@@ -147,6 +147,14 @@
   color: var(--dim-numeral);
 }
 
+/* Off screen (the plate has left the viewport): nothing animates. */
+.video[data-away] .ring,
+.video[data-away] .meta,
+.video[data-away] .bar,
+.video[data-away] .elapsed {
+  transition: none;
+}
+
 /* Reduced motion: no fades. Changes land at once after the usual 200 ms. */
 @media (prefers-reduced-motion: reduce) {
   .ring,

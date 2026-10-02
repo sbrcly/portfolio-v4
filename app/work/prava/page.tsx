@@ -9,11 +9,8 @@ import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
 import PlateLight from "@/components/work/PlateLight";
 import { APP_STORE_URL, PRAVA_SITE_URL } from "@/components/work/links";
-import pravaCircle from "@/public/images/prava-circle.png";
+import { PRAVA_SCREENS } from "@/components/work/prava-screens";
 import pravaCockpit from "@/public/images/prava-cockpit.png";
-import pravaHome from "@/public/images/prava-home.png";
-import pravaJournal from "@/public/images/prava-journal.png";
-import pravaLectio from "@/public/images/prava-lectio.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
 import styles from "./prava.module.css";
@@ -24,28 +21,6 @@ export const metadata: Metadata = {
     "An iOS prayer and scripture app, designed, built, and shipped alone, from first commit to the App Store.",
 };
 
-const screens = [
-  {
-    src: pravaHome,
-    alt: "Prava home: the 17th Sunday in Ordinary Time, a verse card, this week's readings",
-    caption: "The week is the spine. No streak anywhere.",
-  },
-  {
-    src: pravaLectio,
-    alt: "Lectio Divina, Pray movement, Romans 8",
-    caption: "One verse, slowly. Prayer in your own words.",
-  },
-  {
-    src: pravaJournal,
-    alt: "Daily journal: how was yesterday, yes and no questions",
-    caption: "The daily journal. Yes and no, nothing pre-filled.",
-  },
-  {
-    src: pravaCircle,
-    alt: "A Circle group: nine members reading Romans",
-    caption: "A few people keeping the same week.",
-  },
-];
 
 const decisions = [
   {
@@ -79,7 +54,7 @@ export default function PravaPage() {
   return (
     <>
       <Frame chapter="iii" />
-      <main>
+      <main id="content">
         {/* Title and screens are one chapter for the light: the title rule
             stays lit until the reader reaches section 01. */}
         <div id="prava-title" data-chapter="">
@@ -142,16 +117,16 @@ export default function PravaPage() {
             </div>
           </section>
 
-          <section className={styles.column} aria-label="Prava screens">
+          <div className={styles.column}>
             <Plate light={null} className={styles.screens}>
-              {screens.map(({ src, alt, caption }) => (
+              {PRAVA_SCREENS.map(({ src, alt, caption }) => (
                 <figure key={caption}>
                   <Image src={src} alt={alt} sizes={SCREEN_SIZES} />
                   <figcaption>{caption}</figcaption>
                 </figure>
               ))}
             </Plate>
-          </section>
+          </div>
         </div>
 
         <section
@@ -291,7 +266,7 @@ export default function PravaPage() {
             <Plate light={BACK_OFFICE}>
               <Image
                 src={pravaCockpit}
-                alt="Prava's admin home: eleven internal tool cards"
+                alt="Prava's admin home: a grid of eleven internal tool cards including Analytics, Commitments, Memory Verse, Prayers and Creeds, Lectionary, Teaching, Discovery, Prompt Lab, and more."
                 sizes={PLATE_SIZES}
               />
             </Plate>
@@ -302,7 +277,7 @@ export default function PravaPage() {
               <Plate light={BACK_OFFICE}>
                 <Image
                   src={pravaPromptLab}
-                  alt="Prompt Lab: versioned system prompts with history and diffs"
+                  alt="The Prompt Lab: versioned system prompt surfaces with history, diffs, and drift between database and in-code fallback."
                   sizes={HALF_PLATE_SIZES}
                 />
               </Plate>
@@ -314,7 +289,7 @@ export default function PravaPage() {
               <Plate light={BACK_OFFICE}>
                 <Image
                   src={pravaSimulator}
-                  alt="Profile Simulator: a built user profile and scored selection preview"
+                  alt="The Profile Simulator: a built user profile on the left, simulation results and a scored daily selection preview on the right."
                   sizes={HALF_PLATE_SIZES}
                 />
               </Plate>

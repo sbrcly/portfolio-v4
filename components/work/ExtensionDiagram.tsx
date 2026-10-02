@@ -31,7 +31,7 @@ export default function ExtensionDiagram() {
         </div>
 
         <div className={styles.boundary}>
-          <div className={styles.boundaryLine} />
+          <div className={styles.boundaryLine} aria-hidden="true" />
           <div className={styles.extension}>
             <div className={styles.boxLabel}>Extension</div>
             <div className={styles.part}>Background worker</div>

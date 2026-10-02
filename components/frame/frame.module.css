@@ -138,6 +138,7 @@
   .cell {
     /* Vertical padding fills the bar so the tap target is 60px tall;
        horizontal padding is cancelled so the visual gap stays 18px. */
+    position: relative;
     align-items: center;
     height: var(--bar-height);
     margin: 0 -9px;
@@ -145,8 +146,14 @@
     border-right: 0;
   }
 
+  /* Hidden visually, kept in the link's accessible name. */
   .label {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .numeral {

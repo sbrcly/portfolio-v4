@@ -70,11 +70,26 @@ export function startLight() {
     }, Math.max(0, darkUntil - performance.now()));
   };
 
+  // Lights that are off screen change without a transition (globals.css).
+  // The margin keeps the glow's spread inside the test.
+  const visibility = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        entry.target.toggleAttribute("data-offscreen", !entry.isIntersecting);
+      }
+    },
+    { rootMargin: "100px" }
+  );
+  document
+    .querySelectorAll("[data-light]")
+    .forEach((el) => visibility.observe(el));
+
   update = run;
   const unsubscribe = subscribeChapter(run);
   run();
 
   return () => {
+    visibility.disconnect();
     unsubscribe();
     window.clearTimeout(timer);
     update = null;
