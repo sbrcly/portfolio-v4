@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   getCurrentChapter,
   subscribeChapter,
@@ -9,14 +9,11 @@ import {
   getLightTarget,
   subscribeLightTarget,
 } from "@/components/light/handover";
+import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
+import { planMargin, type MarginChapter } from "./glyphs";
 import styles from "./margin.module.css";
 
-export type MarginChapter = {
-  id: string;
-  /** Both empty for a chapter in which the margin shows nothing. */
-  numeral: string;
-  label: string;
-};
+export type { MarginChapter };
 
 // The light's handover: out, a beat of nothing, then in (600 ms, in the CSS).
 const OUT_MS = 400;
@@ -26,21 +23,14 @@ const GAP_MS = 200;
 const LOAD_MS = 300;
 
 /**
- * One slot of the margin. A change fades the old value out, leaves the slot
- * empty for the gap, then brings in the newest value. A change mid-handover
- * drops whatever was pending, so nothing in between is ever shown. With
- * `blank`, a slot showing a blank value has nothing to hand over from: the
- * next value fades straight in.
+ * The margin's second line. A change fades the old value out, leaves the
+ * line empty for the gap, then brings in the newest value. A change
+ * mid-handover drops whatever was pending, so nothing in between is ever
+ * shown.
  */
-function fader(
-  el: HTMLElement,
-  initial: string,
-  render: (value: string) => void,
-  blank?: (value: string) => boolean
-) {
+function fader(el: HTMLElement) {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let value = initial;
-  let shown = initial;
+  let value = "";
   let phase: "in" | "out" | "gap" = "in";
   let outEnd = 0;
   let timer: number | undefined;
@@ -48,13 +38,7 @@ function fader(
   const gap = () => {
     phase = "gap";
     el.dataset.phase = "gap";
-    render(value);
-    shown = value;
-    if (blank?.(shown)) {
-      phase = "in";
-      el.dataset.phase = "in";
-      return;
-    }
+    el.textContent = value;
     timer = window.setTimeout(() => {
       phase = "in";
       el.dataset.phase = "in";
@@ -69,21 +53,10 @@ function fader(
 
       if (instant) {
         el.dataset.phase = "load";
-        render(value);
-        shown = value;
+        el.textContent = value;
         // Commit the swap before transitions come back.
         void el.offsetWidth;
         phase = "in";
-        el.dataset.phase = "in";
-        return;
-      }
-
-      if (phase === "in" && blank?.(shown)) {
-        // Mounted hidden, then in: no out, no gap.
-        el.dataset.phase = "gap";
-        render(value);
-        shown = value;
-        void el.offsetWidth;
         el.dataset.phase = "in";
         return;
       }
@@ -112,73 +85,172 @@ const litEntry = () =>
 
 /**
  * The running margin: the current chapter's numeral and label pinned beside
- * the measure, and under them the lit work entry. It computes nothing; it
- * shows the current chapter and the light's target, which other things own.
- * The first chapter is in the server markup, so it is there at first paint.
+ * the measure on the viewport's midline, and under them the lit work entry.
+ *
+ * The numeral and label turn with the scroll. Every chapter's label and
+ * every glyph the numeral ever shows is in the markup, each with an opacity
+ * (and, for a glyph that enters, a width) that is a function of the
+ * boundaries' progress (glyphs.ts). Numeral and label are both centered on
+ * one fixed axis: nested around the glyphs is one box per chapter, as wide
+ * as that chapter's numeral and moved left by half its width times the
+ * chapter's weight, so the numeral is centered in every font and at every
+ * size without measuring anything.
+ *
+ * Only a chapter with nothing to show is timed: the margin fades out in it
+ * and back in after it. The second line keeps the light's timing.
  */
 export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
+  const root = useRef<HTMLDivElement>(null);
   const head = useRef<HTMLDivElement>(null);
-  const numeral = useRef<HTMLSpanElement>(null);
-  const label = useRef<HTMLSpanElement>(null);
   const entry = useRef<HTMLSpanElement>(null);
-  const first = chapters[0];
+  const plan = useMemo(() => planMargin(chapters), [chapters]);
 
   useEffect(() => {
+    const rootEl = root.current;
     const headEl = head.current;
-    const numeralEl = numeral.current;
-    const labelEl = label.current;
     const entryEl = entry.current;
-    if (!headEl || !numeralEl || !labelEl || !entryEl) return;
+    if (!rootEl || !headEl || !entryEl) return;
 
     const mounted = performance.now();
     const loading = () =>
       performance.now() - mounted < LOAD_MS ||
       document.documentElement.dataset.entrance === "play";
 
-    const find = (id: string) =>
-      chapters.find((candidate) => candidate.id === id);
-    const headFader = fader(
-      headEl,
-      chapters[0].id,
-      (id) => {
-        const chapter = find(id);
-        if (!chapter) return;
-        numeralEl.textContent = chapter.numeral;
-        labelEl.textContent = chapter.label;
-      },
-      (id) => {
-        const chapter = find(id);
-        return !chapter || (!chapter.numeral && !chapter.label);
-      }
-    );
-    const entryFader = fader(entryEl, "", (text) => {
-      entryEl.textContent = text;
-    });
+    const entryFader = fader(entryEl);
 
-    const onChapter = () => headFader.set(getCurrentChapter(), loading());
+    const onChapter = () => {
+      const empty = !plan.chapters.some(
+        (chapter) => chapter.id === getCurrentChapter()
+      );
+      if (empty === (headEl.dataset.blank === "true")) return;
+      if (loading()) headEl.dataset.phase = "load";
+      headEl.dataset.blank = String(empty);
+      if (headEl.dataset.phase) {
+        // Commit the swap before transitions come back.
+        void headEl.offsetWidth;
+        delete headEl.dataset.phase;
+      }
+    };
     const onTarget = () => entryFader.set(litEntry(), loading());
     const unsubscribeChapter = subscribeChapter(onChapter);
     const unsubscribeTarget = subscribeLightTarget(onTarget);
     onChapter();
     onTarget();
 
+    // Without view timelines, the boundaries' progress is written here, by
+    // the rules in margin.module.css: the lead on the outgoing chapter, the
+    // trail on the incoming one until its top is under the frame, each
+    // stopping at the chapter's center, and the trail ending with the page.
+    // Reduced motion steps at the boundary.
+    let stopFrames: (() => void) | undefined;
+    if (!hasViewTimelines()) {
+      const sections = [
+        ...document.querySelectorAll<HTMLElement>("[data-chapter]"),
+      ];
+      const wide = window.matchMedia("(min-width: 960px)");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const within = (value: number, from: number, to: number) =>
+        Math.min(1, Math.max(0, (value - from) / (to - from)));
+
+      stopFrames = onScrollFrame(() => {
+        if (!wide.matches) return;
+        const height = window.innerHeight;
+        const half = height / 2;
+        const scroller = document.documentElement;
+        const end = scroller.scrollHeight - scroller.clientHeight;
+        const pageEnd = end > 0 ? within(window.scrollY, end - half, end) : 0;
+        // The frame's height: where an anchor lands a chapter's top.
+        const frame = parseFloat(getComputedStyle(scroller).scrollPaddingTop);
+
+        sections.forEach((incoming, index) => {
+          if (index === 0) return;
+          const out = sections[index - 1].getBoundingClientRect();
+          const top = incoming.getBoundingClientRect();
+          // How far each chapter is through its pass across the viewport.
+          const outCover = height - out.top;
+          const inCover = height - top.top;
+          const lead = within(
+            outCover,
+            Math.max(out.height, (height + out.height) / 2),
+            out.height + half
+          );
+          const trail = within(
+            inCover,
+            half,
+            Math.min(height - frame, (height + top.height) / 2)
+          );
+          const progress = reduced.matches
+            ? Math.floor(lead)
+            : (lead +
+                Math.max(trail, trail / Math.max(trail + 1 - pageEnd, 0.0001))) /
+              2;
+
+          const name = `--boundary-${incoming.dataset.chapter}`;
+          const value = String(+progress.toFixed(4));
+          if (rootEl.style.getPropertyValue(name) !== value) {
+            rootEl.style.setProperty(name, value);
+          }
+        });
+      });
+    }
+
     return () => {
       unsubscribeChapter();
       unsubscribeTarget();
-      headFader.stop();
       entryFader.stop();
+      stopFrames?.();
     };
-  }, [chapters]);
+  }, [plan]);
+
+  const glyphs = plan.glyphs.map(({ char, before, opacity, width }, index) => (
+    <span key={index} className={styles.run}>
+      <span className={styles.ghost}>{before}</span>
+      <span
+        className={styles.glyph}
+        data-enters={width ? "" : undefined}
+        style={{ opacity, "--shown": width } as React.CSSProperties}
+      >
+        {char}
+      </span>
+    </span>
+  ));
+
+  // Innermost first: the glyphs, then each chapter's box around them.
+  const numeral = plan.chapters.reduceRight(
+    (inner, { id, numeral, weight }) => (
+      <span
+        key={id}
+        className={styles.counter}
+        style={{ "--weight": weight } as React.CSSProperties}
+      >
+        <span className={styles.ghostNumeral}>{numeral}</span>
+        {inner}
+      </span>
+    ),
+    <>{glyphs}</>
+  );
 
   return (
-    <div className={styles.margin} aria-hidden="true">
+    <div ref={root} className={styles.margin} aria-hidden="true">
       <div className={styles.column}>
-        <div ref={head} className={styles.head} data-phase="in">
-          <span ref={numeral} className={styles.numeral}>
-            {first.numeral}
+        <div
+          ref={head}
+          className={styles.head}
+          data-blank={plan.chapters[0]?.id !== chapters[0].id}
+        >
+          <span className={styles.numeral}>
+            <span className={styles.axis}>{numeral}</span>
           </span>
-          <span ref={label} className={styles.label}>
-            {first.label}
+          <span className={styles.labels}>
+            {plan.chapters.map(({ id, label, labelOpacity }) => (
+              <span
+                key={id}
+                className={styles.label}
+                style={{ opacity: labelOpacity }}
+              >
+                {label}
+              </span>
+            ))}
           </span>
         </div>
         <span ref={entry} className={styles.entry} data-phase="in" />

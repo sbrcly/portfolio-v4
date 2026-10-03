@@ -7,7 +7,7 @@ export default function Hero() {
       id="i"
       className={styles.hero}
       aria-labelledby="h-i"
-      data-chapter=""
+      data-chapter="0"
     >
       <div className={styles.opener}>
         {/* Below 960px only; above it the running margin reads I Home. */}
@@ -15,7 +15,7 @@ export default function Hero() {
           <span className={styles.numeral}>I</span>
           <span className={styles.label}>Home</span>
         </div>
-        <div className={styles.measure}>
+        <div className={styles.measure} data-fade="">
           {/* The chapter's lit element. Lit in the markup so it is lit at first paint. */}
           <div
             className={styles.rule}

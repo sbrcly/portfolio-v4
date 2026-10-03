@@ -32,6 +32,7 @@ export default function WorkEntry({
       aria-labelledby={headingId}
       data-entry={`${index} ${name}`}
       data-reveal=""
+      data-fade=""
     >
       <div className={styles.titleRow}>
         <h3 id={headingId} className={styles.title}>

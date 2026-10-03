@@ -103,6 +103,21 @@
   }
 }
 
+/* From 960px up the name's center sits on the viewport's midline, level with
+   the running margin's numeral, and the rest of the block hangs from it.
+   Above the name are the rule (2px) and the name's 40px margin. */
+@media (min-width: 960px) {
+  .hero {
+    justify-content: flex-start;
+    padding-top: calc(
+      50vh - 42px - var(--name-size) * var(--name-leading) / 2
+    );
+    padding-top: calc(
+      50svh - 42px - var(--name-size) * var(--name-leading) / 2
+    );
+  }
+}
+
 /* The numeral in flow, as in the other openers. */
 @media (max-width: 959px) {
   .head {

@@ -1,5 +1,6 @@
 import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
 import Entrance from "@/components/entrance/Entrance";
+import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import { EMAIL } from "@/components/frame/chapters";
@@ -32,7 +33,7 @@ export default function Home() {
           id="ii"
           className={styles.chapter}
           aria-labelledby="h-ii"
-          data-chapter=""
+          data-chapter="1"
         >
           <ChapterOpener
             numeral="II"
@@ -90,7 +91,7 @@ export default function Home() {
           id="iii"
           className={styles.chapter}
           aria-labelledby="h-iii"
-          data-chapter=""
+          data-chapter="2"
         >
           <ChapterOpener
             numeral="III"
@@ -105,7 +106,7 @@ export default function Home() {
           id="iv"
           className={styles.chapter}
           aria-labelledby="h-iv"
-          data-chapter=""
+          data-chapter="3"
         >
           <ChapterOpener
             numeral="IV"
@@ -131,6 +132,7 @@ export default function Home() {
       <Light />
       <PlateLight />
       <Reveals />
+      <Fade />
     </>
   );
 }

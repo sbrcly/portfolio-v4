@@ -3,12 +3,15 @@
 import { useEffect } from "react";
 
 /**
- * Chapter reveals. Content is visible by default; the hidden pre-state is
- * applied here, only to elements that start below the first viewport. Each
- * fires once at 20% visibility and never replays.
+ * Chapter reveals, below 960px. Content is visible by default; the hidden
+ * pre-state is applied here, only to elements that start below the first
+ * viewport. Each fires once at 20% visibility and never replays. From 960px
+ * up there is no pre-state: content fades with the scroll (globals.css).
  */
 export default function Reveals() {
   useEffect(() => {
+    if (window.matchMedia("(min-width: 960px)").matches) return;
+
     const hidden: Element[] = [];
     for (const el of document.querySelectorAll("[data-reveal]")) {
       if (el.getBoundingClientRect().top >= window.innerHeight) {

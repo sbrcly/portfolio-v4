@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
+import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import Light from "@/components/light/Light";
@@ -73,8 +74,12 @@ export default function PravaPage() {
       <main id="content">
         {/* Title and screens are one chapter for the light: the title rule
             stays lit until the reader reaches section 01. */}
-        <div id="prava-title" data-chapter="">
-          <section className={styles.title} aria-labelledby="p-h1">
+        <div id="prava-title" data-chapter="0">
+          <section
+            className={styles.title}
+            aria-labelledby="p-h1"
+            data-fade=""
+          >
             <div className={styles.topRow}>
               <span>
                 <span className={styles.brass}>III</span>&nbsp; Work
@@ -133,7 +138,7 @@ export default function PravaPage() {
             </div>
           </section>
 
-          <div className={styles.column}>
+          <div className={styles.column} data-fade="">
             <Plate light={null} className={styles.screens}>
               {PRAVA_SCREENS.map(({ src, alt, caption }) => (
                 <figure key={caption}>
@@ -149,7 +154,7 @@ export default function PravaPage() {
           id="problem"
           className={styles.section}
           aria-labelledby="p-01"
-          data-chapter=""
+          data-chapter="1"
         >
           <ChapterOpener
             numeral="01"
@@ -185,7 +190,7 @@ export default function PravaPage() {
           id="built"
           className={styles.section}
           aria-labelledby="p-02"
-          data-chapter=""
+          data-chapter="2"
         >
           <ChapterOpener
             numeral="02"
@@ -231,7 +236,7 @@ export default function PravaPage() {
           id="decisions"
           className={styles.section}
           aria-labelledby="p-03"
-          data-chapter=""
+          data-chapter="3"
         >
           <ChapterOpener
             numeral="03"
@@ -259,7 +264,7 @@ export default function PravaPage() {
           id={BACK_OFFICE}
           className={styles.section}
           aria-labelledby="p-04"
-          data-chapter=""
+          data-chapter="4"
         >
           <ChapterOpener
             numeral="04"
@@ -278,7 +283,7 @@ export default function PravaPage() {
               </p>
             </div>
           </ChapterOpener>
-          <figure className={styles.figure} data-reveal="">
+          <figure className={styles.figure} data-reveal="" data-fade="">
             <Plate light={BACK_OFFICE}>
               <Image
                 src={pravaCockpit}
@@ -289,7 +294,7 @@ export default function PravaPage() {
             <figcaption>The cockpit: eleven tools, one stack.</figcaption>
           </figure>
           <div className={styles.pair}>
-            <figure className={styles.figure} data-reveal="">
+            <figure className={styles.figure} data-reveal="" data-fade="">
               <Plate light={BACK_OFFICE}>
                 <Image
                   src={pravaPromptLab}
@@ -301,7 +306,7 @@ export default function PravaPage() {
                 Prompt Lab: versioned prompts, diffed and drift-checked.
               </figcaption>
             </figure>
-            <figure className={styles.figure} data-reveal="">
+            <figure className={styles.figure} data-reveal="" data-fade="">
               <Plate light={BACK_OFFICE}>
                 <Image
                   src={pravaSimulator}
@@ -321,7 +326,7 @@ export default function PravaPage() {
           id="outcome"
           className={`${styles.section} ${styles.last}`}
           aria-labelledby="p-05"
-          data-chapter=""
+          data-chapter="5"
         >
           <ChapterOpener
             numeral="05"
@@ -357,6 +362,7 @@ export default function PravaPage() {
       <Light />
       <PlateLight chapter={BACK_OFFICE} />
       <Reveals />
+      <Fade />
     </>
   );
 }

@@ -45,6 +45,15 @@ html {
   }
 }
 
+/* From 960px up, where the page moves with the scroll, a load with a chapter
+   in the URL lands on it rather than scrolling to it: smooth scrolling
+   starts once the page has loaded (the script in the root layout). */
+@media (min-width: 960px) {
+  html:not([data-loaded]) {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
   background: var(--ground);
@@ -158,6 +167,106 @@ button {
   initial-value: 0;
 }
 
+/* Progress through each chapter boundary, 0 to 1, for the running margin
+   (components/margin): the half before the boundary, the half after it, and
+   the two together. One set per boundary; a page uses as many as it has. */
+@property --lead-1 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --lead-2 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --lead-3 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --lead-4 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --lead-5 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --trail-1 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --trail-2 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --trail-3 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --trail-4 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --trail-5 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --boundary-1 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-2 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-3 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-4 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-5 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* 0 to 1 over the last half viewport of the page. */
+@property --page-end {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
 [data-light] {
   --light: 0;
   --light-color: color-mix(
@@ -197,5 +306,74 @@ button {
 
   [data-light][data-lit="true"] {
     --light-color: var(--lit);
+  }
+}
+
+/* Scroll-driven, from 960px up. Chapters are numbered in data-chapter and
+   each carries a view timeline the running margin reads through the body's
+   scope. The inset is zero so the timelines measure against the whole
+   viewport, not the part under the frame. Without view timelines, scripts
+   write the same values (components/scroll). */
+[data-chapter="0"] {
+  view-timeline-name: --chapter-0;
+}
+
+[data-chapter="1"] {
+  view-timeline-name: --chapter-1;
+}
+
+[data-chapter="2"] {
+  view-timeline-name: --chapter-2;
+}
+
+[data-chapter="3"] {
+  view-timeline-name: --chapter-3;
+}
+
+[data-chapter="4"] {
+  view-timeline-name: --chapter-4;
+}
+
+[data-chapter="5"] {
+  view-timeline-name: --chapter-5;
+}
+
+[data-chapter] {
+  view-timeline-axis: block;
+  view-timeline-inset: 0px;
+}
+
+body {
+  timeline-scope: --chapter-0, --chapter-1, --chapter-2, --chapter-3,
+    --chapter-4, --chapter-5;
+}
+
+/* The content fade. A block is at full opacity while its center is within
+   25svh of the viewport's midline, falls linearly to 0.15 as the center
+   reaches the top or bottom edge, and stays there beyond. The range runs
+   from the center on the bottom edge to the center on the top edge, whatever
+   the block's height. */
+@media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
+  [data-fade] {
+    opacity: var(--fade, 1);
+  }
+
+  @supports (animation-timeline: view()) {
+    [data-fade] {
+      animation: fade linear both;
+      animation-timeline: view(block 0px);
+      animation-range: cover calc(50% - 50svh) cover calc(50% + 50svh);
+    }
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  25%,
+  75% {
+    opacity: 1;
   }
 }

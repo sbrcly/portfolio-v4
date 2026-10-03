@@ -1,9 +1,14 @@
-/* The running margin: one fixed element outside every section, pinned under
-   the frame on the column's left edge. Off below 960px, where the openers
-   carry their own numeral and label. */
+/* The running margin: one fixed element outside every section, on the
+   column's left edge, the numeral's box centered on the viewport's midline.
+   Off below 960px, where the openers carry their own numeral and label. */
 .margin {
+  --numeral-size: 140px;
+  /* The center axis of the numeral and the label, from the column's edge. */
+  --axis: 80px;
   position: fixed;
-  top: calc(var(--frame-height) + 24px);
+  /* The numeral's box is 0.85em tall. */
+  top: calc(50vh - var(--numeral-size) * 0.425);
+  top: calc(50svh - var(--numeral-size) * 0.425);
   left: 0;
   right: 0;
   z-index: 4;
@@ -35,13 +40,25 @@
 
 .numeral {
   /* Holds its height when a chapter has no numeral. */
+  position: relative;
   display: block;
   height: 0.85em;
   font-weight: 200;
-  font-size: 140px;
+  font-size: var(--numeral-size);
   line-height: 0.85;
   letter-spacing: -0.04em;
   color: var(--dim-numeral);
+}
+
+/* Every chapter's label in one cell, each centered on the axis; the scroll
+   shows one. A label wider than twice the axis starts on the column's edge
+   instead of crossing it. */
+.labels {
+  display: grid;
+  /* A fixed track: a wide label overflows it rather than widening it. */
+  grid-template-columns: 100%;
+  width: calc(var(--axis) * 2);
+  height: 16px;
 }
 
 .label,
@@ -54,9 +71,13 @@
 }
 
 .label {
-  min-height: 16px;
+  grid-area: 1 / 1;
+  justify-self: safe center;
+  /* The letter-spacing after the last letter is not part of the width. */
+  margin-right: -0.14em;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .entry {
@@ -65,9 +86,268 @@
   letter-spacing: 0.06em;
 }
 
-/* Handover, on the light's timing (Margin.tsx sets data-phase). In: 600 ms
-   back to resting. Out: 400 ms, fading and cooling. Gap: nothing. No
-   transform anywhere. */
+/* The numeral's glyphs (Margin.tsx). Each sits after an unseen copy of the
+   glyphs before it, so nothing is positioned by hand. */
+.axis,
+.counter,
+.run {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+}
+
+.axis {
+  left: var(--axis);
+}
+
+/* Centering on the axis: half the numeral's width left, for each chapter by
+   its weight. */
+.counter {
+  translate: calc(var(--weight) * -50%) 0;
+}
+
+.ghost,
+.ghostNumeral {
+  visibility: hidden;
+}
+
+/* The letter-spacing after the last glyph is not part of the width. */
+.ghostNumeral {
+  margin-right: 0.04em;
+}
+
+.glyph {
+  display: inline-block;
+}
+
+/* A glyph that enters by width is uncovered from its left edge. Fully shown,
+   the clip clears the ink that the tight letter-spacing lets overhang. */
+.glyph[data-enters] {
+  clip-path: inset(
+    -1em calc((1 - var(--shown)) * 100% - var(--shown) * 0.05em) -1em -0.05em
+  );
+}
+
+/* The boundaries' progress, from the chapters' view timelines (globals.css).
+   A boundary is the incoming chapter's top on the viewport's midline, and
+   its window is the viewport height of scroll around that: the first half
+   (lead) on the outgoing chapter's timeline, from its bottom on the
+   viewport's bottom edge to its bottom on the midline; the second (trail) on
+   the incoming chapter's, from its top on the midline to its top under the
+   frame, which is where an anchor lands it, so a chapter arrived at by its
+   link shows its numeral whole. A chapter shorter than the viewport would
+   have the windows at its two ends overlap, so each half stops at the
+   chapter's center on the midline. The chapters must follow one another
+   with nothing between. */
+@supports (animation-timeline: view()) {
+  .margin {
+    animation: lead-1 linear both,
+      lead-2 linear both,
+      lead-3 linear both,
+      lead-4 linear both,
+      lead-5 linear both,
+      trail-1 linear both,
+      trail-2 linear both,
+      trail-3 linear both,
+      trail-4 linear both,
+      trail-5 linear both,
+      page-end linear both;
+    animation-timeline: --chapter-0, --chapter-1, --chapter-2, --chapter-3, --chapter-4,
+      --chapter-1, --chapter-2, --chapter-3, --chapter-4, --chapter-5,
+      scroll(root);
+    animation-range-start: cover max(100% - 100svh, 50%),
+      cover max(100% - 100svh, 50%),
+      cover max(100% - 100svh, 50%),
+      cover max(100% - 100svh, 50%),
+      cover max(100% - 100svh, 50%),
+      cover 50svh,
+      cover 50svh,
+      cover 50svh,
+      cover 50svh,
+      cover 50svh,
+      calc(100% - 50svh);
+    animation-range-end: cover calc(100% - 50svh),
+      cover calc(100% - 50svh),
+      cover calc(100% - 50svh),
+      cover calc(100% - 50svh),
+      cover calc(100% - 50svh),
+      cover min(100svh - var(--frame-height), 50%),
+      cover min(100svh - var(--frame-height), 50%),
+      cover min(100svh - var(--frame-height), 50%),
+      cover min(100svh - var(--frame-height), 50%),
+      cover min(100svh - var(--frame-height), 50%),
+      100%;
+
+    /* Where the page ends inside a trail, the trail ends with the page. */
+    --boundary-1: calc(
+      (
+          var(--lead-1) +
+            max(
+              var(--trail-1),
+              var(--trail-1) /
+                max(var(--trail-1) + 1 - var(--page-end), 0.0001)
+            )
+        ) / 2
+    );
+    --boundary-2: calc(
+      (
+          var(--lead-2) +
+            max(
+              var(--trail-2),
+              var(--trail-2) /
+                max(var(--trail-2) + 1 - var(--page-end), 0.0001)
+            )
+        ) / 2
+    );
+    --boundary-3: calc(
+      (
+          var(--lead-3) +
+            max(
+              var(--trail-3),
+              var(--trail-3) /
+                max(var(--trail-3) + 1 - var(--page-end), 0.0001)
+            )
+        ) / 2
+    );
+    --boundary-4: calc(
+      (
+          var(--lead-4) +
+            max(
+              var(--trail-4),
+              var(--trail-4) /
+                max(var(--trail-4) + 1 - var(--page-end), 0.0001)
+            )
+        ) / 2
+    );
+    --boundary-5: calc(
+      (
+          var(--lead-5) +
+            max(
+              var(--trail-5),
+              var(--trail-5) /
+                max(var(--trail-5) + 1 - var(--page-end), 0.0001)
+            )
+        ) / 2
+    );
+  }
+
+  /* Reduced motion: the turn is a step at the boundary. */
+  @media (prefers-reduced-motion: reduce) {
+    .margin {
+      animation-timing-function: steps(1, jump-end);
+      --boundary-1: var(--lead-1);
+      --boundary-2: var(--lead-2);
+      --boundary-3: var(--lead-3);
+      --boundary-4: var(--lead-4);
+      --boundary-5: var(--lead-5);
+    }
+  }
+}
+
+@keyframes lead-1 {
+  from {
+    --lead-1: 0;
+  }
+  to {
+    --lead-1: 1;
+  }
+}
+
+@keyframes lead-2 {
+  from {
+    --lead-2: 0;
+  }
+  to {
+    --lead-2: 1;
+  }
+}
+
+@keyframes lead-3 {
+  from {
+    --lead-3: 0;
+  }
+  to {
+    --lead-3: 1;
+  }
+}
+
+@keyframes lead-4 {
+  from {
+    --lead-4: 0;
+  }
+  to {
+    --lead-4: 1;
+  }
+}
+
+@keyframes lead-5 {
+  from {
+    --lead-5: 0;
+  }
+  to {
+    --lead-5: 1;
+  }
+}
+
+@keyframes trail-1 {
+  from {
+    --trail-1: 0;
+  }
+  to {
+    --trail-1: 1;
+  }
+}
+
+@keyframes trail-2 {
+  from {
+    --trail-2: 0;
+  }
+  to {
+    --trail-2: 1;
+  }
+}
+
+@keyframes trail-3 {
+  from {
+    --trail-3: 0;
+  }
+  to {
+    --trail-3: 1;
+  }
+}
+
+@keyframes trail-4 {
+  from {
+    --trail-4: 0;
+  }
+  to {
+    --trail-4: 1;
+  }
+}
+
+@keyframes trail-5 {
+  from {
+    --trail-5: 0;
+  }
+  to {
+    --trail-5: 1;
+  }
+}
+
+@keyframes page-end {
+  from {
+    --page-end: 0;
+  }
+  to {
+    --page-end: 1;
+  }
+}
+
+/* Timed, on the light's timing. The head, in and out of a chapter with
+   nothing to show (Margin.tsx sets data-blank): in over 600 ms, out over
+   400 ms, fading and cooling. The second line, with the lit plate
+   (data-phase): the same, with a gap of nothing between. No transform. */
 .head,
 .entry,
 .numeral,
@@ -76,31 +356,35 @@
     color 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.head[data-phase="out"],
-.entry[data-phase="out"],
-.head[data-phase="out"] > * {
+/* The labels' own opacity is the scroll's. */
+.label {
+  transition-property: color;
+}
+
+.head[data-blank="true"],
+.head[data-blank="true"] :is(.numeral, .label),
+.entry[data-phase="out"] {
   transition-duration: 400ms;
 }
 
-.head[data-phase="out"],
-.head[data-phase="gap"],
+.head[data-blank="true"],
 .entry[data-phase="out"],
 .entry[data-phase="gap"] {
   opacity: 0;
 }
 
-.head:is([data-phase="out"], [data-phase="gap"]) .numeral {
+.head[data-blank="true"] .numeral {
   color: var(--rule);
 }
 
-.head:is([data-phase="out"], [data-phase="gap"]) .label,
+.head[data-blank="true"] .label,
 .entry:is([data-phase="out"], [data-phase="gap"]) {
   color: var(--dim-numeral);
 }
 
 /* The gap and a swap at load never animate. */
-.head:is([data-phase="gap"], [data-phase="load"]),
-.head:is([data-phase="gap"], [data-phase="load"]) > *,
+.head[data-phase="load"],
+.head[data-phase="load"] :is(.numeral, .label),
 .entry:is([data-phase="gap"], [data-phase="load"]) {
   transition: none;
 }
@@ -115,7 +399,8 @@
 }
 
 @media (max-width: 1199px) {
-  .numeral {
-    font-size: 96px;
+  .margin {
+    --numeral-size: 96px;
+    --axis: 66px;
   }
 }

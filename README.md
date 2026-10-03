@@ -58,6 +58,20 @@ candidates (the work plates, the back-office plates on the Prava page) pick
 the plate nearest the viewport center in `components/work/plate-light.ts`. A
 playing video holds the light on its own plate until it ends.
 
+## Scroll-driven motion
+
+From 960px up, two things move with the scroll rather than on a timer, as
+CSS scroll-driven animations where `animation-timeline: view()` is supported
+and through a per-frame script writing the same values into CSS variables
+where it is not (`components/scroll/`, `components/fade/`). Content blocks
+marked `data-fade` are at full opacity while their center is within 25svh of
+the viewport's midline and fall to 0.15 as it reaches an edge (`globals.css`).
+The running margin (`components/margin/`) sits on the midline; its numeral is
+individual glyphs that are held, added, or exchanged across each chapter
+boundary, and its label crossfades at the boundary. Reduced motion has no
+fade and swaps the numeral at the boundary. Below 960px there is no margin
+and content reveals once as it enters (`components/reveals/`).
+
 ## Breakpoints
 
 | Width | What changes |
@@ -82,7 +96,8 @@ components/
   frame/                      Sticky frame, SB mark, nav table
   hero/, chapter-opener/      Chapter I and the opener used everywhere else
   work/                       Work entries, plates, video plate, diagram
-  entrance/, light/, chapters/, reveals/
+  margin/                     Running margin: numeral, label, lit entry
+  entrance/, light/, chapters/, reveals/, fade/, scroll/
   footer/
 lib/                          Image generators for the icons and share cards
 ```

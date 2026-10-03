@@ -60,6 +60,10 @@ export const viewport: Viewport = {
 // storage there is no way to play it once, so it does not play.
 const entranceScript = `(function(){var s=true;try{s=sessionStorage.getItem("sb-vigil-entrance")==="1";sessionStorage.setItem("sb-vigil-entrance","1")}catch(e){s=true}document.documentElement.dataset.entrance=!s&&location.pathname==="/"?"play":"skip"})()`;
 
+// Marks the page loaded, which turns smooth scrolling on from 960px up
+// (globals.css): until then a chapter in the URL is landed on, not scrolled to.
+const loadedScript = `addEventListener("load",function(){requestAnimationFrame(function(){document.documentElement.dataset.loaded=""})})`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,6 +78,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: entranceScript }} />
+        <script dangerouslySetInnerHTML={{ __html: loadedScript }} />
       </head>
       <body>
         <a href="#content" className="skip-link">

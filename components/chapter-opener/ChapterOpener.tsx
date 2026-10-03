@@ -27,7 +27,7 @@ export default function ChapterOpener({
           {label}
         </h2>
       </div>
-      <div className={styles.measure}>
+      <div className={styles.measure} data-fade="">
         <p className={styles.statement}>{statement}</p>
         {children}
       </div>
