@@ -1,32 +1,76 @@
-/* Chapter II by employer. Each block opens with a row that sticks under
-   the frame for the length of the block; the block's bottom edge, which is
-   the next block's row arriving, pushes it out. */
+/* Chapter II by employer. Each block opens with the company's name as a
+   title. Once the title is under the frame a row repeats it there, pinned
+   for the rest of the block; the next block's title arriving pushes it
+   out. */
 .employers {
   /* The see-through part of the frame: its gradient's last 44%
      (components/frame). */
   --frame-tail: calc(var(--frame-height) * 0.44);
   /* The pinned row under the frame: 16, the line, 16. */
   --row-height: 48px;
+  /* The scroll the row comes in over, once the title is under the frame. */
+  --row-fade: 24px;
   --employer-gap: 160px;
-  --row-gap: 72px; /* the row to its first project */
-  /* The opener's numeral and label to the first row. Each row's box starts
-     a frame tail above the row itself, so every gap above one is short by
-     that much; this one is longer than the tail, or the row's ground would
-     cover the label. */
-  margin-top: calc(48px - var(--frame-tail));
+  --head-gap: 40px; /* the role line to the first project's title row */
+  /* The title: the name's line, 12, the role line. */
+  --head-height: calc(var(--company-size) * var(--title-leading) + 28px);
+  /* Where a jump lands a title: this far under the frame, which from 960px
+     up is the running margin's top line. */
+  --landing: 24px;
+  /* From the end of a pinned row's run to the next title: with that title
+     landed, the row is wholly behind the frame's solid part. */
+  --release: calc(var(--frame-tail) + var(--landing));
+  /* The opener's numeral and label to the first title. */
+  margin-top: 48px;
 }
 
-/* An anchor lands the row itself just under the frame, where it pins. */
+/* The title in the first row, the projects in the second, and the pinned
+   row over the projects' top: it takes no room, and sticks within that
+   area. The area ends short of the next block, so the next title pushes
+   the row out from beyond the row's tail and is never dimmed by it. The
+   row reads the title's timeline through the block's scope. */
 .employer {
-  scroll-margin-top: calc(-1 * var(--frame-tail));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: var(--release);
+  timeline-scope: --employer-head;
+  scroll-margin-top: var(--landing);
+}
+
+/* The title's timeline ends with its bottom edge a row-fade under the
+   frame's. */
+.head {
+  view-timeline: --employer-head block;
+  view-timeline-inset: calc(var(--frame-height) - var(--row-fade)) 0px;
+}
+
+.company {
+  font-size: var(--company-size);
+  line-height: var(--title-leading);
+  letter-spacing: -0.01em;
+}
+
+.tenure {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
 }
 
 /* The row. Its box reaches a frame tail above the row and pins with that
    part behind the frame's gradient, so from the frame's solid edge to the
    row's bottom the ground is unbroken and whatever scrolls past is beneath
    it. Below the frame, above the content (which fades; the row never
-   does), and below the running margin. */
+   does), and below the running margin. It starts under the title, which is
+   where it pins: the title's bottom edge passing under the frame's. Until
+   then it is hidden, and it comes in over the row-fade after (the keyframes
+   below, or --pinned from components/work/RunningHeads). */
 .row {
+  grid-area: 2 / 1;
+  align-self: start;
   position: sticky;
   top: calc(var(--frame-height) - var(--frame-tail));
   z-index: 3;
@@ -35,11 +79,33 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 6px 24px;
+  margin-top: calc(-1 * var(--frame-tail));
   padding: calc(var(--frame-tail) + 16px) 0 16px;
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
   line-height: 16px;
+  opacity: var(--pinned, 0);
+  visibility: hidden;
+}
+
+@supports (animation-timeline: view()) {
+  .row {
+    animation: pin linear both;
+    animation-timeline: --employer-head;
+    animation-range: exit calc(100% - var(--row-fade)) exit 100%;
+  }
+}
+
+@keyframes pin {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 /* The ground behind the row, as wide as the viewport so a plate that
@@ -89,17 +155,20 @@
 }
 
 /* A break falls between the role and the years before it falls in either. */
+.tenure > span,
 .role > span {
   display: inline-block;
 }
 
 /* The gap to the next block is inside this one, so the row stays pinned
-   until the next row reaches it. */
+   until the next title is that close. */
 .projects {
-  padding-top: var(--row-gap);
-  padding-bottom: calc(var(--employer-gap) - var(--frame-tail));
+  grid-area: 2 / 1;
+  padding-top: var(--head-gap);
+  padding-bottom: calc(var(--employer-gap) - var(--release));
 }
 
+.employer:last-child,
 .employer:last-child > .projects {
   padding-bottom: 0;
 }
@@ -109,9 +178,17 @@
   scroll-margin-top: 112px;
 }
 
-/* Nor does a jump to a project ("work-prava"): its top, a hero's title row
-   or a cell's plate, lands under the pinned row and clear of its tail. */
-.projects [id^="work-"] {
+/* A jump to a hero ("work-prava") lands its employer's title, as a jump to
+   the employer does: the row is not pinned yet. */
+.projects > [id^="work-"] {
+  scroll-margin-top: calc(
+    var(--landing) + var(--head-height) + var(--head-gap)
+  );
+}
+
+/* A jump to a cell lands its plate under the pinned row and clear of its
+   tail. */
+.grid > [id^="work-"] {
   scroll-margin-top: calc(var(--row-height) + var(--frame-tail));
 }
 
@@ -127,10 +204,10 @@
 }
 
 /* Beside the running margin: the opener has nothing on the page, so the
-   first row opens the chapter, and the blocks sit in the measure. */
+   first title opens the chapter, and the blocks sit in the measure. */
 @media (min-width: 960px) {
   .employers {
-    margin-top: calc(-1 * var(--frame-tail));
+    margin-top: 0;
   }
 
   .employer {
@@ -141,9 +218,11 @@
 @media (max-width: 719px) {
   .employers {
     --employer-gap: 128px;
-    --row-gap: 48px;
     /* The tallest row at 390: the name, then a role on two lines. */
     --row-height: 86px;
+    /* The tallest title likewise: its role line is two. A title with one
+       lands that much lower. */
+    --head-height: calc(var(--company-size) * var(--title-leading) + 44px);
   }
 
   /* Role and years wrap under the name. */
@@ -152,6 +231,7 @@
     align-items: flex-start;
   }
 
+  .tenure,
   .role {
     letter-spacing: 0.04em;
   }

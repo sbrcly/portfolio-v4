@@ -27,7 +27,8 @@
   --name-leading: 1;
   --statement-size: 40px;
   --statement-leading: 1.2;
-  --title-size: 44px;
+  --company-size: 56px; /* an employer's name, over its projects */
+  --title-size: 36px;
   --title-leading: 1.1;
   --body-size: 20px;
   --body-leading: 1.6;
@@ -76,7 +77,8 @@
   :root {
     --name-size: 88px;
     --statement-size: 32px;
-    --title-size: 36px;
+    --company-size: 44px;
+    --title-size: 32px;
 
     --chapter-gap: 96px;
 
@@ -92,7 +94,8 @@
   :root {
     --name-size: 60px;
     --statement-size: 28px;
-    --title-size: 32px;
+    --company-size: 32px;
+    --title-size: 28px;
     --body-size: 17px;
     --hero-statement-size: 18px;
     --hero-statement-leading: 1.5;

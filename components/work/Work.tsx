@@ -1,12 +1,14 @@
+import RunningHeads from "./RunningHeads";
 import WorkCell from "./WorkCell";
 import WorkEntry from "./WorkEntry";
 import { EMPLOYERS } from "./employers";
 import styles from "./work.module.css";
 
 /**
- * Chapter II: one block per employer, most recent first. Each opens with a
- * row that stays under the frame for the length of its block, then
- * the first project as a full entry, then the rest as a grid.
+ * Chapter II: one block per employer, most recent first. Each opens with
+ * the company's name as a title, then the first project as a full entry,
+ * then the rest as a grid. Once the title is under the frame a row repeats
+ * it there, pinned for the rest of the block.
  */
 export default function Work() {
   return (
@@ -18,12 +20,19 @@ export default function Work() {
           className={styles.employer}
           aria-labelledby={`e-${id}`}
         >
-          <div className={styles.row}>
-            <span className={styles.ground} aria-hidden="true" />
-            <span className={styles.tail} aria-hidden="true" />
-            <h3 id={`e-${id}`} className={styles.name}>
+          <header className={styles.head} data-fade="">
+            <h3 id={`e-${id}`} className={styles.company}>
               {name}
             </h3>
+            <p className={styles.tenure}>
+              <span>{role} ·</span> <span>{years}</span>
+            </p>
+          </header>
+          {/* The title again, so not read out twice. */}
+          <div className={styles.row} aria-hidden="true" data-running-head="">
+            <span className={styles.ground} />
+            <span className={styles.tail} />
+            <p className={styles.name}>{name}</p>
             <p className={styles.role}>
               <span>{role} ·</span> <span>{years}</span>
             </p>
@@ -41,6 +50,7 @@ export default function Work() {
           </div>
         </section>
       ))}
+      <RunningHeads />
     </div>
   );
 }

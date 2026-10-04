@@ -46,12 +46,14 @@ incoming one warms over 600 ms, never overlapping. The contact email in
 chapter III is the only element that takes it. Plates have a one-pixel rim in
 the rule color and nothing more, in every state.
 
-Each employer's block has an anchor, `employer-01` to `employer-03`, and
-each project one named for it, `work-prava`. A jump to an employer lands its
-row under the frame (the page's scroll padding); a jump to a project lands
-its top, a hero's title row or a cell's plate, under the pinned row and clear
-of its tail. Either sets chapter II at once. Nothing on the site links to the
-employers now. Chapter I's paragraphs link to six of the projects through
+Each employer's block opens with the company's name as a title (Spectral
+300 at 56px, 44 below 1200, 32 on phone) over its role line, and has an
+anchor, `employer-01` to `employer-03`; each project has one named for it,
+`work-prava`. A jump to an employer, or to its hero project, lands the
+company's title 24px under the frame; a jump to a grid cell lands its plate
+under the pinned row and clear of its tail. Either sets chapter II at once.
+Nothing on the site links to the employers now. Chapter I's paragraphs link
+to six of the projects through
 `components/text-link/` (Spectral 400 in the text color inside a muted 300
 paragraph, no underline, brass on hover and focus).
 
@@ -74,6 +76,13 @@ boundary, and its label crossfades at the boundary. Reduced motion has no
 fade and swaps the numeral at the boundary. Below 960px there is no margin
 and content reveals once as it enters (`components/reveals/`).
 
+At every width an employer's mono row is a running head
+(`components/work/work.module.css`): hidden while the company's title is on
+screen, it comes in over the 24px of scroll after the title's bottom edge
+passes under the frame's, pinned there (96px from the top, 80 on phone), and
+the next company's title pushes it out before reaching it. The same pair of
+a view timeline and a script (`components/work/RunningHeads.tsx`) drives it.
+
 From 960px up chapter I's block from the name to the fact row starts on the
 same line as the margin's numeral, the name's top edge 120px from the
 viewport's top at load (`app/page.module.css`). Below 960px it is an opener
@@ -91,7 +100,7 @@ nav, and the docked icons finish with the page.
 | Width | What changes |
 | --- | --- |
 | 1200 and up | Column `min(1120px, 100vw - 160px)`, opener grid 280 + 64, chapter gap 120 |
-| 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, titles 36, chapter gap 96 |
+| 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, company names 44, titles 32, chapter gap 96 |
 | 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only |
 
 The Prava title's top row also moves to 128px from the top at 1920 and wider.
