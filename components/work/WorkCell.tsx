@@ -24,6 +24,7 @@ export default function WorkCell({ project }: { project: Cell }) {
       className={styles.cell}
       data-reveal=""
       data-fade=""
+      data-cascade="children"
     >
       {plate ? (
         <Plate className={styles.plate}>

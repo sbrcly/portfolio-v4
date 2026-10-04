@@ -209,10 +209,10 @@ export default function Margin({
           data-blank={plan.chapters[0]?.id !== chapters[0].id}
           aria-hidden="true"
         >
-          <span className={styles.numeral}>
+          <span className={styles.numeral} data-cascade="">
             <span className={styles.axis}>{numeral}</span>
           </span>
-          <span className={styles.labels}>
+          <span className={styles.labels} data-cascade="">
             {plan.chapters.map(({ id, label, labelOpacity }) => (
               <span
                 key={id}

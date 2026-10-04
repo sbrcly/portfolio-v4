@@ -11,7 +11,7 @@ type Props = {
 /** The nav table: one cell per chapter, then the resume. */
 export default function NavTable({ current, away = false }: Props) {
   return (
-    <nav className={styles.nav} aria-label="Chapters">
+    <nav className={styles.nav} aria-label="Chapters" data-cascade="">
       {CHAPTERS.map(({ id, numeral, label }) => {
         const props = {
           className: styles.cell,

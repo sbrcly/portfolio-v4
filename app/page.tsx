@@ -48,8 +48,10 @@ export default function Home() {
             statement="Scott Barclay"
             titled
           >
-            <p className={styles.subtitle}>Full-Stack Engineer</p>
-            <div className={styles.body}>
+            <p className={styles.subtitle} data-cascade="">
+              Full-Stack Engineer
+            </p>
+            <div className={styles.body} data-cascade="children">
               <p>
                 I priced sport for a living at a Las Vegas sportsbook. In the
                 evenings I built{" "}
@@ -111,10 +113,11 @@ export default function Home() {
               href={`mailto:${EMAIL}`}
               className={styles.contactEmail}
               data-light="iii"
+              data-cascade=""
             >
               {EMAIL}
             </a>
-            <p className={styles.contactNote}>
+            <p className={styles.contactNote} data-cascade="">
               Replies within a day. Any project here can be walked through at
               whatever depth you want, including the proprietary ones.
             </p>

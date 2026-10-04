@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Source_Sans_3, Spectral } from "next/font/google";
+import { CascadeGuard, CascadePlan } from "@/components/cascade/Cascade";
 import Loaded from "@/components/scroll/Loaded";
 import "./tokens.css";
 import "./globals.css";
@@ -93,17 +94,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // The load cascade's first script marks <html> before React hydrates it.
     <html
       lang="en"
       data-scroll-behavior="smooth"
       className={`${spectral.variable} ${spectralRegular.variable} ${spectralItalic.variable} ${sourceSans.variable} ${sourceSansItalic.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <CascadeGuard />
+      </head>
       <body>
         <Loaded />
         <a href="#content" className="skip-link">
           Skip to content
         </a>
         {children}
+        <CascadePlan />
       </body>
     </html>
   );

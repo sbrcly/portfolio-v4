@@ -383,6 +383,15 @@ body {
   }
 }
 
+/* The load cascade (components/cascade). While the page is pending, which
+   is from the head's script to the one at the end of the body, every part
+   is hidden; the second script then animates the ones in the viewport and
+   clears the mark, all before the first paint that could show them. */
+html[data-cascade-pending]
+  :is([data-cascade=""], [data-cascade="children"] > *) {
+  opacity: 0;
+}
+
 @keyframes fade {
   0%,
   100% {

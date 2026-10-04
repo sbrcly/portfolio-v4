@@ -64,6 +64,7 @@ export default function SocialIcons({ className }: { className?: string }) {
     <ul
       className={className ? `${styles.list} ${className}` : styles.list}
       style={{ "--count": LINKS.length } as React.CSSProperties}
+      data-cascade=""
     >
       {LINKS.map(({ label, href, icon }, index) => (
         <li key={label} style={{ "--index": index } as React.CSSProperties}>

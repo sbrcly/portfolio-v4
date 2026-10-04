@@ -33,7 +33,7 @@ export default function WorkIndex({
   return (
     <nav ref={ref} className={styles.index} aria-label="Work index">
       {/* The role restores the list semantics list-style: none drops. */}
-      <ul className={styles.employers} role="list">
+      <ul className={styles.employers} role="list" data-cascade="">
         {employers.map(({ id, name, projects }, index) => (
           <li
             key={id}

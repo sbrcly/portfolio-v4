@@ -27,7 +27,7 @@ export default function ChapterOpener({
   const Statement = titled ? "h1" : "p";
   return (
     <div className={styles.opener} data-reveal="">
-      <div className={styles.head}>
+      <div className={styles.head} data-cascade="">
         <span className={styles.numeral} aria-hidden="true">
           {numeral}
         </span>
@@ -38,7 +38,9 @@ export default function ChapterOpener({
       {(statement || children) && (
         <div className={styles.measure} data-fade="">
           {statement && (
-            <Statement className={styles.statement}>{statement}</Statement>
+            <Statement className={styles.statement} data-cascade="">
+              {statement}
+            </Statement>
           )}
           {children}
         </div>

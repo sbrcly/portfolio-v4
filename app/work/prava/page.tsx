@@ -76,7 +76,7 @@ export default function PravaPage() {
             aria-labelledby="p-h1"
             data-fade=""
           >
-            <div className={styles.topRow}>
+            <div className={styles.topRow} data-cascade="">
               <span>
                 <span className={styles.brass}>II</span>&nbsp; Work
               </span>
@@ -98,10 +98,10 @@ export default function PravaPage() {
               </span>
               <span className={styles.wide}>Live on the App Store</span>
             </div>
-            <h1 id="p-h1" className={styles.name}>
+            <h1 id="p-h1" className={styles.name} data-cascade="">
               Prava
             </h1>
-            <div className={styles.intro}>
+            <div className={styles.intro} data-cascade="children">
               <p className={styles.lede}>
                 An iOS prayer and scripture app, designed, built, and shipped
                 alone, from first commit to the App Store.
@@ -128,7 +128,7 @@ export default function PravaPage() {
             </div>
           </section>
 
-          <div className={styles.column} data-fade="">
+          <div className={styles.column} data-fade="" data-cascade="children">
             <Plate className={styles.screens}>
               {PRAVA_SCREENS.map(({ src, alt, caption }) => (
                 <figure key={caption}>
@@ -152,7 +152,7 @@ export default function PravaPage() {
             headingId="p-01"
             statement="Faith apps borrow the wrong mechanics."
           >
-            <div className={styles.body}>
+            <div className={styles.body} data-cascade="children">
               <p>
                 Most of them are habit trackers in vestments: streaks, scores,
                 completion rings, and the quiet guilt of a missed day. Those
@@ -188,7 +188,7 @@ export default function PravaPage() {
             headingId="p-02"
             statement="A full consumer product, run by one person."
           >
-            <div className={styles.body}>
+            <div className={styles.body} data-cascade="children">
               <p>
                 A native-feeling iOS app with a daily journal, prayer and
                 scripture surfaces, a weekly lectionary, and small
@@ -198,7 +198,7 @@ export default function PravaPage() {
                 rather than good intentions.
               </p>
             </div>
-            <dl className={styles.facts}>
+            <dl className={styles.facts} data-cascade="children">
               <dt>Platform</dt>
               <dd>
                 Next.js and TypeScript inside Capacitor / WKWebView as a native
@@ -234,7 +234,7 @@ export default function PravaPage() {
             headingId="p-03"
             statement="Decisions I would defend in any interview."
           >
-            <div className={styles.decisions}>
+            <div className={styles.decisions} data-cascade="children">
               {decisions.map(({ index, title, text }) => (
                 <div key={index} className={styles.decision}>
                   <span className={styles.decisionIndex} aria-hidden="true">
@@ -262,7 +262,7 @@ export default function PravaPage() {
             headingId="p-04"
             statement="Eleven internal tools nobody sees."
           >
-            <div className={styles.body}>
+            <div className={styles.body} data-cascade="children">
               <p>
                 The Prompt Lab versions every system prompt behind the thirteen
                 AI surfaces and shows history, diffs, and drift between the
@@ -273,7 +273,12 @@ export default function PravaPage() {
               </p>
             </div>
           </ChapterOpener>
-          <figure className={styles.figure} data-reveal="" data-fade="">
+          <figure
+            className={styles.figure}
+            data-reveal=""
+            data-fade=""
+            data-cascade="children"
+          >
             <Plate>
               <Image
                 src={pravaCockpit}
@@ -284,7 +289,12 @@ export default function PravaPage() {
             <figcaption>The cockpit: eleven tools, one stack.</figcaption>
           </figure>
           <div className={styles.pair}>
-            <figure className={styles.figure} data-reveal="" data-fade="">
+            <figure
+            className={styles.figure}
+            data-reveal=""
+            data-fade=""
+            data-cascade="children"
+          >
               <Plate>
                 <Image
                   src={pravaPromptLab}
@@ -296,7 +306,12 @@ export default function PravaPage() {
                 Prompt Lab: versioned prompts, diffed and drift-checked.
               </figcaption>
             </figure>
-            <figure className={styles.figure} data-reveal="" data-fade="">
+            <figure
+            className={styles.figure}
+            data-reveal=""
+            data-fade=""
+            data-cascade="children"
+          >
               <Plate>
                 <Image
                   src={pravaSimulator}
@@ -324,14 +339,14 @@ export default function PravaPage() {
             headingId="p-05"
             statement="Live, used across a dozen denominations, paying for itself."
           >
-            <div className={styles.body}>
+            <div className={styles.body} data-cascade="children">
               <p>
                 On the App Store since Easter 2026, with paying subscribers on
                 monthly and annual plans. The specific numbers stay off the
                 internet on purpose and are available in an interview.
               </p>
             </div>
-            <div className={styles.links}>
+            <div className={styles.links} data-cascade="children">
               <a
                 href={APP_STORE_URL}
                 className={styles.primary}

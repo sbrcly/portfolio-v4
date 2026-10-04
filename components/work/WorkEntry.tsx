@@ -57,16 +57,16 @@ export default function WorkEntry({ project }: { project: Hero }) {
       data-reveal=""
       data-fade=""
     >
-      <div className={styles.titleRow}>
+      <div className={styles.titleRow} data-cascade="">
         <h4 id={headingId} className={styles.title}>
           {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
         </h4>
         {detail && <span className={styles.meta}>{detail}</span>}
       </div>
-      <div className={styles.media}>
+      <div className={styles.media} data-cascade="">
         <ProjectPlate plate={plate} describedBy={summaryId} />
       </div>
-      <div className={styles.caption}>
+      <div className={styles.caption} data-cascade="children">
         <p id={summaryId} className={styles.sentence}>
           {sentence}
         </p>

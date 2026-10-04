@@ -24,7 +24,7 @@ export default function Work() {
             { "--employer-timeline": employerTimeline(id) } as React.CSSProperties
           }
         >
-          <header className={styles.head} data-fade="">
+          <header className={styles.head} data-fade="" data-cascade="children">
             <h3 id={`e-${id}`} className={styles.company}>
               {name}
             </h3>
@@ -36,8 +36,10 @@ export default function Work() {
           <div className={styles.row} aria-hidden="true" data-running-head="">
             <span className={styles.ground} />
             <span className={styles.tail} />
-            <p className={styles.name}>{name}</p>
-            <p className={styles.role}>
+            <p className={styles.name} data-cascade="">
+              {name}
+            </p>
+            <p className={styles.role} data-cascade="">
               <span>{role} ·</span> <span>{years}</span>
             </p>
           </div>
