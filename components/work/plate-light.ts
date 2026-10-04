@@ -1,5 +1,6 @@
 import {
   getCurrentChapter,
+  getJumpTarget,
   subscribeChapter,
 } from "@/components/chapters/current-chapter";
 import {
@@ -15,7 +16,8 @@ import { onScrollFrame } from "@/components/scroll/frames";
  * within BAND of the midline, the band in which content is at full opacity
  * (globals.css); a plate that leaves it goes dark at once, and with none in
  * it none is lit and the running margin's second line is empty. Below 960px
- * every plate on screen is eligible.
+ * every plate on screen is eligible. An anchor jump to an entry ("#work-02")
+ * sends the light to that entry's plate for as long as the scroll lasts.
  */
 const QUIET_MS = 120; // no handover while scroll events are this recent
 const HYSTERESIS = 0.1; // a new plate must be this much nearer than the lit one
@@ -71,6 +73,14 @@ export function startPlateLight(chapter: string) {
     banded.matches ? distance(plate) <= BAND : onScreen(plate);
 
   const resolve = () => {
+    // A jump to an entry: its plate has the light from the start, so the
+    // plates passed on the way (a video that starts playing among them)
+    // stay dark and the entry arrives lit.
+    const destination = getJumpTarget();
+    const aimed =
+      destination &&
+      plates.find((plate) => plate.closest("[data-entry]") === destination);
+    if (aimed && aimed !== rested) return (current = aimed);
     // A playing video holds the light, but from 960px up only inside the band.
     if (forced && (!banded.matches || eligible(forced))) {
       return (current = forced);

@@ -47,15 +47,7 @@
   background: var(--rule);
 }
 
-/* The hairline that opens the home hero (components/hero), across the
-   block. Plain: nothing in the title is lit. */
-.rule {
-  height: 1px;
-  background: var(--rule);
-}
-
 .name {
-  margin-top: 40px;
   font-weight: 200;
   font-size: var(--name-size);
   line-height: var(--name-leading);
@@ -285,19 +277,14 @@
 }
 
 /* From 960px up the title's name sits on the viewport's midline like the
-   home hero's (components/hero), and the block hangs from it: above the
-   name are the hairline (1px) and the name's 40px margin. Beside the
+   home hero's (components/hero), and the block hangs from it. Beside the
    running margin the back-office plates sit in the measure, one under
    another. */
 @media (min-width: 960px) {
   .title {
     justify-content: flex-start;
-    padding-top: calc(
-      50vh - 41px - var(--name-size) * var(--name-leading) / 2
-    );
-    padding-top: calc(
-      50svh - 41px - var(--name-size) * var(--name-leading) / 2
-    );
+    padding-top: calc(50vh - var(--name-size) * var(--name-leading) / 2);
+    padding-top: calc(50svh - var(--name-size) * var(--name-leading) / 2);
   }
 
   .section > .figure,
@@ -333,7 +320,6 @@
   }
 
   .name {
-    margin-top: 28px;
     font-size: 64px;
   }
 

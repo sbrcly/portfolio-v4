@@ -46,26 +46,21 @@
   grid-column: 2;
 }
 
-/* The hairline that opens II to IV (the measure's top border there), with
-   the same 40px to the content under it. Nothing in the hero is lit at rest. */
-.rule {
-  height: 1px;
-  background: var(--rule);
-}
-
+/* No hairline above the name, unlike II to IV: the measure opens on it. */
 .name {
-  margin-top: 40px;
   font-weight: 200;
   font-size: var(--name-size);
   line-height: var(--name-leading);
   letter-spacing: -0.02em;
 }
 
+/* Muted, so its links (components/text-link) stand out in the text color. */
 .statement {
   max-width: 720px;
   margin-top: 40px;
   font-size: var(--hero-statement-size);
   line-height: var(--hero-statement-leading);
+  color: var(--muted);
   text-wrap: pretty;
 }
 
@@ -85,56 +80,13 @@
   text-decoration-color: currentColor;
 }
 
-/* The entrance hands its light to the hairline as the veil clears (1250 to
-   1400 ms); from the veil's removal the hairline cools to the rule color and
-   stays there. The entrance is "done" once the veil is gone, so both states
-   carry the animation. Its own mix, not [data-light]'s: this cools to the
-   rule color, not brass. */
-@media (prefers-reduced-motion: no-preference) {
-  :global(html[data-entrance="play"]) .rule,
-  :global(html[data-entrance="done"]) .rule {
-    background: color-mix(
-      in srgb,
-      var(--lit) calc(var(--light) * 100%),
-      var(--rule)
-    );
-    box-shadow: 0 0 8px rgb(243 199 126 / calc(0.6 * var(--light))),
-      0 0 24px rgb(224 174 98 / calc(0.35 * var(--light)));
-    animation: receive 1.4s linear both, cool 2s ease-out 1.4s forwards;
-  }
-}
-
-@keyframes receive {
-  0%,
-  89% {
-    --light: 0;
-  }
-  100% {
-    --light: 1;
-  }
-}
-
-@keyframes cool {
-  0% {
-    --light: 1;
-  }
-  100% {
-    --light: 0;
-  }
-}
-
 /* From 960px up the name's center sits on the viewport's midline, level with
-   the running margin's numeral, and the rest of the block hangs from it.
-   Above the name are the hairline (1px) and the name's 40px margin. */
+   the running margin's numeral, and the rest of the block hangs from it. */
 @media (min-width: 960px) {
   .hero {
     justify-content: flex-start;
-    padding-top: calc(
-      50vh - 41px - var(--name-size) * var(--name-leading) / 2
-    );
-    padding-top: calc(
-      50svh - 41px - var(--name-size) * var(--name-leading) / 2
-    );
+    padding-top: calc(50vh - var(--name-size) * var(--name-leading) / 2);
+    padding-top: calc(50svh - var(--name-size) * var(--name-leading) / 2);
   }
 }
 
@@ -171,10 +123,9 @@
   }
 
   .measure {
-    margin-top: 20px;
+    margin-top: 28px;
   }
 
-  .name,
   .statement,
   .email {
     margin-top: 28px;

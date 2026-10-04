@@ -43,11 +43,10 @@ and sets `data-entrance` on `<html>`: it plays only on the first page load of
 a browser session, only when that load is the home page, and never when
 session storage is unusable. The 1400 ms timeline is plain CSS in
 `components/entrance/`: a rule draws from its center, the SB mark fades in,
-the rule cools, the veil clears, and the hairline that opens the hero takes
-the light as it does, then cools to the plain rule color over two seconds.
-Nothing in the hero is lit at rest. Any key or click skips to the handoff.
-Under reduced motion the mark and rule appear together, hold, and fade, and
-the hairline is plain from first paint.
+the rule cools, and the veil clears. Nothing on the page takes the light from
+it, and nothing in the hero is lit. Any key or click skips to the point
+where the veil starts to clear. Under reduced motion the mark and rule
+appear together, hold, and fade.
 
 The light is one registered custom property, `--light`, that runs from 0 to
 1 on any element marked `data-light`. It drives both the color and the glow,
@@ -59,6 +58,13 @@ incoming one warms over 600 ms, never overlapping. Chapters with several
 candidates (the work plates, the back-office plates on the Prava page) pick
 the plate nearest the viewport center in `components/work/plate-light.ts`. A
 playing video holds the light on its own plate until it ends.
+
+Each work entry has an anchor, `work-01` to `work-05`, and the hero
+statement links to three of them (`components/text-link/`, Spectral 400 in
+the text color inside a muted 300 paragraph, no underline). A jump to an entry lands its title row under the frame
+(the page's scroll padding), sets chapter III at once, and sends the light
+to that entry's plate for the length of the scroll, so nothing passed on the
+way is lit.
 
 ## Scroll-driven motion
 
@@ -104,6 +110,7 @@ components/
   work/                       Work entries, plates, video plate, diagram
   margin/                     Running margin: numeral, label, lit entry
   entrance/, light/, chapters/, reveals/, fade/, scroll/
+  text-link/                  Link inside running text
   footer/
 lib/                          Image generators for the icons and share cards
 ```

@@ -1,0 +1,9 @@
+/* A link in a muted paragraph (Spectral 300, --muted): Spectral 400 in the
+   full text color, never underlined. The paragraph sets its own color to
+   --muted; the link does not inherit it. Brass on hover and focus comes
+   from the global link (globals.css). */
+.link {
+  font-weight: 400;
+  color: var(--text);
+  text-decoration-line: none;
+}

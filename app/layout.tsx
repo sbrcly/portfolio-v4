@@ -6,9 +6,9 @@ import "./globals.css";
 const spectral = Spectral({
   variable: "--font-spectral",
   subsets: ["latin"],
-  // 200 for display, 300 for text. 400 is in the design's type system but
-  // nothing uses it, and every weight listed here is preloaded.
-  weight: ["200", "300"],
+  // 200 for display, 300 for text, 400 for links inside text
+  // (components/text-link). Every weight listed here is preloaded.
+  weight: ["200", "300", "400"],
   display: "swap",
 });
 

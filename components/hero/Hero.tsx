@@ -1,4 +1,5 @@
 import { EMAIL } from "@/components/frame/chapters";
+import TextLink from "@/components/text-link/TextLink";
 import styles from "./hero.module.css";
 
 export default function Hero() {
@@ -16,15 +17,19 @@ export default function Hero() {
           <span className={styles.label}>Home</span>
         </div>
         <div className={styles.measure} data-fade="">
-          {/* Not one of the page's lights: the entrance lands on it once. */}
-          <div className={styles.rule} data-handoff="" aria-hidden="true" />
           <h1 id="h-i" className={styles.name}>
             Scott Barclay
           </h1>
           <p className={styles.statement}>
-            Software engineer. Trading desk tools for a Las Vegas sportsbook, a
-            pricing portal and Chrome extension for a ticket brokerage, and an
-            iOS app designed, built, and shipped alone.
+            Software engineer.{" "}
+            <TextLink href="#work-02">Trading desk tools</TextLink> for a Las
+            Vegas sportsbook,{" "}
+            <TextLink href="#work-05">
+              a pricing portal and Chrome extension
+            </TextLink>{" "}
+            for a ticket brokerage, and{" "}
+            <TextLink href="#work-01">an iOS app</TextLink> designed, built, and
+            shipped alone.
           </p>
           <a href={`mailto:${EMAIL}`} className={styles.email}>
             {EMAIL}

@@ -1,7 +1,7 @@
 import styles from "./work-entry.module.css";
 
 type Props = {
-  /** Decorative index, "01" to "05". */
+  /** Decorative index, "01" to "05". Also the entry's anchor, "work-01". */
   index: string;
   /** Plain title. With the index it is the running margin's second line. */
   name: string;
@@ -28,6 +28,7 @@ export default function WorkEntry({
 }: Props) {
   return (
     <article
+      id={`work-${index}`}
       className={styles.entry}
       aria-labelledby={headingId}
       data-entry={`${index} ${name}`}

@@ -101,7 +101,6 @@ export default function PravaPage() {
               </span>
               <span className={styles.wide}>Live on the App Store</span>
             </div>
-            <div className={styles.rule} aria-hidden="true" />
             <h1 id="p-h1" className={styles.name}>
               Prava
             </h1>
