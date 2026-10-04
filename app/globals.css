@@ -260,27 +260,6 @@ button {
   initial-value: 0;
 }
 
-/* The icon links' dock (components/margin): 0 in the margin's stack, 1 on the
-   footer's slot. The two halves it is made of: from where its window opens,
-   and to where the page ends. */
-@property --dock-start {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 0;
-}
-
-@property --dock-end {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 0;
-}
-
-@property --dock {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
 [data-light] {
   --light: 0;
   --light-color: color-mix(

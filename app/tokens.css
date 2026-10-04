@@ -65,6 +65,8 @@
   --margin-width: 280px;
   --margin-gap: 64px;
   --measure-offset: calc(var(--margin-width) + var(--margin-gap));
+  /* The footer's height from 960px up: 32px, its one line, 40px. */
+  --footer-height: 90px;
 }
 
 @media (min-width: 1920px) {

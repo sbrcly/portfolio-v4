@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Frame />
-      <Margin chapters={MARGIN} dockFrom="iii" />
+      <Margin chapters={MARGIN} />
       <main id="content">
         <section
           id="i"
@@ -75,25 +75,6 @@ export default function Home() {
                 myself Latin.
               </p>
             </div>
-            <dl className={styles.facts}>
-              <div>
-                <dt>Working in</dt>
-                <dd>
-                  TypeScript · Node · Postgres
-                  <span className={styles.join}> · </span>
-                  <br className={styles.softBreak} />
-                  Socket.io · BigQuery · Capacitor
-                </dd>
-              </div>
-              <div>
-                <dt>Verify</dt>
-                <dd>
-                  <a href="https://github.com/sbrcly">github.com/sbrcly</a>
-                  <br />
-                  App Store · public repos
-                </dd>
-              </div>
-            </dl>
           </ChapterOpener>
         </section>
 

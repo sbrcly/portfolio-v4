@@ -83,17 +83,17 @@ passes under the frame's, pinned there (96px from the top, 80 on phone), and
 the next company's title pushes it out before reaching it. The same pair of
 a view timeline and a script (`components/work/RunningHeads.tsx`) drives it.
 
-From 960px up chapter I's block from the name to the fact row starts on the
-same line as the margin's numeral, the name's top edge 120px from the
-viewport's top at load (`app/page.module.css`). Below 960px it is an opener
+From 960px up chapter I's block from the name to the last paragraph starts
+on the same line as the margin's numeral, the name's top edge 120px from
+the viewport's top at load (`app/page.module.css`). Below 960px it is an opener
 like the others.
 
 Chapters are one gap apart, from a chapter's last element to the next
 chapter's first (`--chapter-gap`, the next chapter's top padding): 120px
 from 1200 up, 96px below. The same gap is above the footer, and on the
 Prava page between its sections. A page that ends before its last chapter's
-top reaches the midline ends on that chapter all the same: the numeral, the
-nav, and the docked icons finish with the page.
+top reaches the midline ends on that chapter all the same: the numeral and
+the nav finish with the page.
 
 ## Breakpoints
 

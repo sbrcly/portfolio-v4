@@ -1,13 +1,10 @@
 .footer {
-  --line-gap: 28px;
-  /* The space under the line. */
-  --foot: 40px;
   display: flex;
   align-items: center;
-  gap: var(--line-gap);
+  gap: 28px;
   width: var(--column);
   margin: 0 auto;
-  padding: 32px 0 var(--foot);
+  padding: 32px 0 40px;
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
@@ -24,21 +21,10 @@
   color: var(--brass);
 }
 
-/* The icon links, below 960px: from there up they are the running margin's,
-   and they end the page docked in the slot (components/margin). */
+/* The icon links, below 960px: from there up the running margin has them. */
 .social {
   --gap: 24px;
   display: none;
-}
-
-/* The slot: four icons in a row, 24px apart, centered between the colophon
-   and the email and on the line, whatever the line's height. Empty: the
-   icons over it are the margin's. */
-.slot {
-  display: none;
-  width: 152px;
-  height: 20px;
-  margin: -10px auto;
 }
 
 @media (max-width: 959px) {
@@ -47,43 +33,13 @@
   }
 }
 
+/* From 960px up the footer is one line of text, and its height is the token
+   the running margin's icons stand on (tokens.css). */
 @media (min-width: 960px) {
-  .colophon {
-    margin-right: 0;
+  .footer {
+    box-sizing: border-box;
+    height: var(--footer-height);
   }
-
-  .slot {
-    display: block;
-  }
-}
-
-/* The ghost (FooterGhost): the same line with the free space given to two
-   boxes rather than the slot's margins, half each, so the lead ends where
-   the slot begins. Shown only where the margin shows it, from 960px up. */
-.ghost {
-  gap: 0;
-}
-
-.ghost .slot {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.lead {
-  position: relative;
-  flex: 1 1 auto;
-  padding-right: var(--line-gap);
-}
-
-.rest {
-  display: flex;
-  flex: 1 1 auto;
-  gap: var(--line-gap);
-  padding-left: var(--line-gap);
-}
-
-.unseen {
-  visibility: hidden;
 }
 
 /* Phone: email on its own row, the icons on the next, then the colophon and

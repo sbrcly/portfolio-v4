@@ -5,7 +5,6 @@ import {
   getCurrentChapter,
   subscribeChapter,
 } from "@/components/chapters/current-chapter";
-import { FooterGhost } from "@/components/footer/Footer";
 import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
 import SocialIcons from "@/components/social/SocialIcons";
 import { planMargin, type MarginChapter } from "./glyphs";
@@ -36,24 +35,13 @@ const LOAD_MS = 300;
  * Numeral and label are decorative and hidden from assistive
  * technology. The icon links are not: they are the one part of the margin
  * that is read, focused, and clicked. They stand stacked on the margin's
- * axis at the viewport's foot, and over the page's last stretch of scroll
- * they travel to the footer's empty slot and stay over it, still fixed
- * (margin.module.css has the window).
+ * axis and never move: pinned where they clear the footer by 40px when the
+ * page ends.
  */
-export default function Margin({
-  chapters,
-  dockFrom,
-}: {
-  chapters: MarginChapter[];
-  /** The chapter whose top on the midline opens the dock's window. Without
-      one, the window is the page's last viewport height of scroll. */
-  dockFrom?: string;
-}) {
+export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
   const root = useRef<HTMLDivElement>(null);
   const head = useRef<HTMLDivElement>(null);
   const plan = useMemo(() => planMargin(chapters), [chapters]);
-  // The chapter's position: its data-chapter, and its timeline's number.
-  const dockChapter = chapters.findIndex((chapter) => chapter.id === dockFrom);
 
   useEffect(() => {
     const rootEl = root.current;
@@ -84,7 +72,7 @@ export default function Margin({
     // stopping at the chapter's center, the first chapter's lead not opening
     // before the page scrolls, the trail ending with the page, and every
     // boundary done by the page's end.
-    // Reduced motion steps at the boundary. The dock's progress likewise.
+    // Reduced motion steps at the boundary.
     let stopFrames: (() => void) | undefined;
     if (!hasViewTimelines()) {
       const sections = [
@@ -146,18 +134,6 @@ export default function Margin({
 
           write(`--boundary-${incoming.dataset.chapter}`, progress);
         });
-
-        const dockEnd = end > 0 ? within(window.scrollY, end - height, end) : 0;
-        let dock = dockEnd;
-        if (dockChapter > 0 && sections[dockChapter]) {
-          const top = sections[dockChapter].getBoundingClientRect().top;
-          const dockStart = within(half - top, 0, height);
-          dock = Math.max(
-            dockStart / Math.max(dockStart + 1 - dockEnd, 0.0001),
-            within(dockEnd, 0.9, 1)
-          );
-        }
-        write("--dock", reduced.matches ? +(dock > 0.5) : dock);
       });
     }
 
@@ -165,7 +141,7 @@ export default function Margin({
       unsubscribeChapter();
       stopFrames?.();
     };
-  }, [plan, dockChapter]);
+  }, [plan]);
 
   const glyphs = plan.glyphs.map(({ char, before, opacity, width }, index) => (
     <span key={index} className={styles.run}>
@@ -219,21 +195,7 @@ export default function Margin({
             ))}
           </span>
         </div>
-      </div>
-      <div
-        className={styles.dock}
-        data-from={dockChapter > 0 ? "" : undefined}
-        style={
-          dockChapter > 0
-            ? ({
-                "--dock-timeline": `--chapter-${dockChapter}`,
-              } as React.CSSProperties)
-            : undefined
-        }
-      >
-        <FooterGhost>
-          <SocialIcons className={styles.social} />
-        </FooterGhost>
+        <SocialIcons className={styles.social} />
       </div>
     </div>
   );

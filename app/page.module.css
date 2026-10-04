@@ -16,8 +16,9 @@
    a chapter's first element is whatever opens its measure, and the top
    padding is short by how far into the measure that is.
 
-   I About. The block from the name to the fact row starts on the top line:
-   at load the name's top edge is level with the running margin's numeral's.
+   I About. The block from the name to the last paragraph starts on the top
+   line: at load the name's top edge is level with the running margin's
+   numeral's.
    The name opens 40px into the measure (the measure's 12px and the
    statement's 28px).
 
@@ -50,39 +51,6 @@
   line-height: 1.55;
   color: var(--muted);
   text-wrap: pretty;
-}
-
-.facts {
-  display: flex;
-  gap: 48px;
-  margin-top: 48px;
-  padding-top: 20px;
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: var(--mono-size);
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-}
-
-.facts dt {
-  font-size: var(--mono-small-size);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.facts a {
-  text-decoration-color: var(--rule);
-}
-
-.facts a:hover,
-.facts a:focus-visible {
-  text-decoration-color: currentColor;
-}
-
-/* Joins the two lines of a value when the line break is dropped on phone. */
-.join {
-  display: none;
 }
 
 /* III Contact. No statement: the email opens the measure, 28px under its
@@ -123,23 +91,6 @@
     gap: 16px;
     font-size: var(--body-size);
     line-height: var(--body-leading);
-  }
-
-  .facts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 32px;
-    padding-top: 16px;
-    letter-spacing: 0;
-  }
-
-  .softBreak {
-    display: none;
-  }
-
-  .join {
-    display: inline;
   }
 
   .contactEmail {
