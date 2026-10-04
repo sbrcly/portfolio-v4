@@ -6,7 +6,8 @@ type Props = {
   label: string;
   /** id for the h2; the enclosing section points aria-labelledby at it. */
   headingId: string;
-  statement: string;
+  /** The measure's opening line. Without one it opens with its children. */
+  statement?: string;
   children?: React.ReactNode;
 };
 
@@ -28,7 +29,7 @@ export default function ChapterOpener({
         </h2>
       </div>
       <div className={styles.measure} data-fade="">
-        <p className={styles.statement}>{statement}</p>
+        {statement && <p className={styles.statement}>{statement}</p>}
         {children}
       </div>
     </div>

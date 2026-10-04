@@ -38,23 +38,56 @@
   gap: 12px;
 }
 
-/* The icon links, pinned 40px above the viewport's bottom. No left or right:
-   the block keeps the place it has in the column, on its left edge. The one
-   part of the margin that takes the pointer. Off below 620px of height,
-   where it would run into the numeral. */
-.social {
-  --gap: 20px;
+/* The icon links. A copy of the footer's line (FooterGhost), nothing in it
+   seen, lies on the viewport's bottom edge, where the footer itself is when
+   the page ends; the icons are placed in its lead, whose right edge is the
+   slot's left. Off below 620px of height, where the stack would run into
+   the numeral. */
+.dock {
   position: fixed;
-  bottom: 40px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: none;
-  flex-direction: column;
-  pointer-events: auto;
 }
 
 @media (min-height: 620px) {
-  .social {
-    display: flex;
+  .dock {
+    display: block;
   }
+}
+
+/* Each icon is placed by hand, a straight line in --dock from its place in
+   the stack (0) to its place in the slot (1). The stack: centered on the
+   margin's axis, 20px apart, the last icon 40px above the viewport's bottom.
+   The slot: a row from the lead's right edge, 24px apart, centered on the
+   line. The list has no size, so only the links take the pointer; the one
+   part of the margin that does. */
+.social {
+  --stack-gap: 20px;
+  --row-gap: 24px;
+  /* The targets go on meeting as the icons move apart. */
+  --gap: calc(
+    var(--stack-gap) + var(--dock) * (var(--row-gap) - var(--stack-gap))
+  );
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--dock) * 100% + (1 - var(--dock)) * (var(--axis) - 10px));
+  pointer-events: auto;
+}
+
+/* The lead's bottom edge is the line's, --foot above the viewport's. */
+.social li {
+  position: absolute;
+  left: calc(var(--dock) * var(--index) * (20px + var(--row-gap)));
+  bottom: calc(
+    var(--dock) * (50% - 10px) + (1 - var(--dock)) *
+      (
+        40px - var(--foot) + (var(--count) - 1 - var(--index)) *
+          (20px + var(--stack-gap))
+      )
+  );
 }
 
 .numeral {
@@ -261,6 +294,64 @@
       --boundary-4: var(--lead-4);
       --boundary-5: var(--lead-5);
     }
+  }
+}
+
+/* The dock's progress. Its window ends where the page does, and opens one
+   viewport height of scroll before that, or, given a chapter (Margin.tsx
+   sets data-from and the chapter's timeline), with that chapter's top on the
+   viewport's midline: the boundary the numeral turns on. A window that opens
+   on a chapter is two halves, each a viewport height of scroll long: from
+   its opening on, on the chapter's timeline, and up to the page's end, on
+   the root's. Inside both, the first over the first plus what is left of the
+   second is the scroll's place in the window, linear from one end to the
+   other. The window is never shorter than the page's last tenth of a
+   viewport, so a page that ends before the chapter's top reaches the midline
+   still ends docked. */
+@supports (animation-timeline: view()) {
+  .dock {
+    animation: dock-end linear both;
+    animation-timeline: scroll(root);
+    animation-range-start: calc(100% - 100svh);
+    animation-range-end: 100%;
+    --dock-window: var(--dock-end);
+    --dock: var(--dock-window);
+  }
+
+  .dock[data-from] {
+    animation: dock-start linear both, dock-end linear both;
+    animation-timeline: var(--dock-timeline), scroll(root);
+    animation-range-start: cover 50svh, calc(100% - 100svh);
+    animation-range-end: cover 150svh, 100%;
+    --dock-window: max(
+      var(--dock-start) / max(var(--dock-start) + 1 - var(--dock-end), 0.0001),
+      clamp(0, (var(--dock-end) - 0.9) * 10, 1)
+    );
+  }
+
+  /* Reduced motion: one jump, at the window's midpoint. */
+  @media (prefers-reduced-motion: reduce) {
+    .dock {
+      --dock: clamp(0, (var(--dock-window) - 0.5) * 100000, 1);
+    }
+  }
+}
+
+@keyframes dock-start {
+  from {
+    --dock-start: 0;
+  }
+  to {
+    --dock-start: 1;
+  }
+}
+
+@keyframes dock-end {
+  from {
+    --dock-end: 0;
+  }
+  to {
+    --dock-end: 1;
   }
 }
 

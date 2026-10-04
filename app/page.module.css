@@ -53,11 +53,12 @@
   display: none;
 }
 
-/* IV Contact */
+/* IV Contact. No statement: the email opens the measure, 28px under its
+   rule (the measure's own 12px and this margin). */
 
 .contactEmail {
   display: inline-block;
-  margin-top: 24px;
+  margin-top: 16px;
   font-weight: 200;
   font-size: 48px;
   line-height: normal;
@@ -109,7 +110,6 @@
   }
 
   .contactEmail {
-    margin-top: 16px;
     font-size: 26px;
     word-break: break-all;
   }

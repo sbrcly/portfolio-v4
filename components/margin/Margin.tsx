@@ -9,6 +9,7 @@ import {
   getLightTarget,
   subscribeLightTarget,
 } from "@/components/light/handover";
+import { FooterGhost } from "@/components/footer/Footer";
 import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
 import SocialIcons from "@/components/social/SocialIcons";
 import { planMargin, type MarginChapter } from "./glyphs";
@@ -101,14 +102,27 @@ const litEntry = () =>
  * and back in after it. The second line keeps the light's timing.
  *
  * Numeral, label, and entry are decorative and hidden from assistive
- * technology. The icon links pinned at the column's foot are not: they are
- * the one part of the margin that is read, focused, and clicked.
+ * technology. The icon links are not: they are the one part of the margin
+ * that is read, focused, and clicked. They stand stacked on the margin's
+ * axis at the viewport's foot, and over the page's last stretch of scroll
+ * they travel to the footer's empty slot and stay over it, still fixed
+ * (margin.module.css has the window).
  */
-export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
+export default function Margin({
+  chapters,
+  dockFrom,
+}: {
+  chapters: MarginChapter[];
+  /** The chapter whose top on the midline opens the dock's window. Without
+      one, the window is the page's last viewport height of scroll. */
+  dockFrom?: string;
+}) {
   const root = useRef<HTMLDivElement>(null);
   const head = useRef<HTMLDivElement>(null);
   const entry = useRef<HTMLSpanElement>(null);
   const plan = useMemo(() => planMargin(chapters), [chapters]);
+  // The chapter's position: its data-chapter, and its timeline's number.
+  const dockChapter = chapters.findIndex((chapter) => chapter.id === dockFrom);
 
   useEffect(() => {
     const rootEl = root.current;
@@ -144,7 +158,7 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
     // the rules in margin.module.css: the lead on the outgoing chapter, the
     // trail on the incoming one until its top is under the frame, each
     // stopping at the chapter's center, and the trail ending with the page.
-    // Reduced motion steps at the boundary.
+    // Reduced motion steps at the boundary. The dock's progress likewise.
     let stopFrames: (() => void) | undefined;
     if (!hasViewTimelines()) {
       const sections = [
@@ -154,6 +168,12 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
       const within = (value: number, from: number, to: number) =>
         Math.min(1, Math.max(0, (value - from) / (to - from)));
+      const write = (name: string, progress: number) => {
+        const value = String(+progress.toFixed(4));
+        if (rootEl.style.getPropertyValue(name) !== value) {
+          rootEl.style.setProperty(name, value);
+        }
+      };
 
       stopFrames = onScrollFrame(() => {
         if (!wide.matches) return;
@@ -188,12 +208,20 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
                 Math.max(trail, trail / Math.max(trail + 1 - pageEnd, 0.0001))) /
               2;
 
-          const name = `--boundary-${incoming.dataset.chapter}`;
-          const value = String(+progress.toFixed(4));
-          if (rootEl.style.getPropertyValue(name) !== value) {
-            rootEl.style.setProperty(name, value);
-          }
+          write(`--boundary-${incoming.dataset.chapter}`, progress);
         });
+
+        const dockEnd = end > 0 ? within(window.scrollY, end - height, end) : 0;
+        let dock = dockEnd;
+        if (dockChapter > 0 && sections[dockChapter]) {
+          const top = sections[dockChapter].getBoundingClientRect().top;
+          const dockStart = within(half - top, 0, height);
+          dock = Math.max(
+            dockStart / Math.max(dockStart + 1 - dockEnd, 0.0001),
+            within(dockEnd, 0.9, 1)
+          );
+        }
+        write("--dock", reduced.matches ? +(dock > 0.5) : dock);
       });
     }
 
@@ -203,7 +231,7 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
       entryFader.stop();
       stopFrames?.();
     };
-  }, [plan]);
+  }, [plan, dockChapter]);
 
   const glyphs = plan.glyphs.map(({ char, before, opacity, width }, index) => (
     <span key={index} className={styles.run}>
@@ -263,7 +291,21 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
           data-phase="in"
           aria-hidden="true"
         />
-        <SocialIcons className={styles.social} />
+      </div>
+      <div
+        className={styles.dock}
+        data-from={dockChapter > 0 ? "" : undefined}
+        style={
+          dockChapter > 0
+            ? ({
+                "--dock-timeline": `--chapter-${dockChapter}`,
+              } as React.CSSProperties)
+            : undefined
+        }
+      >
+        <FooterGhost>
+          <SocialIcons className={styles.social} />
+        </FooterGhost>
       </div>
     </div>
   );

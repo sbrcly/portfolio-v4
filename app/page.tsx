@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <Frame />
-      <Margin chapters={MARGIN} />
+      <Margin chapters={MARGIN} dockFrom="iv" />
       <main id="content">
         <Hero />
 
@@ -110,7 +110,6 @@ export default function Home() {
             numeral="IV"
             label="Contact"
             headingId="h-iv"
-            statement="Email is the only channel."
           >
             <a
               href={`mailto:${EMAIL}`}
