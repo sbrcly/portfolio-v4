@@ -10,6 +10,7 @@ import {
   subscribeLightTarget,
 } from "@/components/light/handover";
 import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
+import SocialIcons from "@/components/social/SocialIcons";
 import { planMargin, type MarginChapter } from "./glyphs";
 import styles from "./margin.module.css";
 
@@ -98,6 +99,10 @@ const litEntry = () =>
  *
  * Only a chapter with nothing to show is timed: the margin fades out in it
  * and back in after it. The second line keeps the light's timing.
+ *
+ * Numeral, label, and entry are decorative and hidden from assistive
+ * technology. The icon links pinned at the column's foot are not: they are
+ * the one part of the margin that is read, focused, and clicked.
  */
 export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
   const root = useRef<HTMLDivElement>(null);
@@ -229,12 +234,13 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
   );
 
   return (
-    <div ref={root} className={styles.margin} aria-hidden="true">
+    <div ref={root} className={styles.margin}>
       <div className={styles.column}>
         <div
           ref={head}
           className={styles.head}
           data-blank={plan.chapters[0]?.id !== chapters[0].id}
+          aria-hidden="true"
         >
           <span className={styles.numeral}>
             <span className={styles.axis}>{numeral}</span>
@@ -251,7 +257,13 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
             ))}
           </span>
         </div>
-        <span ref={entry} className={styles.entry} data-phase="in" />
+        <span
+          ref={entry}
+          className={styles.entry}
+          data-phase="in"
+          aria-hidden="true"
+        />
+        <SocialIcons className={styles.social} />
       </div>
     </div>
   );

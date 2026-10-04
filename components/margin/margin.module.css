@@ -38,6 +38,25 @@
   gap: 12px;
 }
 
+/* The icon links, pinned 40px above the viewport's bottom. No left or right:
+   the block keeps the place it has in the column, on its left edge. The one
+   part of the margin that takes the pointer. Off below 620px of height,
+   where it would run into the numeral. */
+.social {
+  --gap: 20px;
+  position: fixed;
+  bottom: 40px;
+  display: none;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+@media (min-height: 620px) {
+  .social {
+    display: flex;
+  }
+}
+
 .numeral {
   /* Holds its height when a chapter has no numeral. */
   position: relative;

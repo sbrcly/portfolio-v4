@@ -1,4 +1,5 @@
 import { EMAIL, RESUME_HREF } from "@/components/frame/chapters";
+import SocialIcons from "@/components/social/SocialIcons";
 import styles from "./footer.module.css";
 
 export default function Footer() {
@@ -8,6 +9,7 @@ export default function Footer() {
       <a href={`mailto:${EMAIL}`} className={styles.email}>
         {EMAIL}
       </a>
+      <SocialIcons className={styles.social} />
       <a href={RESUME_HREF} className={styles.resume}>
         <span className={styles.numeral}>V</span>&nbsp;Resume
       </a>

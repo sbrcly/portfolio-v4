@@ -1,0 +1,34 @@
+/* The placer sets display, direction, and --gap (the space between icons). */
+.list {
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The link reaches half the gap past its icon on every side, so the targets
+   meet without the icons moving. */
+.link {
+  display: block;
+  margin: calc(var(--gap) / -2);
+  padding: calc(var(--gap) / 2);
+  color: var(--text);
+  transition: color 160ms;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--brass);
+}
+
+/* The focus ring stays 4px off the icon, not the target. */
+.link:focus-visible {
+  outline-offset: calc(4px - var(--gap) / 2);
+}
+
+.link svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}

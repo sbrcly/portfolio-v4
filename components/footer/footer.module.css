@@ -22,7 +22,20 @@
   color: var(--brass);
 }
 
-/* Phone: email on its own row, then the colophon and resume link. */
+/* The icon links, below 960px: from there up the running margin has them. */
+.social {
+  --gap: 24px;
+  display: none;
+}
+
+@media (max-width: 959px) {
+  .social {
+    display: flex;
+  }
+}
+
+/* Phone: email on its own row, the icons on the next, then the colophon and
+   resume link. */
 @media (max-width: 719px) {
   .footer {
     display: grid;
@@ -35,6 +48,12 @@
   .email {
     grid-column: 1 / -1;
     grid-row: 1;
+    justify-self: start;
+  }
+
+  .social {
+    grid-column: 1 / -1;
+    grid-row: 2;
     justify-self: start;
   }
 }
