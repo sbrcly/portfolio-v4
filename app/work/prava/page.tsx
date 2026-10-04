@@ -5,11 +5,9 @@ import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
 import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
-import Light from "@/components/light/Light";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
-import PlateLight from "@/components/work/PlateLight";
 import { APP_STORE_URL, PRAVA_SITE_URL } from "@/components/work/links";
 import { PRAVA_SCREENS } from "@/components/work/prava-screens";
 import pravaCockpit from "@/public/images/prava-cockpit.png";
@@ -52,7 +50,6 @@ const PLATE_SIZES =
 const HALF_PLATE_SIZES =
   "(max-width: 719px) 100vw, (max-width: 959px) calc(50vw - 56px), (max-width: 1199px) calc(100vw - 304px), 776px";
 
-// The back-office plates share this chapter's light (see PlateLight below).
 const BACK_OFFICE = "back-office";
 
 // What the running margin reads. Nothing in the title chapter: the margin
@@ -72,7 +69,7 @@ export default function PravaPage() {
       <Frame chapter="iii" />
       <Margin chapters={MARGIN} />
       <main id="content">
-        {/* Title and screens are one chapter. Nothing in it is lit. */}
+        {/* Title and screens are one chapter. */}
         <div id="prava-title" data-chapter="0">
           <section
             className={styles.title}
@@ -132,7 +129,7 @@ export default function PravaPage() {
           </section>
 
           <div className={styles.column} data-fade="">
-            <Plate light={null} className={styles.screens}>
+            <Plate className={styles.screens}>
               {PRAVA_SCREENS.map(({ src, alt, caption }) => (
                 <figure key={caption}>
                   <Image src={src} alt={alt} sizes={SCREEN_SIZES} />
@@ -277,7 +274,7 @@ export default function PravaPage() {
             </div>
           </ChapterOpener>
           <figure className={styles.figure} data-reveal="" data-fade="">
-            <Plate light={BACK_OFFICE}>
+            <Plate>
               <Image
                 src={pravaCockpit}
                 alt="Prava's admin home: a grid of eleven internal tool cards including Analytics, Commitments, Memory Verse, Prayers and Creeds, Lectionary, Teaching, Discovery, Prompt Lab, and more."
@@ -288,7 +285,7 @@ export default function PravaPage() {
           </figure>
           <div className={styles.pair}>
             <figure className={styles.figure} data-reveal="" data-fade="">
-              <Plate light={BACK_OFFICE}>
+              <Plate>
                 <Image
                   src={pravaPromptLab}
                   alt="The Prompt Lab: versioned system prompt surfaces with history, diffs, and drift between database and in-code fallback."
@@ -300,7 +297,7 @@ export default function PravaPage() {
               </figcaption>
             </figure>
             <figure className={styles.figure} data-reveal="" data-fade="">
-              <Plate light={BACK_OFFICE}>
+              <Plate>
                 <Image
                   src={pravaSimulator}
                   alt="The Profile Simulator: a built user profile on the left, simulation results and a scored daily selection preview on the right."
@@ -352,8 +349,6 @@ export default function PravaPage() {
         </section>
       </main>
       <Footer />
-      <Light />
-      <PlateLight chapter={BACK_OFFICE} />
       <Reveals />
       <Fade />
     </>

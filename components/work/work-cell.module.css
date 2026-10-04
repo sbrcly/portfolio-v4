@@ -18,7 +18,7 @@
   object-position: left;
 }
 
-/* A pending project's plate: the surface, labeled, at the resting rim. */
+/* A pending project's plate: the surface, labeled. */
 .slot {
   background: var(--surface);
 }
@@ -36,33 +36,15 @@
   color: var(--muted);
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  margin-top: 16px;
-}
-
 .name {
+  margin-top: 16px;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.3;
 }
 
-.year {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: var(--mono-size);
-  line-height: normal;
-  letter-spacing: 0.06em;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--muted);
-}
-
 .sentence,
-.links {
+.spec {
   color: var(--muted);
 }
 
@@ -73,7 +55,8 @@
   text-wrap: pretty;
 }
 
-.links {
+/* The stack, then any links on the line under it. */
+.spec {
   margin-top: 8px;
   font-family: var(--font-mono);
   font-weight: 400;

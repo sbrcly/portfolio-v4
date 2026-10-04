@@ -23,19 +23,20 @@ export type Plate =
   /** The origin-boundary diagram (ExtensionDiagram). */
   | { kind: "diagram" };
 
+/** What a project is built with. A placeholder is a guess to correct. */
+export type Stack = { items: string[]; placeholder?: true };
+
 export type Project = {
   /** The anchor, "work-prava", and the heading's id. */
   id: string;
-  /** The title. A lit entry's name is the running margin's second line. */
   name: string;
   sentence: string;
-  /** The sentence, and the year where it is new, stand in for real copy. */
+  /** The sentence stands in for real copy. */
   placeholder?: true;
-  year: string;
-  /** An entry's meta line after the year. */
+  /** An entry's meta line. */
   detail?: string;
   plate?: Plate;
-  /** No screenshot yet: the cell shows a labeled slot that never lights. */
+  /** No screenshot yet: the cell shows a labeled slot. */
   pending?: true;
   /** The case study's route. The title links to it too. */
   caseStudy?: string;
@@ -45,8 +46,8 @@ export type Project = {
   verify?: { label: string; href: string };
   /** Plain text in the links' place. */
   note?: string;
-  /** Mono stack run, entries only. */
-  stack?: string;
+  /** The mono line under the sentence, items joined with " · ". */
+  stack: Stack;
 };
 
 export type Hero = Project & { plate: Plate; pending?: never };
@@ -75,7 +76,6 @@ export const EMPLOYERS: Employer[] = [
       {
         id: "prava",
         name: "Prava",
-        year: "2025 to now",
         detail: "iOS · live on the App Store",
         plate: {
           kind: "screens",
@@ -83,14 +83,15 @@ export const EMPLOYERS: Employer[] = [
         },
         sentence:
           "An iOS prayer and scripture app built around the Church's week rather than a streak. Thirteen AI surfaces read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.",
-        stack: "TypeScript · Next.js · Capacitor · Postgres · Anthropic API",
+        stack: {
+          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
+        },
         caseStudy: "/work/prava",
         verify: { label: "App Store", href: APP_STORE_URL },
       },
       {
         id: "prompt-lab",
         name: "Prompt Lab",
-        year: "2025",
         detail: "back office · internal",
         plate: {
           kind: "image",
@@ -100,32 +101,49 @@ export const EMPLOYERS: Employer[] = [
         placeholder: true,
         sentence:
           "Where Prava's prompts are versioned and checked against their fallbacks.",
+        // Prava's stack, assumed shared.
+        stack: {
+          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
+          placeholder: true,
+        },
       },
       {
         id: "analytics-dashboard",
         name: "Analytics dashboard",
-        year: "2025",
         pending: true,
         placeholder: true,
         sentence:
           "Where Prava's usage and AI cost are measured rather than assumed.",
+        // Prava's stack, assumed shared.
+        stack: {
+          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
+          placeholder: true,
+        },
       },
       {
         id: "lectionary-authoring-tool",
         name: "Lectionary authoring tool",
-        year: "2025",
         pending: true,
         placeholder: true,
         sentence:
           "Where the readings for the Church's week are entered and checked.",
+        // Prava's stack, assumed shared.
+        stack: {
+          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
+          placeholder: true,
+        },
       },
       {
         id: "commitment-library",
         name: "Commitment library",
-        year: "2025",
         pending: true,
         placeholder: true,
         sentence: "The commitments the app offers, written and kept in one place.",
+        // Prava's stack, assumed shared.
+        stack: {
+          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
+          placeholder: true,
+        },
       },
     ],
   },
@@ -139,21 +157,22 @@ export const EMPLOYERS: Employer[] = [
       {
         id: "marketplace-extension",
         name: "Marketplace extension",
-        year: "2023 to 2025",
         detail: "ticket brokerage · proprietary",
         plate: { kind: "diagram" },
         sentence:
           "A Chrome extension that runs inside Ticketmaster and other marketplaces. Cross-origin messaging and DOM automation against sites built to resist it.",
-        stack: "Chrome MV3 · TypeScript · Node",
+        stack: { items: ["Chrome MV3", "TypeScript", "Node"] },
         note: "Walkthrough on request",
       },
       {
         id: "pricing-portal",
         name: "Pricing portal",
-        year: "2022 to 2026",
         pending: true,
         placeholder: true,
         sentence: "Where buyers write the purchase rules the extension reads.",
+        // No old site records the portal's stack; this is the extension's,
+        // less the Chrome part.
+        stack: { items: ["TypeScript", "Node"], placeholder: true },
       },
     ],
   },
@@ -167,18 +186,16 @@ export const EMPLOYERS: Employer[] = [
       {
         id: "live-odds-console",
         name: "Live odds console",
-        year: "2022",
         detail: "sportsbook trading desk · 33 s recording",
         plate: { kind: "video" },
         sentence:
           "Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk.",
-        stack: "Node · Socket.io · BigQuery · MySQL",
+        stack: { items: ["Node", "Socket.io", "BigQuery", "MySQL"] },
         writeUp: "Odds-Display-Public",
       },
       {
         id: "arbitrage-detector",
         name: "Arbitrage detector",
-        year: "2022",
         detail: "about fifty books · one-minute cycle",
         plate: {
           kind: "image",
@@ -187,13 +204,12 @@ export const EMPLOYERS: Employer[] = [
         },
         sentence:
           "Every market the book offered, compared against about fifty competitors. Any price a bettor could lock in from both sides is flagged so a trader can move the line first.",
-        stack: "Node · Socket.io · MySQL · GCP",
+        stack: { items: ["Node", "Socket.io", "MySQL", "GCP"] },
         writeUp: "Arbitrage-Public",
       },
       {
         id: "trading-schedule",
         name: "Trading schedule",
-        year: "2022",
         plate: {
           kind: "image",
           src: tradingSchedule,
@@ -201,7 +217,7 @@ export const EMPLOYERS: Employer[] = [
         },
         sentence:
           "Pulls every game from the data feeds and assigns traders by shift and league coverage. A game nobody owns stays flagged until someone takes it.",
-        stack: "Node · Express · MySQL · feed APIs",
+        stack: { items: ["Node", "Express", "MySQL", "feed APIs"] },
         writeUp: "Trading-Schedule-Public",
       },
     ],

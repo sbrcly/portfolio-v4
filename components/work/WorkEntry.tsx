@@ -43,12 +43,11 @@ function ProjectPlate({
   }
 }
 
-/** An employer's hero project: title row, plate, sentence, spec run. */
+/** An employer's hero project: title row, plate, sentence, stack, links. */
 export default function WorkEntry({ project }: { project: Hero }) {
-  const { id, name, year, detail, plate, sentence, stack, caseStudy } = project;
+  const { id, name, detail, plate, sentence, stack, caseStudy } = project;
   const headingId = `w-${id}`;
   const summaryId = `${headingId}-summary`;
-  const links = hasLinks(project);
 
   return (
     <article
@@ -62,9 +61,7 @@ export default function WorkEntry({ project }: { project: Hero }) {
         <h4 id={headingId} className={styles.title}>
           {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
         </h4>
-        <span className={styles.meta}>
-          {detail ? `${year} · ${detail}` : year}
-        </span>
+        {detail && <span className={styles.meta}>{detail}</span>}
       </div>
       <div className={styles.media}>
         <ProjectPlate plate={plate} describedBy={summaryId} />
@@ -73,13 +70,15 @@ export default function WorkEntry({ project }: { project: Hero }) {
         <p id={summaryId} className={styles.sentence}>
           {sentence}
         </p>
-        {(stack || links) && (
-          <div className={styles.spec}>
-            {stack}
-            {stack && links && <br />}
-            {links && <ProjectLinks project={project} />}
-          </div>
-        )}
+        <div className={styles.spec}>
+          {stack.items.join(" · ")}
+          {hasLinks(project) && (
+            <>
+              <br />
+              <ProjectLinks project={project} />
+            </>
+          )}
+        </div>
       </div>
     </article>
   );

@@ -13,12 +13,11 @@ const CELL_SIZES =
   "(max-width: 719px) 100vw, (max-width: 959px) calc(-48px + 50vw), (max-width: 1199px) calc(-168px + 50vw), 372px";
 
 /**
- * A project in an employer's grid: a 16:10 plate, the name and year on one
- * line, the sentence. A pending project has a labeled slot for a plate,
- * which never takes the light.
+ * A project in an employer's grid: a 16:10 plate, the name, the sentence,
+ * the stack, any links. A pending project has a labeled slot for a plate.
  */
 export default function WorkCell({ project }: { project: Cell }) {
-  const { id, name, year, sentence, plate, caseStudy } = project;
+  const { id, name, sentence, stack, plate, caseStudy } = project;
   return (
     <li
       id={`work-${id}`}
@@ -31,22 +30,23 @@ export default function WorkCell({ project }: { project: Cell }) {
           <Image src={plate.src} alt={plate.alt} fill sizes={CELL_SIZES} />
         </Plate>
       ) : (
-        <Plate className={`${styles.plate} ${styles.slot}`} light={null}>
+        <Plate className={`${styles.plate} ${styles.slot}`}>
           <span className={styles.slotLabel}>Screenshot pending</span>
         </Plate>
       )}
-      <div className={styles.head}>
-        <h4 className={styles.name}>
-          {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
-        </h4>
-        <span className={styles.year}>{year}</span>
-      </div>
+      <h4 className={styles.name}>
+        {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
+      </h4>
       <p className={styles.sentence}>{sentence}</p>
-      {hasLinks(project) && (
-        <p className={styles.links}>
-          <ProjectLinks project={project} />
-        </p>
-      )}
+      <p className={styles.spec}>
+        {stack.items.join(" · ")}
+        {hasLinks(project) && (
+          <>
+            <br />
+            <ProjectLinks project={project} />
+          </>
+        )}
+      </p>
     </li>
   );
 }

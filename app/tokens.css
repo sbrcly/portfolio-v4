@@ -16,10 +16,6 @@
 
   /* Light. Glow goes on lit text (text-shadow) and the lit rule (box-shadow). */
   --glow: 0 0 8px rgba(243, 199, 126, 0.6), 0 0 24px rgba(224, 174, 98, 0.35);
-  --rim-resting: 0 0 0 1px rgba(224, 174, 98, 0.35),
-    0 0 72px rgba(224, 174, 98, 0.1);
-  --rim-lit: 0 0 0 1px rgba(224, 174, 98, 0.6),
-    0 0 96px rgba(224, 174, 98, 0.18);
 
   /* Type families (variables set by next/font in app/layout.tsx) */
   --font-serif: var(--font-spectral), Georgia, serif;

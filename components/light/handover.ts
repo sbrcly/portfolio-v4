@@ -8,61 +8,13 @@ import {
  * the lit one carries data-lit="true", which drives its --light property
  * (see globals.css). Handover: the outgoing light cools, nothing is lit for
  * a beat, then the incoming light warms. They never overlap. A chapter with
- * no such element (I and II on the home page, the title on the Prava page)
- * has nothing lit: entering it only cools, and leaving it only warms.
+ * no such element (every one but IV, whose email is lit) has nothing lit:
+ * entering it only cools, and leaving it only warms.
  */
 const COOL_MS = 400;
 const DARK_MS = 200;
 
-type Resolver = () => HTMLElement | null;
-
-const resolvers = new Map<string, Resolver>();
-let update: (() => void) | null = null;
-
-// The element the light is on or on its way to. It changes the moment a
-// handover starts, so a reader of it (the running margin's second line) can
-// keep the same timing as the light itself.
-let target: HTMLElement | null = null;
-const targetListeners = new Set<() => void>();
-
-function setTarget(next: HTMLElement | null) {
-  if (next === target) return;
-  target = next;
-  targetListeners.forEach((listener) => listener());
-}
-
-export function subscribeLightTarget(listener: () => void) {
-  targetListeners.add(listener);
-  return () => {
-    targetListeners.delete(listener);
-  };
-}
-
-export function getLightTarget() {
-  return target;
-}
-
-/**
- * Lets a chapter with several candidates choose its own lit element (the
- * work plates in chapter III, the back-office plates on the Prava page). Call requestLightUpdate() when the choice
- * changes.
- */
-export function setLightResolver(chapter: string, resolver: Resolver) {
-  resolvers.set(chapter, resolver);
-  update?.();
-  return () => {
-    resolvers.delete(chapter);
-    update?.();
-  };
-}
-
-export function requestLightUpdate() {
-  update?.();
-}
-
 function targetFor(chapter: string) {
-  const resolver = resolvers.get(chapter);
-  if (resolver) return resolver();
   return document.querySelector<HTMLElement>(`[data-light="${chapter}"]`);
 }
 
@@ -73,7 +25,7 @@ export function startLight() {
   let timer: number | undefined;
 
   const run = () => {
-    setTarget(targetFor(getCurrentChapter()));
+    const target = targetFor(getCurrentChapter());
     if (target === lit) return;
 
     if (lit) {
@@ -89,7 +41,6 @@ export function startLight() {
 
     timer = window.setTimeout(() => {
       const next = targetFor(getCurrentChapter());
-      setTarget(next);
       if (!next) return;
       next.setAttribute("data-lit", "true");
       lit = next;
@@ -110,7 +61,6 @@ export function startLight() {
     .querySelectorAll("[data-light]")
     .forEach((el) => visibility.observe(el));
 
-  update = run;
   const unsubscribe = subscribeChapter(run);
   run();
 
@@ -118,7 +68,5 @@ export function startLight() {
     visibility.disconnect();
     unsubscribe();
     window.clearTimeout(timer);
-    update = null;
-    setTarget(null);
   };
 }

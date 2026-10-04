@@ -27,9 +27,8 @@ rebuild started from.
 ## Tokens
 
 `app/tokens.css` is the single source for the palette (ground, surface,
-rule, dim numeral, text, muted, brass, lit), the glow and plate-rim shadow
-recipes, the spacing scale, the type scale, and the layout widths (column,
-frame). Each breakpoint redefines the same custom properties, so
+rule, dim numeral, text, muted, brass, lit), the glow recipe, the spacing
+scale, the type scale, and the layout widths (column, frame). Each breakpoint redefines the same custom properties, so
 components read a token and never repeat a media query for it.
 
 `app/globals.css` holds the reset, the link and focus styles, the skip link,
@@ -43,17 +42,14 @@ so nothing keyframes a shadow. `components/chapters/current-chapter.ts`
 tracks which chapter is crossing the middle of the viewport with a single
 IntersectionObserver, and `components/light/handover.ts` moves the light:
 the outgoing element cools over 400 ms, nothing is lit for 200 ms, and the
-incoming one warms over 600 ms, never overlapping. Chapters with several
-candidates (the work plates, the back-office plates on the Prava page) pick
-the plate nearest the viewport center in `components/work/plate-light.ts`. A
-playing video holds the light on its own plate until it ends.
+incoming one warms over 600 ms, never overlapping. The contact email in
+chapter IV is the only element that takes it. Plates have a one-pixel rim in
+the rule color and nothing more, in every state.
 
 Each work entry has an anchor, `work-01` to `work-05`, and the hero
 statement links to three of them (`components/text-link/`, Spectral 400 in
 the text color inside a muted 300 paragraph, no underline). A jump to an entry lands its title row under the frame
-(the page's scroll padding), sets chapter III at once, and sends the light
-to that entry's plate for the length of the scroll, so nothing passed on the
-way is lit.
+(the page's scroll padding) and sets chapter III at once.
 
 ## Scroll-driven motion
 
@@ -96,7 +92,7 @@ components/
   frame/                      Sticky frame, nav table
   hero/, chapter-opener/      Chapter I and the opener used everywhere else
   work/                       Work entries, plates, video plate, diagram
-  margin/                     Running margin: numeral, label, lit entry
+  margin/                     Running margin: numeral, label, icon links
   light/, chapters/, reveals/, fade/, scroll/
   text-link/                  Link inside running text
   footer/

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import posterSmall from "@/public/images/odds-console-poster-1200.webp";
 import posterFull from "@/public/images/odds-console-poster.webp";
-import { forcePlateLit, restPlate } from "./plate-light";
 import plate from "./plate.module.css";
 import styles from "./video-plate.module.css";
 
@@ -31,8 +30,8 @@ function clock(seconds: number) {
 /**
  * The live odds console's plate: the odds console recording. The whole plate is the
  * button. Three visual states: resting (poster, ring, meta), playing (ring
- * and meta gone, rim lit, bar on hover or focus), ended (last frame held,
- * ring back, meta reads Replay).
+ * and meta gone, bar on hover or focus), ended (last frame held, ring back,
+ * meta reads Replay).
  */
 export default function VideoPlate({ describedBy }: { describedBy?: string }) {
   const button = useRef<HTMLButtonElement>(null);
@@ -87,7 +86,6 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
     return () => {
       observer.disconnect();
       window.clearTimeout(barTimer.current);
-      forcePlateLit(null);
     };
   }, [poster]);
 
@@ -115,22 +113,10 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
     );
   };
 
-  const onPlay = () => {
-    setState("playing");
-    forcePlateLit(button.current);
-  };
-
   const onPause = () => {
     // The pause that precedes "ended" is handled there.
     if (video.current?.ended) return;
     setState("paused");
-    forcePlateLit(null);
-  };
-
-  const onEnded = () => {
-    setState("ended");
-    forcePlateLit(null);
-    if (button.current) restPlate(button.current);
   };
 
   const playing = state === "playing";
@@ -141,7 +127,6 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
       ref={button}
       type="button"
       className={`${plate.plate} ${styles.video}`}
-      data-light="iii"
       data-state={state}
       data-bar={barShown ? "true" : undefined}
       aria-label={
@@ -163,9 +148,9 @@ export default function VideoPlate({ describedBy }: { describedBy?: string }) {
           muted
           playsInline
           preload="metadata"
-          onPlay={onPlay}
+          onPlay={() => setState("playing")}
           onPause={onPause}
-          onEnded={onEnded}
+          onEnded={() => setState("ended")}
           onTimeUpdate={(event) => setTime(event.currentTarget.currentTime)}
           onLoadedMetadata={(event) =>
             setDuration(event.currentTarget.duration)

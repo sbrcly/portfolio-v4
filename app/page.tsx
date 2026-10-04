@@ -7,7 +7,6 @@ import Hero from "@/components/hero/Hero";
 import Light from "@/components/light/Light";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
-import PlateLight from "@/components/work/PlateLight";
 import Work from "@/components/work/Work";
 import styles from "./page.module.css";
 
@@ -124,7 +123,6 @@ export default function Home() {
       </main>
       <Footer />
       <Light />
-      <PlateLight />
       <Reveals />
       <Fade />
     </>

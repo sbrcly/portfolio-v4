@@ -22,8 +22,6 @@ const QUIET_MS = 150; // scroll end, where there is no scrollend event
 
 let current = "i";
 let chapters: HTMLElement[] = [];
-// The anchor a jump is heading to, from the jump until its scroll ends.
-let jumpTarget: HTMLElement | null = null;
 let stop: (() => void) | null = null;
 const listeners = new Set<() => void>();
 
@@ -55,14 +53,7 @@ function start() {
   const settle = () => {
     window.clearTimeout(quietTimer);
     jumping = false;
-    const arrived = jumpTarget;
-    jumpTarget = null;
-    const held = current;
     set(resolve());
-    // The light follows a jump's target, so the end of one is news to it
-    // even when the chapter has not changed.
-    if (arrived && current === held)
-      listeners.forEach((listener) => listener());
   };
   const settleSoon = () => {
     window.clearTimeout(quietTimer);
@@ -82,7 +73,6 @@ function start() {
     const target = chapters.find((chapter) => chapter.contains(anchor));
     if (!anchor || !target) return;
     jumping = true;
-    jumpTarget = anchor;
     set(target.id);
     // If nothing scrolls (already there), this settles it.
     settleSoon();
@@ -145,7 +135,6 @@ function start() {
     window.removeEventListener("wheel", onInput);
     window.removeEventListener("touchmove", onInput);
     window.removeEventListener("resize", settle);
-    jumpTarget = null;
     stop = null;
   };
 }
@@ -165,10 +154,6 @@ export function subscribeChapter(listener: () => void) {
 
 export function getCurrentChapter() {
   return current;
-}
-
-export function getJumpTarget() {
-  return jumpTarget;
 }
 
 const getServerChapter = () => "i";

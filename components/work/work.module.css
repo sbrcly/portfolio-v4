@@ -41,11 +41,11 @@
   line-height: 16px;
 }
 
-/* The ground behind the row, as wide as the viewport so a plate's glow
-   (and on phone the plate, which bleeds) passes beneath it too, and the
-   rule, as wide as the row. An element, not a pseudo-element, so a
-   contrast checker can see what the row's text stands on. It comes first
-   in the row and the text after it is positioned, so the text is on top. */
+/* The ground behind the row, as wide as the viewport so a plate that
+   bleeds (on phone) passes beneath it too, and the rule, as wide as the
+   row. An element, not a pseudo-element, so a contrast checker can see
+   what the row's text stands on. It comes first in the row and the text
+   after it is positioned, so the text is on top. */
 .ground {
   position: absolute;
   inset: 0;

@@ -17,12 +17,6 @@
   overflow: hidden;
 }
 
-/* Focus is the rim's 1px stepping to .6, not the global outline. */
-.video:focus-visible {
-  outline: none;
-  --rim-focus: 1;
-}
-
 .media {
   display: block;
   width: 100%;
