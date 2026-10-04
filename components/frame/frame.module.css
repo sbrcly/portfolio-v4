@@ -26,11 +26,10 @@
   pointer-events: auto;
 }
 
-/* Ruled nav table */
+/* Nav table */
 
 .nav {
   display: flex;
-  border: 1px solid var(--rule);
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 12px;
@@ -43,14 +42,9 @@
   display: flex;
   gap: 1.5ch;
   padding: 9px 16px;
-  border-right: 1px solid var(--rule);
   color: var(--muted);
   text-decoration-line: none;
   transition: color 160ms;
-}
-
-.cell:last-child {
-  border-right: 0;
 }
 
 .numeral {
@@ -73,7 +67,6 @@
   /* Numerals only; each link keeps its full name in aria-label. */
   .nav {
     gap: 18px;
-    border: 0;
     letter-spacing: 0.1em;
   }
 
@@ -85,7 +78,6 @@
     height: var(--bar-height);
     margin: 0 -9px;
     padding: 0 9px;
-    border-right: 0;
   }
 
   /* Hidden visually, kept in the link's accessible name. */

@@ -8,7 +8,7 @@ type Props = {
   away?: boolean;
 };
 
-/** The ruled nav table: one cell per chapter, then the resume. */
+/** The nav table: one cell per chapter, then the resume. */
 export default function NavTable({ current, away = false }: Props) {
   return (
     <nav className={styles.nav} aria-label="Chapters">

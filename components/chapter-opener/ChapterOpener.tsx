@@ -6,8 +6,13 @@ type Props = {
   label: string;
   /** id for the h2; the enclosing section points aria-labelledby at it. */
   headingId: string;
-  /** The measure's opening line. Without one it opens with its children. */
+  /**
+   * The measure's opening line. Without one it opens with its children;
+   * with neither there is no measure and the opener is its heading alone.
+   */
   statement?: string;
+  /** Hairline above the measure. */
+  ruled?: boolean;
   children?: React.ReactNode;
 };
 
@@ -16,6 +21,7 @@ export default function ChapterOpener({
   label,
   headingId,
   statement,
+  ruled = true,
   children,
 }: Props) {
   return (
@@ -28,10 +34,17 @@ export default function ChapterOpener({
           {label}
         </h2>
       </div>
-      <div className={styles.measure} data-fade="">
-        {statement && <p className={styles.statement}>{statement}</p>}
-        {children}
-      </div>
+      {(statement || children) && (
+        <div
+          className={
+            ruled ? `${styles.measure} ${styles.ruled}` : styles.measure
+          }
+          data-fade=""
+        >
+          {statement && <p className={styles.statement}>{statement}</p>}
+          {children}
+        </div>
+      )}
     </div>
   );
 }

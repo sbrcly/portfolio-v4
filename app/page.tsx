@@ -15,7 +15,7 @@ import styles from "./page.module.css";
 const MARGIN: MarginChapter[] = [
   { id: "i", numeral: "I", label: "Home" },
   { id: "ii", numeral: "II", label: "About" },
-  { id: "iii", numeral: "III", label: "Work · ten" },
+  { id: "iii", numeral: "III", label: "Work" },
   { id: "iv", numeral: "IV", label: "Contact" },
 ];
 
@@ -37,6 +37,7 @@ export default function Home() {
             numeral="II"
             label="About"
             headingId="h-ii"
+            ruled={false}
             statement="Self-taught, starting from a trading desk."
           >
             <div className={styles.body}>
@@ -91,12 +92,7 @@ export default function Home() {
           aria-labelledby="h-iii"
           data-chapter="2"
         >
-          <ChapterOpener
-            numeral="III"
-            label="Work · ten"
-            headingId="h-iii"
-            statement="Ten things built and shipped at three companies, most recent first."
-          />
+          <ChapterOpener numeral="III" label="Work" headingId="h-iii" />
           <Work />
         </section>
 
@@ -110,6 +106,7 @@ export default function Home() {
             numeral="IV"
             label="Contact"
             headingId="h-iv"
+            ruled={false}
           >
             <a
               href={`mailto:${EMAIL}`}

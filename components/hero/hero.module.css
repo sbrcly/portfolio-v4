@@ -46,7 +46,7 @@
   grid-column: 2;
 }
 
-/* No hairline above the name, unlike II to IV: the measure opens on it. */
+/* No hairline above the name: the measure opens on it. */
 .name {
   font-weight: 200;
   font-size: var(--name-size);

@@ -7,9 +7,11 @@
   --frame-tail: calc(var(--frame-height) * 0.44);
   --employer-gap: 160px;
   --row-gap: 72px; /* the row to its first project */
-  /* The opener to the first row. Each row's box starts a frame tail above
-     the row itself, so every gap above one is short by that much. */
-  margin-top: calc(160px - var(--frame-tail));
+  /* The opener's numeral and label to the first row. Each row's box starts
+     a frame tail above the row itself, so every gap above one is short by
+     that much; this one is longer than the tail, or the row's ground would
+     cover the label. */
+  margin-top: calc(48px - var(--frame-tail));
 }
 
 /* An anchor lands the row itself just under the frame, where it pins. */
@@ -107,92 +109,24 @@
   scroll-margin-top: 112px;
 }
 
-/* Projects without a plate: a ruled list under the last plate's caption. */
-.list {
-  margin: 0;
+/* The projects after the hero: a grid under its caption, two cells across
+   the measure. One cell alone keeps its column's width, at the left. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin: 96px 0 0;
   padding: 0;
-  border-bottom: 1px solid var(--rule);
   list-style: none;
 }
 
-.projects > * + .list {
-  margin-top: 96px;
-}
-
-.item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 24px;
-  align-items: baseline;
-  padding: 20px 0;
-  border-top: 1px solid var(--rule);
-}
-
-.itemName {
-  font-weight: 400;
-  font-size: var(--body-size);
-  line-height: 1.3;
-}
-
-.itemYear {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: var(--mono-size);
-  line-height: normal;
-  letter-spacing: 0.06em;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--muted);
-}
-
-.itemSentence,
-.itemLinks {
-  grid-column: 1;
-  color: var(--muted);
-}
-
-.itemSentence {
-  margin-top: 4px;
-  font-size: 17px;
-  line-height: 1.5;
-  text-wrap: pretty;
-}
-
-.itemLinks {
-  margin-top: 8px;
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: var(--mono-size);
-  line-height: 1.8;
-}
-
-/* Reveal, below 960px (above it the list fades with the scroll instead;
-   see globals.css). Hidden state is set by script on a below-fold list
-   only (components/reveals). */
-@media (max-width: 959px) {
-  .list[data-reveal="hidden"] {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  .list[data-reveal="shown"] {
-    transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-}
-
-@media (max-width: 959px) and (prefers-reduced-motion: reduce) {
-  .list[data-reveal="hidden"] {
-    transform: none;
-  }
-
-  .list[data-reveal="shown"] {
-    transition: opacity 200ms;
-  }
-}
-
-/* Beside the running margin: the blocks sit in the measure. */
+/* Beside the running margin: the opener has nothing on the page, so the
+   first row opens the chapter, and the blocks sit in the measure. */
 @media (min-width: 960px) {
+  .employers {
+    margin-top: calc(-1 * var(--frame-tail));
+  }
+
   .employer {
     margin-left: var(--measure-offset);
   }
@@ -202,7 +136,6 @@
   .employers {
     --employer-gap: 128px;
     --row-gap: 48px;
-    margin-top: calc(96px - var(--frame-tail));
   }
 
   /* Role and years wrap under the name. */
@@ -215,19 +148,7 @@
     letter-spacing: 0.04em;
   }
 
-  /* Stacked: name, year, sentence. */
-  .item {
-    display: block;
-  }
-
-  .itemYear {
-    display: block;
-    margin-top: 4px;
-    text-align: left;
-  }
-
-  .itemSentence {
-    margin-top: 8px;
-    font-size: 15px;
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

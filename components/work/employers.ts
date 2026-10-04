@@ -1,18 +1,21 @@
 import type { StaticImageData } from "next/image";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
+import tradingSchedule from "@/public/images/trading-schedule.png";
 import { APP_STORE_URL } from "./links";
 import { PRAVA_SCREENS } from "./prava-screens";
 
 /**
  * Chapter III's content: employers, most recent first, each with the
- * projects built there in the order they are shown. A project with a plate
- * is a full entry in the measure; one without is a row in the ruled list
- * under the employer's last plate. Adding the plate field promotes a listed
- * project to an entry; nothing else changes.
+ * projects built there in the order they are shown. The first project is
+ * the hero, a full entry in the measure; the rest are cells in the grid
+ * under it. A cell has a screenshot or is marked pending and shows a
+ * labeled slot in its place.
  */
+type ImagePlate = { kind: "image"; src: StaticImageData; alt: string };
+
 export type Plate =
-  | { kind: "image"; src: StaticImageData; alt: string }
+  | ImagePlate
   /** Phone screens side by side: four, two on phone. */
   | { kind: "screens"; screens: { src: StaticImageData; alt: string }[] }
   /** The odds console recording (VideoPlate). */
@@ -32,6 +35,8 @@ export type Project = {
   /** An entry's meta line after the year. */
   detail?: string;
   plate?: Plate;
+  /** No screenshot yet: the cell shows a labeled slot that never lights. */
+  pending?: true;
   /** The case study's route. The title links to it too. */
   caseStudy?: string;
   /** A public repo that holds a write-up of proprietary work, not its code. */
@@ -44,13 +49,19 @@ export type Project = {
   stack?: string;
 };
 
+export type Hero = Project & { plate: Plate; pending?: never };
+
+export type Cell = Project &
+  ({ plate: ImagePlate; pending?: never } | { plate?: never; pending: true });
+
 export type Employer = {
   /** The anchor, "employer-01", and the heading's id. */
   id: string;
   name: string;
   role: string;
   years: string;
-  projects: Project[];
+  /** The hero, then the grid's cells. */
+  projects: [Hero, ...Cell[]];
 };
 
 export const EMPLOYERS: Employer[] = [
@@ -94,6 +105,7 @@ export const EMPLOYERS: Employer[] = [
         id: "analytics-dashboard",
         name: "Analytics dashboard",
         year: "2025",
+        pending: true,
         placeholder: true,
         sentence:
           "Where Prava's usage and AI cost are measured rather than assumed.",
@@ -102,6 +114,7 @@ export const EMPLOYERS: Employer[] = [
         id: "lectionary-authoring-tool",
         name: "Lectionary authoring tool",
         year: "2025",
+        pending: true,
         placeholder: true,
         sentence:
           "Where the readings for the Church's week are entered and checked.",
@@ -110,6 +123,7 @@ export const EMPLOYERS: Employer[] = [
         id: "commitment-library",
         name: "Commitment library",
         year: "2025",
+        pending: true,
         placeholder: true,
         sentence: "The commitments the app offers, written and kept in one place.",
       },
@@ -137,6 +151,7 @@ export const EMPLOYERS: Employer[] = [
         id: "pricing-portal",
         name: "Pricing portal",
         year: "2022 to 2026",
+        pending: true,
         placeholder: true,
         sentence: "Where buyers write the purchase rules the extension reads.",
       },
@@ -179,6 +194,11 @@ export const EMPLOYERS: Employer[] = [
         id: "trading-schedule",
         name: "Trading schedule",
         year: "2022",
+        plate: {
+          kind: "image",
+          src: tradingSchedule,
+          alt: "Trading schedule: games across sports with assigned traders",
+        },
         sentence:
           "Pulls every game from the data feeds and assigns traders by shift and league coverage. A game nobody owns stays flagged until someone takes it.",
         stack: "Node · Express · MySQL · feed APIs",

@@ -27,8 +27,7 @@
   margin: 0 auto;
 }
 
-.head,
-.entry {
+.head {
   width: var(--margin-width);
 }
 
@@ -113,8 +112,7 @@
   height: 16px;
 }
 
-.label,
-.entry {
+.label {
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 12px;
@@ -130,12 +128,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
-}
-
-.entry {
-  display: block;
-  margin-top: 8px;
-  letter-spacing: 0.06em;
 }
 
 /* The numeral's glyphs (Margin.tsx). Each sits after an unseen copy of the
@@ -456,10 +448,8 @@
 
 /* Timed, on the light's timing. The head, in and out of a chapter with
    nothing to show (Margin.tsx sets data-blank): in over 600 ms, out over
-   400 ms, fading and cooling. The second line, with the lit plate
-   (data-phase): the same, with a gap of nothing between. No transform. */
+   400 ms, fading and cooling. No transform. */
 .head,
-.entry,
 .numeral,
 .label {
   transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -472,14 +462,11 @@
 }
 
 .head[data-blank="true"],
-.head[data-blank="true"] :is(.numeral, .label),
-.entry[data-phase="out"] {
+.head[data-blank="true"] :is(.numeral, .label) {
   transition-duration: 400ms;
 }
 
-.head[data-blank="true"],
-.entry[data-phase="out"],
-.entry[data-phase="gap"] {
+.head[data-blank="true"] {
   opacity: 0;
 }
 
@@ -487,21 +474,18 @@
   color: var(--rule);
 }
 
-.head[data-blank="true"] .label,
-.entry:is([data-phase="out"], [data-phase="gap"]) {
+.head[data-blank="true"] .label {
   color: var(--dim-numeral);
 }
 
-/* The gap and a swap at load never animate. */
+/* A swap at load never animates. */
 .head[data-phase="load"],
-.head[data-phase="load"] :is(.numeral, .label),
-.entry:is([data-phase="gap"], [data-phase="load"]) {
+.head[data-phase="load"] :is(.numeral, .label) {
   transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .head,
-  .entry,
   .numeral,
   .label {
     transition: none;

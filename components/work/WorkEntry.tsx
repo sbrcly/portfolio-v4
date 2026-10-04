@@ -4,7 +4,7 @@ import ExtensionDiagram from "./ExtensionDiagram";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import VideoPlate from "./VideoPlate";
-import type { Plate as PlateData, Project } from "./employers";
+import type { Hero, Plate as PlateData } from "./employers";
 import styles from "./work-entry.module.css";
 
 // Plates span the measure from 960px up (776 at 1440, the column less 240
@@ -43,12 +43,8 @@ function ProjectPlate({
   }
 }
 
-/** A project with a plate: title row, plate, sentence, spec run. */
-export default function WorkEntry({
-  project,
-}: {
-  project: Project & { plate: PlateData };
-}) {
+/** An employer's hero project: title row, plate, sentence, spec run. */
+export default function WorkEntry({ project }: { project: Hero }) {
   const { id, name, year, detail, plate, sentence, stack, caseStudy } = project;
   const headingId = `w-${id}`;
   const summaryId = `${headingId}-summary`;
@@ -59,7 +55,6 @@ export default function WorkEntry({
       id={`work-${id}`}
       className={styles.entry}
       aria-labelledby={headingId}
-      data-entry={name}
       data-reveal=""
       data-fade=""
     >
