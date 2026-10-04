@@ -63,6 +63,8 @@
 
 .lede {
   max-width: 560px;
+  font-family: var(--font-sans);
+  font-weight: 400;
   font-size: var(--hero-statement-size);
   line-height: var(--hero-statement-leading);
   text-wrap: pretty;
@@ -139,13 +141,20 @@
   padding-bottom: var(--chapter-gap);
 }
 
+/* Running text, in the sans; its emphasis is the sans italic. */
 .body {
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 680px;
   margin-top: 32px;
+  font-family: var(--font-sans);
+  font-weight: 400;
   text-wrap: pretty;
+}
+
+.body em {
+  font-family: var(--font-sans-italic);
 }
 
 /* 02: facts */
@@ -197,6 +206,8 @@
 
 .decision p {
   margin-top: 10px;
+  font-family: var(--font-sans);
+  font-weight: 400;
   font-size: 19px;
   text-wrap: pretty;
 }
@@ -345,6 +356,8 @@
   .body {
     gap: 16px;
     margin-top: 20px;
+    font-size: var(--text-size);
+    line-height: var(--text-leading);
   }
 
   .facts {
@@ -381,7 +394,8 @@
 
   .decision p {
     margin-top: 8px;
-    font-size: 17px;
+    font-size: var(--text-size);
+    line-height: var(--text-leading);
   }
 
   /* Stacked, full bleed (the plate carries the -20px margins). */

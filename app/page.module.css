@@ -40,15 +40,19 @@
   font-size: 20px;
 }
 
-/* Muted, so its links (components/text-link) stand out in the text color. */
+/* Running text, in the sans. Muted, so its links (components/text-link)
+   stand out in the text color, at 600. */
 .body {
+  --text-link-weight: 600;
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 680px;
   margin-top: 32px;
-  font-size: 18px;
-  line-height: 1.55;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
   color: var(--muted);
   text-wrap: pretty;
 }
@@ -76,6 +80,8 @@
 .contactNote {
   max-width: 600px;
   margin-top: 24px;
+  font-family: var(--font-sans);
+  font-weight: 400;
   line-height: 1.55;
   color: var(--muted);
 }
@@ -89,8 +95,6 @@
 @media (max-width: 719px) {
   .body {
     gap: 16px;
-    font-size: var(--body-size);
-    line-height: var(--body-leading);
   }
 
   .contactEmail {
@@ -100,5 +104,7 @@
 
   .contactNote {
     margin-top: 16px;
+    font-size: var(--text-size);
+    line-height: var(--text-leading);
   }
 }

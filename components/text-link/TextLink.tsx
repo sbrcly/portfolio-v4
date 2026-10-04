@@ -9,7 +9,8 @@ type Props = {
 
 /**
  * A link inside running text. The paragraph around it is expected to be
- * muted (Spectral 300, --muted); the link is 400 in the full text color.
+ * muted; the link is in the full text color, at 600 in sans text and 400
+ * in serif.
  */
 export default function TextLink({ href, children }: Props) {
   return href.startsWith("/") ? (

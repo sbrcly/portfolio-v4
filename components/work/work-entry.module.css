@@ -53,8 +53,10 @@
 }
 
 .sentence {
-  font-size: 18px;
-  line-height: 1.55;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
   text-wrap: pretty;
 }
 
@@ -157,10 +159,6 @@
   .caption {
     display: block;
     margin-top: 24px;
-  }
-
-  .sentence {
-    font-size: var(--body-size);
   }
 
   .spec {
