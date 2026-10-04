@@ -47,7 +47,7 @@ html {
 
 /* From 960px up, where the page moves with the scroll, a load with a chapter
    in the URL lands on it rather than scrolling to it: smooth scrolling
-   starts once the page has loaded (the script in the root layout). */
+   starts once the page has loaded (components/scroll/Loaded). */
 @media (min-width: 960px) {
   html:not([data-loaded]) {
     scroll-behavior: auto;
@@ -155,13 +155,6 @@ button {
    data-lit="true" on it). --light runs 0 to 1 and drives both the color and
    the glow alpha; elements apply --light-color and --light-glow themselves. */
 @property --light {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 0;
-}
-
-/* The entrance rule's own heat (components/entrance). */
-@property --ember {
   syntax: "<number>";
   inherits: false;
   initial-value: 0;

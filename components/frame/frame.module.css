@@ -16,56 +16,14 @@
   );
 }
 
+/* The nav table is the bar's only content, centered at every width. */
 .bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: var(--bar-height);
   padding: 0 var(--bar-inset);
   pointer-events: auto;
-}
-
-/* SB mark */
-
-.mark {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  text-decoration-line: none;
-}
-
-.mark:hover,
-.mark:focus-visible {
-  color: inherit;
-}
-
-.tick {
-  display: block;
-  width: 1px;
-  height: 5px;
-  background: var(--brass);
-}
-
-.markRow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.vertical {
-  display: block;
-  width: 1px;
-  height: 18px;
-  background: var(--brass);
-}
-
-.initials {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  line-height: 1;
 }
 
 /* Ruled nav table */
@@ -111,33 +69,7 @@
   color: var(--lit);
 }
 
-/* From 960px up the bar is the content column: the mark starts on the running
-   margin's left edge and the nav table ends on the measure's right. */
-@media (min-width: 960px) {
-  .bar {
-    width: var(--column);
-    margin: 0 auto;
-    padding: 0;
-  }
-}
-
 @media (max-width: 719px) {
-  .tick {
-    height: 4px;
-  }
-
-  .markRow {
-    gap: 6px;
-  }
-
-  .vertical {
-    height: 16px;
-  }
-
-  .initials {
-    font-size: 11px;
-  }
-
   /* Numerals only; each link keeps its full name in aria-label. */
   .nav {
     gap: 18px;

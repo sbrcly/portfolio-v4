@@ -7,10 +7,10 @@ const TEXT = "#E4DBCB";
 const BRASS = "#E0AE62";
 
 /**
- * The SB mark as the frame draws it (components/frame): two brass verticals
- * flanking "SB" in JetBrains Mono, a tick above and below, on the ground
- * color. `unit` is the frame's 1px at this icon's scale; strokes never go
- * below one whole pixel.
+ * The SB mark: two brass verticals flanking "SB" in JetBrains Mono, a tick
+ * above and below, on the ground color. It is drawn at 12px type with 18px
+ * verticals and 5px ticks; `unit` is one of those pixels at this icon's
+ * scale, and strokes never go below one whole pixel.
  */
 export async function markIcon(size: number, unit: number) {
   const mono = await loadGoogleFont("JetBrains Mono", 400, "SB");

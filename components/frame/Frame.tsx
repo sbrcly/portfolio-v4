@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ChapterNav from "./ChapterNav";
 import NavTable from "./NavTable";
 import type { ChapterId } from "./chapters";
@@ -18,30 +17,9 @@ type Props = {
  * interactive.
  */
 export default function Frame({ chapter }: Props) {
-  const mark = (
-    <>
-      <span className={styles.tick} />
-      <span className={styles.markRow}>
-        <span className={styles.vertical} />
-        <span className={styles.initials}>SB</span>
-        <span className={styles.vertical} />
-      </span>
-      <span className={styles.tick} />
-    </>
-  );
-
   return (
     <header className={styles.frame}>
       <div className={styles.bar}>
-        {chapter ? (
-          <Link href="/" className={styles.mark} aria-label="SB, Scott Barclay, home">
-            {mark}
-          </Link>
-        ) : (
-          <a href="#i" className={styles.mark} aria-label="SB, Scott Barclay, home">
-            {mark}
-          </a>
-        )}
         {chapter ? <NavTable current={chapter} away /> : <ChapterNav />}
       </div>
     </header>

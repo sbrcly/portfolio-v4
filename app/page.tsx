@@ -1,5 +1,4 @@
 import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
-import Entrance from "@/components/entrance/Entrance";
 import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
@@ -23,7 +22,6 @@ const MARGIN: MarginChapter[] = [
 export default function Home() {
   return (
     <>
-      <Entrance />
       <Frame />
       <Margin chapters={MARGIN} />
       <main id="content">

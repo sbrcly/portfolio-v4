@@ -35,18 +35,7 @@ components read a token and never repeat a media query for it.
 `app/globals.css` holds the reset, the link and focus styles, the skip link,
 and the `--light` property described below.
 
-## Entrance and light
-
-The entrance ("Ember") is a ground-colored veil over content that is already
-rendered. A small inline script in the root layout runs before first paint
-and sets `data-entrance` on `<html>`: it plays only on the first page load of
-a browser session, only when that load is the home page, and never when
-session storage is unusable. The 1400 ms timeline is plain CSS in
-`components/entrance/`: a rule draws from its center, the SB mark fades in,
-the rule cools, and the veil clears. Nothing on the page takes the light from
-it, and nothing in the hero is lit. Any key or click skips to the point
-where the veil starts to clear. Under reduced motion the mark and rule
-appear together, hold, and fade.
+## Light
 
 The light is one registered custom property, `--light`, that runs from 0 to
 1 on any element marked `data-light`. It drives both the color and the glow,
@@ -90,9 +79,8 @@ and content reveals once as it enters (`components/reveals/`).
 
 The hero's top row also moves to 128px from the top at 1920 and wider.
 
-From 960px up the frame's bar spans the column: the SB mark starts on the
-running margin's left edge and the nav table ends on the measure's right.
-The footer spans the column at every width.
+The frame's bar holds only the nav table, centered at every width. The
+footer spans the column at every width.
 
 ## Structure
 
@@ -105,11 +93,11 @@ app/
   opengraph-image.tsx         Generated share card (Prava has its own)
   sitemap.ts, robots.ts
 components/
-  frame/                      Sticky frame, SB mark, nav table
+  frame/                      Sticky frame, nav table
   hero/, chapter-opener/      Chapter I and the opener used everywhere else
   work/                       Work entries, plates, video plate, diagram
   margin/                     Running margin: numeral, label, lit entry
-  entrance/, light/, chapters/, reveals/, fade/, scroll/
+  light/, chapters/, reveals/, fade/, scroll/
   text-link/                  Link inside running text
   footer/
 lib/                          Image generators for the icons and share cards

@@ -112,9 +112,7 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
     if (!rootEl || !headEl || !entryEl) return;
 
     const mounted = performance.now();
-    const loading = () =>
-      performance.now() - mounted < LOAD_MS ||
-      document.documentElement.dataset.entrance === "play";
+    const loading = () => performance.now() - mounted < LOAD_MS;
 
     const entryFader = fader(entryEl);
 
