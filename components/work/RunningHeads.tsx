@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
-
-const FADE = 24; // --row-fade in work.module.css
+import { pinned } from "./running-head";
 
 /**
  * The employers' pinned rows where CSS view timelines are missing: the same
@@ -26,13 +25,10 @@ export default function RunningHeads() {
         )
       );
       for (const row of rows) {
-        const title = row.previousElementSibling;
-        if (!title) continue;
-        const under = frame - title.getBoundingClientRect().bottom;
-        const pinned = String(+Math.min(1, Math.max(0, under / FADE)).toFixed(4));
-        if (row.style.getPropertyValue("--pinned") !== pinned) {
-          row.style.setProperty("--pinned", pinned);
-          row.style.visibility = pinned === "0" ? "" : "visible";
+        const value = String(+pinned(row, frame).toFixed(4));
+        if (row.style.getPropertyValue("--pinned") !== value) {
+          row.style.setProperty("--pinned", value);
+          row.style.visibility = value === "0" ? "" : "visible";
         }
       }
     });

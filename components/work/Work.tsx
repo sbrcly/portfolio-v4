@@ -2,6 +2,7 @@ import RunningHeads from "./RunningHeads";
 import WorkCell from "./WorkCell";
 import WorkEntry from "./WorkEntry";
 import { EMPLOYERS } from "./employers";
+import { employerTimelines } from "./running-head";
 import styles from "./work.module.css";
 
 /**
@@ -19,6 +20,7 @@ export default function Work() {
           id={`employer-${id}`}
           className={styles.employer}
           aria-labelledby={`e-${id}`}
+          style={employerTimelines(id)}
         >
           <header className={styles.head} data-fade="">
             <h3 id={`e-${id}`} className={styles.company}>

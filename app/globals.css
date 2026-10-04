@@ -260,6 +260,27 @@ button {
   initial-value: 0;
 }
 
+/* The Work index (components/margin/WorkIndex): how far an employer's
+   running head has come in, how far it has been pushed out again, and a
+   line's turn to brass under the pointer or the focus. */
+@property --index-pinned {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --index-pushed {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --index-hover {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
 [data-light] {
   --light: 0;
   --light-color: color-mix(
@@ -336,9 +357,14 @@ button {
   view-timeline-inset: 0px;
 }
 
+/* The employers' timelines (components/work) are scoped here too: their
+   rows read them, and so does the Work index in the running margin. One
+   pair per employer. */
 body {
   timeline-scope: --chapter-0, --chapter-1, --chapter-2, --chapter-3,
-    --chapter-4, --chapter-5;
+    --chapter-4, --chapter-5, --employer-01-head, --employer-01-run,
+    --employer-02-head, --employer-02-run, --employer-03-head,
+    --employer-03-run;
 }
 
 /* The content fade. A block is at full opacity while its center is within

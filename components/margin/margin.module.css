@@ -56,6 +56,65 @@
   }
 }
 
+/* With the Work index (below). Chapter II is the page's second chapter, so
+   the index arrives over the last quarter of boundary 1, whole exactly when
+   the II is, and leaves over the first quarter of boundary 2. Reduced
+   motion: the boundaries step, and so does this. */
+.indexed {
+  --index-gap: 28px; /* the label to the first line */
+  --index-line: 18px;
+  --index-pad: 4px; /* above a project tier's first line, below its last */
+  --index-present: calc(
+    clamp(0, (var(--boundary-1) - 0.75) / 0.25, 1) *
+      (1 - clamp(0, var(--boundary-2) / 0.25, 1))
+  );
+  /* The index's bottom edge at its tallest, from the viewport's top: the
+     numeral, 12, the label, the gap, every employer's line, and the longest
+     tier open (Margin.tsx counts both). */
+  --index-bottom: calc(
+    var(--top-line) + var(--numeral-size) * 0.85 + 12px + 16px +
+      var(--index-gap) + (var(--index-employers) + var(--index-tallest)) *
+      var(--index-line) + 2 * var(--index-pad)
+  );
+}
+
+/* The icons never meet the index. In a viewport too short to hold the
+   index at its tallest, 24px, and the stack down to the viewport's bottom,
+   they yield: out as the index arrives and back as it leaves. --yield is 1
+   in such a viewport and 0 in a taller one: tan(atan2()) is the only way
+   to divide a length into a number. */
+.indexed .social {
+  --stack: calc(var(--count) * 20px + (var(--count) - 1) * var(--gap));
+  --yield: clamp(
+    0,
+    tan(
+      atan2(
+        (
+            var(--index-bottom) + 24px + var(--stack) + var(--footer-height) +
+              40px - 100vh
+          ) * 1000,
+        1px
+      )
+    ),
+    1
+  );
+  --shown: calc(1 - var(--index-present) * var(--yield));
+  opacity: var(--shown);
+  animation: shown 1s linear both paused;
+  animation-delay: calc(var(--shown) * -1s);
+}
+
+/* Hidden at zero and visible above it: a paused animation held at the
+   number (as a negative delay) that drives the opacity beside it. */
+@keyframes shown {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
 .numeral {
   /* Holds its height when a chapter has no numeral. */
   position: relative;
@@ -411,6 +470,133 @@
   .label {
     transition: none;
   }
+}
+
+/* The Work index (WorkIndex.tsx), under the label: the employers on the
+   column's edge, each one's projects indented under it. It takes the
+   pointer while it is present; absent, it is hidden. */
+.index {
+  width: var(--margin-width);
+  margin-top: var(--index-gap);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-small-size);
+  line-height: var(--index-line);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: var(--index-present);
+  pointer-events: auto;
+  animation: shown 1s linear both paused;
+  animation-delay: calc(var(--index-present) * -1s);
+}
+
+.employers,
+.tier {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* An employer is as bright as its running head is visible: come in under
+   the frame (--index-pinned) and not yet pushed out by the next title
+   (--index-pushed). Both are read from the employer's own timelines
+   (components/work), the first over the range its row comes in over (the
+   24px is work.module.css's --row-fade); without view timelines
+   work-index.ts writes them. */
+.employer {
+  --open: calc(var(--index-pinned) * (1 - var(--index-pushed)));
+  --bright: var(--open);
+}
+
+@supports (animation-timeline: view()) {
+  .employer {
+    animation: index-pinned linear both,
+      index-pushed linear both;
+    animation-timeline: var(--head-timeline), var(--run-timeline);
+    animation-range-start: exit calc(100% - 24px), entry-crossing 100%;
+    animation-range-end: exit 100%, exit-crossing 100%;
+  }
+}
+
+@keyframes index-pinned {
+  from {
+    --index-pinned: 0;
+  }
+  to {
+    --index-pinned: 1;
+  }
+}
+
+@keyframes index-pushed {
+  from {
+    --index-pushed: 0;
+  }
+  to {
+    --index-pushed: 1;
+  }
+}
+
+/* A line: muted at rest and the text color when current, mixed by --bright
+   as the scroll moves. The color is the list item's and the link inherits
+   it: Chrome does not repaint a visited link whose own color follows the
+   scroll. Without color-mix every line stays muted. */
+.index {
+  color: var(--muted);
+}
+
+.employer,
+.tier > li {
+  color: color-mix(
+    in srgb,
+    var(--text) calc(var(--bright) * 100%),
+    var(--muted)
+  );
+}
+
+/* Brass under the pointer or the focus, with the global underline. The
+   line's color is the scroll's, so only the turn to brass is timed. */
+.line {
+  transition: --index-hover 160ms,
+    text-decoration-color 160ms;
+}
+
+.line,
+.line:hover,
+.line:focus-visible {
+  color: color-mix(
+    in srgb,
+    var(--brass) calc(var(--index-hover) * 100%),
+    currentColor
+  );
+}
+
+.line:hover,
+.line:focus-visible {
+  --index-hover: 1;
+}
+
+/* An employer's projects open and close with its line; work-index.ts sets
+   each one's --bright, and keeps a closed tier inert. The space above and
+   below is the lines' margin, so a closed tier has no height at all. */
+.tier {
+  height: calc(
+    var(--open) * (var(--lines) * var(--index-line) + 2 * var(--index-pad))
+  );
+  padding-left: 16px;
+  overflow: hidden;
+  opacity: var(--open);
+}
+
+.tier > li {
+  --bright: 0;
+}
+
+.tier > :first-child {
+  margin-top: var(--index-pad);
+}
+
+.tier > :last-child {
+  margin-bottom: var(--index-pad);
 }
 
 @media (max-width: 1199px) {

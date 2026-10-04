@@ -8,9 +8,11 @@ import {
 import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
 import SocialIcons from "@/components/social/SocialIcons";
 import { planMargin, type MarginChapter } from "./glyphs";
+import WorkIndex, { type IndexEmployer } from "./WorkIndex";
+import { followWork } from "./work-index";
 import styles from "./margin.module.css";
 
-export type { MarginChapter };
+export type { IndexEmployer, MarginChapter };
 
 // A chapter found this soon after mounting is where the page loaded (a deep
 // link, a reload mid-page), not a handover: it swaps without animating.
@@ -33,14 +35,25 @@ const LOAD_MS = 300;
  * and back in after it.
  *
  * Numeral and label are decorative and hidden from assistive
- * technology. The icon links are not: they are the one part of the margin
- * that is read, focused, and clicked. They stand stacked on the margin's
- * axis and never move: pinned where they clear the footer by 40px when the
- * page ends.
+ * technology. The icon links are not: they are read, focused, and clicked.
+ * They stand stacked on the margin's axis and never move: pinned where they
+ * clear the footer by 40px when the page ends.
+ *
+ * On the home page the margin also holds the Work index (WorkIndex.tsx),
+ * under the label while chapter II is current. It comes after the icons, so
+ * it follows them in the tab order.
  */
-export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
+export default function Margin({
+  chapters,
+  index,
+}: {
+  chapters: MarginChapter[];
+  /** The Work index's lines. The page's second chapter must be the work. */
+  index?: IndexEmployer[];
+}) {
   const root = useRef<HTMLDivElement>(null);
   const head = useRef<HTMLDivElement>(null);
+  const nav = useRef<HTMLElement>(null);
   const plan = useMemo(() => planMargin(chapters), [chapters]);
 
   useEffect(() => {
@@ -137,9 +150,13 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
       });
     }
 
+    // After the boundaries, which the index's frame reads.
+    const stopIndex = nav.current ? followWork(nav.current) : undefined;
+
     return () => {
       unsubscribeChapter();
       stopFrames?.();
+      stopIndex?.();
     };
   }, [plan]);
 
@@ -172,7 +189,19 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
   );
 
   return (
-    <div ref={root} className={styles.margin}>
+    <div
+      ref={root}
+      className={index ? `${styles.margin} ${styles.indexed}` : styles.margin}
+      style={
+        index &&
+        ({
+          "--index-employers": index.length,
+          "--index-tallest": Math.max(
+            ...index.map(({ projects }) => projects.length)
+          ),
+        } as React.CSSProperties)
+      }
+    >
       <div className={styles.column}>
         <div
           ref={head}
@@ -196,6 +225,7 @@ export default function Margin({ chapters }: { chapters: MarginChapter[] }) {
           </span>
         </div>
         <SocialIcons className={styles.social} />
+        {index && <WorkIndex ref={nav} employers={index} />}
       </div>
     </div>
   );

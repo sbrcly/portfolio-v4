@@ -4,10 +4,14 @@ import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import { EMAIL } from "@/components/frame/chapters";
 import Light from "@/components/light/Light";
-import Margin, { type MarginChapter } from "@/components/margin/Margin";
+import Margin, {
+  type IndexEmployer,
+  type MarginChapter,
+} from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
 import TextLink from "@/components/text-link/TextLink";
 import Work from "@/components/work/Work";
+import { EMPLOYERS } from "@/components/work/employers";
 import styles from "./page.module.css";
 
 // What the running margin reads in each chapter: the openers' labels.
@@ -17,11 +21,19 @@ const MARGIN: MarginChapter[] = [
   { id: "iii", numeral: "III", label: "Contact" },
 ];
 
+// The Work index's lines: each employer, and its projects in the order they
+// are shown.
+const INDEX: IndexEmployer[] = EMPLOYERS.map(({ id, name, projects }) => ({
+  id,
+  name,
+  projects: projects.map(({ id, name }) => ({ id, name })),
+}));
+
 export default function Home() {
   return (
     <>
       <Frame />
-      <Margin chapters={MARGIN} />
+      <Margin chapters={MARGIN} index={INDEX} />
       <main id="content">
         <section
           id="i"
