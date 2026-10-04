@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r5 · Work index · Home 1440x620</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    html{scroll-padding-top:96px;scroll-behavior:smooth;} html,body{margin:0;background:#0E1512;color:#E4DBCB;} a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:transparent;text-underline-offset:.3em;transition:color 160ms,text-decoration-color 160ms;} a:hover,a:focus-visible{color:#E0AE62;text-decoration-color:currentColor;} :focus-visible{outline:1px solid #F3C77E;outline-offset:4px;} img{display:block;max-width:100%;height:auto;}
+  </style>
+</helmet>
+<div data-root data-screen-label="Vigil r5 home" style="position:relative;width:{{ W }}px;margin:0 auto;background:#0E1512;color:#E4DBCB;font-family:'Spectral',Georgia,serif;font-weight:300;font-size:20px;line-height:1.6;height:{{ rootH }};overflow:{{ rootOv }};-webkit-font-smoothing:antialiased;">
+
+  <!-- The running margin (components/margin): numeral top on the top line, 120 under the viewport's top; numeral and label centred on the axis. New in r5: the Work index under the label. -->
+  <div data-margin aria-hidden="false" style="position:{{ fixedPos }};top:120px;left:{{ marginLeft }};width:{{ marginW }}px;z-index:4;pointer-events:none;">
+    <div aria-hidden="true" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="position:relative;height:{{ numH }}px;font-weight:200;font-size:{{ num }}px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;white-space:nowrap;">
+        <span data-ghost="I" style="position:absolute;top:0;left:0;visibility:hidden;margin-right:.04em;">I</span>
+        <span data-ghost="II" style="position:absolute;top:0;left:0;visibility:hidden;margin-right:.04em;">II</span>
+        <span data-ghost="III" style="position:absolute;top:0;left:0;visibility:hidden;margin-right:.04em;">III</span>
+        <span data-numeral-box style="position:absolute;top:0;left:{{ axis }}px;display:inline-flex;">
+          <span data-glyph="1" style="display:inline-block;">I</span>
+          <span data-glyph="2" style="display:inline-block;opacity:0;">I</span>
+          <span data-glyph="3" style="display:inline-block;opacity:0;">I</span>
+        </span>
+      </div>
+      <div style="display:grid;grid-template-columns:100%;width:{{ labelW }}px;height:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">
+        <span data-label="i" style="grid-area:1/1;justify-self:center;margin-right:-.14em;white-space:nowrap;">About</span>
+        <span data-label="ii" style="grid-area:1/1;justify-self:center;margin-right:-.14em;white-space:nowrap;opacity:0;">Work</span>
+        <span data-label="iii" style="grid-area:1/1;justify-self:center;margin-right:-.14em;white-space:nowrap;opacity:0;">Contact</span>
+      </div>
+    </div>
+
+    <!-- The Work index. Present only while II is current; brightness is the only signal. Left-aligned on the column's edge; the project tier indented 16. Mono 11/18. -->
+    <nav data-index aria-label="Work index" style="margin-top:28px;display:flex;flex-direction:column;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;line-height:18px;letter-spacing:.02em;opacity:0;visibility:hidden;pointer-events:auto;">
+      <a href="#employer-01" data-emp-line="0" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Faith Platforms Inc.</a>
+      <div data-tier="0" data-count="5" style="display:flex;flex-direction:column;padding-left:16px;overflow:hidden;height:0;opacity:0;">
+        <a href="#work-prava" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;margin-top:4px;">Prava</a>
+        <a href="#work-prompt-lab" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Prompt Lab</a>
+        <a href="#work-analytics-dashboard" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Analytics dashboard</a>
+        <a href="#work-lectionary-authoring-tool" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Lectionary authoring tool</a>
+        <a href="#work-commitment-library" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;margin-bottom:4px;">Commitment library</a>
+      </div>
+      <a href="#employer-02" data-emp-line="1" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Etainement</a>
+      <div data-tier="1" data-count="2" style="display:flex;flex-direction:column;padding-left:16px;overflow:hidden;height:0;opacity:0;">
+        <a href="#work-marketplace-extension" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;margin-top:4px;">Marketplace extension</a>
+        <a href="#work-pricing-portal" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;margin-bottom:4px;">Pricing portal</a>
+      </div>
+      <a href="#employer-03" data-emp-line="2" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Caesars Sportsbook</a>
+      <div data-tier="2" data-count="3" style="display:flex;flex-direction:column;padding-left:16px;overflow:hidden;height:0;opacity:0;">
+        <a href="#work-live-odds-console" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;margin-top:4px;">Live odds console</a>
+        <a href="#work-arbitrage-detector" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;">Arbitrage detector</a>
+        <a href="#work-trading-schedule" style-hover="color:#E0AE62;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;" style-focus="color:#E0AE62;" style="text-decoration:none;color:var(--c,#A89F90);white-space:nowrap;align-self:flex-start;margin-bottom:4px;">Trading schedule</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- The icon links: stacked on the axis, pinned 40 above the footer (components/social). -->
+  <ul data-icons style="position:{{ fixedPos }};bottom:130px;left:calc({{ marginLeft }} + {{ axisIcon }}px);z-index:4;display:flex;flex-direction:column;gap:20px;margin:0;padding:0;list-style:none;color:#E4DBCB;">
+    <li><a href="https://github.com/sbrcly" aria-label="GitHub" style="display:block;margin:-10px;padding:10px;color:#E4DBCB;"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg></a></li>
+    <li><a href="https://www.instagram.com/sbrcly/" aria-label="Instagram" style="display:block;margin:-10px;padding:10px;color:#E4DBCB;"><svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.8 0h8.4a5.8 5.8 0 0 1 5.8 5.8v8.4a5.8 5.8 0 0 1-5.8 5.8H5.8A5.8 5.8 0 0 1 0 14.2V5.8A5.8 5.8 0 0 1 5.8 0Zm0 1.8h8.4a4 4 0 0 1 4 4v8.4a4 4 0 0 1-4 4H5.8a4 4 0 0 1-4-4V5.8a4 4 0 0 1 4-4ZM4.9 10a5.1 5.1 0 1 0 10.2 0 5.1 5.1 0 1 0-10.2 0Zm1.8 0a3.3 3.3 0 1 0 6.6 0 3.3 3.3 0 1 0-6.6 0Zm7.45-5.35a1.2 1.2 0 1 0 2.4 0 1.2 1.2 0 1 0-2.4 0Z"></path></svg></a></li>
+    <li><a href="https://joinprava.com" aria-label="Prava" style="display:block;margin:-10px;padding:10px;color:#E4DBCB;"><svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true"><path stroke="currentColor" stroke-width="0.6" stroke-linejoin="round" d="M0.98 0.32C0.85 0.36 0.76 0.44 0.7 0.56C0.68 0.62 0.67 0.64 0.67 0.73C0.67 0.92 0.7 0.97 0.99 1.21C1.1 1.31 1.2 1.4 1.21 1.41C1.22 1.42 1.3 1.48 1.38 1.56C1.55 1.7 1.86 1.98 1.97 2.09C2.01 2.12 2.07 2.18 2.11 2.21C2.97 3 3.94 3.97 4.6 4.73C6.14 6.48 7.07 8.05 7.43 9.5C7.71 10.59 7.66 11.59 7.28 12.55C7.21 12.73 7.04 13.08 6.94 13.26C6.88 13.35 6.8 13.46 6.71 13.56C5.24 15.26 4.27 16.76 3.69 18.23C3.59 18.48 3.39 19.06 3.37 19.17C3.31 19.49 3.59 19.77 3.89 19.69C4.03 19.65 4.08 19.61 4.25 19.38C5.32 17.94 6.79 16.94 8.87 16.23C9.69 15.95 10.37 15.77 11.96 15.41C13.22 15.13 13.54 15.05 14.03 14.92C15.32 14.56 16.13 14.15 16.67 13.59C17.06 13.2 17.29 12.74 17.4 12.18C17.52 11.59 17.49 10.8 17.33 10.23C17.17 9.65 16.84 9.07 16.39 8.55C16.22 8.35 16.23 8.38 16.25 8.1C16.27 7.98 16.29 7.76 16.3 7.62C16.37 6.9 16.45 6.54 16.59 6.18C16.9 5.42 17.56 4.94 18.66 4.65C18.77 4.62 18.89 4.59 18.94 4.58C19.11 4.55 19.21 4.48 19.28 4.35C19.32 4.28 19.32 4.26 19.33 4.17C19.34 3.99 19.27 3.88 19.1 3.76C18.98 3.68 18.57 3.47 18.35 3.38C17.49 3.03 16.55 2.8 15.59 2.7C15.35 2.68 14.66 2.68 14.44 2.71C13.91 2.78 13.51 2.91 13.17 3.14C12.91 3.31 12.67 3.6 12.56 3.88C12.54 3.93 12.51 3.99 12.5 4.01C12.47 4.05 12.42 4.07 12.35 4.06C12.29 4.06 12.28 4.05 12.2 3.97C11.63 3.46 10.91 3.03 9.85 2.58C8.6 2.04 6.81 1.5 4.7 1.03C3.62 0.79 1.19 0.3 1.08 0.3C1.05 0.3 1.01 0.31 0.98 0.32ZM3.53 1.66C4.43 1.85 5.59 2.12 6.05 2.24C6.17 2.27 6.9 2.99 7.29 3.45C8.57 4.98 9.14 6.78 8.93 8.62C8.88 9.06 8.74 9.72 8.69 9.8C8.62 9.89 8.47 9.89 8.41 9.79C8.4 9.78 8.38 9.7 8.36 9.62C8.15 8.62 7.71 7.58 7.01 6.47C6.35 5.43 5.42 4.28 4.32 3.15C3.98 2.8 3.36 2.19 3.09 1.94C2.99 1.85 2.97 1.81 2.98 1.75C2.99 1.66 3.06 1.59 3.14 1.59C3.15 1.59 3.33 1.62 3.53 1.66ZM8.69 3.04C10.41 3.66 11.48 4.31 11.98 5.04C12.06 5.16 12.17 5.39 12.22 5.52C12.29 5.73 12.3 5.84 12.3 6.11C12.3 6.32 12.3 6.38 12.28 6.5C12.21 6.8 12.13 7.06 11.97 7.37C11.68 7.97 11.22 8.62 10.51 9.43C10.09 9.91 9.83 10.2 9.78 10.22C9.69 10.27 9.56 10.21 9.54 10.1C9.53 10.08 9.55 10 9.57 9.9C9.83 8.89 9.9 7.98 9.79 7.05C9.64 5.71 9.14 4.47 8.28 3.3C8.18 3.17 8.17 3.15 8.17 3.1C8.17 3.04 8.2 2.99 8.24 2.96C8.32 2.91 8.34 2.91 8.69 3.04ZM15.47 3.57C15.83 3.59 16.27 3.66 16.68 3.76C16.94 3.82 17.25 3.91 17.29 3.93C17.33 3.96 17.36 4.02 17.36 4.07C17.36 4.15 17.33 4.19 17.17 4.28C16.41 4.69 15.96 5.2 15.71 5.96C15.61 6.27 15.56 6.55 15.49 7.04C15.47 7.22 15.45 7.32 15.44 7.34C15.39 7.41 15.28 7.44 15.21 7.39C15.15 7.35 14.36 6.57 14.2 6.38C13.67 5.76 13.41 5.32 13.31 4.88C13.3 4.84 13.29 4.74 13.29 4.62C13.3 4.41 13.31 4.3 13.38 4.17C13.61 3.7 14.36 3.48 15.47 3.57ZM13.36 6.74C13.38 6.75 13.41 6.79 13.44 6.82C13.66 7.09 14.29 7.74 14.7 8.11C15.1 8.48 15.17 8.54 15.21 8.58C15.3 8.66 15.31 8.7 15.25 8.96C15.16 9.32 15.08 9.57 14.94 9.85C14.74 10.26 14.51 10.56 14.03 11.04C13.37 11.69 12.46 12.36 11.13 13.17C10.65 13.47 10.25 13.71 9.11 14.37C7.65 15.21 6.94 15.66 6.3 16.13C6.12 16.27 6.09 16.29 6.04 16.29C5.97 16.3 5.91 16.27 5.88 16.2C5.83 16.1 5.83 16.09 6.14 15.67C6.55 15.1 7.22 14.28 7.32 14.21C7.35 14.18 7.42 14.1 7.49 14.01C7.61 13.85 7.9 13.52 8.29 13.1C8.64 12.72 8.92 12.42 9.18 12.15C9.25 12.08 9.34 11.98 9.4 11.92C9.55 11.76 9.89 11.4 9.99 11.29C10.04 11.24 10.09 11.19 10.1 11.17C10.12 11.15 10.17 11.1 10.21 11.06C10.28 10.99 10.37 10.89 10.57 10.67C10.58 10.66 10.61 10.62 10.64 10.59C10.97 10.23 11.4 9.73 11.69 9.38C11.84 9.18 12.17 8.74 12.3 8.55C12.68 7.98 12.94 7.44 13.07 6.98C13.12 6.81 13.15 6.76 13.21 6.74C13.25 6.72 13.32 6.72 13.36 6.74ZM16.13 9.72C16.18 9.74 16.21 9.78 16.27 9.89C16.42 10.18 16.52 10.5 16.57 10.81C16.6 10.98 16.61 11.46 16.59 11.62C16.47 12.67 15.85 13.34 14.53 13.84C13.94 14.06 13.37 14.21 11.73 14.58C11.37 14.66 11 14.74 10.91 14.76C10.71 14.81 10.68 14.81 10.62 14.75C10.56 14.69 10.55 14.6 10.6 14.52C10.61 14.51 10.7 14.45 10.79 14.39C12.48 13.4 13.52 12.68 14.35 11.93C14.52 11.78 14.92 11.37 15.06 11.21C15.42 10.79 15.68 10.38 15.86 9.94C15.92 9.78 15.94 9.74 16 9.72C16.05 9.7 16.08 9.7 16.13 9.72Z"></path></svg></a></li>
+    <li><a href="https://www.goodreads.com/user/show/138723724" aria-label="Goodreads" style="display:block;margin:-10px;padding:10px;color:#E4DBCB;"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.346.026c.422-.083.859.037 1.179.325.346.284.55.705.557 1.153-.023.457-.247.88-.612 1.156l-2.182 1.748a.601.601 0 0 0-.255.43.52.52 0 0 0 .11.424 5.886 5.886 0 0 1 .832 6.58c-1.394 2.79-4.503 3.99-7.501 2.927a.792.792 0 0 0-.499-.01c-.224.07-.303.18-.453.383l-.014.02-.941 1.254s-.792.985.457.935c3.027-.119 3.817-.119 5.439-.01 2.641.18 3.806 1.903 3.806 3.275 0 1.623-1.036 3.383-3.809 3.383a117.46 117.46 0 0 0-5.517-.03c-.31.005-.597.013-.835.02-.228.006-.41.011-.52.011-.712 0-1.648-.186-1.66-1.068-.008-.729.624-1.12 1.11-1.172.43-.045.815.007 1.24.064.252.034.518.07.815.088.185.011.366.025.552.038.53.038 1.102.08 1.926.087.427.005.759.01 1.025.015.695.012.941.016 1.28-.015 1.248-.112 1.832-.61 1.832-1.376 0-.805-.584-1.264-1.698-1.414-1.564-.213-2.33-.163-3.72-.074a87.66 87.66 0 0 1-1.669.095c-.608.029-2.449.026-2.682-1.492-.053-.416-.073-1.116.807-2.325l.75-1.003c.36-.49.582-.898.053-1.559 0 0-.39-.468-.52-.638-1.215-1.587-1.512-4.08-.448-6.114 1.577-3.011 5.4-4.26 8.37-2.581.253.143.438.203.655.163.201-.032.27-.167.363-.344.02-.04.042-.082.067-.126.004-.01.241-.465.535-1.028l.734-1.41a1.493 1.493 0 0 1 1.041-.785ZM9.193 13.243c1.854.903 3.912.208 5.254-2.47 1.352-2.699.827-5.11-1.041-6.023C10.918 3.537 8.81 5.831 8.017 7.41c-1.355 2.698-.717 4.886 1.147 5.818Z"></path></svg></a></li>
+  </ul>
+
+  <!-- The frame (components/frame): sticky, 96 tall, the one gradient; the nav table centred in the 72 bar. -->
+  <header style="position:{{ headerPos }};top:0;left:0;right:0;z-index:5;height:96px;margin-bottom:-96px;pointer-events:none;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);">
+    <div style="display:flex;align-items:center;justify-content:center;height:72px;padding:0 48px;pointer-events:auto;">
+      <nav aria-label="Chapters" style="display:flex;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;">
+        <a href="#i" data-nav="i" style="display:flex;gap:1.5ch;padding:9px 16px;color:#A89F90;text-decoration:none;transition:none;"><span data-navnum="i" style="color:#E0AE62;transition:none;">I</span><span>About</span></a>
+        <a href="#ii" data-nav="ii" style="display:flex;gap:1.5ch;padding:9px 16px;color:#A89F90;text-decoration:none;transition:none;"><span data-navnum="ii" style="color:#E0AE62;transition:none;">II</span><span>Work</span></a>
+        <a href="#iii" data-nav="iii" style="display:flex;gap:1.5ch;padding:9px 16px;color:#A89F90;text-decoration:none;transition:none;"><span data-navnum="iii" style="color:#E0AE62;transition:none;">III</span><span>Contact</span></a>
+        <a href="#" style="display:flex;gap:1.5ch;padding:9px 16px;color:#A89F90;text-decoration:none;"><span style="color:#E0AE62;">IV</span><span>Resume</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <div data-shift style="margin-top:{{ shiftY }};">
+  <main id="content">
+
+  <!-- I About. The block from the name down starts on the top line beside the numeral (page.module.css .first). -->
+  <section id="i" data-chapter="0" data-screen-label="I About" aria-labelledby="h-i" style="box-sizing:border-box;width:{{ col }}px;margin:0 auto;padding-top:80px;">
+    <div style="display:grid;grid-template-columns:{{ marginW }}px 1fr;column-gap:{{ gap }}px;align-items:start;">
+      <h2 id="h-i" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0;font-size:inherit;font-weight:inherit;">About</h2>
+      <div data-fade style="grid-column:2;padding-top:12px;">
+        <h1 style="margin:28px 0 0;font-weight:300;font-size:{{ name }}px;line-height:1;letter-spacing:-.01em;">Scott Barclay</h1>
+        <p style="margin:8px 0 0;font-size:20px;">Full-Stack Engineer</p>
+        <div style="display:flex;flex-direction:column;gap:20px;max-width:680px;margin-top:32px;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.6;color:#A89F90;text-wrap:pretty;">
+          <p style="margin:0;">I priced sport for a living at a Las Vegas sportsbook. In the evenings I built <a href="#work-live-odds-console" style="font-weight:600;color:#E4DBCB;text-decoration:none;">a live odds console</a> streamed over Socket.io from BigQuery, <a href="#work-arbitrage-detector" style="font-weight:600;color:#E4DBCB;text-decoration:none;">an arbitrage detector</a> across about fifty books, and <a href="#work-trading-schedule" style="font-weight:600;color:#E4DBCB;text-decoration:none;">a schedule that assigned traders to games</a>. The company moved me into an engineering role.</p>
+          <p style="margin:0;">Then three years of full-stack work at a ticket brokerage: <a href="#work-pricing-portal" style="font-weight:600;color:#E4DBCB;text-decoration:none;">a pricing portal</a>, and <a href="#work-marketplace-extension" style="font-weight:600;color:#E4DBCB;text-decoration:none;">a Chrome extension</a> that runs inside marketplace sites and rewrites what buyers see.</p>
+          <p style="margin:0;">Most recently, <a href="#work-prava" style="font-weight:600;color:#E4DBCB;text-decoration:none;">Prava</a>: an iOS prayer and scripture app, designed, built, and shipped alone, with versioned prompts, snapshot-tested fallbacks, and cost work that is measured rather than assumed.</p>
+          <p style="margin:0;">Away from work I read theology and philosophy and am teaching myself Latin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- II Work (components/work). The opener has nothing on the page from 960 up; the first title opens the chapter. -->
+  <section id="ii" data-chapter="1" data-screen-label="II Work" aria-labelledby="h-ii" style="box-sizing:border-box;width:{{ col }}px;margin:0 auto;padding-top:{{ cgap }}px;">
+    <h2 id="h-ii" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0;font-size:inherit;font-weight:inherit;">Work</h2>
+
+    <!-- 01 Faith Platforms Inc. -->
+    <section id="employer-01" data-emp-block aria-labelledby="e-01" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr);margin-left:{{ measureOff }}px;width:{{ measure }}px;padding-bottom:66px;scroll-margin-top:24px;">
+      <header data-emp-head data-fade style="grid-row:1;">
+        <h3 id="e-01" style="margin:0;font-weight:300;font-size:{{ company }}px;line-height:1.1;letter-spacing:-.01em;">Faith Platforms Inc.</h3>
+        <p style="margin:12px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;letter-spacing:.06em;color:#A89F90;"><span style="display:inline-block;">Sole engineer ·</span> <span style="display:inline-block;">2025 to now</span></p>
+      </header>
+      <div data-row aria-hidden="true" style="position:absolute;left:0;right:0;top:0;z-index:3;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;padding:58px 0 16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;opacity:0;visibility:hidden;">
+        <span style="position:absolute;inset:0;background:#0E1512;box-shadow:0 0 0 100vmax #0E1512;clip-path:inset(0 -100vmax);"></span>
+        <span style="position:absolute;top:100%;left:-100vw;right:-100vw;height:42px;background:linear-gradient(to bottom,#0E1512 0%,rgba(14,21,18,.72) 50%,rgba(14,21,18,0) 100%);pointer-events:none;"></span>
+        <p style="position:relative;margin:0;letter-spacing:.14em;text-transform:uppercase;">Faith Platforms Inc.</p>
+        <p style="position:relative;margin:0;letter-spacing:.06em;color:#A89F90;"><span style="display:inline-block;">Sole engineer ·</span> <span style="display:inline-block;">2025 to now</span></p>
+      </div>
+      <div data-projects style="grid-row:2;padding-top:40px;padding-bottom:94px;">
+        <article id="work-prava" data-fade aria-labelledby="w-prava" style="scroll-margin-top:{{ heroMargin }}px;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding-bottom:16px;">
+            <h4 id="w-prava" style="margin:0;font-weight:300;font-size:{{ title }}px;line-height:1.1;letter-spacing:-.01em;"><a href="../design_handoff_margin/prava-1440.dc.html">Prava</a></h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.06em;color:#A89F90;">iOS · live on the App Store</span>
+          </div>
+          <div data-plate style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px;background:#1A2520;box-shadow:0 0 0 1px #2E3B34;">
+            <img src="../../assets/prava-home.png" alt="Prava's home screen: a verse card from Romans 8, this week's readings, the Prayers and Creeds row." style="width:100%;">
+            <img src="../../assets/prava-lectio.png" alt="The Pray movement of Lectio Divina: Romans 8:28-30 with a phrase highlighted." style="width:100%;">
+            <img src="../../assets/prava-journal.png" alt="The daily journal asking How was yesterday, with yes or no questions." style="width:100%;">
+            <img src="../../assets/prava-circle.png" alt="A Circle group screen: nine members reading Romans." style="width:100%;">
+          </div>
+          <div style="margin-top:32px;">
+            <p style="margin:0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.6;text-wrap:pretty;">An iOS prayer and scripture app built around the Church's week rather than a streak. Thirteen AI surfaces read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.</p>
+            <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API<br><a href="../design_handoff_margin/prava-1440.dc.html" style="color:#E0AE62;text-decoration-color:rgba(224,174,98,.4);">Read the case study</a> &nbsp;·&nbsp; <a href="https://apps.apple.com" style="color:#E4DBCB;text-decoration-color:#2E3B34;">App Store</a></div>
+          </div>
+        </article>
+        <ul role="list" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:96px 0 0;padding:0;list-style:none;">
+          <li id="work-prompt-lab" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;overflow:hidden;"><img src="../../assets/prava-prompt-lab.png" alt="The Prompt Lab: versioned system prompt surfaces with history, diffs, and drift between database and in-code fallback." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left;"></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Prompt Lab</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Where Prava's prompts are versioned and checked against their fallbacks.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API</p>
+          </li>
+          <li id="work-analytics-dashboard" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;background:#1A2520;"><span style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">Screenshot pending</span></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Analytics dashboard</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Where Prava's usage and AI cost are measured rather than assumed.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API</p>
+          </li>
+          <li id="work-lectionary-authoring-tool" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;background:#1A2520;"><span style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">Screenshot pending</span></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Lectionary authoring tool</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Where the readings for the Church's week are entered and checked.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API</p>
+          </li>
+          <li id="work-commitment-library" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;background:#1A2520;"><span style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">Screenshot pending</span></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Commitment library</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">The commitments the app offers, written and kept in one place.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 Etainement -->
+    <section id="employer-02" data-emp-block aria-labelledby="e-02" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr);margin-left:{{ measureOff }}px;width:{{ measure }}px;padding-bottom:66px;scroll-margin-top:24px;">
+      <header data-emp-head data-fade style="grid-row:1;">
+        <h3 id="e-02" style="margin:0;font-weight:300;font-size:{{ company }}px;line-height:1.1;letter-spacing:-.01em;">Etainement</h3>
+        <p style="margin:12px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;letter-spacing:.06em;color:#A89F90;"><span style="display:inline-block;">Full-stack engineer ·</span> <span style="display:inline-block;">2022 to 2026</span></p>
+      </header>
+      <div data-row aria-hidden="true" style="position:absolute;left:0;right:0;top:0;z-index:3;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;padding:58px 0 16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;opacity:0;visibility:hidden;">
+        <span style="position:absolute;inset:0;background:#0E1512;box-shadow:0 0 0 100vmax #0E1512;clip-path:inset(0 -100vmax);"></span>
+        <span style="position:absolute;top:100%;left:-100vw;right:-100vw;height:42px;background:linear-gradient(to bottom,#0E1512 0%,rgba(14,21,18,.72) 50%,rgba(14,21,18,0) 100%);pointer-events:none;"></span>
+        <p style="position:relative;margin:0;letter-spacing:.14em;text-transform:uppercase;">Etainement</p>
+        <p style="position:relative;margin:0;letter-spacing:.06em;color:#A89F90;"><span style="display:inline-block;">Full-stack engineer ·</span> <span style="display:inline-block;">2022 to 2026</span></p>
+      </div>
+      <div data-projects style="grid-row:2;padding-top:40px;padding-bottom:94px;">
+        <article id="work-marketplace-extension" data-fade aria-labelledby="w-ext" style="scroll-margin-top:{{ heroMargin }}px;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding-bottom:16px;">
+            <h4 id="w-ext" style="margin:0;font-weight:300;font-size:{{ title }}px;line-height:1.1;letter-spacing:-.01em;">Marketplace extension</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.06em;color:#A89F90;">ticket brokerage · proprietary</span>
+          </div>
+          <figure data-plate aria-label="Diagram: purchase rules saved in the pricing portal on one origin are fetched by the extension's background worker, passed over a message port to its content script, and used to rewrite the seat map on the marketplace page on another origin." style="margin:40px 0 0;padding:48px;background:#1A2520;box-shadow:0 0 0 1px #2E3B34;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.6;overflow-wrap:anywhere;">
+            <div style="display:grid;grid-template-columns:1fr 160px 1fr;align-items:stretch;">
+              <div style="display:flex;flex-direction:column;gap:20px;min-width:0;padding:24px;border:1px dashed #4A5A50;">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;"><span>Origin A</span><span>portal.brokerage.internal</span></div>
+                <div style="padding:18px 20px;border:1px solid #2E3B34;background:#0E1512;"><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Pricing portal</div><div style="margin-top:8px;">Buyers write purchase rules: sections, price ceilings, quantities.</div></div>
+                <div style="padding:18px 20px;border:1px solid #2E3B34;background:#0E1512;"><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Rules API</div><div style="margin-top:8px;color:#A89F90;">GET /rules?event=… JSON, authenticated by session cookie.</div></div>
+              </div>
+              <div style="position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+                <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed #4A5A50;"></div>
+                <div style="position:relative;width:100%;padding:16px 14px;border:1px solid #E0AE62;background:#1A2520;text-align:center;">
+                  <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Extension</div>
+                  <div style="margin-top:10px;padding:10px 8px;border:1px solid #2E3B34;">Background worker</div>
+                  <div style="margin:6px 0;font-size:11px;color:#A89F90;">chrome.runtime<br>message port</div>
+                  <div style="padding:10px 8px;border:1px solid #2E3B34;">Content script</div>
+                </div>
+                <div style="position:absolute;top:-28px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:#A89F90;">origin boundary</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:20px;min-width:0;padding:24px;border:1px dashed #4A5A50;">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;"><span>Origin B</span><span>ticketmaster.com</span></div>
+                <div style="padding:18px 20px;border:1px solid #2E3B34;background:#0E1512;"><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Marketplace page</div><div style="margin-top:8px;">Venue map DOM, rendered by the site's own app. Hostile to automation.</div></div>
+                <div style="padding:18px 20px;border:1px solid #2E3B34;background:#0E1512;"><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#E0AE62;">Rewritten map</div><div style="margin-top:8px;color:#A89F90;">Seats outside the rules dimmed; matching seats and ceilings annotated in place.</div></div>
+              </div>
+            </div>
+            <ol style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:32px 0 0;padding:20px 0 0;border-top:1px solid #2E3B34;list-style:none;color:#A89F90;">
+              <li><span style="color:#E0AE62;">1</span>&nbsp; Buyer saves rules in the portal.</li>
+              <li><span style="color:#E0AE62;">2</span>&nbsp; Worker fetches rules on tab load, caches per event, refreshes on a timer.</li>
+              <li><span style="color:#E0AE62;">3</span>&nbsp; Content script receives rules over the port; observes the map with a MutationObserver.</li>
+              <li><span style="color:#E0AE62;">4</span>&nbsp; Map rewritten in place; state echoed back so the portal knows what was bought.</li>
+            </ol>
+          </figure>
+          <div style="margin-top:32px;">
+            <p style="margin:0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.6;text-wrap:pretty;">A Chrome extension that runs inside Ticketmaster and other marketplaces. Cross-origin messaging and DOM automation against sites built to resist it.</p>
+            <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">Chrome MV3 · TypeScript · Node<br>Walkthrough on request</div>
+          </div>
+        </article>
+        <ul role="list" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:96px 0 0;padding:0;list-style:none;">
+          <li id="work-pricing-portal" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;background:#1A2520;"><span style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">Screenshot pending</span></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Pricing portal</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Where buyers write the purchase rules the extension reads.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Node</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 Caesars Sportsbook. Last block: no padding under it; III's gap follows. -->
+    <section id="employer-03" data-emp-block aria-labelledby="e-03" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr);margin-left:{{ measureOff }}px;width:{{ measure }}px;padding-bottom:0;scroll-margin-top:24px;">
+      <header data-emp-head data-fade style="grid-row:1;">
+        <h3 id="e-03" style="margin:0;font-weight:300;font-size:{{ company }}px;line-height:1.1;letter-spacing:-.01em;">Caesars Sportsbook</h3>
+        <p style="margin:12px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;letter-spacing:.06em;color:#A89F90;"><span style="display:inline-block;">Developer analyst, promoted from trader ·</span> <span style="display:inline-block;">2018 to 2022</span></p>
+      </header>
+      <div data-row aria-hidden="true" style="position:absolute;left:0;right:0;top:0;z-index:3;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;padding:58px 0 16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:16px;opacity:0;visibility:hidden;">
+        <span style="position:absolute;inset:0;background:#0E1512;box-shadow:0 0 0 100vmax #0E1512;clip-path:inset(0 -100vmax);"></span>
+        <span style="position:absolute;top:100%;left:-100vw;right:-100vw;height:42px;background:linear-gradient(to bottom,#0E1512 0%,rgba(14,21,18,.72) 50%,rgba(14,21,18,0) 100%);pointer-events:none;"></span>
+        <p style="position:relative;margin:0;letter-spacing:.14em;text-transform:uppercase;">Caesars Sportsbook</p>
+        <p style="position:relative;margin:0;letter-spacing:.06em;color:#A89F90;"><span style="display:inline-block;">Developer analyst, promoted from trader ·</span> <span style="display:inline-block;">2018 to 2022</span></p>
+      </div>
+      <div data-projects style="grid-row:2;padding-top:40px;padding-bottom:0;">
+        <article id="work-live-odds-console" data-fade aria-labelledby="w-odds" style="scroll-margin-top:{{ heroMargin }}px;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding-bottom:16px;">
+            <h4 id="w-odds" style="margin:0;font-weight:300;font-size:{{ title }}px;line-height:1.1;letter-spacing:-.01em;">Live odds console</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.06em;color:#A89F90;">sportsbook trading desk · 33 s recording</span>
+          </div>
+          <div data-plate role="button" tabindex="0" aria-label="Play the odds console recording, 33 seconds, silent" style="position:relative;margin-top:40px;aspect-ratio:2062/1080;background:#1A2520;box-shadow:0 0 0 1px #2E3B34;overflow:hidden;cursor:pointer;font-family:'JetBrains Mono',monospace;font-weight:400;">
+            <img src="../../assets/odds-console-poster.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <span style="position:absolute;top:50%;left:50%;display:flex;align-items:center;justify-content:center;width:72px;height:72px;margin:-36px 0 0 -36px;border:1px solid #E0AE62;border-radius:50%;background:rgba(14,21,18,.55);"><span style="display:block;width:0;height:0;margin-left:5px;border-left:18px solid #E0AE62;border-top:11px solid transparent;border-bottom:11px solid transparent;"></span></span>
+            <span style="position:absolute;left:24px;bottom:20px;font-size:12px;letter-spacing:.06em;">odds-display-demo.mp4 <span style="color:#A89F90;">· 33 s · silent</span></span>
+          </div>
+          <div style="margin-top:32px;">
+            <p style="margin:0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.6;text-wrap:pretty;">Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk.</p>
+            <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">Node · Socket.io · BigQuery · MySQL<br>Write-up: <a href="https://github.com/sbrcly/Odds-Display-Public" style="color:#E4DBCB;text-decoration-color:#2E3B34;">Odds-Display-Public</a></div>
+          </div>
+        </article>
+        <ul role="list" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:96px 0 0;padding:0;list-style:none;">
+          <li id="work-arbitrage-detector" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;overflow:hidden;"><img src="../../assets/arbitrage-table.png" alt="The arbitrage detector's live table of flagged opportunities." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left;"></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Arbitrage detector</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Every market the book offered, compared against about fifty competitors. Any price a bettor could lock in from both sides is flagged so a trader can move the line first.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">Node · Socket.io · MySQL · GCP<br>Write-up: <a href="https://github.com/sbrcly/Arbitrage-Public" style="color:#E4DBCB;text-decoration-color:#2E3B34;">Arbitrage-Public</a></p>
+          </li>
+          <li id="work-trading-schedule" data-cell data-fade style="min-width:0;scroll-margin-top:90px;">
+            <div data-plate style="position:relative;aspect-ratio:16/10;box-shadow:0 0 0 1px #2E3B34;overflow:hidden;"><img src="../../assets/trading-schedule.png" alt="Trading schedule: games across sports with assigned traders." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left;"></div>
+            <h4 style="margin:16px 0 0;font-weight:400;font-size:20px;line-height:1.3;">Trading schedule</h4>
+            <p style="margin:6px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Pulls every game from the data feeds and assigns traders by shift and league coverage. A game nobody owns stays flagged until someone takes it.</p>
+            <p style="margin:8px 0 0;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.8;color:#A89F90;">Node · Express · MySQL · feed APIs<br>Write-up: <a href="https://github.com/sbrcly/Trading-Schedule-Public" style="color:#E4DBCB;text-decoration-color:#2E3B34;">Trading-Schedule-Public</a></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </section>
+
+  <!-- III Contact. The email opens the measure 28 in; the chapter's top padding is short by that. -->
+  <section id="iii" data-chapter="2" data-screen-label="III Contact" aria-labelledby="h-iii" style="box-sizing:border-box;width:{{ col }}px;margin:0 auto;padding-top:{{ contactPad }}px;padding-bottom:{{ cgap }}px;">
+    <div style="display:grid;grid-template-columns:{{ marginW }}px 1fr;column-gap:{{ gap }}px;align-items:start;">
+      <h2 id="h-iii" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0;font-size:inherit;font-weight:inherit;">Contact</h2>
+      <div data-fade style="grid-column:2;padding-top:12px;">
+        <a data-email href="mailto:scottbarclay02@gmail.com" style="display:inline-block;margin-top:16px;font-weight:200;font-size:48px;line-height:normal;letter-spacing:-.01em;color:#E0AE62;text-shadow:none;text-decoration:none;transition:color 600ms cubic-bezier(.16,1,.3,1),text-shadow 600ms cubic-bezier(.16,1,.3,1);">scottbarclay02@gmail.com</a>
+        <p style="max-width:600px;margin:24px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-weight:400;font-size:20px;line-height:1.55;color:#A89F90;">Replies within a day. Any project here can be walked through at whatever depth you want, including the proprietary ones.</p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer style="box-sizing:border-box;display:flex;align-items:center;gap:28px;width:{{ col }}px;height:90px;margin:0 auto;padding:32px 0 40px;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.06em;color:#A89F90;">
+    <span style="margin-right:auto;">Scott Barclay · 2026</span>
+    <a href="mailto:scottbarclay02@gmail.com" style="color:#A89F90;">scottbarclay02@gmail.com</a>
+    <a href="#" style="color:#A89F90;"><span style="color:#E0AE62;">IV</span>&nbsp;Resume</a>
+  </footer>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  // VIEWPORT: the mockup's width and the frame height used for #frame= exports and the icon clearance rule.
+  W = 1440; H = 620;
+  state = { chapter: 'i', frame: null };
+  timers = {};
+  get bp() {
+    return this.W >= 1200
+      ? { col: 1120, marginW: 280, gap: 64, axis: 80, num: 140, company: 56, name: 112, title: 36, cgap: 120 }
+      : { col: Math.min(960, this.W - 64), marginW: 200, gap: 40, axis: 66, num: 96, company: 44, name: 88, title: 32, cgap: 96 };
+  }
+  // The index's tallest state (Faith Platforms, 8 lines) plus 24 of clearance, the icon stack (140) and its 130 to the bottom.
+  get iconThreshold() { const b = this.bp; return Math.ceil(120 + b.num * .85 + 12 + 16 + 28 + 3 * 18 + 5 * 18 + 8 + 24 + 140 + 130); }
+  view() { const f = this.state.frame; return f ? { y: f.y, vh: this.H } : { y: window.scrollY, vh: window.innerHeight }; }
+  docTop(el) { return el.getBoundingClientRect().top + window.scrollY - parseFloat(this.wrap.style.marginTop || '0'); }
+  componentDidMount() {
+    const q = (s, r = this.root) => Array.from(r.querySelectorAll(s));
+    this.root = document.querySelector('[data-root]');
+    this.wrap = this.root.querySelector('[data-shift]');
+    this.secs = q('section[data-chapter]');
+    this.blocks = q('[data-emp-block]').map(block => {
+      const plates = q('[data-cell] [data-plate]', block);
+      const rows = []; for (let i = 0; i < plates.length; i += 2) rows.push(plates[i]);
+      return { block, head: block.querySelector('[data-emp-head]'), row: block.querySelector('[data-row]'), proj: block.querySelector('[data-projects]'), rows };
+    });
+    this.margin = this.root.querySelector('[data-margin]');
+    this.glyphs = [1, 2, 3].map(n => this.root.querySelector(`[data-glyph="${n}"]`));
+    this.ghosts = ['I', 'II', 'III'].map(n => this.root.querySelector(`[data-ghost="${n}"]`));
+    this.numBox = this.root.querySelector('[data-numeral-box]');
+    this.labels = ['i', 'ii', 'iii'].map(n => this.root.querySelector(`[data-label="${n}"]`));
+    this.index = this.root.querySelector('[data-index]');
+    this.empLines = q('[data-emp-line]');
+    this.tiers = q('[data-tier]').map(t => ({ el: t, n: +t.dataset.count, lines: q('a', t) }));
+    this.icons = this.root.querySelector('[data-icons]');
+    this.fades = q('[data-fade]');
+    this.applyFrame = () => {
+      if (!/frame=/.test(location.hash)) { if (this.state.frame) this.setState({ frame: null }, () => this.tick()); else this.tick(); return; }
+      this.setState({ frame: { y: 0 } }, () => {
+        const f = this.frameSpec();
+        window.scrollTo(0, 0);
+        const ff = f || { y: 0 }; const chf = this.chapterAt(ff.y, this.H); this.paintChapter(chf); this.setState({ frame: ff, chapter: chf }, () => this.tick());
+      });
+    };
+    window.addEventListener('hashchange', this.applyFrame);
+    this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = null; this.tick(); }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    setTimeout(this.applyFrame, 50);
+    document.fonts && document.fonts.ready.then(() => setTimeout(() => { this.applyFrame(); this.report(); }, 100));
+    window.addEventListener('load', () => setTimeout(this.applyFrame, 200));
+    q('img').forEach(img => { if (!img.complete) img.addEventListener('load', () => { clearTimeout(this.timers.img); this.timers.img = setTimeout(this.applyFrame, 150); }); });
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.applyFrame); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); Object.values(this.timers).forEach(clearTimeout); }
+  // Export frames: #frame=i|arriving|faith|faith-grid|handover-gap|handover|caesars|iii renders one static W x H viewport.
+  frameSpec() {
+    const m = /frame=([a-z0-9-]+)/.exec(location.hash || ''); if (!m) return null;
+    const k = m[1], vh = this.H, half = vh / 2, d = el => this.docTop(el);
+    const [, II, III] = this.secs; const B = this.blocks;
+    const headBottom = b => d(b.head) + b.head.offsetHeight;
+    switch (k) {
+      case 'i': return { y: 0 };
+      case 'arriving': return { y: d(II) - (half - .8 * (half - 96)) };          // boundary 1 at .9: II's top between the midline and the frame
+      case 'faith': return { y: headBottom(B[0]) - 36 };                         // Faith Platforms pinned, Prava current
+      case 'faith-grid': return { y: d(B[0].rows[0]) - 102 };                    // first grid row 84 past the landing line
+      case 'handover-gap': return { y: d(B[1].block) - 120 };                    // Etainement's title landed; no running head, no bright employer
+      case 'handover': return { y: headBottom(B[1]) - 84 };                      // Etainement's running head at .5
+      case 'caesars': return { y: d(II) + II.offsetHeight - (vh - .24 * half) }; // boundary 2 at .12: the index leaving
+      case 'iii': return { y: Math.min(d(III) - 96, this.wrap.offsetHeight - vh) };
+    }
+    return null;
+  }
+  paintChapter(ch) {
+    ['i', 'ii', 'iii'].forEach(id => { const cur = id === ch; const a = this.root.querySelector(`[data-nav="${id}"]`), n = this.root.querySelector(`[data-navnum="${id}"]`); if (a) a.style.color = cur ? '#F3C77E' : '#A89F90'; if (n) n.style.color = cur ? '#F3C77E' : '#E0AE62'; });
+    const e = this.root.querySelector('[data-email]'); if (e) { e.style.color = ch === 'iii' ? '#F3C77E' : '#E0AE62'; e.style.textShadow = ch === 'iii' ? '0 0 8px rgba(243,199,126,.6), 0 0 24px rgba(224,174,98,.35)' : 'none'; }
+  }
+  chapterAt(y, vh) {
+    const end = Math.max(0, this.wrap.offsetHeight - vh); let ch = 'i';
+    if (y <= 0) return 'i'; if (y >= end - 1) return 'iii';
+    this.secs.forEach(s => { if (this.docTop(s) - y <= vh / 2) ch = s.id; }); return ch;
+  }
+  report() {
+    try {
+      const d = el => Math.round(this.docTop(el)); const B = this.blocks;
+      const out = { W: this.W, H: this.H, iconThreshold: this.iconThreshold, chapters: this.secs.map(s => ({ id: s.id, top: d(s), bottom: d(s) + s.offsetHeight })), employers: B.map(b => ({ id: b.block.id, titleTop: d(b.head), titleBottom: d(b.head) + b.head.offsetHeight, rows: b.rows.map(d) })), frames: {} };
+      ['i', 'arriving', 'faith', 'faith-grid', 'handover-gap', 'handover', 'caesars', 'iii'].forEach(k => { const save = location.hash; history.replaceState(null, '', '#frame=' + k); const f = this.frameSpec(); out.frames[k] = f && Math.round(f.y); history.replaceState(null, '', save || location.pathname); });
+      console.log('INDEX_REPORT ' + JSON.stringify(out));
+    } catch (e) { console.log('report failed', e); }
+  }
+  tick() {
+    if (!this.root) return;
+    const { y, vh } = this.view(); const half = vh / 2, frame = 96; const rm = !!(this.props.reducedMotion ?? false);
+    const within = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+    const step = v => v >= 1 ? 1 : 0;
+    const d = el => this.docTop(el);
+    const mix = t => { const a = [168, 159, 144], b = [228, 219, 203]; return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',') + ')'; };
+    const px = v => Math.round(v * 100) / 100;
+    const tops = this.secs.map(d), hs = this.secs.map(s => s.offsetHeight);
+    const docH = this.wrap.offsetHeight; const end = Math.max(0, docH - vh);
+    const pageEnd = end > 0 ? within(y, end - half, end) : 0;
+    // Boundaries (margin.module.css): lead on the outgoing chapter, trail on the incoming; 0.5 with the incoming top on the midline.
+    const b = [0, 0, 0];
+    for (let i = 1; i < 3; i++) {
+      const outH = hs[i - 1], inH = hs[i];
+      const outCover = vh - (tops[i - 1] - y), inCover = vh - (tops[i] - y);
+      const lead = within(outCover, Math.max(outH, (vh + outH) / 2, i === 1 ? vh : 0), outH + half);
+      const trail = within(inCover, half, Math.min(vh - frame, (vh + inH) / 2));
+      b[i] = rm ? Math.max(step(lead), step(pageEnd)) : Math.max((lead + Math.max(trail, trail / Math.max(trail + 1 - pageEnd, .0001))) / 2, within(pageEnd, .8, 1));
+    }
+    // Numeral: I holds; the second and third I enter by width and opacity over their boundary. The box recentres over each boundary's second half.
+    [1, 2].forEach(i => { const g = this.glyphs[i], p = b[i]; g.style.opacity = px(p); g.style.clipPath = `inset(-1em calc(${px((1 - p) * 100)}% - ${px(p * .05)}em) -1em -0.05em)`; });
+    const arrived = i => i === 0 ? 1 : within(b[i], .5, 1);
+    const w = [arrived(0) - arrived(1), arrived(1) - arrived(2), arrived(2)];
+    const gw = this.ghosts.map(g => g.offsetWidth);
+    this.numBox.style.transform = `translateX(${px(-(w[0] * gw[0] + w[1] * gw[1] + w[2] * gw[2]) / 2)}px)`;
+    const lab = [1 - within(b[1], .33, .5), within(b[1], .5, .67) * (1 - within(b[2], .33, .5)), within(b[2], .5, .67)];
+    this.labels.forEach((l, i) => { l.style.opacity = px(lab[i]); });
+    // The index: in over the last quarter of boundary 1 (as the II completes), out over the first quarter of boundary 2.
+    const P = rm ? ((b[1] >= 1 && b[2] < 1) ? 1 : 0) : within(b[1], .75, 1) * (1 - within(b[2], 0, .25));
+    this.index.style.opacity = px(P); this.index.style.visibility = P > 0 ? 'visible' : 'hidden';
+    if (P > 0) this.index.removeAttribute('inert'); else this.index.setAttribute('inert', '');
+    // Running heads (work.module.css): hidden while the title is on screen, in over 24 once its bottom is under the frame, pinned at 54 (the frame less its tail), pushed out by the next title. The index's employer line is as bright as its running head is visible.
+    const E = [];
+    this.blocks.forEach((B, k) => {
+      const blockTop = d(B.block) - y;
+      const titleBottom = d(B.head) + B.head.offsetHeight - y;
+      const pinned = within(frame - titleBottom, 0, 24);
+      const natural = d(B.proj) - 42 - y;
+      const limit = blockTop + B.block.offsetHeight - parseFloat(getComputedStyle(B.block).paddingBottom) - 90;
+      const rowTop = Math.min(Math.max(natural, 54), limit);
+      const pushed = within(54 - rowTop, 0, 74);
+      B.row.style.top = px(rowTop - blockTop) + 'px'; B.row.style.opacity = px(pinned); B.row.style.visibility = pinned > 0 ? 'visible' : 'hidden';
+      E[k] = pinned * (1 - pushed);
+      // Projects: a grid row is current once its plates' top has passed the line a jump lands it on (186: the frame, the pinned row, the tail); the hero until then. Over 24 of scroll, like the running head.
+      const qs = B.rows.map(r => { const v = within(186 - (d(r) - y), 0, 24); return rm ? step(v) : v; });
+      const bright = [1 - (qs[0] ?? 0)];
+      qs.forEach((qv, r) => { const v = qv * (1 - (qs[r + 1] ?? 0)); bright.push(v, v); });
+      const tier = this.tiers[k];
+      tier.lines.forEach((a, j) => a.style.setProperty('--c', mix(bright[j] ?? 0)));
+      tier.el.style.height = px(E[k] * (tier.n * 18 + 8)) + 'px'; tier.el.style.opacity = px(E[k]);
+      if (E[k] >= .5) tier.el.removeAttribute('inert'); else tier.el.setAttribute('inert', '');
+      this.empLines[k].style.setProperty('--c', mix(E[k]));
+    });
+    // Icons: hidden under 620 of height (as today); between 620 and the threshold they yield to the index while it is present.
+    const thr = this.iconThreshold;
+    const io = vh < 620 ? 0 : vh >= thr ? 1 : 1 - P;
+    this.icons.style.opacity = px(io); this.icons.style.visibility = io > 0 ? 'visible' : 'hidden';
+    // Content fade (globals.css).
+    const mid = y + half;
+    this.fades.forEach(el => { const c = d(el) + el.offsetHeight / 2; const dist = Math.abs(c - mid) / vh; el.style.opacity = (rm ? 1 : dist <= .25 ? 1 : Math.max(.15, 1 - (dist - .25) / .25 * .85)).toFixed(3); });
+    // Current chapter (current-chapter.ts): last whose top is at or above the midline; first at zero, last at the end.
+    let ch = 'i';
+    if (y <= 0) ch = 'i'; else if (y >= end - 1) ch = 'iii'; else this.secs.forEach(s => { if (d(s) - y <= half) ch = s.id; });
+    if (ch !== this.state.chapter) this.setState({ chapter: ch });
+    this.paintChapter(ch);
+  }
+  renderVals() {
+    const b = this.bp, f = this.state.frame, ch = this.state.chapter;
+    const v = {
+      W: this.W, H: this.H, col: b.col, marginW: b.marginW, gap: b.gap, measureOff: b.marginW + b.gap, measure: b.col - b.marginW - b.gap,
+      axis: b.axis, axisIcon: b.axis - 10, labelW: b.axis * 2, num: b.num, numH: Math.round(b.num * .85 * 10) / 10,
+      company: b.company, name: b.name, title: b.title, cgap: b.cgap, contactPad: b.cgap - 28,
+      heroMargin: Math.round(24 + b.company * 1.1 + 28 + 40),
+      rootH: f ? this.H + 'px' : 'auto', rootOv: f ? 'hidden' : 'visible', headerPos: f ? 'absolute' : 'sticky', fixedPos: f ? 'absolute' : 'fixed',
+      shiftY: f ? `${-Math.round(f.y)}px` : '0px', marginLeft: f ? `${(this.W - b.col) / 2}px` : `calc(50% - ${b.col / 2}px)`,
+      emailColor: ch === 'iii' ? '#F3C77E' : '#E0AE62', emailGlow: ch === 'iii' ? '0 0 8px rgba(243,199,126,.6), 0 0 24px rgba(224,174,98,.35)' : 'none',
+    };
+    ['I', 'II', 'III'].forEach((n, i) => { const cur = ch === ['i', 'ii', 'iii'][i]; v['nav' + n] = cur ? '#F3C77E' : '#A89F90'; v['num' + n] = cur ? '#F3C77E' : '#E0AE62'; });
+    return v;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r5 · Work index · Storyboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0E1512;color:#E4DBCB;} a{color:#E4DBCB;} a:hover{color:#E0AE62;}</style>
+</helmet>
+<div data-screen-label="Storyboard" style="width:1440px;margin:0 auto;padding:64px 80px 96px;box-sizing:border-box;background:#0E1512;color:#E4DBCB;font-family:'Spectral',Georgia,serif;font-weight:300;">
+  <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Round 5 · Work index · storyboard at 1440 × 900</p>
+  <h1 style="margin:16px 0 0;font-weight:200;font-size:48px;line-height:1.1;letter-spacing:-.01em;">The margin, frame by frame</h1>
+  <p style="margin:20px 0 0;max-width:720px;font-family:'Source Sans 3',Arial,sans-serif;font-size:17px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Each panel is the margin as built, at the scroll position named under it (document pixels, from the page's top, measured in home-1440). Every value is a function of the scroll; nothing here is timed. The mapping is written under each strip.</p>
+
+  <sc-for list="{{ strips }}" as="strip" hint-placeholder-count="3">
+    <section style="margin-top:72px;">
+      <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">{{ strip.title }}</h2>
+      <p style="margin:8px 0 0;max-width:820px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">{{ strip.note }}</p>
+      <div style="display:flex;gap:24px;margin-top:28px;align-items:flex-start;">
+        <sc-for list="{{ strip.frames }}" as="f" hint-placeholder-count="4">
+          <div style="width:196px;flex:0 0 196px;">
+            <div style="position:relative;height:400px;background:#0E1512;box-shadow:0 0 0 1px #2E3B34;overflow:hidden;">
+              <div style="position:absolute;top:24px;left:0;right:0;height:1px;background:#1A2520;"></div>
+              <div style="position:absolute;left:0;top:36px;width:280px;transform-origin:0 0;transform:scale(.7);">
+                <div style="position:relative;height:119px;font-weight:200;font-size:140px;line-height:.85;letter-spacing:-.04em;color:#4A5A50;white-space:nowrap;">
+                  <span style="position:absolute;top:0;left:80px;display:inline-flex;transform:translateX({{ f.shift }}px);"><span style="display:inline-block;">I</span><span style="display:inline-block;opacity:{{ f.g2 }};clip-path:{{ f.clip }};">I</span></span>
+                </div>
+                <div style="position:relative;width:160px;height:16px;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;text-align:center;">
+                  <span style="position:absolute;inset:0;opacity:{{ f.labAbout }};">About</span><span style="position:absolute;inset:0;opacity:{{ f.labWork }};">Work</span>
+                </div>
+                <div style="margin-top:28px;display:flex;flex-direction:column;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:18px;letter-spacing:.02em;opacity:{{ f.P }};white-space:nowrap;">
+                  <sc-for list="{{ f.lines }}" as="l" hint-placeholder-count="3">
+                    <span style="padding-left:{{ l.indent }}px;color:{{ l.color }};opacity:{{ l.opacity }};height:{{ l.height }}px;overflow:hidden;margin-top:{{ l.mt }}px;">{{ l.text }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+            <p style="margin:12px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#E4DBCB;">y {{ f.y }}</p>
+            <p style="margin:2px 0 0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:17px;color:#A89F90;white-space:pre-line;">{{ f.vals }}</p>
+            <p style="margin:8px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-size:14px;line-height:1.5;color:#A89F90;text-wrap:pretty;">{{ f.caption }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:28px;padding-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;white-space:pre-line;max-width:900px;">{{ strip.mapping }}</div>
+    </section>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const within = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+    const mix = t => { const a = [168, 159, 144], b = [228, 219, 203]; return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',') + ')'; };
+    const EMP = [
+      { name: 'Faith Platforms Inc.', projects: ['Prava', 'Prompt Lab', 'Analytics dashboard', 'Lectionary authoring tool', 'Commitment library'] },
+      { name: 'Etainement', projects: ['Marketplace extension', 'Pricing portal'] },
+      { name: 'Caesars Sportsbook', projects: ['Live odds console', 'Arbitrage detector', 'Trading schedule'] },
+    ];
+    // Ghost widths of I and II at 140px Spectral 200 (measured in home-1440): the recentre over a boundary's second half.
+    const GW = { I: 41, II: 80 };
+    // A frame: scroll y, boundary 1, employer brightness E[3], per-employer project brightness, caption.
+    const frame = (y, b1, E, bright, caption, vals) => {
+      const P = within(b1, .75, 1);
+      const arrived = within(b1, .5, 1);
+      const shift = -((1 - arrived) * GW.I + arrived * GW.II) / 2;
+      const lines = [];
+      EMP.forEach((e, k) => {
+        lines.push({ text: e.name, indent: 0, color: mix(E[k]), opacity: 1, height: 18, mt: 0 });
+        const n = e.projects.length; const h = E[k] * (n * 18 + 8);
+        if (h > 0) e.projects.forEach((p, j) => lines.push({ text: p, indent: 16, color: mix((bright[k] || [])[j] || 0), opacity: E[k], height: Math.round(h / n), mt: j === 0 ? Math.round(E[k] * 4) : 0 }));
+      });
+      return { y, g2: b1, clip: `inset(-1em calc(${(1 - b1) * 100}% - ${b1 * .05}em) -1em -0.05em)`, shift, labAbout: 1 - within(b1, .33, .5), labWork: within(b1, .5, .67), P, lines, caption, vals };
+    };
+    const z = [0, 0, 0], fp = v => [[v[0], v[1], v[1], v[2], v[2]], [], []];
+    const strips = [
+      { title: 'Arrival: the II completes, the index comes in, Faith Platforms brightens with its running head',
+        note: 'Boundary 1 runs over the viewport height of scroll centred on II\'s top crossing the midline (y 159 to 513 here). The second I enters by width over the whole boundary; the label turns at its middle; the index fades in over the last quarter, so it is at full opacity exactly when the numeral is whole. The three employer lines arrive muted: the first title is still on screen, as it is for the running head.',
+        frames: [
+          frame(159, .75, z, [], 'Boundary 1 at .75. II\'s top on the quarter line. Label already reads Work; second I three-quarters shown; index at 0.', 'b1 .75\nP 0'),
+          frame(277, .8333, z, [], 'A third of the way in.', 'b1 .83\nP .33'),
+          frame(395, .9167, z, [], 'Two thirds. The numeral recentres as it widens.', 'b1 .92\nP .67'),
+          frame(513, 1, z, [], 'II\'s top under the frame; the morph is complete and the index is whole. Nothing bright: Faith Platforms\' title is on screen.', 'b1 1\nP 1\nE 0 0 0'),
+          frame(735, 1, [.5, 0, 0], fp([1, 0, 0]), 'Faith Platforms\' title bottom 12px under the frame: its running head is half in, so its line is half bright and its tier half open. Prava, the hero, is current.', 'pinned .5\nE .5 0 0'),
+          frame(747, 1, [1, 0, 0], fp([1, 0, 0]), 'Pinned. Faith Platforms in the text colour with five projects; Prava bright.', 'pinned 1\nE 1 0 0'),
+        ],
+        mapping: 'P (index opacity) = clamp((b1 - .75) / .25)           b1 = boundary 1, the margin\'s own variable (--boundary-1)\nE[k] (employer k) = pinned[k] × (1 - pushed[k])    pinned = clamp((96 - titleBottom[k]) / 24), the running head\'s --pinned\ncolour(line) = mix(#A89F90, #E4DBCB, brightness)   tier height = E[k] × (n × 18 + 8)\nAt 1440 × 900: II top 609, title 01 bottom 819 → pin from y 723 to 747.' },
+      { title: 'Employer handover: Faith Platforms to Etainement',
+        note: 'Two halves, 228px apart, both the running heads\'. First the next title pushes Faith Platforms\' head up behind the frame (74px of scroll, y 2368 to 2442): its line dims and its tier closes. The title lands (y 2458) with no head and no bright employer. Then Etainement\'s title bottom passes under the frame (y 2572 to 2596): its head fades in and its line and tier come with it. A jump to Etainement lands at y 2458 and the index agrees with the page.',
+        frames: [
+          frame(2368, 1, [1, 0, 0], fp([0, 0, 1]), 'Faith Platforms pinned; the second grid row (Lectionary, Commitment) is current. Etainement\'s title is 210px from the frame.', 'pushed 0\nE 1 0 0'),
+          frame(2405, 1, [.5, 0, 0], fp([0, 0, 1]), 'The head is half behind the frame; the line is half bright and the tier half closed.', 'pushed .5\nE .5 0 0'),
+          frame(2442, 1, z, [], 'Head gone. Three muted lines.', 'pushed 1\nE 0 0 0'),
+          frame(2458, 1, z, [], 'Etainement\'s title landed 24 under the frame, as a jump lands it. The title is the place marker; the index waits.', 'landed\nE 0 0 0'),
+          frame(2584, 1, [0, .5, 0], [[], [1, 0], []], 'Etainement\'s title bottom 12 under the frame: head half in. The brief\'s "progress 0.5".', 'pinned .5\nE 0 .5 0'),
+          frame(2596, 1, [0, 1, 0], [[], [1, 0], []], 'Pinned. Etainement bright with two projects; Marketplace extension (the hero) current.', 'pinned 1\nE 0 1 0'),
+        ],
+        mapping: 'pushed[k] = clamp((54 - rowTop[k]) / 74)   rowTop is the sticky row\'s box top; 54 is where it pins (the frame less its 42 tail); 74 puts its text wholly behind the frame\'s solid part\nE[k] = pinned[k] × (1 - pushed[k])          at most one employer is bright; between the halves none is\nReduced motion: the running heads keep their 24px fade on main, so E keeps it too; nothing else moves.' },
+      { title: 'Project handover inside Faith Platforms: Prava to the first grid row',
+        note: 'A grid row is current once its plates\' top has passed the line a jump lands it on: 186px from the viewport\'s top (the frame, the pinned row, its tail). The hero is current until then. Brightness moves over the next 24px of scroll, the running head\'s fade. Both cells of a row brighten together: they stand on the same line and a jump to either lands the same place.',
+        frames: [
+          frame(1410, 1, [1, 0, 0], fp([1, 0, 0]), 'Prava current. The first row\'s plates are 210 from the top, 24 above the landing line.', 'q .0\nPrava 1'),
+          frame(1434, 1, [1, 0, 0], fp([1, 0, 0]), 'Plates on the landing line. Nothing has changed yet.', 'q 0'),
+          frame(1446, 1, [1, 0, 0], fp([.5, .5, 0]), 'Twelve pixels on: Prava half dim, Prompt Lab and Analytics dashboard half bright.', 'q .5'),
+          frame(1458, 1, [1, 0, 0], fp([0, 1, 0]), 'Row 1 current. Row 2 (Lectionary, Commitment) takes over the same way at y 1849 to 1873.', 'q 1'),
+        ],
+        mapping: 'q[r] = clamp((186 - plateTop[r]) / 24)          plateTop: the row\'s first plate, viewport coordinates\nhero = 1 - q[1]     row r = q[r] × (1 - q[r + 1])      cells of a row share r\nAt 1440 × 900 in Faith Platforms: row 1 plates at 1620 → y 1434 to 1458; row 2 at 2035 → y 1849 to 1873.' },
+    ];
+    return { strips };
+  }
+}
+</script>
+</body>
+</html>

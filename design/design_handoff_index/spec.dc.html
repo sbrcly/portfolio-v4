@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r5 · Work index · Spec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0E1512;color:#E4DBCB;} a{color:#E4DBCB;} a:hover{color:#E0AE62;}</style>
+</helmet>
+<div data-screen-label="Spec" style="width:1440px;margin:0 auto;padding:64px 80px 96px;box-sizing:border-box;background:#0E1512;color:#E4DBCB;font-family:'Spectral',Georgia,serif;font-weight:300;">
+  <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Round 5 · Work index · spec</p>
+  <h1 style="margin:16px 0 0;font-weight:200;font-size:48px;line-height:1.1;letter-spacing:-.01em;">The index: state, type, clearance</h1>
+  <p style="margin:20px 0 0;max-width:720px;font-family:'Source Sans 3',Arial,sans-serif;font-size:17px;line-height:1.6;color:#A89F90;text-wrap:pretty;">A nav labelled "Work index" under the running margin's label, present only while chapter II is current. Three employer lines; under the current employer, its projects. Position is told by brightness alone. Everything below is written against main as read on 2026-10-04.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px 80px;margin-top:72px;">
+
+    <section>
+      <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">1 · State model: one source per tier</h2>
+      <div style="margin-top:16px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;display:flex;flex-direction:column;gap:12px;text-wrap:pretty;">
+        <p style="margin:0;"><span style="color:#E4DBCB;">Presence.</span> The margin's own boundary variables. Opacity P = clamp((--boundary-1 - .75) / .25) × (1 - clamp(--boundary-2 / .25)). The index is whole exactly when the II is whole (recentre ends at 1) and starts to leave the moment III's boundary opens. Reduced motion: --boundary-n already steps on main; P steps with it. When P is 0 the nav is visibility: hidden and inert.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Employers.</span> The running head's state, read literally: E[k] = pinned[k] × (1 - pushed[k]). pinned is the row's --pinned (0 to 1 over the 24px after the title's bottom passes the frame). pushed is how far the next title has pushed the row behind the frame: clamp((54 - rowTop) / 74), where 54 is the row's sticky top and 74 the scroll that puts its text behind the frame's solid 54. An employer's line is as bright as its running head is visible; the project tier opens and closes with the same number (height = E × (n × 18 + 8), opacity = E). Between two heads there is a window (about 230px at 1440) where the next title is on screen and no line is bright: the title is the marker. This is also what makes a jump honest: a jump to an employer lands its title 24 under the frame, inside that window, and the index does not claim an employer the reader has left.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Projects.</span> The anchors' landing positions. A grid row is current once its plates' top has passed 186px from the viewport's top: the frame (96), the pinned row (48), and the row's tail (42), which is where a jump to a cell lands it (work.module.css, scroll-margin-top). The hero is current until the first row passes. Brightness moves over the 24px after the line: q[r] = clamp((186 - plateTop[r]) / 24); hero = 1 - q[1]; row r = q[r] × (1 - q[r + 1]). Both cells of a row take the row's value: they stand on one line and a jump to either lands the same place. Reduced motion: q steps at the line.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Colour.</span> brightness 0 is --muted #A89F90, 1 is --text #E4DBCB, mixed in sRGB. The dim numeral #4A5A50 is not used: at 2.5:1 it is below what a link may be, and two levels proved enough once the tier indent carries the structure.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Implementation note.</span> Every input (boundary variables, --pinned, the sticky row's position, plate tops) exists on main already; the index adds no observer of its own. Where view timelines exist, P and E can be CSS; the project tier needs the per-frame script that stands in for them elsewhere (components/scroll).</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">2 · Type and spacing</h2>
+      <dl style="margin:16px 0 0;display:grid;grid-template-columns:200px 1fr;gap:10px 24px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;">
+        <dt style="color:#A89F90;">Face</dt><dd style="margin:0;">JetBrains Mono 400, 11px (--mono-small-size), line 18px, tracking .02em, sentence case as the names are written. No caps: eight lines of .14em caps would outweigh the label.</dd>
+        <dt style="color:#A89F90;">Alignment</dt><dd style="margin:0;">Left, on the margin column's edge (x 0 of the 280 / 200 column). Project tier indented 16px.</dd>
+        <dt style="color:#A89F90;">Top</dt><dd style="margin:0;">28px under the label: 120 + numeral (119 / 81.6) + 12 + 16 + 28 = 295 at 1440, 258 at 1024, from the viewport's top.</dd>
+        <dt style="color:#A89F90;">Tier</dt><dd style="margin:0;">4px above its first line and below its last (the 8 in the height formula). Open height: 5 lines 98, 2 lines 44, 3 lines 62.</dd>
+        <dt style="color:#A89F90;">Tallest state</dt><dd style="margin:0;">Faith Platforms open: 3 × 18 + 98 = 152. Index bottom at 447 (1440), 410 (1024).</dd>
+        <dt style="color:#A89F90;">Widest line</dt><dd style="margin:0;">"Lectionary authoring tool", 25 characters: 16 + 171 = 187px. Clears the 200 column at 1024 by 13 and the measure by 53 (the 40 gap).</dd>
+        <dt style="color:#A89F90;">Colours</dt><dd style="margin:0;">#A89F90 rest, #E4DBCB current, #E0AE62 hover and focus, with the global 1px underline at .3em. Focus ring: the global 1px --lit at 4px.</dd>
+        <dt style="color:#A89F90;">Layers</dt><dd style="margin:0;">Inside .margin (z 4): under the frame, over the pinned rows. The margin is pointer-events: none; the nav sets auto, like the icons.</dd>
+      </dl>
+
+      <h2 style="margin:48px 0 0;font-weight:300;font-size:28px;line-height:1.2;">3 · Why left, not centred</h2>
+      <p style="margin:16px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">The numeral and label are centred on the axis because each is one short object. The index is a two-tier list, and a list is read by its left edge: the 16px indent is the only thing that says "under", and centring destroys it. Line lengths run from 5 to 25 characters; centred on the 80 axis the longest crosses the column's edge, which the label already guards against by falling back to a left start, so a centred index would end up with two alignments. The column's edge is the margin's one fixed edge (the numeral's left ink moves with the chapter). The icons stay on the axis: they are not the same object and should not read as one.</p>
+    </section>
+
+    <section>
+      <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">4 · Clearance against the icons</h2>
+      <p style="margin:16px 0 0;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;text-wrap:pretty;">The icon stack is 140 tall (four 20px marks, 20 apart), pinned 130 above the viewport's bottom (footer 90 + 40). Its top is at height - 270.</p>
+      <dl style="margin:16px 0 0;display:grid;grid-template-columns:200px 1fr;gap:10px 24px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;">
+        <dt style="color:#A89F90;">1440 × 900</dt><dd style="margin:0;">Index bottom 447, icons top 630. Clear by 183.</dd>
+        <dt style="color:#A89F90;">1024 × 768</dt><dd style="margin:0;">Index bottom 410, icons top 498. Clear by 88.</dd>
+        <dt style="color:#A89F90;">Threshold</dt><dd style="margin:0;">Index bottom + 24 + 270: 741 of height at 1200 and up, 704 below. Above it nothing changes.</dd>
+        <dt style="color:#A89F90;">620 to threshold</dt><dd style="margin:0;">The icons yield to the index: their opacity is 1 - P, so they leave as the index arrives and return as it leaves, on the same scroll. In chapters I and III they are as today. 1440 × 620 is in this band: the icons show in I and III and not in II (home-1440x620, frames faith and caesars).</dd>
+        <dt style="color:#A89F90;">Under 620</dt><dd style="margin:0;">Hidden, as today. Nothing new to clear.</dd>
+        <dt style="color:#A89F90;">Rejected</dt><dd style="margin:0;">Raising the icons' min-height to the threshold (loses them at 1366 × 768 and 1440 × 768 everywhere); collapsing the project tier in short viewports (the tier is the point); a smaller face (11 is the floor the site uses).</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">5 · Links, keyboard, phone, Prava</h2>
+      <div style="margin-top:16px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;display:flex;flex-direction:column;gap:12px;text-wrap:pretty;">
+        <p style="margin:0;"><span style="color:#E4DBCB;">Targets.</span> Employer lines go to employer-01 to -03 (title lands 24 under the frame). Hero lines go to work-prava, work-marketplace-extension, work-live-odds-console (the employer's title lands, as on main). Cell lines go to work-&lt;id&gt; (plate lands under the pinned row, clear of its tail). The About chapter's links do the same today; nothing new is needed in work.module.css.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Order.</span> The nav sits in the DOM after the frame's chapter nav and before main, so Tab reaches it after I to IV Resume and before Scott's name. Only the current employer's tier is focusable (the closed tiers are inert); employer lines are always focusable while the index is present. Absent, the whole nav is inert and hidden.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Accessibility.</span> nav aria-label="Work index". Not aria-hidden: it is the second part of the margin, after the icons, that is read. No aria-current: the brightness is a reading position, not a selected page, and it would announce on every scroll.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Phone (under 960).</span> No index. There is no margin to hold it; each employer's running head already pins at 80 and says where the reader is; the chapter is one column of ten entries with its titles in flow; and the nav is numerals only on phone, so a second nav would outrank the first. A drawer or a sticky "contents" row would be a new pinned element, which the site has been removing, not adding.</p>
+        <p style="margin:0;"><span style="color:#E4DBCB;">Prava page.</span> Absent. Its margin has no chapter II; its sections have their own numbering.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
