@@ -33,17 +33,23 @@
   }
 }
 
+/* Under the name, in the text color. */
+.subtitle {
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+/* Muted, so its links (components/text-link) stand out in the text color. */
 .body {
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 680px;
   margin-top: 32px;
-  text-wrap: pretty;
-}
-
-.body p:last-child {
+  font-size: 18px;
+  line-height: 1.55;
   color: var(--muted);
+  text-wrap: pretty;
 }
 
 .facts {
@@ -51,7 +57,6 @@
   gap: 48px;
   margin-top: 48px;
   padding-top: 20px;
-  border-top: 1px solid var(--rule);
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
@@ -81,7 +86,7 @@
 }
 
 /* III Contact. No statement: the email opens the measure, 28px under its
-   rule (the measure's own 12px and this margin). */
+   top (the measure's own 12px and this margin). */
 
 .contactEmail {
   display: inline-block;
@@ -116,7 +121,8 @@
 @media (max-width: 719px) {
   .body {
     gap: 16px;
-    margin-top: 20px;
+    font-size: var(--body-size);
+    line-height: var(--body-leading);
   }
 
   .facts {

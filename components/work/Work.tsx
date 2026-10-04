@@ -5,7 +5,7 @@ import styles from "./work.module.css";
 
 /**
  * Chapter II: one block per employer, most recent first. Each opens with a
- * ruled row that stays under the frame for the length of its block, then
+ * row that stays under the frame for the length of its block, then
  * the first project as a full entry, then the rest as a grid.
  */
 export default function Work() {

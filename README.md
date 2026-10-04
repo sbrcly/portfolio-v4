@@ -10,8 +10,8 @@ bone text, brass used only as light, and one lit element per viewport.
 - Next.js 16 (App Router, Turbopack) and React 19, TypeScript
 - CSS Modules, with two global stylesheets: `app/tokens.css` and
   `app/globals.css`
-- Fonts through `next/font/google`, self-hosted: Spectral 200 and 300 (plus
-  italic 200 and 300) and JetBrains Mono
+- Fonts through `next/font/google`, self-hosted: Spectral 200, 300, and 400
+  (plus italic 200 and 300) and JetBrains Mono
 - No animation library, no client data fetching, no analytics, no third
   party scripts
 
@@ -46,11 +46,18 @@ incoming one warms over 600 ms, never overlapping. The contact email in
 chapter III is the only element that takes it. Plates have a one-pixel rim in
 the rule color and nothing more, in every state.
 
-Each employer's block has an anchor, `employer-01` to `employer-03`. A jump
-to one lands its row under the frame (the page's scroll padding) and sets
-chapter II at once. Nothing on the site links to them now, and nothing uses
+Each employer's block has an anchor, `employer-01` to `employer-03`, and
+each project one named for it, `work-prava`. A jump to an employer lands its
+row under the frame (the page's scroll padding); a jump to a project lands
+its top, a hero's title row or a cell's plate, under the pinned row and clear
+of its tail. Either sets chapter II at once. Nothing on the site links to the
+employers now. Chapter I's paragraphs link to six of the projects through
 `components/text-link/` (Spectral 400 in the text color inside a muted 300
-paragraph, no underline) since the hero that did was removed.
+paragraph, no underline, brass on hover and focus).
+
+The only hairlines are the plates' rims and the strokes inside the extension
+diagram. Nothing else on either page is ruled: not the employer rows, the
+title rows, the fact rows, the openers, or the footer.
 
 ## Scroll-driven motion
 
@@ -108,7 +115,7 @@ components/
   work/                       Work entries, plates, video plate, diagram
   margin/                     Running margin: numeral, label, icon links
   light/, chapters/, reveals/, fade/, scroll/
-  text-link/                  Link inside running text (unused)
+  text-link/                  Link inside running text
   footer/
 lib/                          Image generators for the icons and share cards
 ```

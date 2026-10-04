@@ -66,25 +66,26 @@
 
 /* Reveal, below 960px (above it the cell fades with the scroll instead;
    see globals.css). Hidden state is set by script on a below-fold cell
-   only (components/reveals). */
+   only (components/reveals). The cell's parts move, not the cell: a jump
+   to a hidden one lands where it will be. */
 @media (max-width: 959px) {
-  .cell[data-reveal="hidden"] {
+  .cell[data-reveal="hidden"] > * {
     opacity: 0;
     transform: translateY(12px);
   }
 
-  .cell[data-reveal="shown"] {
+  .cell[data-reveal="shown"] > * {
     transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
       transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
 @media (max-width: 959px) and (prefers-reduced-motion: reduce) {
-  .cell[data-reveal="hidden"] {
+  .cell[data-reveal="hidden"] > * {
     transform: none;
   }
 
-  .cell[data-reveal="shown"] {
+  .cell[data-reveal="shown"] > * {
     transition: opacity 200ms;
   }
 }

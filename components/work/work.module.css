@@ -1,10 +1,12 @@
-/* Chapter II by employer. Each block opens with a ruled row that sticks
-   under the frame for the length of the block; the block's bottom edge,
-   which is the next block's row arriving, pushes it out. */
+/* Chapter II by employer. Each block opens with a row that sticks under
+   the frame for the length of the block; the block's bottom edge, which is
+   the next block's row arriving, pushes it out. */
 .employers {
   /* The see-through part of the frame: its gradient's last 44%
      (components/frame). */
   --frame-tail: calc(var(--frame-height) * 0.44);
+  /* The pinned row under the frame: 16, the line, 16. */
+  --row-height: 48px;
   --employer-gap: 160px;
   --row-gap: 72px; /* the row to its first project */
   /* The opener's numeral and label to the first row. Each row's box starts
@@ -21,7 +23,7 @@
 
 /* The row. Its box reaches a frame tail above the row and pins with that
    part behind the frame's gradient, so from the frame's solid edge to the
-   row's rule the ground is unbroken and whatever scrolls past is beneath
+   row's bottom the ground is unbroken and whatever scrolls past is beneath
    it. Below the frame, above the content (which fades; the row never
    does), and below the running margin. */
 .row {
@@ -33,8 +35,7 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 6px 24px;
-  /* 16 above and below; the rule is the last pixel. */
-  padding: calc(var(--frame-tail) + 16px) 0 17px;
+  padding: calc(var(--frame-tail) + 16px) 0 16px;
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
@@ -42,20 +43,19 @@
 }
 
 /* The ground behind the row, as wide as the viewport so a plate that
-   bleeds (on phone) passes beneath it too, and the rule, as wide as the
-   row. An element, not a pseudo-element, so a contrast checker can see
-   what the row's text stands on. It comes first in the row and the text
-   after it is positioned, so the text is on top. */
+   bleeds (on phone) passes beneath it too. An element, not a
+   pseudo-element, so a contrast checker can see what the row's text stands
+   on. It comes first in the row and the text after it is positioned, so
+   the text is on top. */
 .ground {
   position: absolute;
   inset: 0;
-  border-bottom: 1px solid var(--rule);
   background: var(--ground);
   box-shadow: 0 0 0 100vmax var(--ground);
   clip-path: inset(0 -100vmax);
 }
 
-/* Under the rule, the frame's gradient again: content dims as it goes
+/* Under the row, the frame's gradient again: content dims as it goes
    beneath. The image is drawn out to the viewport's sides. */
 .tail {
   position: absolute;
@@ -109,6 +109,12 @@
   scroll-margin-top: 112px;
 }
 
+/* Nor does a jump to a project ("work-prava"): its top, a hero's title row
+   or a cell's plate, lands under the pinned row and clear of its tail. */
+.projects [id^="work-"] {
+  scroll-margin-top: calc(var(--row-height) + var(--frame-tail));
+}
+
 /* The projects after the hero: a grid under its caption, two cells across
    the measure. One cell alone keeps its column's width, at the left. */
 .grid {
@@ -136,6 +142,8 @@
   .employers {
     --employer-gap: 128px;
     --row-gap: 48px;
+    /* The tallest row at 390: the name, then a role on two lines. */
+    --row-height: 86px;
   }
 
   /* Role and years wrap under the name. */

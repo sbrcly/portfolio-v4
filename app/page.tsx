@@ -6,6 +6,7 @@ import { EMAIL } from "@/components/frame/chapters";
 import Light from "@/components/light/Light";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
+import TextLink from "@/components/text-link/TextLink";
 import Work from "@/components/work/Work";
 import styles from "./page.module.css";
 
@@ -32,28 +33,42 @@ export default function Home() {
             numeral="I"
             label="About"
             headingId="h-i"
-            ruled={false}
             statement="Scott Barclay"
             titled
           >
+            <p className={styles.subtitle}>Full-Stack Engineer</p>
             <div className={styles.body}>
               <p>
                 I priced sport for a living at a Las Vegas sportsbook. In the
-                evenings I built a live odds console streamed over Socket.io
-                from BigQuery, an arbitrage detector across about fifty books,
-                and a schedule that assigned traders to games. The company
-                moved me into an engineering role.
+                evenings I built{" "}
+                <TextLink href="#work-live-odds-console">
+                  a live odds console
+                </TextLink>{" "}
+                streamed over Socket.io from BigQuery,{" "}
+                <TextLink href="#work-arbitrage-detector">
+                  an arbitrage detector
+                </TextLink>{" "}
+                across about fifty books, and{" "}
+                <TextLink href="#work-trading-schedule">
+                  a schedule that assigned traders to games
+                </TextLink>
+                . The company moved me into an engineering role.
               </p>
               <p>
-                Then three years of full-stack work at a ticket brokerage: a
-                pricing portal, and a Chrome extension that runs inside
-                marketplace sites and rewrites what buyers see.
+                Then three years of full-stack work at a ticket brokerage:{" "}
+                <TextLink href="#work-pricing-portal">a pricing portal</TextLink>
+                , and{" "}
+                <TextLink href="#work-marketplace-extension">
+                  a Chrome extension
+                </TextLink>{" "}
+                that runs inside marketplace sites and rewrites what buyers
+                see.
               </p>
               <p>
-                Most recently, Prava: an iOS prayer and scripture app,
-                designed, built, and shipped alone, with versioned prompts,
-                snapshot-tested fallbacks, and cost work that is measured
-                rather than assumed.
+                Most recently, <TextLink href="#work-prava">Prava</TextLink>:
+                an iOS prayer and scripture app, designed, built, and shipped
+                alone, with versioned prompts, snapshot-tested fallbacks, and
+                cost work that is measured rather than assumed.
               </p>
               <p>
                 Away from work I read theology and philosophy and am teaching
@@ -98,12 +113,7 @@ export default function Home() {
           aria-labelledby="h-iii"
           data-chapter="2"
         >
-          <ChapterOpener
-            numeral="III"
-            label="Contact"
-            headingId="h-iii"
-            ruled={false}
-          >
+          <ChapterOpener numeral="III" label="Contact" headingId="h-iii">
             <a
               href={`mailto:${EMAIL}`}
               className={styles.contactEmail}

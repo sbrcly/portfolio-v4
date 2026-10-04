@@ -41,10 +41,9 @@
   color: var(--rule);
 }
 
+/* The space between the row's two halves. */
 .fill {
   flex: 1;
-  height: 1px;
-  background: var(--rule);
 }
 
 .name {
@@ -149,7 +148,7 @@
   text-wrap: pretty;
 }
 
-/* 02: ruled facts */
+/* 02: facts */
 .facts {
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -157,7 +156,6 @@
   max-width: 680px;
   margin-top: 48px;
   padding-top: 20px;
-  border-top: 1px solid var(--rule);
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);

@@ -13,8 +13,6 @@ type Props = {
   statement?: string;
   /** The statement is the page's h1. */
   titled?: boolean;
-  /** Hairline above the measure. */
-  ruled?: boolean;
   children?: React.ReactNode;
 };
 
@@ -24,7 +22,6 @@ export default function ChapterOpener({
   headingId,
   statement,
   titled = false,
-  ruled = true,
   children,
 }: Props) {
   const Statement = titled ? "h1" : "p";
@@ -39,12 +36,7 @@ export default function ChapterOpener({
         </h2>
       </div>
       {(statement || children) && (
-        <div
-          className={
-            ruled ? `${styles.measure} ${styles.ruled}` : styles.measure
-          }
-          data-fade=""
-        >
+        <div className={styles.measure} data-fade="">
           {statement && (
             <Statement className={styles.statement}>{statement}</Statement>
           )}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./text-link.module.css";
 
 type Props = {
-  /** An anchor on this page ("#employer-02"), a route ("/work/prava"), or a URL. */
+  /** An anchor on this page ("#work-prava"), a route ("/work/prava"), or a URL. */
   href: string;
   children: React.ReactNode;
 };

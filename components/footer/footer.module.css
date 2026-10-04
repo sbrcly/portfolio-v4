@@ -8,7 +8,6 @@
   width: var(--column);
   margin: 0 auto;
   padding: 32px 0 var(--foot);
-  border-top: 1px solid var(--rule);
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
@@ -63,7 +62,6 @@
    the slot begins. Shown only where the margin shows it, from 960px up. */
 .ghost {
   gap: 0;
-  border-top-color: transparent;
 }
 
 .ghost .slot {
