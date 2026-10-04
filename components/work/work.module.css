@@ -131,9 +131,9 @@
   height: var(--frame-tail);
   border-image: linear-gradient(
       to bottom,
-      #121a16 0%,
-      rgba(18, 26, 22, 0.72) 50%,
-      rgba(18, 26, 22, 0) 100%
+      #0e1512 0%,
+      rgba(14, 21, 18, 0.72) 50%,
+      rgba(14, 21, 18, 0) 100%
     )
     fill 0 / 0 / 0 100vw;
   pointer-events: none;

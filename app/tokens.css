@@ -5,10 +5,10 @@
 
 :root {
   /* Palette */
-  --ground: #121a16;
+  --ground: #0e1512;
   --surface: #1a2520;
   --rule: #2e3b34;
-  --dim-numeral: #4a5a50; /* decorative only, 2.3:1 on ground */
+  --dim-numeral: #4a5a50; /* decorative only, 2.5:1 on ground */
   --text: #e4dbcb;
   --muted: #a89f90;
   --brass: #e0ae62;

@@ -4,7 +4,7 @@ import { loadGoogleFont } from "./og-font";
 export const OG_SIZE = { width: 1200, height: 630 };
 
 // Palette, from app/tokens.css.
-const GROUND = "#121A16";
+const GROUND = "#0E1512";
 const TEXT = "#E4DBCB";
 const BRASS = "#E0AE62";
 const LIT = "#F3C77E";

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { loadGoogleFont } from "./og-font";
 
 // Palette, from app/tokens.css.
-const GROUND = "#121A16";
+const GROUND = "#0E1512";
 const TEXT = "#E4DBCB";
 const BRASS = "#E0AE62";
 

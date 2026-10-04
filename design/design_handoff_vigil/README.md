@@ -10,7 +10,7 @@ Everything in `design/round-2/vigil/` is a **design reference written in HTML**,
 **High-fidelity** for layout, palette, type, spacing, states, motion timings, and accessibility markup. **Placeholder** for copy (realistic length; Scott's words to come), verify links (`#`), the resume PDF, and the video poster (first frame of `public/videos/odds-display-demo.mp4`, which exists in the repo).
 
 ## Tokens
-Colors: ground #121A16, surface #1A2520, wood #2B2019 (reserved), rule #2E3B34, dim numeral #4A5A50 (decorative only), text #E4DBCB (12.9:1 on ground), muted #A89F90 (6.8:1), brass #E0AE62 (8.8:1), lit #F3C77E (11.2:1).
+Colors: ground #0E1512, surface #1A2520, wood #2B2019 (reserved), rule #2E3B34, dim numeral #4A5A50 (decorative only), text #E4DBCB (13.5:1 on ground), muted #A89F90 (7.1:1), brass #E0AE62 (9.2:1), lit #F3C77E (11.7:1).
 Glow (lit text and rule): `text-shadow`/`box-shadow` 0 0 8px rgba(243,199,126,.6), 0 0 24px rgba(224,174,98,.35).
 Plate rim resting: `box-shadow: 0 0 0 1px rgba(224,174,98,.35), 0 0 72px rgba(224,174,98,.10)`. Lit: 1px at .6, 96px at .18.
 Type: Spectral 200/300/400 (display and body), JetBrains Mono 300/400/500 (labels, nav, specs; uppercase .10 to .14em tracking for labels).
@@ -19,7 +19,7 @@ Spacing: 4 8 12 16 24 32 40 48 64 128 176 (between work entries) 225 (chapter pa
 
 ## Layout
 Column 1120 centered (min(1120, 100vw - 160)); 960 at 1024; full width with 20px insets at 390 where plates bleed to the edge (margin -20).
-Still frame: sticky element 96px tall (80 on phone) containing a 72px bar (60 on phone); background `linear-gradient(to bottom, #121A16 0%, #121A16 56%, rgba(18,26,22,.72) 78%, rgba(18,26,22,0) 100%)`; no border, no blur; `pointer-events: none` except on the bar. Left: SB mark (two 1px brass verticals 18px tall flanking mono "SB" 12px .14em, 1x5 brass ticks above and below). Right: ruled nav table, one cell per chapter, 1px #2E3B34 border and dividers, padding 9px 16px, mono 12 uppercase .08em, numeral brass, label muted; current chapter: both to #F3C77E, no glow, `aria-current="page"`. Phone: numerals only, 12px, 18px gaps, each link `aria-label="II About"` etc.
+Still frame: sticky element 96px tall (80 on phone) containing a 72px bar (60 on phone); background `linear-gradient(to bottom, #0E1512 0%, #0E1512 56%, rgba(14,21,18,.72) 78%, rgba(14,21,18,0) 100%)`; no border, no blur; `pointer-events: none` except on the bar. Left: SB mark (two 1px brass verticals 18px tall flanking mono "SB" 12px .14em, 1x5 brass ticks above and below). Right: ruled nav table, one cell per chapter, 1px #2E3B34 border and dividers, padding 9px 16px, mono 12 uppercase .08em, numeral brass, label muted; current chapter: both to #F3C77E, no glow, `aria-current="page"`. Phone: numerals only, 12px, 18px gaps, each link `aria-label="II About"` etc.
 
 **I Home (option A).** `min-height: 100svh`, content anchored to vertical center. Absolute top row at 112px (128 at 1920, 96 at 1024, 84 at 390 where it wraps to two lines): "I Home", a 1px rule, email (bone, not uppercase), "/" separators in rule color, "Seattle or remote", "Available late 2026", mono 12 uppercase .10em. Center group: 72x2 lit rule (56x2 on phone) with glow, 40px, name, 40px, statement max-width 720.
 
@@ -39,7 +39,7 @@ Still frame: sticky element 96px tall (80 on phone) containing a 72px bar (60 on
 
 ## Video plate states (`video-states.dc.html`)
 `<video poster muted playsinline preload="metadata">` wrapped in a button labeled "Play the odds console recording, 33 seconds, silent" (label becomes "Pause" while playing).
-- Resting: poster at full brightness; 72px play ring (1px brass, fill rgba(18,26,22,.55), 18px brass triangle); mono meta bottom-left "odds-display-demo.mp4" bone, "· 33 s · silent" muted; rim resting. Focus: rim 1px steps to .6.
+- Resting: poster at full brightness; 72px play ring (1px brass, fill rgba(14,21,18,.55), 18px brass triangle); mono meta bottom-left "odds-display-demo.mp4" bone, "· 33 s · silent" muted; rim resting. Focus: rim 1px steps to .6.
 - Playing: ring and meta fade out 200 ms; rim to lit over 600 ms; native controls hidden, shown on hover/focus as a 44px bottom gradient bar with a 1px progress rule (brass fill) and mono "0:12 / 0:33" bottom-right, 160 ms fade.
 - Ended: hold last frame; rim back to resting over 400 ms; ring returns 200 ms; meta reads "Replay" in brass.
 - Autoplay muted at 60% visibility, pause on exit, resume on re-entry (never restart), one loop then end. No autoplay under reduced motion or Save-Data. Phone: 52px ring, 10px meta, tap toggles, controls hide after 2 s idle.
@@ -61,7 +61,7 @@ Overlay (position fixed, ground color, z above content) over content already in 
 - Reduced motion: no translate; 200 ms opacity reveals; rim swap instant after the 200 ms gap; no autoplay.
 
 ## Accessibility
-Chapter numerals `aria-hidden`; mono labels are the `h2` and `aria-labelledby` targets; work indices `aria-hidden`; nav links carry numeral plus name; dim numeral contrast (2.3:1) is decorative by design. Body and muted text pass AA on ground and surface.
+Chapter numerals `aria-hidden`; mono labels are the `h2` and `aria-labelledby` targets; work indices `aria-hidden`; nav links carry numeral plus name; dim numeral contrast (2.5:1) is decorative by design. Body and muted text pass AA on ground and surface.
 
 ## Breakpoints
 1920+: column stays 1120, hero 100svh, chapter pad 25svh. 1199: opener to 200 + 40, numeral 96, name 88, titles 36, plate padding 32. 719: opener stacks (numeral 72 inline with label), caption rows single column, plates bleed, hero top row wraps.
