@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r4 · Spec · Work by employer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#121A16;color:#E4DBCB;} a{color:#E4DBCB;text-decoration:none;} a:hover{color:#E0AE62;}</style>
+</helmet>
+<div data-screen-label="Spec" style="width:1440px;margin:0 auto;padding:80px 80px 120px;box-sizing:border-box;background:#121A16;color:#E4DBCB;font-family:'Spectral',Georgia,serif;font-weight:300;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Round 4 · specification</div>
+  <h1 style="margin:16px 0 0;font-weight:200;font-size:56px;line-height:1.05;letter-spacing:-.02em;max-width:900px;">Chapter III as a list of employers, each holding its projects.</h1>
+  <p style="margin:24px 0 0;max-width:760px;font-size:20px;line-height:1.55;color:#A89F90;">Values are for 1440 unless a breakpoint column says otherwise. Everything not named here is unchanged from main: the frame, the running margin's numeral and label, the content fade, the plate rim, the chapter padding, the footer.</p>
+
+  <div style="margin-top:72px;display:grid;grid-template-columns:260px 1fr;gap:0 64px;">
+    <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">1. Structure</h2>
+    <div style="font-size:18px;line-height:1.6;max-width:760px;">
+      <p style="margin:0;">Section III keeps its opener (h2 "Work · ten", statement). After it, one employer block per employer in reverse chronological order; inside each, one article per project in the order the employer's data lists them. Heading levels step down one: the opener's h2, the employer's h3, the project's h4. The projects' article elements keep <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">data-entry</code>, <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">data-fade</code>, and (phone) <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">data-reveal</code>, so Fade, Reveals, and the margin keep working on them untouched.</p>
+      <pre style="margin:24px 0 0;padding:20px 24px;border:1px solid #2E3B34;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;color:#A89F90;overflow:auto;">section#iii[data-chapter="2"]
+  ChapterOpener                       h2 Work · ten
+  div[data-employer="01"][data-employer-name="01 Faith Platforms"]
+    header (A: ruled across the column; B: sticky row)   h3
+    article[data-entry="01.1 Prava"][data-fade]          h4, Plate[data-light="iii"]
+    article[data-entry="01.3 Analytics dashboard"]       h4, SpecBlock (no data-light)
+    …
+  div[data-employer="02"] …</pre>
+      <p style="margin:24px 0 0;">A plate-less project has no <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">data-light</code> element, so plate-light.ts never sees it; it cannot be lit and the margin's lit-entry line is empty while the reader is on it.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:grid;grid-template-columns:260px 1fr;gap:0 64px;">
+    <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">2. Type: the new level</h2>
+    <div style="max-width:900px;">
+      <p style="margin:0;font-size:18px;line-height:1.6;max-width:760px;">Both directions rank the employer above the project without a new family or colour. A uses size and weight inside Spectral (the name's voice, smaller). B uses register: the employer is set in the apparatus voice, mono small caps, the same voice as the chapter labels and the nav, which already outranks content on this site.</p>
+      <div style="margin-top:28px;display:grid;grid-template-columns:200px 1fr 1fr 1fr;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;border-top:1px solid #2E3B34;">
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Level</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">1440 and up</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">960 to 1199</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">to 719</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Statement (opener)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Spectral 300 · 40 / 1.2</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">32 / 1.2</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">28 / 1.25</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#E4DBCB;">Employer, A <span style="color:#A89F90;">(--employer-size, new)</span></div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Spectral 200 · 64 / 1 · -.02em</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">52 / 1</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">40 / 1</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#E4DBCB;">Employer, B</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Mono 400 · 12 / 16 · .14em · caps · --text</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">same</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">11 / 16</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Role line (both)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Mono 400 · 12 · .06em · --muted; count in --dim-numeral</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">same</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">11 · .04em</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Project title (T3, unchanged)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Spectral 300 · 44 / 1.1</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">36 / 1.1</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">32 / 1.1</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Project index, A</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Mono 13 · .1em · "01.1" · --muted</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">same</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">12</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#E4DBCB;">Text-only title, B <span style="color:#A89F90;">(--title-small, new)</span></div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Spectral 300 · 28 / 1.2</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">26 / 1.2</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">22 / 1.2</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Spec block, A</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Mono 12 / 1.6; keys 11 · .12em · caps · --muted</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">same</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">11; keys 10</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:grid;grid-template-columns:260px 1fr;gap:0 64px;">
+    <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">3. Spacing</h2>
+    <div style="max-width:900px;">
+      <div style="display:grid;grid-template-columns:320px 1fr 1fr;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;border-top:1px solid #2E3B34;">
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Gap</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">A Ledger</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">B Folio</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Opener to first employer</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">160 (phone 96)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">160 (phone 96)</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Employer to employer <span style="color:#A89F90;">(--space-employer, new)</span></div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">224 (phone 128)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">192 (phone 128)</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Employer header to first project</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">96 (phone 56)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">72 (phone 48)</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Project to project <span style="color:#A89F90;">(--space-entry becomes 128)</span></div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">128 (phone 88)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">128 plated; 48 inside the text run (phone 36)</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Inside the employer header</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">rule · 12 · "Employer 01" / 20 · name · 18 · role line</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">rule · 14 · row (16) · 14 · rule</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Spec block (A)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">40 above (the plate's slot) · rules top and bottom · 20 padding · rows 12 · keys 168 + 24</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">n/a</div>
+        <div style="padding:12px 0;border-bottom:1px solid #2E3B34;">Text-only entry (B)</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">n/a</div><div style="padding:12px 0;border-bottom:1px solid #2E3B34;">rule · 24 · title row · 12 · sentence (max 640) · 10 · stack</div>
+      </div>
+      <p style="margin:24px 0 0;font-size:18px;line-height:1.6;max-width:760px;">The project-to-project gap tightens from 176 to 128 so the employer-to-employer gap (224 / 192) reads as the larger unit. The measure (776 at 1440, 720 at 1024) and the margin column are unchanged; in A the employer rule is the one element that spans the full column (1120 / 960), crossing the margin gutter.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:grid;grid-template-columns:260px 1fr;gap:0 64px;">
+    <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">4. The margin rule</h2>
+    <div style="font-size:18px;line-height:1.6;max-width:760px;">
+      <p style="margin:0;"><span style="color:#A89F90;">A, recommended.</span> The margin gains a third line. Line two is <strong style="font-weight:400;">currentEmployer</strong>: inside III, the last <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">[data-employer]</code> whose top is at or above the midline, resolved by the same observer rule as current-chapter.ts (rootMargin 0 0 -50% 0, recompute at scroll end, jumps held until the scroll ends); outside III it is null. Line three is the lit entry, exactly as today (litEntry() in Margin.tsx), now "01.2 Prompt Lab". Each line is its own fader with the light's timing: 400 out, 200 gap, 600 in; instant on load and under reduced motion. Line two never changes because of a plate, and line three never changes because of an employer, so a scroll inside one employer moves one line at most.</p>
+      <p style="margin:16px 0 0;"><span style="color:#A89F90;">B.</span> The margin is unchanged: one line, the lit entry, now unnumbered ("Prompt Lab"). The employer is named by the sticky row in the measure instead. Cost: a second pinned element on the page, and three entries in a row (01.3 to 01.5) during which the margin's line is empty.</p>
+      <p style="margin:16px 0 0;"><span style="color:#A89F90;">Lit-plate rule.</span> Unchanged: nearest centre, inside the 25svh band, 10% hysteresis, scroll-end settle. Only the candidate set changes: plates in III now number six (Prava, Prompt Lab, the extension diagram, the console, the arbitrage table, the schedule). Spec blocks and text-only entries are not candidates.</p>
+      <p style="margin:16px 0 0;"><span style="color:#A89F90;">Employer header behaviour.</span> A: left behind. The margin carries the employer, so the header need not. B: pinned, under the frame (top 96 / 80 on phone), for the length of its block; the next employer's row pushes it out. The row is not <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">data-fade</code>, since at the top edge it would otherwise sit at .15.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:grid;grid-template-columns:260px 1fr;gap:0 64px;">
+    <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">5. Data model</h2>
+    <div style="max-width:900px;">
+      <pre style="margin:0;padding:24px;border:1px solid #2E3B34;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;color:#A89F90;overflow:auto;">type Employer = {
+  id: string;             // "faith-platforms"; index "01" is derived from position
+  name: string;           // "Faith Platforms Inc."
+  shortName?: string;     // what the margin reads: "Faith Platforms". Falls back to name.
+  role: string;           // "Sole engineer"
+  years: { from: number; to: number | "now" };
+  note?: string;          // "ticket brokerage"; shown dim after the role line
+  projects: Project[];    // any count, in display order
+};
+
+type Project = {
+  id: string;             // "prava"; index "01.1" is derived
+  name: string;           // the margin's lit entry uses this
+  meta: string;           // "2025 to now · iOS · App Store"
+  sentence: string;
+  stack: string[];        // joined with " · "
+  plate?: Plate;          // absent: A renders spec, B renders text-only
+  spec?: { key: string; value: string }[];   // A's ruled block; 3 to 5 rows
+  caseStudy?: { href: string; label?: string };  // "Read the case study"
+  writeUp?: { repo: string };                     // "Write-up: Odds-Display-Public"
+  verify?: { href: string; label: string }[];     // "App Store", public repos
+  status?: "live" | "internal" | "proprietary";
+};
+
+type Plate =
+  | { kind: "image"; src: string; alt: string }
+  | { kind: "screens"; images: { src: string; alt: string }[] }   // Prava's 4-up (2 on phone)
+  | { kind: "video"; src: string; poster: string; seconds: number }
+  | { kind: "diagram"; component: "ExtensionDiagram" };</pre>
+      <p style="margin:24px 0 0;font-size:18px;line-height:1.6;max-width:760px;">Indices are positions, never stored: adding a project to Etainement renumbers nothing above it and only the entries after it within 02. The margin's second line (A) is <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">`${index} ${shortName ?? name}`</code>; its third line is <code style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#A89F90;">`${index}.${n} ${project.name}`</code>.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:grid;grid-template-columns:260px 1fr;gap:0 64px;">
+    <h2 style="margin:0;font-weight:300;font-size:28px;line-height:1.2;">6. Phone</h2>
+    <div style="font-size:18px;line-height:1.6;max-width:760px;">
+      <p style="margin:0;">No margin below 960. A: the employer header is the only wayfinding, so it is the largest thing in the chapter after the opener (40 / 200) and sits on a rule with its "Employer 01" tag; project indices stay. B: the sticky row (top 80) carries the employer name and role for the length of its block, which on a phone is where it earns the most. Plates bleed to the edge as on main; the spec block and the text-only run keep the 20px insets. Reveals unchanged.</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

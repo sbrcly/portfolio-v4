@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r4 · A Ledger · Home 1440</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;background:#121A16;color:#E4DBCB;} a{color:#E4DBCB;text-decoration:none;} a:hover{color:#E0AE62;}
+  </style>
+</helmet>
+<div data-screen-label="Vigil r4 A home 1440" style="position:relative;width:{{ rootW }};margin:0 auto;background:#121A16;color:#E4DBCB;font-family:'Spectral',Georgia,serif;font-weight:300;height:{{ rootH }};overflow:{{ rootOv }};" data-export-frame="root">
+  {{ runningMargin }}
+
+  <header style="position:{{ headerPos }};top:{{ headerTop }};left:0;right:0;z-index:5;height:96px;margin-bottom:-96px;pointer-events:none;background:linear-gradient(to bottom,#121A16 0%,#121A16 56%,rgba(18,26,22,.72) 78%,rgba(18,26,22,0) 100%);">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 48px;pointer-events:auto;">
+      <a href="#i" aria-label="SB, Scott Barclay, home" style="display:inline-flex;flex-direction:column;align-items:center;gap:3px;">
+        <span style="display:block;width:1px;height:5px;background:#E0AE62;"></span>
+        <span style="display:inline-flex;align-items:center;gap:7px;"><span style="display:block;width:1px;height:18px;background:#E0AE62;"></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;line-height:1;">SB</span><span style="display:block;width:1px;height:18px;background:#E0AE62;"></span></span>
+        <span style="display:block;width:1px;height:5px;background:#E0AE62;"></span>
+      </a>
+      <nav aria-label="Chapters" style="display:flex;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;border:1px solid #2E3B34;">
+        <a href="#i" style="color:{{ navI }};padding:9px 16px;border-right:1px solid #2E3B34;transition:color 160ms;white-space:nowrap;"><span style="color:{{ numI }};">I</span>&nbsp; Home</a>
+        <a href="#ii" style="color:{{ navII }};padding:9px 16px;border-right:1px solid #2E3B34;transition:color 160ms;white-space:nowrap;"><span style="color:{{ numII }};">II</span>&nbsp; About</a>
+        <a href="#iii" style="color:{{ navIII }};padding:9px 16px;border-right:1px solid #2E3B34;transition:color 160ms;white-space:nowrap;"><span style="color:{{ numIII }};">III</span>&nbsp; Work</a>
+        <a href="#iv" style="color:{{ navIV }};padding:9px 16px;border-right:1px solid #2E3B34;transition:color 160ms;white-space:nowrap;"><span style="color:{{ numIV }};">IV</span>&nbsp; Contact</a>
+        <a href="#" style="color:#A89F90;padding:9px 16px;white-space:nowrap;"><span style="color:#E0AE62;">V</span>&nbsp; Resume</a>
+      </nav>
+    </div>
+  </header>
+  <div style="margin-top:{{ shiftY }};">
+
+  <!-- I. Home. From 960 up the name's centre sits on the midline, level with the margin's numeral (hero.module.css). -->
+  <section id="i" data-screen-label="I. Home" data-chapter="i" aria-labelledby="h-i" style="box-sizing:border-box;min-height:{{ heroMinH }};display:flex;flex-direction:column;justify-content:flex-start;width:1120px;margin:0 auto;padding:{{ heroPadTop }} 0 120px;">
+    <div style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;align-items:start;">
+      <div data-fade="" style="grid-column:2;">
+        <div aria-hidden="true" style="width:72px;height:2px;background:#F3C77E;box-shadow:0 0 8px rgba(243,199,126,.6),0 0 24px rgba(224,174,98,.35);"></div>
+        <h1 id="h-i" style="margin:40px 0 0;font-weight:200;font-size:112px;line-height:1;letter-spacing:-.02em;">Scott Barclay</h1>
+        <p style="margin:40px 0 0;max-width:720px;font-size:24px;line-height:1.45;text-wrap:pretty;">Software engineer. Trading desk tools for a Las Vegas sportsbook, a pricing portal and Chrome extension for a ticket brokerage, and an iOS app designed, built, and shipped alone.</p>
+        <a href="mailto:scottbarclay02@gmail.com" style="display:inline-block;margin-top:40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;border-bottom:1px solid #2E3B34;padding-bottom:2px;">scottbarclay02@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- II. About -->
+  <section id="ii" data-screen-label="II. About" data-chapter="ii" aria-labelledby="h-ii" style="box-sizing:border-box;width:1120px;margin:0 auto;padding:225px 0;">
+    <div style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;align-items:start;">
+      <h2 id="h-ii" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;">About</h2>
+      <div data-fade="" style="grid-column:2;padding-top:12px;border-top:1px solid #2E3B34;">
+        <p style="margin:28px 0 0;font-size:40px;line-height:1.2;letter-spacing:-.01em;">Self-taught, starting from a trading desk.</p>
+        <div style="margin-top:32px;font-size:20px;line-height:1.6;display:flex;flex-direction:column;gap:20px;text-wrap:pretty;max-width:680px;">
+          <p style="margin:0;">I priced sport for a living at a Las Vegas sportsbook. In the evenings I built a live odds console streamed over Socket.io from BigQuery, an arbitrage detector across about fifty books, and a schedule that assigned traders to games. The company moved me into an engineering role.</p>
+          <p style="margin:0;">Then three years of full-stack work at a ticket brokerage: a pricing portal, and a Chrome extension that runs inside marketplace sites and rewrites what buyers see.</p>
+          <p style="margin:0;">Most recently, Prava: an iOS prayer and scripture app, designed, built, and shipped alone, with versioned prompts, snapshot-tested fallbacks, and cost work that is measured rather than assumed.</p>
+          <p style="margin:0;color:#A89F90;">Away from work I read theology and philosophy and am teaching myself Latin.</p>
+        </div>
+        <div style="display:flex;gap:48px;margin-top:48px;padding-top:20px;border-top:1px solid #2E3B34;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;letter-spacing:.02em;">
+          <div><div style="color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Working in</div><div>TypeScript · Node · Postgres<br>Socket.io · BigQuery · Capacitor</div></div>
+          <div><div style="color:#A89F90;text-transform:uppercase;letter-spacing:.12em;font-size:11px;">Verify</div><div><a href="#" style="border-bottom:1px solid #2E3B34;">github.com/sbrcly</a><br>App Store · public repos</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- III. Work. Three employers, most recent first; each holds its projects. Employer headers are the only content that crosses the margin gutter: a rule the full column wide. -->
+  <section id="iii" data-screen-label="III. Work" data-chapter="iii" aria-labelledby="h-iii" style="box-sizing:border-box;width:1120px;margin:0 auto;padding:225px 0;">
+    <div style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;align-items:start;">
+      <h2 id="h-iii" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;">Work · ten</h2>
+      <div data-fade="" style="grid-column:2;padding-top:12px;border-top:1px solid #2E3B34;"><p style="margin:28px 0 0;font-size:40px;line-height:1.2;letter-spacing:-.01em;">Ten things built and shipped at three companies, most recent first.</p></div>
+    </div>
+
+    <!-- 01 Faith Platforms -->
+    <div data-employer="01" data-employer-name="01 Faith Platforms" style="margin-top:160px;">
+      <div data-fade="" style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;border-top:1px solid #2E3B34;">
+        <span aria-hidden="true" style="grid-column:1;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#4A5A50;">Employer 01</span>
+        <div style="grid-column:2;padding-top:12px;">
+          <h3 id="e-01" style="margin:20px 0 0;font-weight:200;font-size:64px;line-height:1;letter-spacing:-.02em;">Faith Platforms Inc.</h3>
+          <p style="margin:18px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;line-height:1.6;color:#A89F90;">Sole engineer · 2025 to now <span style="color:#4A5A50;">· five projects</span></p>
+        </div>
+      </div>
+
+      <div style="width:776px;margin-left:344px;display:flex;flex-direction:column;gap:128px;padding-top:96px;">
+        <article data-plate="p11" data-entry="01.1 Prava" data-fade="" aria-labelledby="w-11">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-11" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">01.1</span><a href="../design_handoff_margin/prava-1440.dc.html">Prava</a></h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2025 to now · iOS · App Store</span>
+          </div>
+          <div data-rim="p11" style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px;background:#1A2520;box-shadow:{{ rimp11 }};transition:{{ rimTp11 }};">
+            <img src="../../assets/prava-home.png" alt="Prava home: the week's readings and a verse card" style="width:100%;height:auto;display:block;">
+            <img src="../../assets/prava-lectio.png" alt="Lectio Divina, Pray movement" style="width:100%;height:auto;display:block;">
+            <img src="../../assets/prava-journal.png" alt="Daily journal, yes and no questions" style="width:100%;height:auto;display:block;">
+            <img src="../../assets/prava-circle.png" alt="A Circle group keeping the same week" style="width:100%;height:auto;display:block;">
+          </div>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">An iOS prayer and scripture app built around the Church's week rather than a streak. Thirteen AI surfaces read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API<br><a href="../design_handoff_margin/prava-1440.dc.html" style="color:#E0AE62;border-bottom:1px solid rgba(224,174,98,.4);">Read the case study</a> &nbsp;·&nbsp; <a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">App Store</a></div>
+        </article>
+
+        <article data-plate="p12" data-entry="01.2 Prompt Lab" data-fade="" aria-labelledby="w-12">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-12" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">01.2</span>Prompt Lab</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2025 · back office · internal</span>
+          </div>
+          <img data-rim="p12" src="../../assets/prava-prompt-lab.png" alt="Prompt Lab: a prompt version open beside its fixture runs" style="display:block;width:100%;height:auto;margin-top:40px;box-shadow:{{ rimp12 }};transition:{{ rimTp12 }};">
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">The back office where Prava's thirteen prompts are versioned, diffed, and run against fixtures before release. A change ships only after its snapshot tests pass.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Next.js · Postgres · Anthropic API<br>Shown in the <a href="../design_handoff_margin/prava-1440.dc.html" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Prava case study</a></div>
+        </article>
+
+        <!-- Plate-less: a ruled mono spec block takes the plate's slot. Not a plate: no rim, no light. -->
+        <article data-entry="01.3 Analytics dashboard" data-fade="" aria-labelledby="w-13">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-13" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">01.3</span>Analytics dashboard</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2025 · internal</span>
+          </div>
+          <dl style="margin:40px 0 0;padding:20px 0;border-top:1px solid #2E3B34;border-bottom:1px solid #2E3B34;display:grid;grid-template-columns:168px 1fr;row-gap:12px;column-gap:24px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;">
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Reads</dt><dd style="margin:0;">Postgres · provider usage API</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Shows</dt><dd style="margin:0;">Daily actives · cohort retention · cost per AI surface</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Refresh</dt><dd style="margin:0;">Nightly, and on demand</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Status</dt><dd style="margin:0;color:#A89F90;">Internal</dd>
+          </dl>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">Daily actives, retention by cohort, and the cost of each AI surface, read from Postgres and the provider's usage API. Built so spend is measured rather than assumed.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Next.js · Postgres · provider usage API</div>
+        </article>
+
+        <article data-entry="01.4 Lectionary tool" data-fade="" aria-labelledby="w-14">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-14" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">01.4</span>Lectionary authoring tool</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2025 · internal</span>
+          </div>
+          <dl style="margin:40px 0 0;padding:20px 0;border-top:1px solid #2E3B34;border-bottom:1px solid #2E3B34;display:grid;grid-template-columns:168px 1fr;row-gap:12px;column-gap:24px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;">
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Covers</dt><dd style="margin:0;">The three-year cycle, every day</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Checks</dt><dd style="margin:0;">Reference · translation · feast overrides</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Output</dt><dd style="margin:0;">Versioned JSON, read by Prava</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Status</dt><dd style="margin:0;color:#A89F90;">Internal</dd>
+          </dl>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">Enters and checks the Church's readings for every day of the year, with the calendar's exceptions handled as rules rather than hard coded.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Next.js · Postgres</div>
+        </article>
+
+        <article data-entry="01.5 Commitment library" data-fade="" aria-labelledby="w-15">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-15" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">01.5</span>Commitment library</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2025 · internal</span>
+          </div>
+          <dl style="margin:40px 0 0;padding:20px 0;border-top:1px solid #2E3B34;border-bottom:1px solid #2E3B34;display:grid;grid-template-columns:168px 1fr;row-gap:12px;column-gap:24px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;">
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Entries</dt><dd style="margin:0;">About forty practices</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Each has</dt><dd style="margin:0;">A schedule · prompts · a completion rule</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Surfaces in</dt><dd style="margin:0;">Prava Circles</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Status</dt><dd style="margin:0;color:#A89F90;">Internal</dd>
+          </dl>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">A catalogue of practices a reader can take on for a season, each with its own schedule, prompts, and rule for what counts as done.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Postgres</div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 02 Etainement -->
+    <div data-employer="02" data-employer-name="02 Etainement" style="margin-top:224px;">
+      <div data-fade="" style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;border-top:1px solid #2E3B34;">
+        <span aria-hidden="true" style="grid-column:1;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#4A5A50;">Employer 02</span>
+        <div style="grid-column:2;padding-top:12px;">
+          <h3 id="e-02" style="margin:20px 0 0;font-weight:200;font-size:64px;line-height:1;letter-spacing:-.02em;">Etainement</h3>
+          <p style="margin:18px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;line-height:1.6;color:#A89F90;">Full-stack engineer · 2022 to 2026 <span style="color:#4A5A50;">· ticket brokerage · two projects</span></p>
+        </div>
+      </div>
+
+      <div style="width:776px;margin-left:344px;display:flex;flex-direction:column;gap:128px;padding-top:96px;">
+        <article data-entry="02.1 Pricing portal" data-fade="" aria-labelledby="w-21">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-21" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">02.1</span>Pricing portal</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2022 to 2026 · proprietary</span>
+          </div>
+          <dl style="margin:40px 0 0;padding:20px 0;border-top:1px solid #2E3B34;border-bottom:1px solid #2E3B34;display:grid;grid-template-columns:168px 1fr;row-gap:12px;column-gap:24px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;letter-spacing:.02em;">
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Users</dt><dd style="margin:0;">The buying desk</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Stores</dt><dd style="margin:0;">Purchase rules per event: sections · ceilings · quantities</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Serves</dt><dd style="margin:0;">GET /rules?event=… to the extension, session cookie</dd>
+            <dt style="color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Status</dt><dd style="margin:0;color:#A89F90;">Proprietary · walkthrough on request</dd>
+          </dl>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">Where buyers write the rules the extension reads: which sections, what price ceiling, how many seats. Four years of changes against a live desk.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">TypeScript · Node · Postgres</div>
+        </article>
+
+        <article data-plate="p22" data-entry="02.2 Marketplace extension" data-fade="" aria-labelledby="w-22">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-22" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">02.2</span>Marketplace extension</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2023 to 2025 · proprietary</span>
+          </div>
+          <figure data-rim="p22" aria-label="Diagram: how the extension connects the pricing portal to the marketplace page" style="margin:40px 0 0;padding:32px;background:#1A2520;box-shadow:{{ rimp22 }};transition:{{ rimTp22 }};font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;">
+            <div style="display:grid;grid-template-columns:1fr 140px 1fr;align-items:stretch;">
+              <div style="border:1px dashed #4A5A50;padding:20px;display:flex;flex-direction:column;gap:16px;">
+                <div style="display:flex;justify-content:space-between;gap:12px;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin A</span><span>portal.internal</span></div>
+                <div style="border:1px solid #2E3B34;padding:16px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Pricing portal</div><div style="margin-top:8px;">Buyers write purchase rules: sections, price ceilings, quantities.</div></div>
+                <div style="border:1px solid #2E3B34;padding:16px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Rules API</div><div style="margin-top:8px;color:#A89F90;">GET /rules?event=… JSON, session cookie.</div></div>
+              </div>
+              <div style="position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+                <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:repeating-linear-gradient(#4A5A50 0 6px,transparent 6px 12px);"></div>
+                <div style="position:relative;width:100%;border:1px solid #E0AE62;background:#1A2520;padding:14px 10px;text-align:center;">
+                  <div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Extension</div>
+                  <div style="margin-top:10px;padding:8px 6px;border:1px solid #2E3B34;font-size:11px;">Background worker</div>
+                  <div style="margin:6px 0;color:#A89F90;font-size:10px;">message port</div>
+                  <div style="padding:8px 6px;border:1px solid #2E3B34;font-size:11px;">Content script</div>
+                </div>
+              </div>
+              <div style="border:1px dashed #4A5A50;padding:20px;display:flex;flex-direction:column;gap:16px;">
+                <div style="display:flex;justify-content:space-between;gap:12px;color:#A89F90;font-size:11px;letter-spacing:.12em;text-transform:uppercase;"><span>Origin B</span><span>ticketmaster.com</span></div>
+                <div style="border:1px solid #2E3B34;padding:16px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Marketplace page</div><div style="margin-top:8px;">Venue map DOM, rendered by the site's own app.</div></div>
+                <div style="border:1px solid #2E3B34;padding:16px;background:#121A16;"><div style="color:#E0AE62;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">Rewritten map</div><div style="margin-top:8px;color:#A89F90;">Seats outside the rules dimmed; matches annotated in place.</div></div>
+              </div>
+            </div>
+            <ol style="margin:28px 0 0;padding:20px 0 0;border-top:1px solid #2E3B34;display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;list-style:none;color:#A89F90;">
+              <li><span style="color:#E0AE62;">1</span>&nbsp; Buyer saves rules in the portal.</li>
+              <li><span style="color:#E0AE62;">2</span>&nbsp; Worker fetches rules on tab load, caches per event.</li>
+              <li><span style="color:#E0AE62;">3</span>&nbsp; Content script receives rules over the port; observes the map.</li>
+              <li><span style="color:#E0AE62;">4</span>&nbsp; Map rewritten in place; state echoed back to the portal.</li>
+            </ol>
+          </figure>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">A Chrome extension that runs inside Ticketmaster and other marketplaces. Cross-origin messaging and DOM automation against sites built to resist it.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Chrome MV3 · TypeScript · Node<br>Walkthrough on request</div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 03 Caesars Sportsbook -->
+    <div data-employer="03" data-employer-name="03 Caesars Sportsbook" style="margin-top:224px;">
+      <div data-fade="" style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;border-top:1px solid #2E3B34;">
+        <span aria-hidden="true" style="grid-column:1;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#4A5A50;">Employer 03</span>
+        <div style="grid-column:2;padding-top:12px;">
+          <h3 id="e-03" style="margin:20px 0 0;font-weight:200;font-size:64px;line-height:1;letter-spacing:-.02em;">Caesars Sportsbook</h3>
+          <p style="margin:18px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;line-height:1.6;color:#A89F90;">Developer analyst, promoted from trader · 2018 to 2022 <span style="color:#4A5A50;">· three projects</span></p>
+        </div>
+      </div>
+
+      <div style="width:776px;margin-left:344px;display:flex;flex-direction:column;gap:128px;padding-top:96px;">
+        <article data-plate="p31" data-entry="03.1 Live odds console" data-fade="" aria-labelledby="w-31">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-31" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">03.1</span>Live odds console</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2022 · trading desk · 33 s recording</span>
+          </div>
+          <div data-rim="p31" role="button" aria-label="Play the odds console recording, 33 seconds, silent" style="position:relative;margin-top:40px;aspect-ratio:2062/1080;background:#1A2520;overflow:hidden;box-shadow:{{ rimp31 }};transition:{{ rimTp31 }};display:flex;align-items:center;justify-content:center;cursor:pointer;">
+            <img src="../../assets/odds-console-poster.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+            <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border:1px solid #E0AE62;border-radius:50%;background:rgba(18,26,22,.55);"><span style="display:block;width:0;height:0;border-left:18px solid #E0AE62;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px;"></span></span>
+            <span style="position:absolute;left:24px;bottom:20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;">odds-display-demo.mp4 <span style="color:#A89F90;">· 33 s · silent</span></span>
+          </div>
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Node · Socket.io · BigQuery · MySQL<br>Write-up: <a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Odds-Display-Public</a></div>
+        </article>
+
+        <article data-plate="p32" data-entry="03.2 Arbitrage detector" data-fade="" aria-labelledby="w-32">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-32" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">03.2</span>Arbitrage detector</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2022 · about fifty books · one-minute cycle</span>
+          </div>
+          <img data-rim="p32" src="../../assets/arbitrage-table.png" alt="Arbitrage detector: flagged prices against competitor books" style="display:block;width:100%;height:auto;margin-top:40px;box-shadow:{{ rimp32 }};transition:{{ rimTp32 }};">
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">Every market the book offered, compared against about fifty competitors. Any price a bettor could lock in from both sides is flagged so a trader can move the line first.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Node · Socket.io · MySQL · GCP<br>Write-up: <a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Arbitrage-Public</a></div>
+        </article>
+
+        <article data-plate="p33" data-entry="03.3 Trading schedule" data-fade="" aria-labelledby="w-33">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #2E3B34;">
+            <h4 id="w-33" style="margin:0;font-weight:300;font-size:44px;line-height:1.1;letter-spacing:-.01em;"><span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:#A89F90;vertical-align:middle;margin-right:20px;">03.3</span>Trading schedule</h4>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;text-align:right;">2022 · every game offered, with an owner</span>
+          </div>
+          <img data-rim="p33" src="../../assets/trading-schedule.png" alt="Trading schedule: games across sports with assigned traders" style="display:block;width:100%;height:auto;margin-top:40px;box-shadow:{{ rimp33 }};transition:{{ rimTp33 }};">
+          <p style="margin:32px 0 0;font-size:20px;line-height:1.55;text-wrap:pretty;">Pulls every game from the data feeds and assigns traders by shift and league coverage. A game nobody owns stays flagged until someone takes it.</p>
+          <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#A89F90;">Node · Express · MySQL · feed APIs<br>Write-up: <a href="#" style="color:#E4DBCB;border-bottom:1px solid #2E3B34;">Trading-Schedule-Public</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- IV -->
+  <section id="iv" data-screen-label="IV. Contact" data-chapter="iv" aria-labelledby="h-iv" style="box-sizing:border-box;width:1120px;margin:0 auto;padding:225px 0;">
+    <div style="display:grid;grid-template-columns:280px 1fr;column-gap:64px;align-items:start;">
+      <h2 id="h-iv" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;">Contact</h2>
+      <div data-fade="" style="grid-column:2;padding-top:12px;border-top:1px solid #2E3B34;">
+        <p style="margin:28px 0 0;font-size:40px;line-height:1.2;">Email is the only channel.</p>
+        <a href="mailto:scottbarclay02@gmail.com" style="display:inline-block;margin-top:24px;font-weight:200;font-size:48px;letter-spacing:-.01em;color:#F3C77E;text-shadow:0 0 8px rgba(243,199,126,.45),0 0 28px rgba(224,174,98,.3);">scottbarclay02@gmail.com</a>
+        <p style="margin:24px 0 0;font-size:20px;line-height:1.55;color:#A89F90;max-width:600px;">Replies within a day. Any project here can be walked through at whatever depth you want, including the proprietary ones.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="display:flex;align-items:center;gap:28px;width:1344px;margin:0 auto;padding:32px 0 40px;border-top:1px solid #2E3B34;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:#A89F90;">
+    <span style="margin-right:auto;">Scott Barclay · 2026</span>
+    <a href="mailto:scottbarclay02@gmail.com" style="color:#A89F90;">scottbarclay02@gmail.com</a><a href="#" style="color:#A89F90;"><span style="color:#E0AE62;">V</span>&nbsp;Resume</a>
+  </footer>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  // Three sources: `chapter` (current-chapter.ts rule: last chapter whose top is at or above the midline), `employer` (same rule applied to employer headers, inside III only), `lit` (plate-light.ts: nearest centre inside the 25svh band).
+  state = { chapter: 'i', employer: null, lit: null, prevLit: null, ch: { c: { key: 'i', num: 'I', label: 'Home' }, on: true }, em: { c: null, on: false }, en: { c: null, on: false }, frame: null };
+  timers = {};
+  chapters = { i: { num: 'I', label: 'Home' }, ii: { num: 'II', label: 'About' }, iii: { num: 'III', label: 'Work · ten' }, iv: { num: 'IV', label: 'Contact' } };
+  // Export frames: #frame=hero|about|work|e-01|p12|contact renders one static 1440x900 viewport.
+  frameSpec() {
+    const m = /frame=([a-z0-9-]+)/.exec(location.hash || ''); if (!m) return null;
+    const k = m[1], top = el => this.docTop(el);
+    const sec = id => this.sections.find(s => s.dataset.chapter === id);
+    if (k === 'hero') return { y: 0 };
+    if (k === 'about') return { y: top(sec('ii')) + 60 };
+    if (k === 'work') return { y: top(sec('iii')) + 60 };
+    if (k === 'contact') return { y: top(sec('iv')) + 60 };
+    const e = /^e-(0[1-3])$/.exec(k); if (e) { const el = this.employers.find(x => x.dataset.employer === e[1]); return { y: top(el) - 260 }; }
+    const p = /^p(\d\d)$/.exec(k); if (p) { const el = this.plates.find(x => x.dataset.plate === 'p' + p[1]); const r = el.querySelector('[data-rim]'); return { y: top(r) + r.offsetHeight / 2 - 450 }; }
+    const t = /^t-(\d\d)$/.exec(k); if (t) { const el = this.root.querySelector(`[data-entry^="0${t[1][0]}.${t[1][1]}"]`); return { y: top(el) - 200 }; }
+    return null;
+  }
+  // In a frame the content is shifted up by f.y inside a 900px window, so document coordinates are rect.top + f.y.
+  view() { const f = this.state.frame; return f ? { y: -parseFloat(this.root.querySelector(':scope > header + div').style.marginTop || '0'), vh: 900 } : { y: window.scrollY, vh: window.innerHeight }; }
+  // Document coordinate from DOM truth: the wrapper's negative margin is the frame's offset.
+  docTop(el) { const w = this.root.querySelector(':scope > header + div'); return el.getBoundingClientRect().top + window.scrollY - parseFloat(w.style.marginTop || '0'); }
+  componentDidMount() {
+    this.root = document.querySelector('[data-screen-label="Vigil r4 A home 1440"]');
+    this.sections = Array.from(this.root.querySelectorAll('section[data-chapter]'));
+    this.employers = Array.from(this.root.querySelectorAll('[data-employer]'));
+    this.plates = Array.from(this.root.querySelectorAll('article[data-plate]'));
+    this.fades = Array.from(this.root.querySelectorAll('[data-fade]'));
+    this.applyFrame = () => {
+      // Measure with no frame applied, then apply.
+      // (frame geometry, zero shift: the hero's height depends on frame vs live)
+      this.setState({ frame: /frame=/.test(location.hash) ? { y: 0 } : null }, () => {
+      const f = this.frameSpec();
+      if (f) window.scrollTo(0, 0);
+      this.setState({ frame: f }, () => { this.resolveAll(true); this.fadeAll(); });
+      });
+    };
+    window.addEventListener('hashchange', this.applyFrame);
+    this.onScroll = () => {
+      if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = null; this.resolveAll(false); this.fadeAll(); });
+      clearTimeout(this.timers.scrollEnd);
+      this.timers.scrollEnd = setTimeout(() => this.resolveAll(true), 150);
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    setTimeout(this.applyFrame, 50);
+    // Re-measure once the web fonts and images are in (layout above the frame shifts).
+    document.fonts && document.fonts.ready.then(() => setTimeout(this.applyFrame, 100));
+    window.addEventListener('load', () => setTimeout(this.applyFrame, 200));
+    Array.from(this.root.querySelectorAll('img')).forEach(img => { if (!img.complete) img.addEventListener('load', () => { clearTimeout(this.timers.img); this.timers.img = setTimeout(this.applyFrame, 150); }); });
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.applyFrame); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); Object.values(this.timers).forEach(clearTimeout); }
+  // Content fade (globals.css): 1 while the block's centre is within 25svh of the midline, linear to .15 at either edge. Written to the DOM directly.
+  fadeAll() {
+    const { y, vh } = this.view(); const mid = y + vh / 2;
+    this.fades.forEach(el => {
+      const r = el.getBoundingClientRect(); const c = this.docTop(el) + r.height / 2;
+      const d = Math.abs(c - mid) / vh; // 0 at midline, .5 at an edge
+      const o = d <= .25 ? 1 : Math.max(.15, 1 - (d - .25) / .25 * .85);
+      el.style.opacity = o.toFixed(3);
+    });
+  }
+  resolveAll(settled) {
+    const { y, vh } = this.view(); const line = y + vh / 2; const instant = !!this.state.frame;
+    // chapter
+    let ch = this.sections[0].dataset.chapter;
+    if (y > 0) this.sections.forEach(s => { if (this.docTop(s) <= line) ch = s.dataset.chapter; });
+    if (ch !== this.state.chapter) { this.setState({ chapter: ch }); this.fade('ch', Object.assign({ key: ch }, this.chapters[ch]), instant); }
+    // employer: same rule, inside III only
+    let em = null;
+    if (ch === 'iii') this.employers.forEach(e => { if (this.docTop(e) <= line) em = e; });
+    const emKey = em ? em.dataset.employer : null;
+    if (emKey !== this.state.employer) { this.setState({ employer: emKey }); this.fade('em', em ? { key: emKey, text: em.dataset.employerName } : null, instant); }
+    // lit plate: eligible inside the band (.25 vh of midline); nearest wins; leaving the band is immediate; a change needs scroll end and 10% hysteresis
+    const dist = a => { const el = a.querySelector('[data-rim]'); return Math.abs(this.docTop(el) + el.offsetHeight / 2 - line) / vh; };
+    let cur = this.state.lit && this.plates.find(p => p.dataset.plate === this.state.lit);
+    if (cur && (dist(cur) > .25 || ch !== 'iii')) cur = null;
+    let next = cur ? cur.dataset.plate : null;
+    if (settled && ch === 'iii') {
+      let best = null, bd = Infinity;
+      this.plates.forEach(a => { const d = dist(a); if (d <= .25 && d < bd) { bd = d; best = a; } });
+      if (best && (!cur || dist(cur) - bd >= .1)) next = best.dataset.plate;
+    }
+    if (next !== this.state.lit) {
+      this.setState({ prevLit: this.state.lit, lit: next });
+      const a = next && this.plates.find(p => p.dataset.plate === next);
+      this.fade('en', a ? { key: next, text: a.dataset.entry } : null, instant);
+    }
+  }
+  // The light's handover: 400 out, 200 of nothing, 600 in. Instant at load, in a frame, or under reduced motion (gap kept).
+  fade(key, next, instant) {
+    const cur = this.state[key];
+    if ((cur.c && cur.c.key) === (next && next.key)) return;
+    clearTimeout(this.timers[key]);
+    if (instant) { this.setState({ [key]: { c: next, on: !!next, instant: true } }); return; }
+    const rm = this.props.reducedMotion ?? false;
+    const outMs = cur.c && cur.on ? (rm ? 0 : 400) : 0;
+    const gap = cur.c ? 200 : 0;
+    this.setState({ [key]: { c: cur.c, on: false } });
+    this.timers[key] = setTimeout(() => {
+      this.setState({ [key]: { c: next, on: false } });
+      if (!next) return;
+      requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ [key]: { c: next, on: true } })));
+    }, outMs + gap);
+  }
+  renderVals() {
+    const h = React.createElement;
+    const rm = this.props.reducedMotion ?? false;
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    const tr = (st) => (rm || st.instant) ? 'none' : (st.on ? `opacity 600ms ${ease}, color 600ms ${ease}` : 'opacity 400ms ease, color 400ms ease');
+    const { ch, em, en, chapter, lit, prevLit, frame } = this.state;
+    const mono = "'JetBrains Mono', monospace";
+    const line = (st, ls) => st.c ? h('div', { style: { fontFamily: mono, fontSize: 12, lineHeight: '16px', letterSpacing: ls, color: st.on ? '#A89F90' : '#4A5A50', opacity: st.on ? 1 : 0, transition: tr(st), whiteSpace: 'nowrap' } }, st.c.text) : null;
+    // Midline: the numeral's .85em box is centred on 50svh (margin.module.css). Axis 80px from the column's edge; label centred under it.
+    const runningMargin = h('div', { 'aria-hidden': 'true', 'data-running-margin': '', style: { position: frame ? 'absolute' : 'fixed', zIndex: 4, left: 'calc(max(160px, 50% - 560px))', width: 280, pointerEvents: 'none', top: frame ? 450 - 59.5 : 'calc(50vh - 59.5px)' } },
+      h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12, opacity: ch.on ? 1 : 0, transition: tr(ch) } }, [
+        h('div', { key: 'n', style: { position: 'relative', height: 119, width: 160 } }, h('span', { style: { position: 'absolute', left: 80, top: 0, transform: 'translateX(-50%)', fontWeight: 200, fontSize: 140, lineHeight: .85, letterSpacing: '-.04em', color: ch.on ? '#4A5A50' : '#2E3B34', transition: tr(ch) } }, ch.c ? ch.c.num : '')),
+        h('div', { key: 'l', style: { width: 160, display: 'flex', justifyContent: 'center' } }, h('span', { style: { fontFamily: mono, fontSize: 12, lineHeight: '16px', letterSpacing: '.14em', marginRight: '-.14em', textTransform: 'uppercase', whiteSpace: 'nowrap', color: ch.on ? '#A89F90' : '#4A5A50', transition: tr(ch) } }, ch.c ? ch.c.label : ''))
+      ]),
+      // Second line: the current employer (persists through its projects). Third: the lit project, or nothing.
+      h('div', { style: { marginTop: 8, display: 'flex', flexDirection: 'column', gap: 4 } }, [h('div', { key: 'e' }, line(em, '.06em')), h('div', { key: 'p', style: { height: 16 } }, line(en, '.06em'))])
+    );
+    const vals = { runningMargin, heroMinH: frame ? '900px' : '100svh', heroPadTop: frame ? 'calc(450px - 42px - 56px)' : 'calc(50svh - 42px - 56px)', rootW: '1440px', headerPos: frame ? 'absolute' : 'sticky', headerTop: '0px', rootH: frame ? '900px' : 'auto', rootOv: frame ? 'hidden' : 'visible', shiftY: frame ? `${-frame.y}px` : '0px' };
+    const names = ['I', 'II', 'III', 'IV'], keys = ['i', 'ii', 'iii', 'iv'];
+    names.forEach((n, i) => { const cur = chapter === keys[i]; vals['nav' + n] = cur ? '#F3C77E' : '#A89F90'; vals['num' + n] = cur ? '#F3C77E' : '#E0AE62'; });
+    const rest = '0 0 0 1px rgba(224,174,98,.35),0 0 72px rgba(224,174,98,.10)';
+    const litRim = '0 0 0 1px rgba(224,174,98,.6),0 0 96px rgba(224,174,98,.18)';
+    ['p11', 'p12', 'p22', 'p31', 'p32', 'p33'].forEach(p => {
+      const on = lit === p;
+      vals['rim' + p] = on ? litRim : rest;
+      vals['rimT' + p] = (rm || frame) ? 'none' : (on ? `box-shadow 600ms ${ease} ${prevLit ? 600 : 0}ms` : 'box-shadow 400ms ease');
+    });
+    return vals;
+  }
+}
+</script>
+</body>
+</html>
