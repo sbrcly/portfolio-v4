@@ -3,7 +3,7 @@ import { useSyncExternalStore } from "react";
 /**
  * The current chapter: the one source for the nav, the running margin, and
  * the light. Chapters are the elements marked data-chapter, in document
- * order, named by their id (i to iv on the home page). The attribute's value
+ * order, named by their id (i to iii on the home page). The attribute's value
  * is the chapter's position, from 0, which names its view timeline
  * (globals.css).
  *

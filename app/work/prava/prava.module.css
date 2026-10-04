@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-/* Title block, structured like the home hero but anchored low. */
+/* Title block: a top row, then the name, anchored low. */
 
 .title {
   position: relative;
@@ -276,8 +276,8 @@
   }
 }
 
-/* From 960px up the title's name sits on the viewport's midline like the
-   home hero's (components/hero), and the block hangs from it. Beside the
+/* From 960px up the title's name sits on the viewport's midline, level with
+   the running margin, and the block hangs from it. Beside the
    running margin the back-office plates sit in the measure, one under
    another. */
 @media (min-width: 960px) {

@@ -1,7 +1,7 @@
 # scottbarclay.dev
 
-Scott Barclay's portfolio: one scrolling home page in four chapters (Home,
-About, Work, Contact, plus a resume link) and a case study page for Prava at
+Scott Barclay's portfolio: one scrolling home page in three chapters (About,
+Work, Contact, plus a resume link) and a case study page for Prava at
 `/work/prava`. The design direction is called Vigil: a green-black ground,
 bone text, brass used only as light, and one lit element per viewport.
 
@@ -43,13 +43,14 @@ tracks which chapter is crossing the middle of the viewport with a single
 IntersectionObserver, and `components/light/handover.ts` moves the light:
 the outgoing element cools over 400 ms, nothing is lit for 200 ms, and the
 incoming one warms over 600 ms, never overlapping. The contact email in
-chapter IV is the only element that takes it. Plates have a one-pixel rim in
+chapter III is the only element that takes it. Plates have a one-pixel rim in
 the rule color and nothing more, in every state.
 
-Each work entry has an anchor, `work-01` to `work-05`, and the hero
-statement links to three of them (`components/text-link/`, Spectral 400 in
-the text color inside a muted 300 paragraph, no underline). A jump to an entry lands its title row under the frame
-(the page's scroll padding) and sets chapter III at once.
+Each employer's block has an anchor, `employer-01` to `employer-03`. A jump
+to one lands its row under the frame (the page's scroll padding) and sets
+chapter II at once. Nothing on the site links to them now, and nothing uses
+`components/text-link/` (Spectral 400 in the text color inside a muted 300
+paragraph, no underline) since the hero that did was removed.
 
 ## Scroll-driven motion
 
@@ -65,6 +66,12 @@ boundary, and its label crossfades at the boundary. Reduced motion has no
 fade and swaps the numeral at the boundary. Below 960px there is no margin
 and content reveals once as it enters (`components/reveals/`).
 
+From 960px up chapter I is the first screen: at least 100svh tall, with the
+block from the name to the fact row centered on the midline beside the
+margin's numeral, or starting under the frame when the screen is too short
+to center it (`app/page.module.css`). Below 960px it is an opener like the
+others.
+
 ## Breakpoints
 
 | Width | What changes |
@@ -73,7 +80,7 @@ and content reveals once as it enters (`components/reveals/`).
 | 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, titles 36, chapter padding 192 |
 | 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only, chapter padding 150 |
 
-The hero's top row also moves to 128px from the top at 1920 and wider.
+The Prava title's top row also moves to 128px from the top at 1920 and wider.
 
 The frame's bar holds only the nav table, centered at every width. The
 footer spans the column at every width.
@@ -83,18 +90,18 @@ footer spans the column at every width.
 ```
 app/
   layout.tsx, tokens.css, globals.css
-  page.tsx                    Home: chapters I to IV
+  page.tsx                    Home: chapters I to III
   work/prava/                 Prava case study
   icon.tsx, apple-icon.tsx    Generated icons (the SB mark)
   opengraph-image.tsx         Generated share card (Prava has its own)
   sitemap.ts, robots.ts
 components/
   frame/                      Sticky frame, nav table
-  hero/, chapter-opener/      Chapter I and the opener used everywhere else
+  chapter-opener/             The opener every chapter starts with
   work/                       Work entries, plates, video plate, diagram
   margin/                     Running margin: numeral, label, icon links
   light/, chapters/, reveals/, fade/, scroll/
-  text-link/                  Link inside running text
+  text-link/                  Link inside running text (unused)
   footer/
 lib/                          Image generators for the icons and share cards
 ```
@@ -124,7 +131,7 @@ set in `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`.
 
 ## Assets
 
-- `public/resume.pdf`: the resume behind "V Resume"
+- `public/resume.pdf`: the resume behind "IV Resume"
 - `public/videos/odds-display-demo.mp4`: the odds console recording, 33
   seconds, silent, H.264, 2062 x 1080
 - `public/images/odds-console-poster.webp` and

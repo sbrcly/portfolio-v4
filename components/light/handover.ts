@@ -8,7 +8,7 @@ import {
  * the lit one carries data-lit="true", which drives its --light property
  * (see globals.css). Handover: the outgoing light cools, nothing is lit for
  * a beat, then the incoming light warms. They never overlap. A chapter with
- * no such element (every one but IV, whose email is lit) has nothing lit:
+ * no such element (every one but III, whose email is lit) has nothing lit:
  * entering it only cools, and leaving it only warms.
  */
 const COOL_MS = 400;

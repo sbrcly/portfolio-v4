@@ -6,7 +6,7 @@ import { APP_STORE_URL } from "./links";
 import { PRAVA_SCREENS } from "./prava-screens";
 
 /**
- * Chapter III's content: employers, most recent first, each with the
+ * Chapter II's content: employers, most recent first, each with the
  * projects built there in the order they are shown. The first project is
  * the hero, a full entry in the measure; the rest are cells in the grid
  * under it. A cell has a screenshot or is marked pending and shows a

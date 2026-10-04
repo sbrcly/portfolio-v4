@@ -3,7 +3,6 @@ import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import { EMAIL } from "@/components/frame/chapters";
-import Hero from "@/components/hero/Hero";
 import Light from "@/components/light/Light";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
@@ -12,32 +11,30 @@ import styles from "./page.module.css";
 
 // What the running margin reads in each chapter: the openers' labels.
 const MARGIN: MarginChapter[] = [
-  { id: "i", numeral: "I", label: "Home" },
-  { id: "ii", numeral: "II", label: "About" },
-  { id: "iii", numeral: "III", label: "Work" },
-  { id: "iv", numeral: "IV", label: "Contact" },
+  { id: "i", numeral: "I", label: "About" },
+  { id: "ii", numeral: "II", label: "Work" },
+  { id: "iii", numeral: "III", label: "Contact" },
 ];
 
 export default function Home() {
   return (
     <>
       <Frame />
-      <Margin chapters={MARGIN} dockFrom="iv" />
+      <Margin chapters={MARGIN} dockFrom="iii" />
       <main id="content">
-        <Hero />
-
         <section
-          id="ii"
-          className={styles.chapter}
-          aria-labelledby="h-ii"
-          data-chapter="1"
+          id="i"
+          className={`${styles.chapter} ${styles.first}`}
+          aria-labelledby="h-i"
+          data-chapter="0"
         >
           <ChapterOpener
-            numeral="II"
+            numeral="I"
             label="About"
-            headingId="h-ii"
+            headingId="h-i"
             ruled={false}
-            statement="Self-taught, starting from a trading desk."
+            statement="Scott Barclay"
+            titled
           >
             <div className={styles.body}>
               <p>
@@ -86,31 +83,31 @@ export default function Home() {
         </section>
 
         <section
+          id="ii"
+          className={styles.chapter}
+          aria-labelledby="h-ii"
+          data-chapter="1"
+        >
+          <ChapterOpener numeral="II" label="Work" headingId="h-ii" />
+          <Work />
+        </section>
+
+        <section
           id="iii"
           className={styles.chapter}
           aria-labelledby="h-iii"
           data-chapter="2"
         >
-          <ChapterOpener numeral="III" label="Work" headingId="h-iii" />
-          <Work />
-        </section>
-
-        <section
-          id="iv"
-          className={styles.chapter}
-          aria-labelledby="h-iv"
-          data-chapter="3"
-        >
           <ChapterOpener
-            numeral="IV"
+            numeral="III"
             label="Contact"
-            headingId="h-iv"
+            headingId="h-iii"
             ruled={false}
           >
             <a
               href={`mailto:${EMAIL}`}
               className={styles.contactEmail}
-              data-light="iv"
+              data-light="iii"
             >
               {EMAIL}
             </a>

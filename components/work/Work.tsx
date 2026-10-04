@@ -4,7 +4,7 @@ import { EMPLOYERS } from "./employers";
 import styles from "./work.module.css";
 
 /**
- * Chapter III: one block per employer, most recent first. Each opens with a
+ * Chapter II: one block per employer, most recent first. Each opens with a
  * ruled row that stays under the frame for the length of its block, then
  * the first project as a full entry, then the rest as a grid.
  */

@@ -66,7 +66,7 @@ const MARGIN: MarginChapter[] = [
 export default function PravaPage() {
   return (
     <>
-      <Frame chapter="iii" />
+      <Frame chapter="ii" />
       <Margin chapters={MARGIN} />
       <main id="content">
         {/* Title and screens are one chapter. */}
@@ -78,7 +78,7 @@ export default function PravaPage() {
           >
             <div className={styles.topRow}>
               <span>
-                <span className={styles.brass}>III</span>&nbsp; Work
+                <span className={styles.brass}>II</span>&nbsp; Work
               </span>
               <span className={styles.separator} aria-hidden="true">
                 /
@@ -343,7 +343,7 @@ export default function PravaPage() {
               <a href={PRAVA_SITE_URL} target="_blank" rel="noopener">
                 joinprava.com
               </a>
-              <Link href="/#iii">Back to III Work</Link>
+              <Link href="/#ii">Back to II Work</Link>
             </div>
           </ChapterOpener>
         </section>

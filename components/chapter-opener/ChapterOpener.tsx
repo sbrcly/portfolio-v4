@@ -11,6 +11,8 @@ type Props = {
    * with neither there is no measure and the opener is its heading alone.
    */
   statement?: string;
+  /** The statement is the page's h1. */
+  titled?: boolean;
   /** Hairline above the measure. */
   ruled?: boolean;
   children?: React.ReactNode;
@@ -21,9 +23,11 @@ export default function ChapterOpener({
   label,
   headingId,
   statement,
+  titled = false,
   ruled = true,
   children,
 }: Props) {
+  const Statement = titled ? "h1" : "p";
   return (
     <div className={styles.opener} data-reveal="">
       <div className={styles.head}>
@@ -41,7 +45,9 @@ export default function ChapterOpener({
           }
           data-fade=""
         >
-          {statement && <p className={styles.statement}>{statement}</p>}
+          {statement && (
+            <Statement className={styles.statement}>{statement}</Statement>
+          )}
           {children}
         </div>
       )}

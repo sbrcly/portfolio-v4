@@ -4,7 +4,23 @@
   padding: var(--chapter-pad) 0;
 }
 
-/* II About */
+/* I About. From 960px up it is the first screen, and the block from the
+   name to the fact row is centered on the viewport's midline, level with the
+   running margin's numeral. The name opens 40px into the measure (the
+   measure's 12px and the statement's 28px), so the top padding is short by
+   that. A block taller than the screen under the frame starts under the
+   frame instead. */
+
+@media (min-width: 960px) {
+  .first {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--frame-height) - 40px) 0 var(--frame-height);
+  }
+}
 
 .body {
   display: flex;
@@ -53,7 +69,7 @@
   display: none;
 }
 
-/* IV Contact. No statement: the email opens the measure, 28px under its
+/* III Contact. No statement: the email opens the measure, 28px under its
    rule (the measure's own 12px and this margin). */
 
 .contactEmail {

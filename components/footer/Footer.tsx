@@ -5,7 +5,7 @@ import styles from "./footer.module.css";
 const COLOPHON = "Scott Barclay · 2026";
 const RESUME = (
   <>
-    <span className={styles.numeral}>V</span>&nbsp;Resume
+    <span className={styles.numeral}>IV</span>&nbsp;Resume
   </>
 );
 

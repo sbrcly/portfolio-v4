@@ -17,7 +17,7 @@ export default function NavTable({ current, away = false }: Props) {
           className: styles.cell,
           "aria-current": current === id ? ("page" as const) : undefined,
         };
-        // The link's name is its text, "II About". On phone the label is
+        // The link's name is its text, "II Work". On phone the label is
         // hidden visually but stays in the name.
         const content = (
           <>
@@ -36,7 +36,7 @@ export default function NavTable({ current, away = false }: Props) {
         );
       })}
       <a href={RESUME_HREF} className={styles.cell}>
-        <span className={styles.numeral}>V</span>{" "}
+        <span className={styles.numeral}>IV</span>{" "}
         <span className={styles.label}>Resume</span>
       </a>
     </nav>
