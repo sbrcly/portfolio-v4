@@ -1,14 +1,12 @@
 /* The running margin: one fixed element outside every section, on the
-   column's left edge, the numeral's box centered on the viewport's midline.
+   column's left edge, the numeral's top edge on the top line (tokens.css).
    Off below 960px, where the openers carry their own numeral and label. */
 .margin {
   --numeral-size: 140px;
   /* The center axis of the numeral and the label, from the column's edge. */
   --axis: 80px;
   position: fixed;
-  /* The numeral's box is 0.85em tall. */
-  top: calc(50vh - var(--numeral-size) * 0.425);
-  top: calc(50svh - var(--numeral-size) * 0.425);
+  top: var(--top-line);
   left: 0;
   right: 0;
   z-index: 4;
@@ -182,8 +180,10 @@
    frame, which is where an anchor lands it, so a chapter arrived at by its
    link shows its numeral whole. A chapter shorter than the viewport would
    have the windows at its two ends overlap, so each half stops at the
-   chapter's center on the midline. The chapters must follow one another
-   with nothing between. */
+   chapter's center on the midline. The first chapter can be shorter than
+   the viewport too, and its lead never opens before the page scrolls: its
+   top on the viewport's top. The chapters must follow one another with
+   nothing between. */
 @supports (animation-timeline: view()) {
   .margin {
     animation: lead-1 linear both,
@@ -200,7 +200,7 @@
     animation-timeline: --chapter-0, --chapter-1, --chapter-2, --chapter-3, --chapter-4,
       --chapter-1, --chapter-2, --chapter-3, --chapter-4, --chapter-5,
       scroll(root);
-    animation-range-start: cover max(100% - 100svh, 50%),
+    animation-range-start: cover max(100% - 100svh, 50%, 100svh),
       cover max(100% - 100svh, 50%),
       cover max(100% - 100svh, 50%),
       cover max(100% - 100svh, 50%),
@@ -223,8 +223,12 @@
       cover min(100svh - var(--frame-height), 50%),
       100%;
 
-    /* Where the page ends inside a trail, the trail ends with the page. */
-    --boundary-1: calc(
+    /* Where the page ends inside a trail, the trail ends with the page. A
+       page that ends before the last chapter's top reaches the midline still
+       ends on that chapter's numeral: over the page's last tenth of a
+       viewport, as the dock does (below). */
+    --page-tail: clamp(0, (var(--page-end) - 0.8) * 5, 1);
+    --boundary-1: max(
       (
           var(--lead-1) +
             max(
@@ -232,9 +236,10 @@
               var(--trail-1) /
                 max(var(--trail-1) + 1 - var(--page-end), 0.0001)
             )
-        ) / 2
+        ) / 2,
+      var(--page-tail)
     );
-    --boundary-2: calc(
+    --boundary-2: max(
       (
           var(--lead-2) +
             max(
@@ -242,9 +247,10 @@
               var(--trail-2) /
                 max(var(--trail-2) + 1 - var(--page-end), 0.0001)
             )
-        ) / 2
+        ) / 2,
+      var(--page-tail)
     );
-    --boundary-3: calc(
+    --boundary-3: max(
       (
           var(--lead-3) +
             max(
@@ -252,9 +258,10 @@
               var(--trail-3) /
                 max(var(--trail-3) + 1 - var(--page-end), 0.0001)
             )
-        ) / 2
+        ) / 2,
+      var(--page-tail)
     );
-    --boundary-4: calc(
+    --boundary-4: max(
       (
           var(--lead-4) +
             max(
@@ -262,9 +269,10 @@
               var(--trail-4) /
                 max(var(--trail-4) + 1 - var(--page-end), 0.0001)
             )
-        ) / 2
+        ) / 2,
+      var(--page-tail)
     );
-    --boundary-5: calc(
+    --boundary-5: max(
       (
           var(--lead-5) +
             max(
@@ -272,19 +280,21 @@
               var(--trail-5) /
                 max(var(--trail-5) + 1 - var(--page-end), 0.0001)
             )
-        ) / 2
+        ) / 2,
+      var(--page-tail)
     );
   }
 
-  /* Reduced motion: the turn is a step at the boundary. */
+  /* Reduced motion: the turn is a step at the boundary, or at the page's
+     end if that comes first. */
   @media (prefers-reduced-motion: reduce) {
     .margin {
       animation-timing-function: steps(1, jump-end);
-      --boundary-1: var(--lead-1);
-      --boundary-2: var(--lead-2);
-      --boundary-3: var(--lead-3);
-      --boundary-4: var(--lead-4);
-      --boundary-5: var(--lead-5);
+      --boundary-1: max(var(--lead-1), var(--page-end));
+      --boundary-2: max(var(--lead-2), var(--page-end));
+      --boundary-3: max(var(--lead-3), var(--page-end));
+      --boundary-4: max(var(--lead-4), var(--page-end));
+      --boundary-5: max(var(--lead-5), var(--page-end));
     }
   }
 }

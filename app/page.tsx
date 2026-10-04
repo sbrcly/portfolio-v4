@@ -94,7 +94,7 @@ export default function Home() {
 
         <section
           id="iii"
-          className={styles.chapter}
+          className={`${styles.chapter} ${styles.contact}`}
           aria-labelledby="h-iii"
           data-chapter="2"
         >

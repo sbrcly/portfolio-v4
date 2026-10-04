@@ -127,16 +127,17 @@
   color: var(--muted);
 }
 
-/* Sections 01 to 05 */
+/* Sections 01 to 05. Each is one gap under the chapter before it: its top
+   padding, since the chapters follow one another with nothing between. */
 
 .section {
   width: var(--column);
   margin: 0 auto;
-  padding-top: var(--chapter-pad);
+  padding-top: var(--chapter-gap);
 }
 
 .last {
-  padding-bottom: var(--chapter-pad);
+  padding-bottom: var(--chapter-gap);
 }
 
 .body {
@@ -276,10 +277,9 @@
   }
 }
 
-/* From 960px up the title's name sits on the viewport's midline, level with
-   the running margin, and the block hangs from it. Beside the
-   running margin the back-office plates sit in the measure, one under
-   another. */
+/* From 960px up the title's name sits on the viewport's midline and the
+   block hangs from it. Beside the running margin the back-office plates sit
+   in the measure, one under another. */
 @media (min-width: 960px) {
   .title {
     justify-content: flex-start;

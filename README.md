@@ -60,25 +60,32 @@ and through a per-frame script writing the same values into CSS variables
 where it is not (`components/scroll/`, `components/fade/`). Content blocks
 marked `data-fade` are at full opacity while their center is within 25svh of
 the viewport's midline and fall to 0.15 as it reaches an edge (`globals.css`).
-The running margin (`components/margin/`) sits on the midline; its numeral is
+The running margin (`components/margin/`) is pinned with its numeral's top
+edge 120px from the viewport's top (the frame's 96 and 24); its numeral is
 individual glyphs that are held, added, or exchanged across each chapter
 boundary, and its label crossfades at the boundary. Reduced motion has no
 fade and swaps the numeral at the boundary. Below 960px there is no margin
 and content reveals once as it enters (`components/reveals/`).
 
-From 960px up chapter I is the first screen: at least 100svh tall, with the
-block from the name to the fact row centered on the midline beside the
-margin's numeral, or starting under the frame when the screen is too short
-to center it (`app/page.module.css`). Below 960px it is an opener like the
-others.
+From 960px up chapter I's block from the name to the fact row starts on the
+same line as the margin's numeral, the name's top edge 120px from the
+viewport's top at load (`app/page.module.css`). Below 960px it is an opener
+like the others.
+
+Chapters are one gap apart, from a chapter's last element to the next
+chapter's first (`--chapter-gap`, the next chapter's top padding): 120px
+from 1200 up, 96px below. The same gap is above the footer, and on the
+Prava page between its sections. A page that ends before its last chapter's
+top reaches the midline ends on that chapter all the same: the numeral, the
+nav, and the docked icons finish with the page.
 
 ## Breakpoints
 
 | Width | What changes |
 | --- | --- |
-| 1200 and up | Column `min(1120px, 100vw - 160px)`, opener grid 280 + 64, chapter padding 25svh capped at 225px |
-| 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, titles 36, chapter padding 192 |
-| 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only, chapter padding 150 |
+| 1200 and up | Column `min(1120px, 100vw - 160px)`, opener grid 280 + 64, chapter gap 120 |
+| 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, titles 36, chapter gap 96 |
+| 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only |
 
 The Prava title's top row also moves to 128px from the top at 1920 and wider.
 

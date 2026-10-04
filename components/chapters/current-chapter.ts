@@ -11,7 +11,8 @@ import { useSyncExternalStore } from "react";
  * the horizontal line at 50% of the viewport height. An IntersectionObserver
  * rooted on the top half of the viewport fires as a chapter's top crosses
  * that line in either direction; a recompute when scrolling ends covers a
- * fast scroll or a jump. At scroll position zero it is always the first.
+ * fast scroll or a jump. At scroll position zero it is always the first,
+ * and at the page's end the last, whose top may never reach the line.
  *
  * An anchor jump (a nav click, a hash change, a load with a hash) sets its
  * chapter at once and holds it until the scroll ends, so a smooth scroll
@@ -34,6 +35,10 @@ function set(id: string) {
 function resolve() {
   const first = chapters[0]?.id ?? "i";
   if (window.scrollY <= 0) return first;
+  const scroller = document.documentElement;
+  if (window.scrollY >= scroller.scrollHeight - scroller.clientHeight - 1) {
+    return chapters.at(-1)?.id ?? first;
+  }
   const line = window.innerHeight / 2;
   const last = chapters.findLast(
     (chapter) => chapter.getBoundingClientRect().top <= line

@@ -19,7 +19,7 @@ const LOAD_MS = 300;
 
 /**
  * The running margin: the current chapter's numeral and label pinned beside
- * the measure on the viewport's midline.
+ * the measure, the numeral's top edge on the top line under the frame.
  *
  * The numeral and label turn with the scroll. Every chapter's label and
  * every glyph the numeral ever shows is in the markup, each with an opacity
@@ -81,7 +81,9 @@ export default function Margin({
     // Without view timelines, the boundaries' progress is written here, by
     // the rules in margin.module.css: the lead on the outgoing chapter, the
     // trail on the incoming one until its top is under the frame, each
-    // stopping at the chapter's center, and the trail ending with the page.
+    // stopping at the chapter's center, the first chapter's lead not opening
+    // before the page scrolls, the trail ending with the page, and every
+    // boundary done by the page's end.
     // Reduced motion steps at the boundary. The dock's progress likewise.
     let stopFrames: (() => void) | undefined;
     if (!hasViewTimelines()) {
@@ -118,7 +120,11 @@ export default function Margin({
           const inCover = height - top.top;
           const lead = within(
             outCover,
-            Math.max(out.height, (height + out.height) / 2),
+            Math.max(
+              out.height,
+              (height + out.height) / 2,
+              index === 1 ? height : 0
+            ),
             out.height + half
           );
           const trail = within(
@@ -127,10 +133,16 @@ export default function Margin({
             Math.min(height - frame, (height + top.height) / 2)
           );
           const progress = reduced.matches
-            ? Math.floor(lead)
-            : (lead +
-                Math.max(trail, trail / Math.max(trail + 1 - pageEnd, 0.0001))) /
-              2;
+            ? Math.max(Math.floor(lead), Math.floor(pageEnd))
+            : Math.max(
+                (lead +
+                  Math.max(
+                    trail,
+                    trail / Math.max(trail + 1 - pageEnd, 0.0001)
+                  )) /
+                  2,
+                within(pageEnd, 0.8, 1)
+              );
 
           write(`--boundary-${incoming.dataset.chapter}`, progress);
         });

@@ -7,7 +7,7 @@ export default function NotFound() {
       style={{
         width: "var(--column)",
         margin: "0 auto",
-        padding: "var(--chapter-pad) 0",
+        padding: "var(--chapter-gap) 0",
       }}
     >
       <h1>This page doesn&apos;t exist.</h1>

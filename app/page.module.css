@@ -1,24 +1,35 @@
+/* The chapters follow one another with nothing between (the running
+   margin's boundaries need that), so the gap from a chapter's last element
+   to the next chapter's first is the next chapter's top padding. The last
+   has the same under it, above the footer. */
 .chapter {
   width: var(--column);
   margin: 0 auto;
-  padding: var(--chapter-pad) 0;
+  padding-top: var(--chapter-gap);
 }
 
-/* I About. From 960px up it is the first screen, and the block from the
-   name to the fact row is centered on the viewport's midline, level with the
-   running margin's numeral. The name opens 40px into the measure (the
-   measure's 12px and the statement's 28px), so the top padding is short by
-   that. A block taller than the screen under the frame starts under the
-   frame instead. */
+.chapter:last-child {
+  padding-bottom: var(--chapter-gap);
+}
+
+/* From 960px up the openers' numeral and label are the running margin's, so
+   a chapter's first element is whatever opens its measure, and the top
+   padding is short by how far into the measure that is.
+
+   I About. The block from the name to the fact row starts on the top line:
+   at load the name's top edge is level with the running margin's numeral's.
+   The name opens 40px into the measure (the measure's 12px and the
+   statement's 28px).
+
+   III Contact. The email opens 28px into the measure. */
 
 @media (min-width: 960px) {
   .first {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    min-height: 100svh;
-    padding: calc(var(--frame-height) - 40px) 0 var(--frame-height);
+    padding-top: calc(var(--top-line) - 40px);
+  }
+
+  .contact {
+    padding-top: calc(var(--chapter-gap) - 28px);
   }
 }
 

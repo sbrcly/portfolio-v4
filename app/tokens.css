@@ -48,7 +48,8 @@
   --space-64: 64px;
   --space-128: 128px;
   --space-entry: 176px; /* between work entries */
-  --chapter-pad: min(25vh, 225px); /* svh where supported, below */
+  /* From a chapter's last element to the next chapter's first. */
+  --chapter-gap: 120px;
 
   /* Layout */
   --column: min(1120px, 100vw - 160px);
@@ -56,16 +57,13 @@
   --bar-height: 72px;
   --bar-inset: 48px;
   --hero-top: 112px; /* hero top row */
+  /* From 960px up: where the running margin's numeral and chapter I's name
+     both start, 24px under the frame. */
+  --top-line: calc(var(--frame-height) + 24px);
   /* The running margin's column and the gap to the measure, from 960px up. */
   --margin-width: 280px;
   --margin-gap: 64px;
   --measure-offset: calc(var(--margin-width) + var(--margin-gap));
-}
-
-@supports (height: 1svh) {
-  :root {
-    --chapter-pad: min(25svh, 225px);
-  }
 }
 
 @media (min-width: 1920px) {
@@ -80,7 +78,7 @@
     --statement-size: 32px;
     --title-size: 36px;
 
-    --chapter-pad: 192px;
+    --chapter-gap: 96px;
 
     --column: min(960px, 100vw - 64px);
     --bar-inset: 32px;
@@ -102,7 +100,6 @@
     --mono-small-size: 10px;
 
     --space-entry: 112px;
-    --chapter-pad: 150px;
 
     --column: calc(100vw - 40px);
     --frame-height: 80px;
