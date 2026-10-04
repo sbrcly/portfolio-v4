@@ -28,19 +28,26 @@
    row over the projects' top: it takes no room, and sticks within that
    area. The area ends short of the next block, so the next title pushes
    the row out from beyond the row's tail and is never dimmed by it. The
-   row reads the title's timeline, which the block names (running-head.ts)
-   and the body scopes (globals.css): the Work index reads it too. */
+   row reads the title's timeline through the block's scope.
+
+   The block's own timeline is the Work index's (components/margin): the
+   block's top, which is the title's, over the 24px of scroll that bring it
+   up to the viewport's midline. The block names it (employer-timeline.ts)
+   and the body scopes it (globals.css). */
 .employer {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   padding-bottom: var(--release);
+  timeline-scope: --employer-head;
+  view-timeline: var(--employer-timeline) block;
+  view-timeline-inset: 0px calc(50% - 24px);
   scroll-margin-top: var(--landing);
 }
 
 /* The title's timeline ends with its bottom edge a row-fade under the
    frame's. */
 .head {
-  view-timeline: var(--head-timeline) block;
+  view-timeline: --employer-head block;
   view-timeline-inset: calc(var(--frame-height) - var(--row-fade)) 0px;
 }
 
@@ -92,7 +99,7 @@
 @supports (animation-timeline: view()) {
   .row {
     animation: pin linear both;
-    animation-timeline: var(--head-timeline);
+    animation-timeline: --employer-head;
     animation-range: exit calc(100% - var(--row-fade)) exit 100%;
   }
 }
@@ -161,19 +168,11 @@
 }
 
 /* The gap to the next block is inside this one, so the row stays pinned
-   until the next title is that close.
-
-   Its bottom edge is what pushes the row out, and its timeline is that
-   push, for the Work index: the edge crossing from the pinned row's bottom
-   to where the row's text (16px above its bottom) is behind the frame's
-   solid part. */
+   until the next title is that close. */
 .projects {
   grid-area: 2 / 1;
   padding-top: var(--head-gap);
   padding-bottom: calc(var(--employer-gap) - var(--release));
-  view-timeline: var(--run-timeline) block;
-  view-timeline-inset: calc(var(--frame-height) - var(--frame-tail) + 16px)
-    calc(100% - var(--frame-height) - var(--row-height));
 }
 
 .employer:last-child,

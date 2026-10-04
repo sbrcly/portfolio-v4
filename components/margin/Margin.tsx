@@ -36,8 +36,8 @@ const LOAD_MS = 300;
  *
  * Numeral and label are decorative and hidden from assistive
  * technology. The icon links are not: they are read, focused, and clicked.
- * They stand stacked on the margin's axis and never move: pinned where they
- * clear the footer by 40px when the page ends.
+ * They stand in a row from the column's edge and never move: pinned where
+ * they clear the footer by 40px when the page ends.
  *
  * On the home page the margin also holds the Work index (WorkIndex.tsx),
  * under the label while chapter II is current. It comes after the icons, so

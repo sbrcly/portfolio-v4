@@ -35,22 +35,21 @@
   gap: 12px;
 }
 
-/* The icon links, stacked on the margin's axis, 20px apart, and pinned: the
-   last icon's bottom is 40px above the footer's top edge when the page can
+/* The icon links, in a row from the column's edge, 24px apart, and pinned:
+   the row's bottom is 40px above the footer's top edge when the page can
    scroll no further. No left or right: the block keeps the place it has in
    the column. The one part of the margin that takes the pointer. Off below
-   620px of height, where the stack would run into the label. */
+   500px of height, where the row would run into the label. */
 .social {
-  --gap: 20px;
+  --gap: 24px;
+  --row: 20px; /* an icon's height */
   position: fixed;
   bottom: calc(var(--footer-height) + 40px);
   display: none;
-  flex-direction: column;
-  margin-left: calc(var(--axis) - 10px);
   pointer-events: auto;
 }
 
-@media (min-height: 620px) {
+@media (min-height: 500px) {
   .social {
     display: flex;
   }
@@ -58,15 +57,17 @@
 
 /* With the Work index (below). Chapter II is the page's second chapter, so
    the index arrives over the last quarter of boundary 1, whole exactly when
-   the II is, and leaves over the first quarter of boundary 2. Reduced
-   motion: the boundaries step, and so does this. */
+   the II is. It leaves as chapter III's top comes up to the viewport's
+   midline, which is boundary 2 at a half: from .35 to there, so it stays
+   while the last projects cross the midline. Reduced motion: the
+   boundaries step, and so does this. */
 .indexed {
   --index-gap: 28px; /* the label to the first line */
   --index-line: 18px;
   --index-pad: 4px; /* above a project tier's first line, below its last */
   --index-present: calc(
     clamp(0, (var(--boundary-1) - 0.75) / 0.25, 1) *
-      (1 - clamp(0, var(--boundary-2) / 0.25, 1))
+      (1 - clamp(0, (var(--boundary-2) - 0.35) / 0.15, 1))
   );
   /* The index's bottom edge at its tallest, from the viewport's top: the
      numeral, 12, the label, the gap, every employer's line, and the longest
@@ -78,19 +79,18 @@
   );
 }
 
-/* The icons never meet the index. In a viewport too short to hold the
-   index at its tallest, 24px, and the stack down to the viewport's bottom,
-   they yield: out as the index arrives and back as it leaves. --yield is 1
-   in such a viewport and 0 in a taller one: tan(atan2()) is the only way
-   to divide a length into a number. */
+/* The icons never meet the index, whose lines start on the same edge. In
+   a viewport too short to hold the index at its tallest, 24px, and the row
+   down to the viewport's bottom, they yield: out as the index arrives and
+   back as it leaves. --yield is 1 in such a viewport and 0 in a taller one:
+   tan(atan2()) is the only way to divide a length into a number. */
 .indexed .social {
-  --stack: calc(var(--count) * 20px + (var(--count) - 1) * var(--gap));
   --yield: clamp(
     0,
     tan(
       atan2(
         (
-            var(--index-bottom) + 24px + var(--stack) + var(--footer-height) +
+            var(--index-bottom) + 24px + var(--row) + var(--footer-height) +
               40px - 100vh
           ) * 1000,
         1px
@@ -497,42 +497,69 @@
   list-style: none;
 }
 
-/* An employer is as bright as its running head is visible: come in under
-   the frame (--index-pinned) and not yet pushed out by the next title
-   (--index-pushed). Both are read from the employer's own timelines
-   (components/work), the first over the range its row comes in over (the
-   24px is work.module.css's --row-fade); without view timelines
-   work-index.ts writes them. */
+/* The current employer is the last whose title's top is at or above the
+   viewport's midline. An employer's line brightens and its projects open
+   over the 24px of scroll that bring its title up to the midline
+   (--index-reached), so it is whole as the title crosses, and the one
+   before it dims and closes over the same 24px (--index-passed, the next
+   employer's reach). The first has been reached from the start, so one
+   employer is always current. Each is read from an employer's timeline
+   (components/work, whose inset holds the same 24px); without view
+   timelines work-index.ts writes them. Reduced motion: a step at the
+   midline. */
 .employer {
-  --open: calc(var(--index-pinned) * (1 - var(--index-pushed)));
+  --open: calc(var(--index-reached) * (1 - var(--index-passed)));
   --bright: var(--open);
+}
+
+.employer:first-child {
+  --index-reached: 1;
 }
 
 @supports (animation-timeline: view()) {
   .employer {
-    animation: index-pinned linear both,
-      index-pushed linear both;
-    animation-timeline: var(--head-timeline), var(--run-timeline);
-    animation-range-start: exit calc(100% - 24px), entry-crossing 100%;
-    animation-range-end: exit 100%, exit-crossing 100%;
+    animation: index-reached linear both,
+      index-passed linear both;
+    animation-timeline: var(--own-timeline, none), var(--next-timeline, none);
+    animation-range: cover 0% cover 24px;
+  }
+
+  /* No timeline for the first's reach or the last's pass, and an animation
+     without one would hold its end value: neither runs. */
+  .employer:first-child {
+    animation-name: none, index-passed;
+  }
+
+  .employer:last-child {
+    animation-name: index-reached, none;
+  }
+
+  .employer:only-child {
+    animation-name: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .employer {
+      animation-timing-function: steps(1, jump-end);
+    }
   }
 }
 
-@keyframes index-pinned {
+@keyframes index-reached {
   from {
-    --index-pinned: 0;
+    --index-reached: 0;
   }
   to {
-    --index-pinned: 1;
+    --index-reached: 1;
   }
 }
 
-@keyframes index-pushed {
+@keyframes index-passed {
   from {
-    --index-pushed: 0;
+    --index-passed: 0;
   }
   to {
-    --index-pushed: 1;
+    --index-passed: 1;
   }
 }
 

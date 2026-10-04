@@ -1,9 +1,8 @@
 import { hasViewTimelines, onScrollFrame } from "@/components/scroll/frames";
-import { FADE, pinned, pushed } from "@/components/work/running-head";
 
-// An employer's grid is two cells across wherever the index shows
-// (work.module.css), and both cells of a row are one place.
-const COLUMNS = 2;
+// The scroll over which a line brightens, ending with what it names on the
+// viewport's midline: the 24px in margin.module.css and work.module.css.
+const REACH = 24;
 // A tier less than half open is not there to be tabbed into.
 const OPEN = 0.5;
 
@@ -16,17 +15,25 @@ function write(element: HTMLElement, name: string, value: number) {
   }
 }
 
+/** What a line's link jumps to. */
+const target = (line: Element) => {
+  const hash = line.querySelector("a")?.hash;
+  return hash ? document.getElementById(hash.slice(1)) : null;
+};
+
 /**
  * The Work index's part of the scroll (WorkIndex.tsx), once a frame at most.
  *
- * The projects' brightness, always: a grid row is current once its cells
- * have passed the line a jump lands them on (under the frame by their
- * scroll-margin: the pinned row and its tail), and the hero until then,
- * each handing over across the running head's fade. Under reduced motion
- * the handover is a step at the line.
+ * The projects' brightness, always: the hero is current with its employer,
+ * as bright as the employer's line, until a grid row takes over. A row is
+ * current once its cells' top (their plates') is at or above the viewport's
+ * midline: its lines brighten over the 24px of scroll that bring it there
+ * while the lines before dim. So an open tier always has a bright line.
+ * Under reduced motion the handover is a step at the midline.
  *
- * Without view timelines, also the employers' running heads, which
- * margin.module.css otherwise reads from the employers' timelines.
+ * Without view timelines, also the employers' reach, by the same rule on
+ * their titles, which margin.module.css otherwise reads from the employers'
+ * timelines.
  *
  * And what cannot be focused: the whole index while it is absent, a tier
  * while it is closed.
@@ -37,26 +44,20 @@ export function followWork(nav: HTMLElement) {
   const timelines = hasViewTimelines();
   const wide = window.matchMedia("(min-width: 960px)");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const rows = [
-    ...document.querySelectorAll<HTMLElement>("[data-running-head]"),
-  ];
 
   const employers = [
     ...nav.querySelectorAll<HTMLElement>("[data-employer]"),
-  ].flatMap((item, index) => {
+  ].flatMap((item) => {
     const tier = item.querySelector("ul");
-    const row = rows[index];
-    if (!tier || !row) return [];
-    // The lines' list items, which carry their color.
-    const [hero, ...cells] = [...tier.children] as HTMLElement[];
-    // Each grid row's first cell: the anchor its line jumps to.
-    const gridRows = cells
-      .filter((_, cell) => cell % COLUMNS === 0)
-      .map((line) => {
-        const hash = line.querySelector("a")?.hash;
-        return hash ? document.getElementById(hash.slice(1)) : null;
-      });
-    return [{ item, tier, row, hero, cells, gridRows }];
+    // The employer's block: its top is its title's.
+    const block = target(item);
+    if (!tier || !block) return [];
+    // The lines' list items, which carry their color, and their projects.
+    const lines = ([...tier.children] as HTMLElement[]).flatMap((line) => {
+      const project = target(line);
+      return project ? [{ line, project }] : [];
+    });
+    return [{ item, tier, block, lines }];
   });
 
   const stop = onScrollFrame(() => {
@@ -66,51 +67,58 @@ export function followWork(nav: HTMLElement) {
     nav.inert = !present;
     if (!present) return;
 
-    const frame = parseFloat(
-      getComputedStyle(document.documentElement).scrollPaddingTop
-    );
+    const midline = window.innerHeight / 2;
+    // How far an element's top has come up to the midline.
+    const reach = (element: Element) => {
+      const past = midline - element.getBoundingClientRect().top;
+      // A top landed on the line has reached it, whatever the rounding.
+      return reduced.matches
+        ? Number(past > -0.5)
+        : clamp((past + REACH) / REACH);
+    };
 
-    for (const { item, tier, row, hero, cells, gridRows } of employers) {
+    const reached = timelines
+      ? []
+      : employers.map(({ block }, index) => (index ? reach(block) : 1));
+
+    employers.forEach(({ item, tier, lines }, index) => {
       let open: number;
       if (timelines) {
         open = Number(getComputedStyle(tier).opacity);
       } else {
-        const pin = pinned(row, frame);
-        const push = pushed(row);
-        write(item, "--index-pinned", pin);
-        write(item, "--index-pushed", push);
-        open = pin * (1 - push);
+        const passed = reached[index + 1] ?? 0;
+        write(item, "--index-reached", reached[index]);
+        write(item, "--index-passed", passed);
+        open = reached[index] * (1 - passed);
       }
       tier.inert = open < OPEN;
-      if (open === 0) continue;
+      if (open === 0) return;
 
-      const passed = gridRows.map((cell) => {
-        if (!cell) return 0;
-        const line = frame + parseFloat(getComputedStyle(cell).scrollMarginTop);
-        const past = line - cell.getBoundingClientRect().top;
-        // A cell landed on the line has reached it, whatever the rounding.
-        return reduced.matches ? Number(past > -0.5) : clamp(past / FADE);
-      });
-      write(hero, "--bright", 1 - (passed[0] ?? 0));
-      cells.forEach((line, cell) => {
-        const gridRow = Math.floor(cell / COLUMNS);
-        write(
-          line,
-          "--bright",
-          passed[gridRow] * (1 - (passed[gridRow + 1] ?? 0))
+      const tops = lines.map(({ project }) =>
+        project.getBoundingClientRect().top
+      );
+      // The hero, first, has been reached as far as its employer has.
+      const near = lines.map(({ project }, place) =>
+        place ? reach(project) : open
+      );
+      lines.forEach(({ line }, place) => {
+        // The next project down: not the cell beside this one.
+        const next = tops.findIndex(
+          (top, other) => other > place && top > tops[place] + 0.5
         );
+        write(line, "--bright", near[place] * (1 - (near[next] ?? 0)));
       });
-    }
+    });
   });
 
   return () => {
     stop();
     nav.inert = false;
-    for (const { item, tier, hero, cells } of employers) {
+    for (const { item, tier, lines } of employers) {
       tier.inert = true;
-      item.style.removeProperty("--index-pinned");
-      item.style.removeProperty("--index-pushed");
-      [hero, ...cells].forEach((line) => line.style.removeProperty("--bright"));
+      item.style.removeProperty("--index-reached");
+      item.style.removeProperty("--index-passed");
+      lines.forEach(({ line }) => line.style.removeProperty("--bright"));
     }
   };
 }
