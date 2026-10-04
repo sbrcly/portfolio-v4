@@ -1,55 +1,90 @@
+import Image from "next/image";
+import Link from "next/link";
+import ExtensionDiagram from "./ExtensionDiagram";
+import Plate from "./Plate";
+import ProjectLinks, { hasLinks } from "./ProjectLinks";
+import VideoPlate from "./VideoPlate";
+import type { Plate as PlateData, Project } from "./employers";
 import styles from "./work-entry.module.css";
 
-type Props = {
-  /** Decorative index, "01" to "05". Also the entry's anchor, "work-01". */
-  index: string;
-  /** Plain title. With the index it is the running margin's second line. */
-  name: string;
-  /** id for the h3; the article points aria-labelledby at it. */
-  headingId: string;
-  title: React.ReactNode;
-  meta: string;
-  /** The plate. */
-  media: React.ReactNode;
-  sentence: string;
-  /** Mono spec run: stack, then links. */
-  spec: React.ReactNode;
-};
+// Plates span the measure from 960px up (776 at 1440, the column less 240
+// below 1200), the column below that, and bleed on phone.
+const PLATE_SIZES =
+  "(max-width: 719px) 100vw, (max-width: 959px) calc(100vw - 64px), (max-width: 1199px) calc(100vw - 304px), 776px";
+const SCREEN_SIZES =
+  "(max-width: 719px) 45vw, (max-width: 959px) 22vw, (max-width: 1199px) 16vw, 166px";
 
+function ProjectPlate({
+  plate,
+  describedBy,
+}: {
+  plate: PlateData;
+  describedBy: string;
+}) {
+  switch (plate.kind) {
+    case "image":
+      return (
+        <Plate>
+          <Image src={plate.src} alt={plate.alt} sizes={PLATE_SIZES} />
+        </Plate>
+      );
+    case "screens":
+      return (
+        <Plate className={styles.screens}>
+          {plate.screens.map(({ src, alt }) => (
+            <Image key={alt} src={src} alt={alt} sizes={SCREEN_SIZES} />
+          ))}
+        </Plate>
+      );
+    case "video":
+      return <VideoPlate describedBy={describedBy} />;
+    case "diagram":
+      return <ExtensionDiagram />;
+  }
+}
+
+/** A project with a plate: title row, plate, sentence, spec run. */
 export default function WorkEntry({
-  index,
-  name,
-  headingId,
-  title,
-  meta,
-  media,
-  sentence,
-  spec,
-}: Props) {
+  project,
+}: {
+  project: Project & { plate: PlateData };
+}) {
+  const { id, name, year, detail, plate, sentence, stack, caseStudy } = project;
+  const headingId = `w-${id}`;
+  const summaryId = `${headingId}-summary`;
+  const links = hasLinks(project);
+
   return (
     <article
-      id={`work-${index}`}
+      id={`work-${id}`}
       className={styles.entry}
       aria-labelledby={headingId}
-      data-entry={`${index} ${name}`}
+      data-entry={name}
       data-reveal=""
       data-fade=""
     >
       <div className={styles.titleRow}>
-        <h3 id={headingId} className={styles.title}>
-          <span className={styles.index} aria-hidden="true">
-            {index}
-          </span>
-          {title}
-        </h3>
-        <span className={styles.meta}>{meta}</span>
+        <h4 id={headingId} className={styles.title}>
+          {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
+        </h4>
+        <span className={styles.meta}>
+          {detail ? `${year} · ${detail}` : year}
+        </span>
       </div>
-      <div className={styles.media}>{media}</div>
+      <div className={styles.media}>
+        <ProjectPlate plate={plate} describedBy={summaryId} />
+      </div>
       <div className={styles.caption}>
-        <p id={`${headingId}-summary`} className={styles.sentence}>
+        <p id={summaryId} className={styles.sentence}>
           {sentence}
         </p>
-        <div className={styles.spec}>{spec}</div>
+        {(stack || links) && (
+          <div className={styles.spec}>
+            {stack}
+            {stack && links && <br />}
+            {links && <ProjectLinks project={project} />}
+          </div>
+        )}
       </div>
     </article>
   );

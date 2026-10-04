@@ -16,7 +16,7 @@ import { useSyncExternalStore } from "react";
  * An anchor jump (a nav click, a hash change, a load with a hash) sets its
  * chapter at once and holds it until the scroll ends, so a smooth scroll
  * never passes through the chapters in between. The anchor is a chapter or
- * something inside one (a work entry, "work-02").
+ * something inside one (an employer's block, "employer-02").
  */
 const QUIET_MS = 150; // scroll end, where there is no scrollend event
 

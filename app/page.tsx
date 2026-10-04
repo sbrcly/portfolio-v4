@@ -15,7 +15,7 @@ import styles from "./page.module.css";
 const MARGIN: MarginChapter[] = [
   { id: "i", numeral: "I", label: "Home" },
   { id: "ii", numeral: "II", label: "About" },
-  { id: "iii", numeral: "III", label: "Work · five" },
+  { id: "iii", numeral: "III", label: "Work · ten" },
   { id: "iv", numeral: "IV", label: "Contact" },
 ];
 
@@ -93,9 +93,9 @@ export default function Home() {
         >
           <ChapterOpener
             numeral="III"
-            label="Work · five"
+            label="Work · ten"
             headingId="h-iii"
-            statement="Five things built and shipped, most recent first."
+            statement="Ten things built and shipped at three companies, most recent first."
           />
           <Work />
         </section>

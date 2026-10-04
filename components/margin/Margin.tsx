@@ -81,7 +81,7 @@ function fader(el: HTMLElement) {
   };
 }
 
-/** The lit plate's entry, "02 Live odds console", or nothing. */
+/** The lit plate's entry, "Live odds console", or nothing. */
 const litEntry = () =>
   getLightTarget()?.closest<HTMLElement>("[data-entry]")?.dataset.entry ?? "";
 

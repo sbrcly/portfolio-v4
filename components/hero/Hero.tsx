@@ -22,13 +22,13 @@ export default function Hero() {
           </h1>
           <p className={styles.statement}>
             Software engineer.{" "}
-            <TextLink href="#work-02">Trading desk tools</TextLink> for a Las
+            <TextLink href="#employer-03">Trading desk tools</TextLink> for a Las
             Vegas sportsbook,{" "}
-            <TextLink href="#work-05">
+            <TextLink href="#employer-02">
               a pricing portal and Chrome extension
             </TextLink>{" "}
             for a ticket brokerage, and{" "}
-            <TextLink href="#work-01">an iOS app</TextLink> designed, built, and
+            <TextLink href="#employer-01">an iOS app</TextLink> designed, built, and
             shipped alone.
           </p>
           <a href={`mailto:${EMAIL}`} className={styles.email}>

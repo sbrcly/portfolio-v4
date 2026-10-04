@@ -1,9 +1,5 @@
-.entry {
+.entry + .entry {
   margin-top: var(--space-entry);
-}
-
-.entry:first-of-type {
-  margin-top: var(--space-128);
 }
 
 .titleRow {
@@ -43,6 +39,15 @@
 
 .media {
   margin-top: 40px;
+}
+
+/* Phone screens side by side on the surface: four, two on phone. */
+.screens {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 32px;
+  background: var(--surface);
 }
 
 .caption {
@@ -119,13 +124,9 @@
   }
 }
 
-/* Beside the running margin: entries sit in the measure and the caption
-   stacks, sentence over spec. */
+/* Beside the running margin, in the measure (the employer's block sets
+   it): the caption stacks, sentence over spec. */
 @media (min-width: 960px) {
-  .entry {
-    margin-left: var(--measure-offset);
-  }
-
   .caption {
     display: block;
   }
@@ -136,10 +137,6 @@
 }
 
 @media (max-width: 719px) {
-  .entry:first-of-type {
-    margin-top: 72px;
-  }
-
   /* Meta wraps under the title. */
   .titleRow {
     flex-direction: column;
@@ -149,6 +146,16 @@
 
   .media {
     margin-top: 24px;
+  }
+
+  .screens {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 24px 20px;
+  }
+
+  .screens > img:nth-child(n + 3) {
+    display: none;
   }
 
   .caption {

@@ -1,7 +1,7 @@
 import Plate from "./Plate";
 import styles from "./extension-diagram.module.css";
 
-/** Entry 05's plate: the origin-boundary diagram, built in HTML and CSS. */
+/** The marketplace extension's plate: the origin-boundary diagram, built in HTML and CSS. */
 export default function ExtensionDiagram() {
   return (
     <Plate

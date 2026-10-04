@@ -1,21 +1,233 @@
-/* 01 Prava: four screens on the surface. */
-.screens {
+/* Chapter III by employer. Each block opens with a ruled row that sticks
+   under the frame for the length of the block; the block's bottom edge,
+   which is the next block's row arriving, pushes it out. */
+.employers {
+  /* The see-through part of the frame: its gradient's last 44%
+     (components/frame). */
+  --frame-tail: calc(var(--frame-height) * 0.44);
+  --employer-gap: 160px;
+  --row-gap: 72px; /* the row to its first project */
+  /* The opener to the first row. Each row's box starts a frame tail above
+     the row itself, so every gap above one is short by that much. */
+  margin-top: calc(160px - var(--frame-tail));
+}
+
+/* An anchor lands the row itself just under the frame, where it pins. */
+.employer {
+  scroll-margin-top: calc(-1 * var(--frame-tail));
+}
+
+/* The row. Its box reaches a frame tail above the row and pins with that
+   part behind the frame's gradient, so from the frame's solid edge to the
+   row's rule the ground is unbroken and whatever scrolls past is beneath
+   it. Below the frame, above the content (which fades; the row never
+   does), and below the running margin. */
+.row {
+  position: sticky;
+  top: calc(var(--frame-height) - var(--frame-tail));
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 24px;
+  /* 16 above and below; the rule is the last pixel. */
+  padding: calc(var(--frame-tail) + 16px) 0 17px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 16px;
+}
+
+/* The ground behind the row, as wide as the viewport so a plate's glow
+   (and on phone the plate, which bleeds) passes beneath it too, and the
+   rule, as wide as the row. An element, not a pseudo-element, so a
+   contrast checker can see what the row's text stands on. It comes first
+   in the row and the text after it is positioned, so the text is on top. */
+.ground {
+  position: absolute;
+  inset: 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--ground);
+  box-shadow: 0 0 0 100vmax var(--ground);
+  clip-path: inset(0 -100vmax);
+}
+
+/* Under the rule, the frame's gradient again: content dims as it goes
+   beneath. The image is drawn out to the viewport's sides. */
+.tail {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: var(--frame-tail);
+  border-image: linear-gradient(
+      to bottom,
+      #121a16 0%,
+      rgba(18, 26, 22, 0.72) 50%,
+      rgba(18, 26, 22, 0) 100%
+    )
+    fill 0 / 0 / 0 100vw;
+  pointer-events: none;
+}
+
+.name,
+.role {
+  position: relative;
+}
+
+.name {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.role {
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* A break falls between the role and the years before it falls in either. */
+.role > span {
+  display: inline-block;
+}
+
+/* The gap to the next block is inside this one, so the row stays pinned
+   until the next row reaches it. */
+.projects {
+  padding-top: var(--row-gap);
+  padding-bottom: calc(var(--employer-gap) - var(--frame-tail));
+}
+
+.employer:last-child > .projects {
+  padding-bottom: 0;
+}
+
+/* Focus never lands under a pinned row. */
+.projects :is(a, button) {
+  scroll-margin-top: 112px;
+}
+
+/* Projects without a plate: a ruled list under the last plate's caption. */
+.list {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--rule);
+  list-style: none;
+}
+
+.projects > * + .list {
+  margin-top: 96px;
+}
+
+.item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  padding: 32px;
-  background: var(--surface);
+  grid-template-columns: 1fr auto;
+  column-gap: 24px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.itemName {
+  font-weight: 400;
+  font-size: var(--body-size);
+  line-height: 1.3;
+}
+
+.itemYear {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: normal;
+  letter-spacing: 0.06em;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.itemSentence,
+.itemLinks {
+  grid-column: 1;
+  color: var(--muted);
+}
+
+.itemSentence {
+  margin-top: 4px;
+  font-size: 17px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.itemLinks {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 1.8;
+}
+
+/* Reveal, below 960px (above it the list fades with the scroll instead;
+   see globals.css). Hidden state is set by script on a below-fold list
+   only (components/reveals). */
+@media (max-width: 959px) {
+  .list[data-reveal="hidden"] {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .list[data-reveal="shown"] {
+    transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@media (max-width: 959px) and (prefers-reduced-motion: reduce) {
+  .list[data-reveal="hidden"] {
+    transform: none;
+  }
+
+  .list[data-reveal="shown"] {
+    transition: opacity 200ms;
+  }
+}
+
+/* Beside the running margin: the blocks sit in the measure. */
+@media (min-width: 960px) {
+  .employer {
+    margin-left: var(--measure-offset);
+  }
 }
 
 @media (max-width: 719px) {
-  /* Two screens on phone. */
-  .screens {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    padding: 24px 20px;
+  .employers {
+    --employer-gap: 128px;
+    --row-gap: 48px;
+    margin-top: calc(96px - var(--frame-tail));
   }
 
-  .screens > img:nth-child(n + 3) {
-    display: none;
+  /* Role and years wrap under the name. */
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .role {
+    letter-spacing: 0.04em;
+  }
+
+  /* Stacked: name, year, sentence. */
+  .item {
+    display: block;
+  }
+
+  .itemYear {
+    display: block;
+    margin-top: 4px;
+    text-align: left;
+  }
+
+  .itemSentence {
+    margin-top: 8px;
+    font-size: 15px;
   }
 }

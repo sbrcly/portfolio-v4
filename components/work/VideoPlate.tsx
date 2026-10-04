@@ -29,7 +29,7 @@ function clock(seconds: number) {
 }
 
 /**
- * Entry 02's plate: the odds console recording. The whole plate is the
+ * The live odds console's plate: the odds console recording. The whole plate is the
  * button. Three visual states: resting (poster, ring, meta), playing (ring
  * and meta gone, rim lit, bar on hover or focus), ended (last frame held,
  * ring back, meta reads Replay).
