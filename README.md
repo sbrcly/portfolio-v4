@@ -29,7 +29,7 @@ rebuild started from.
 `app/tokens.css` is the single source for the palette (ground, surface,
 rule, dim numeral, text, muted, brass, lit), the glow and plate-rim shadow
 recipes, the spacing scale, the type scale, and the layout widths (column,
-footer, frame). Each breakpoint redefines the same custom properties, so
+frame). Each breakpoint redefines the same custom properties, so
 components read a token and never repeat a media query for it.
 
 `app/globals.css` holds the reset, the link and focus styles, the skip link,
@@ -43,9 +43,11 @@ and sets `data-entrance` on `<html>`: it plays only on the first page load of
 a browser session, only when that load is the home page, and never when
 session storage is unusable. The 1400 ms timeline is plain CSS in
 `components/entrance/`: a rule draws from its center, the SB mark fades in,
-the rule cools, the veil clears, and the hero's own rule takes the light as
-it does. Any key or click skips to the handoff. Under reduced motion the mark
-and rule appear together, hold, and fade.
+the rule cools, the veil clears, and the hairline that opens the hero takes
+the light as it does, then cools to the plain rule color over two seconds.
+Nothing in the hero is lit at rest. Any key or click skips to the handoff.
+Under reduced motion the mark and rule appear together, hold, and fade, and
+the hairline is plain from first paint.
 
 The light is one registered custom property, `--light`, that runs from 0 to
 1 on any element marked `data-light`. It drives both the color and the glow,
@@ -81,6 +83,10 @@ and content reveals once as it enters (`components/reveals/`).
 | 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only, chapter padding 150 |
 
 The hero's top row also moves to 128px from the top at 1920 and wider.
+
+From 960px up the frame's bar spans the column: the SB mark starts on the
+running margin's left edge and the nav table ends on the measure's right.
+The footer spans the column at every width.
 
 ## Structure
 

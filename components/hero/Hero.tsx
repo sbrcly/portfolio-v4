@@ -16,13 +16,8 @@ export default function Hero() {
           <span className={styles.label}>Home</span>
         </div>
         <div className={styles.measure} data-fade="">
-          {/* The chapter's lit element. Lit in the markup so it is lit at first paint. */}
-          <div
-            className={styles.rule}
-            data-light="i"
-            data-lit="true"
-            aria-hidden="true"
-          />
+          {/* Not one of the page's lights: the entrance lands on it once. */}
+          <div className={styles.rule} data-handoff="" aria-hidden="true" />
           <h1 id="h-i" className={styles.name}>
             Scott Barclay
           </h1>

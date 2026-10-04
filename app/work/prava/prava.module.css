@@ -47,11 +47,11 @@
   background: var(--rule);
 }
 
+/* The hairline that opens the home hero (components/hero), across the
+   block. Plain: nothing in the title is lit. */
 .rule {
-  width: 72px;
-  height: 2px;
-  background: var(--light-color);
-  box-shadow: var(--light-glow);
+  height: 1px;
+  background: var(--rule);
 }
 
 .name {
@@ -285,17 +285,18 @@
 }
 
 /* From 960px up the title's name sits on the viewport's midline like the
-   home hero's (components/hero), and the block hangs from it. Beside the
+   home hero's (components/hero), and the block hangs from it: above the
+   name are the hairline (1px) and the name's 40px margin. Beside the
    running margin the back-office plates sit in the measure, one under
    another. */
 @media (min-width: 960px) {
   .title {
     justify-content: flex-start;
     padding-top: calc(
-      50vh - 42px - var(--name-size) * var(--name-leading) / 2
+      50vh - 41px - var(--name-size) * var(--name-leading) / 2
     );
     padding-top: calc(
-      50svh - 42px - var(--name-size) * var(--name-leading) / 2
+      50svh - 41px - var(--name-size) * var(--name-leading) / 2
     );
   }
 
@@ -329,10 +330,6 @@
   /* The top row keeps to one line: the App Store status is dropped. */
   .wide {
     display: none;
-  }
-
-  .rule {
-    width: 56px;
   }
 
   .name {

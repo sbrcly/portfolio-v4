@@ -7,7 +7,9 @@ import {
  * One lit thing per viewport. An element opts in with data-light="<chapter>";
  * the lit one carries data-lit="true", which drives its --light property
  * (see globals.css). Handover: the outgoing light cools, nothing is lit for
- * a beat, then the incoming light warms. They never overlap.
+ * a beat, then the incoming light warms. They never overlap. A chapter with
+ * no such element (I and II on the home page, the title on the Prava page)
+ * has nothing lit: entering it only cools, and leaving it only warms.
  */
 const COOL_MS = 400;
 const DARK_MS = 200;

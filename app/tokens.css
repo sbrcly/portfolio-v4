@@ -56,7 +56,6 @@
 
   /* Layout */
   --column: min(1120px, 100vw - 160px);
-  --footer-width: min(1344px, 100vw - 96px);
   --frame-height: 96px;
   --bar-height: 72px;
   --bar-inset: 48px;
@@ -88,7 +87,6 @@
     --chapter-pad: 192px;
 
     --column: min(960px, 100vw - 64px);
-    --footer-width: min(960px, 100vw - 64px);
     --bar-inset: 32px;
     --hero-top: 96px;
     --margin-width: 200px;
@@ -111,7 +109,6 @@
     --chapter-pad: 150px;
 
     --column: calc(100vw - 40px);
-    --footer-width: calc(100vw - 40px);
     --frame-height: 80px;
     --bar-height: 60px;
     --bar-inset: 20px;

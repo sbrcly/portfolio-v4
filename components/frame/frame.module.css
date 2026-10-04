@@ -111,6 +111,16 @@
   color: var(--lit);
 }
 
+/* From 960px up the bar is the content column: the mark starts on the running
+   margin's left edge and the nav table ends on the measure's right. */
+@media (min-width: 960px) {
+  .bar {
+    width: var(--column);
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
 @media (max-width: 719px) {
   .tick {
     height: 4px;

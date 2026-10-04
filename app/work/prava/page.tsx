@@ -72,8 +72,7 @@ export default function PravaPage() {
       <Frame chapter="iii" />
       <Margin chapters={MARGIN} />
       <main id="content">
-        {/* Title and screens are one chapter for the light: the title rule
-            stays lit until the reader reaches section 01. */}
+        {/* Title and screens are one chapter. Nothing in it is lit. */}
         <div id="prava-title" data-chapter="0">
           <section
             className={styles.title}
@@ -102,12 +101,7 @@ export default function PravaPage() {
               </span>
               <span className={styles.wide}>Live on the App Store</span>
             </div>
-            <div
-              className={styles.rule}
-              data-light="prava-title"
-              data-lit="true"
-              aria-hidden="true"
-            />
+            <div className={styles.rule} aria-hidden="true" />
             <h1 id="p-h1" className={styles.name}>
               Prava
             </h1>
