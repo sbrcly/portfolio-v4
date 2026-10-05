@@ -210,9 +210,20 @@
    chapter's center on the midline. The first chapter can be shorter than
    the viewport too, and its lead never opens before the page scrolls: its
    top on the viewport's top. The chapters must follow one another with
-   nothing between. */
+   nothing between.
+
+   The first boundary is also held to the scroll, since in a tall viewport
+   the second chapter's top starts above the midline and the window above
+   would be part done before the page moves. --first-turn is 0 at scroll
+   position zero and 1 after half a viewport of scroll, or with the second
+   chapter's top under the frame if that comes first, so the chapter is still
+   whole when its link lands it; the boundary is never further along than
+   that. It is read from the first chapter's timeline, from its top on the
+   viewport's top: the first chapter must start the page. current-chapter.ts
+   holds the current chapter to the same half. */
 @supports (animation-timeline: view()) {
   .margin {
+    --first-turn-end: min(150svh, 100% - var(--frame-height));
     animation: lead-1 linear both,
       lead-2 linear both,
       lead-3 linear both,
@@ -223,10 +234,12 @@
       trail-3 linear both,
       trail-4 linear both,
       trail-5 linear both,
-      page-end linear both;
+      page-end linear both,
+      first-turn linear both;
     animation-timeline: --chapter-0, --chapter-1, --chapter-2, --chapter-3, --chapter-4,
       --chapter-1, --chapter-2, --chapter-3, --chapter-4, --chapter-5,
-      scroll(root);
+      scroll(root),
+      --chapter-0;
     animation-range-start: cover max(100% - 100svh, 50%, 100svh),
       cover max(100% - 100svh, 50%),
       cover max(100% - 100svh, 50%),
@@ -237,7 +250,8 @@
       cover 50svh,
       cover 50svh,
       cover 50svh,
-      calc(100% - 50svh);
+      calc(100% - 50svh),
+      cover 100svh;
     animation-range-end: cover calc(100% - 50svh),
       cover calc(100% - 50svh),
       cover calc(100% - 50svh),
@@ -248,23 +262,27 @@
       cover min(100svh - var(--frame-height), 50%),
       cover min(100svh - var(--frame-height), 50%),
       cover min(100svh - var(--frame-height), 50%),
-      100%;
+      100%,
+      cover var(--first-turn-end);
 
     /* Where the page ends inside a trail, the trail ends with the page. A
        page that ends before the last chapter's top reaches the midline still
        ends on that chapter's numeral: over the page's last tenth of a
        viewport. */
     --page-tail: clamp(0, (var(--page-end) - 0.8) * 5, 1);
-    --boundary-1: max(
-      (
-          var(--lead-1) +
-            max(
-              var(--trail-1),
-              var(--trail-1) /
-                max(var(--trail-1) + 1 - var(--page-end), 0.0001)
-            )
-        ) / 2,
-      var(--page-tail)
+    --boundary-1: min(
+      max(
+        (
+            var(--lead-1) +
+              max(
+                var(--trail-1),
+                var(--trail-1) /
+                  max(var(--trail-1) + 1 - var(--page-end), 0.0001)
+              )
+          ) / 2,
+        var(--page-tail)
+      ),
+      var(--first-turn)
     );
     --boundary-2: max(
       (
@@ -313,11 +331,19 @@
   }
 
   /* Reduced motion: the turn is a step at the boundary, or at the page's
-     end if that comes first. */
+     end if that comes first. The first turn's step is at its half: its
+     range ends there. */
   @media (prefers-reduced-motion: reduce) {
     .margin {
       animation-timing-function: steps(1, jump-end);
-      --boundary-1: max(var(--lead-1), var(--page-end));
+      --first-turn-end: min(
+        125svh,
+        50% + 50svh - var(--frame-height) / 2
+      );
+      --boundary-1: min(
+        max(var(--lead-1), var(--page-end)),
+        var(--first-turn)
+      );
       --boundary-2: max(var(--lead-2), var(--page-end));
       --boundary-3: max(var(--lead-3), var(--page-end));
       --boundary-4: max(var(--lead-4), var(--page-end));
@@ -422,6 +448,15 @@
   }
   to {
     --page-end: 1;
+  }
+}
+
+@keyframes first-turn {
+  from {
+    --first-turn: 0;
+  }
+  to {
+    --first-turn: 1;
   }
 }
 

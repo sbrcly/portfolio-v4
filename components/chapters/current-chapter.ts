@@ -14,6 +14,11 @@ import { useSyncExternalStore } from "react";
  * fast scroll or a jump. At scroll position zero it is always the first,
  * and at the page's end the last, whose top may never reach the line.
  *
+ * The first boundary is also held to the scroll (firstTurn): the second
+ * chapter is not current before that is half done, however high in the
+ * viewport its top starts. The running margin's first boundary is held the
+ * same way, so the two turn together.
+ *
  * An anchor jump (a nav click, a hash change, a load with a hash) sets its
  * chapter at once and holds it until the scroll ends, so a smooth scroll
  * never passes through the chapters in between. The anchor is a chapter or
@@ -32,9 +37,26 @@ function set(id: string) {
   listeners.forEach((listener) => listener());
 }
 
+/**
+ * How far the page has scrolled into its first boundary, 0 to 1: from scroll
+ * position zero over half a viewport of scroll, or until the second
+ * chapter's top is under the frame (where its anchor lands it) if that comes
+ * first. The same window as --first-turn in margin.module.css. `first` is
+ * the first chapter, which starts the page.
+ */
+export function firstTurn(first: HTMLElement) {
+  const { top, height } = first.getBoundingClientRect();
+  const frame =
+    parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) ||
+    0;
+  const span = Math.min(window.innerHeight / 2, height - frame);
+  return span > 0 ? Math.min(1, Math.max(0, -top / span)) : 1;
+}
+
 function resolve() {
   const first = chapters[0]?.id ?? "i";
   if (window.scrollY <= 0) return first;
+  if (chapters[0] && firstTurn(chapters[0]) < 0.5) return first;
   const scroller = document.documentElement;
   if (window.scrollY >= scroller.scrollHeight - scroller.clientHeight - 1) {
     return chapters.at(-1)?.id ?? first;
@@ -108,11 +130,21 @@ function start() {
   };
   const onHashChange = () => jumpTo(location.hash);
 
+  // Whether the last scroll was inside the first boundary's own window: half
+  // a viewport from the top at most.
+  let early = true;
   const onScroll = () => {
     // With scrollend, a jump is held until that event, however the scroll
     // is paced; the timer only covers a jump that never scrolls.
     if (hasScrollEnd && jumping) window.clearTimeout(quietTimer);
     else if (!hasScrollEnd) settleSoon();
+
+    // The first boundary's half is a scroll position, which no chapter's top
+    // crosses the line at: looked for here, in and on the way out of its
+    // window.
+    const wasEarly = early;
+    early = window.scrollY < window.innerHeight / 2;
+    if (!jumping && (early || wasEarly)) set(resolve());
   };
   // The reader taking over ends a jump.
   const onInput = () => {

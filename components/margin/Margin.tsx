@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import {
+  firstTurn,
   getCurrentChapter,
   subscribeChapter,
 } from "@/components/chapters/current-chapter";
@@ -87,7 +88,8 @@ export default function Margin({
     // trail on the incoming one until its top is under the frame, each
     // stopping at the chapter's center, the first chapter's lead not opening
     // before the page scrolls, the trail ending with the page, and every
-    // boundary done by the page's end.
+    // boundary done by the page's end. The first boundary is no further
+    // along than the scroll's own first turn.
     // Reduced motion steps at the boundary.
     let stopFrames: (() => void) | undefined;
     if (!hasViewTimelines()) {
@@ -95,8 +97,11 @@ export default function Margin({
         ...document.querySelectorAll<HTMLElement>("[data-chapter]"),
       ];
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+      // A window with no length is behind the scroll from its start.
       const within = (value: number, from: number, to: number) =>
-        Math.min(1, Math.max(0, (value - from) / (to - from)));
+        to > from
+          ? Math.min(1, Math.max(0, (value - from) / (to - from)))
+          : Number(value >= from);
       const write = (name: string, progress: number) => {
         const value = String(+progress.toFixed(4));
         if (rootEl.style.getPropertyValue(name) !== value) {
@@ -134,7 +139,7 @@ export default function Margin({
             half,
             Math.min(height - frame, (height + top.height) / 2)
           );
-          const progress = reduced.matches
+          const turned = reduced.matches
             ? Math.max(Math.floor(lead), Math.floor(pageEnd))
             : Math.max(
                 (lead +
@@ -145,6 +150,11 @@ export default function Margin({
                   2,
                 within(pageEnd, 0.8, 1)
               );
+          const held = index === 1 ? firstTurn(sections[0]) : 1;
+          const progress = Math.min(
+            turned,
+            reduced.matches ? Number(held >= 0.5) : held
+          );
 
           write(`--boundary-${incoming.dataset.chapter}`, progress);
         });

@@ -278,6 +278,13 @@ button {
   initial-value: 0;
 }
 
+/* 0 to 1 over the page's first scroll, which holds the first boundary. */
+@property --first-turn {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
 /* The Work index (components/margin/WorkIndex): how far an employer's title
    has come up to the viewport's midline, how far the next employer's has,
    and a line's turn to brass under the pointer or the focus. */
