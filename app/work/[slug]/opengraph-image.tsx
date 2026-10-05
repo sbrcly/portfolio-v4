@@ -10,9 +10,14 @@ export const alt = "The project's name over its employer in II Work";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-// One card a page, made at build time.
+// One card a page, made at build time; none for a page that shares a
+// picture instead (page.tsx), nor for any other slug.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return PAGES.map(({ project }) => ({ slug: project.slug }));
+  return PAGES.filter(({ share }) => !share).map(({ project }) => ({
+    slug: project.slug,
+  }));
 }
 
 /** The share card: the project's name, then the top row's left half. */

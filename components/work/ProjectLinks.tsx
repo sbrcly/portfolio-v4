@@ -5,10 +5,9 @@ import { writeUpUrl } from "./links";
 import { pageHref } from "./pages";
 import styles from "./work-entry.module.css";
 
-/** A Full or Standard page is a case study, and so is a page that is to
-    be one; any other Note is reached by the project's name alone. */
-const isCaseStudy = ({ depth, caseStudy }: Project) =>
-  depth !== "note" || Boolean(caseStudy);
+/** A Full or Standard page is a case study; a Note is reached by the
+    project's name alone. */
+const isCaseStudy = ({ depth }: Project) => depth !== "note";
 
 type Props = {
   project: Project | System;

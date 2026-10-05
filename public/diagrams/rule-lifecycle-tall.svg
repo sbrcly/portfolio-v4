@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1060" width="600" height="1060" role="img" aria-label="The rule lifecycle, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1136" width="600" height="1136" role="img" aria-label="The rule lifecycle, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
 <defs>
 <marker id="rule-lifecycle-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
@@ -7,7 +7,7 @@
 <path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
 </marker>
 </defs>
-<rect width="600" height="1060" fill="var(--surface, #1a2520)"/>
+<rect width="600" height="1136" fill="var(--surface, #1a2520)"/>
 <rect x="48" y="48" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="64" y="72" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">GESTURE</text>
 <text x="64" y="94" font-size="12" fill="var(--muted, #a89f90)">Drag a line across a section, or control-click a seat.</text>

@@ -26,7 +26,8 @@ const TITLE = "title";
 // The title's plate spans the column: min(1120px, 100vw - 160px), 960 below
 // 1200. A section's figures sit in the measure from 960px up (776 at 1440,
 // the column less 240 below 1200) and stack there; from 720 to 959 a group
-// is side by side in the column, 48px apart. Everything bleeds on phone.
+// is side by side in the column, 48px apart (drawings stack there too: side
+// by side their text is too small to read). Everything bleeds on phone.
 const COLUMN_SIZES =
   "(max-width: 719px) 100vw, (max-width: 1199px) min(960px, calc(100vw - 64px)), min(1120px, calc(100vw - 160px))";
 const SCREEN_SIZES = "(max-width: 719px) 45vw, (max-width: 1199px) 22vw, 238px";
@@ -172,8 +173,9 @@ function Figures({ figures, lead }: { figures: Figure[]; lead: boolean }) {
       />
     );
   }
+  const drawn = figures.every(({ media }) => media.kind === "diagram");
   return (
-    <div className={styles.group + spacing}>
+    <div className={styles.group + spacing + (drawn ? ` ${styles.drawn}` : "")}>
       {figures.map((figure) => (
         <PageFigure
           key={figure.caption}
@@ -340,7 +342,7 @@ export default function ProjectPage({ page }: { page: PageData }) {
               </Link>
               {/* What does not fit beside the years wraps out of sight. */}
               <div className={styles.meta}>
-                <span>{employer.years}</span>{" "}
+                <span>{page.years}</span>{" "}
                 {kind && (
                   <span className={styles.more}>
                     {separator} {kind}

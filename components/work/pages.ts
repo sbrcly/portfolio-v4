@@ -7,7 +7,9 @@ import {
   type Project,
   type Rich,
   type Section,
+  type ShareImage,
   type SpecRow,
+  WALKTHROUGH,
   hasPage,
 } from "./employers";
 import { writeUpUrl } from "./links";
@@ -30,6 +32,8 @@ export type ProjectPage = {
   employer: Employer;
   kind?: string;
   fact?: string;
+  /** The top row's years: the project's, or else the employer's. */
+  years: string;
   lede: string;
   /** For search results and share cards. */
   description: string;
@@ -49,9 +53,9 @@ export type ProjectPage = {
   back: string;
   /** The share card's line: the top row's left half. */
   ogLine: string;
+  /** A picture shared in the card's place. */
+  share?: ShareImage;
 };
-
-const WALKTHROUGH = "Walkthrough on request";
 
 /**
  * A Note nobody has written yet: the project's sentence from Work, then two
@@ -119,6 +123,7 @@ function resolve(project: Project, employer: Employer): ProjectPage {
     project,
     employer,
     ...page,
+    years: page.years ?? employer.years,
     description: project.page?.lede ?? project.sentence,
     links: {
       ...page.links,

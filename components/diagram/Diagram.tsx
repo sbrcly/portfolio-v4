@@ -17,6 +17,7 @@ const TALL = {
   "pricer-wireframe": false,
   "sheet-anatomy": false,
   "on-sale-system": false,
+  "on-sale-system-still": false,
   "on-sale-monitor-plate": false,
   "pricing-portal-cell": false,
   "buyer-extension-cell": false,

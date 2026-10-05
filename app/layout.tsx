@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Source_Sans_3, Spectral } from "next/font/google";
 import { CascadeGuard, CascadePlan } from "@/components/cascade/Cascade";
 import Loaded from "@/components/scroll/Loaded";
+import { OPEN_GRAPH } from "@/lib/open-graph";
 import "./tokens.css";
 import "./globals.css";
 
@@ -73,11 +74,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "./",
   },
-  openGraph: {
-    siteName: "Scott Barclay",
-    type: "website",
-    locale: "en_US",
-  },
+  openGraph: OPEN_GRAPH,
   // The image comes from app/opengraph-image.tsx (and a project page's own).
   twitter: {
     card: "summary_large_image",

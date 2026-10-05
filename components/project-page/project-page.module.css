@@ -290,6 +290,15 @@
   gap: 48px;
 }
 
+/* Drawings keep the column's width, one under another, as from 960px. */
+.drawn {
+  display: block;
+}
+
+.drawn .figure + .figure {
+  margin-top: 56px;
+}
+
 /* Below 960px the plates and a Note's paragraphs reveal like the home
    entries (components/reveals); above it they fade with the scroll
    (globals.css). */
@@ -391,7 +400,8 @@
     margin-top: 40px;
   }
 
-  .group .figure {
+  .group .figure,
+  .drawn .figure + .figure {
     margin-top: 0;
   }
 }
@@ -502,6 +512,10 @@
 
   .group {
     display: block;
+  }
+
+  .drawn .figure + .figure {
+    margin-top: 40px;
   }
 
   .links,
