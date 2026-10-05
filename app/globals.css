@@ -180,7 +180,8 @@ button {
 
 /* Progress through each chapter boundary, 0 to 1, for the running margin
    (components/margin): the half before the boundary, the half after it, and
-   the two together. One set per boundary; a page uses as many as it has. */
+   the two together. One set per boundary; a page uses as many as it has,
+   and a project page with six sections uses them all. */
 @property --lead-1 {
   syntax: "<number>";
   inherits: false;
@@ -206,6 +207,12 @@ button {
 }
 
 @property --lead-5 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --lead-6 {
   syntax: "<number>";
   inherits: false;
   initial-value: 0;
@@ -241,6 +248,12 @@ button {
   initial-value: 0;
 }
 
+@property --trail-6 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
 @property --boundary-1 {
   syntax: "<number>";
   inherits: true;
@@ -266,6 +279,12 @@ button {
 }
 
 @property --boundary-5 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-6 {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
@@ -377,6 +396,10 @@ button {
   view-timeline-name: --chapter-5;
 }
 
+[data-chapter="6"] {
+  view-timeline-name: --chapter-6;
+}
+
 [data-chapter] {
   view-timeline-axis: block;
   view-timeline-inset: 0px;
@@ -386,7 +409,8 @@ button {
    Work index in the running margin. One per employer. */
 body {
   timeline-scope: --chapter-0, --chapter-1, --chapter-2, --chapter-3,
-    --chapter-4, --chapter-5, --employer-01, --employer-02, --employer-03;
+    --chapter-4, --chapter-5, --chapter-6, --employer-01, --employer-02,
+    --employer-03;
 }
 
 /* The content fade. A block is at full opacity while its center is within

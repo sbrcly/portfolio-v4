@@ -3,7 +3,7 @@ import pravaHome from "@/public/images/prava-home.png";
 import pravaJournal from "@/public/images/prava-journal.png";
 import pravaLectio from "@/public/images/prava-lectio.png";
 
-/** The four Prava screens, shown on the home page and the case study. */
+/** The four Prava screens, shown on the home page and on Prava's page. */
 export const PRAVA_SCREENS = [
   {
     src: pravaHome,

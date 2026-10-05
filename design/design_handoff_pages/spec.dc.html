@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r7 · Spec · the project page template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;300&family=Source+Sans+3:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0E1512;color:#E4DBCB;} a{color:#E4DBCB;} a:hover{color:#E0AE62;}</style>
+</helmet>
+<div data-screen-label="Spec" style="max-width:1000px;margin:0 auto;padding:48px 20px 96px;font-family:'Spectral',Georgia,serif;font-weight:300;color:#E4DBCB;">
+  <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Round 7 · Spec</p>
+  <h1 style="margin:12px 0 0;font-weight:200;font-size:48px;line-height:1;letter-spacing:-.02em;">The project page template</h1>
+  <p style="margin:20px 0 0;max-width:680px;font-family:'Source Sans 3',Arial,sans-serif;font-size:17px;line-height:1.6;color:#A89F90;text-wrap:pretty;">Three depths, one chrome. Values at 1440 first, then 390 after the slash where they differ. Everything not named here is main's (app/tokens.css, app/work/prava/prava.module.css).</p>
+
+  <div style="display:grid;grid-template-columns:200px 1fr;gap:12px 32px;margin-top:48px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;">
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">Depths</div>
+    <span style="color:#A89F90;">Full</span><span>Title block, plate, numbered sections (the problem, what was built, decisions or the hard parts, outcome or what I would do differently), stack in the title block, links closing the last section. Prava, Buyer extension, Pricing portal. Five to six sections; the margin runs 01 to 06.</span>
+    <span style="color:#A89F90;">Standard</span><span>Title block, one plate, two sections: 01 What it does, 02 What was hard, three or four paragraphs between them, one diagram each. Stack in the title block, links under 02. On-sale monitor. The margin reads 01 and 02, blank in the title chapter, exactly as on a Full page.</span>
+    <span style="color:#A89F90;">Note</span><span>Title block, three paragraphs in the measure, stack in the title block, "Walkthrough on request" and the way back as the links. Arbitrage detector. No plate, no sections: the margin has nothing to read and stays empty for the whole page; the icons stay. On the phone the bar holds only the nav. Still a page, so no link in Work is dead.</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">Title block</div>
+    <span style="color:#A89F90;">Block</span><span>Column 1120, min-height 720, the name's top on the midline (padding-top 50svh less half the name) / full width, insets 20, min-height 640, content at the block's foot, padding 96 20 56.</span>
+    <span style="color:#A89F90;">Top row</span><span>Mono 12/.1em uppercase muted at 112 from the top / 11 at 84. Left: "II Work / 02 Etainement", one link to the employer's anchor on the home page (brass numeral, muted text). Right: years / kind / one fact, separated by rule-coloured slashes; on the phone only the years stay, so the row keeps to one line.</span>
+    <span style="color:#A89F90;">Name</span><span>Spectral 200, 112/1, -.02em / 56. (Prava keeps main's 64 on the phone; a two-word name needs 56.)</span>
+    <span style="color:#A89F90;">Lede and spec</span><span>Two columns, 1fr 1fr, gap 64, aligned at the foot, 40 under the name / stacked, 24 under. Lede in Source Sans 24/1.45 max 560 / 18/1.5. Spec dl in the mono 12/1.6, dt 11 .12em uppercase muted / 11 and 10. Rows: Role, Stack, Where (or Verify), Code (or Write-up).</span>
+    <span style="color:#A89F90;">Plate</span><span>Full column under the block, 1px rim in the rule colour, caption in mono 12 muted 16 under / bleeds to the edges, caption inset 20, 12 under. Full and Standard only.</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">Sections</div>
+    <span style="color:#A89F90;">Rhythm</span><span>One chapter gap, 120, as each section's top padding; 96 below 1200 and on the phone. The last section carries the gap below it too. Sections are chapters: data-chapter 1 to n, the title chapter 0.</span>
+    <span style="color:#A89F90;">Grid</span><span>280 + 64 + measure, content in the measure (776 at 1440) / one column.</span>
+    <span style="color:#A89F90;">Statement</span><span>Spectral 300, 40/1.2, -.01em, 40 under the section's top line / 28/1.25.</span>
+    <span style="color:#A89F90;">Running text</span><span>Source Sans at the body size, 20/1.6, max 680, paragraphs 20 apart, 32 under the statement / 16/1.6, 16 apart, 20 under.</span>
+    <span style="color:#A89F90;">Numbered items</span><span>The decisions pattern: lower-case roman in mono 12 brass in a 48 column, h3 Spectral 300 26/1.3, text 19 / index above the heading, 22, 16. The hard parts use it with seven items.</span>
+    <span style="color:#A89F90;">Facts</span><span>dl, 120 + 24, mono 12/1.7, 48 under the text with 20 of top padding / 80 + 16, 11.</span>
+    <span style="color:#A89F90;">Diagrams</span><span>A figure in the measure, 64 under the text (56 between two), 1px rim, on the surface colour; figcaption mono 12 muted 16 under / bleeds, 40 under, caption inset. The diagram is inlined SVG so it takes the page's mono; five of them have a tall variant for the phone (see diagrams.dc.html).</span>
+    <span style="color:#A89F90;">Links</span><span>Mono 12 .04em, 40 under the last paragraph, wrapping, 20 by 32 apart: a note ("Walkthrough on request") in muted, the primary link in brass, the next page in the employer, and the way back / 11, 28 under, 20 apart, every link a 44 target.</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">The margin and the bar</div>
+    <span style="color:#A89F90;">From 960</span><span>The running margin reads the section: numeral 01 to 06 in Spectral 200 at 140 (96 below 1200), label the section's name in mono 12 .14em, both centred on the axis 80 from the column's edge, the numeral's top on the top line. Blank in the title chapter: the margin arrives with 01 and empties again above it, on main's timing (in 600, out 400, 200 dark). The numerals turn by main's glyph mechanics; a page's own labels are its MARGIN array.</span>
+    <span style="color:#A89F90;">Below 960</span><span>The same numeral and label in the frame's bar at its left: Spectral 200 at 32 in the dim colour, the label mono 11 .14em beside it on the baseline, 12 away. A label that would reach the nav table yields and the numeral stands alone (05 What I would do differently at 390). The nav is the home page's four cells, numerals only, II current.</span>
+    <span style="color:#A89F90;">Note pages</span><span>No section, so the margin's chapters array is empty and the head never shows. The icons keep their place. On the phone the bar is the nav alone.</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">The way back</div>
+    <span style="color:#A89F90;">Three paths, one target</span><span>The top row's "II Work / 02 Etainement" link, the nav table's II cell (NavTable away), and the closing "Back to Etainement in II Work" all go to /#employer-02, which lands the employer's title 24 under the frame and sets chapter II at once, as main's anchors already do. Never to the top of Work.</span>
+    <span style="color:#A89F90;">Across the employer</span><span>A Full or Standard page's links end with "Next: &lt;the employer's next page&gt;", so the three Etainement pages read in a ring: extension, portal, monitor, extension.</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">The employer block in Work</div>
+    <span style="color:#A89F90;">Hero</span><span>"The on-sale system": title 36, meta "ticket brokerage · three tools · proprietary", the venue plate (hero-venue.svg, looping from 960; the still below), the sentence, the stack line, and three brass links to the pages in place of "Read the case study". The Work index gains one line, so Etainement's tier reads: The on-sale system, Pricing portal, Buyer extension, On-sale monitor.</span>
+    <span style="color:#A89F90;">Grid</span><span>Three cells, two per row from 720 (the third alone on the second row), one column on the phone: each with its built 16:10 plate (cell-portal, cell-extension, cell-monitor), name linked, sentence, stack, "Read the case study".</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">OG images</div>
+    <span style="color:#A89F90;">Pages</span><span>lib/og-image.tsx as it is: the lit rule, the name in Spectral 200 at 148, one line in mono 28 brass. The line is the top row's left half: "II Work · 02 Etainement" (Buyer extension, Pricing portal, On-sale monitor), "II Work · 01 Faith Platforms Inc." (Prava), "II Work · 03 Caesars Sportsbook" (Arbitrage detector).</span>
+    <span style="color:#A89F90;">The employer</span><span>The home page keeps its card. Where a link lands on #employer-02 specifically, the hero's still (hero-venue-still.svg, drawn at 1200 by 630) is the image; it is the one OG image on the site that is a picture.</span>
+
+    <div style="grid-column:1/-1;margin-top:16px;font-family:'Spectral',Georgia,serif;font-size:24px;line-height:1.2;">Motion</div>
+    <span style="color:#A89F90;">What moves</span><span>The margin's numeral and label (main's); the content fade and reveals (main's); the hero loop (storyboard.dc.html). Diagrams are still. Reduced motion: the loop stops on frame 8; everything else is main's reduced-motion behaviour.</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

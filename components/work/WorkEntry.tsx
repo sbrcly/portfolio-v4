@@ -6,6 +6,7 @@ import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import Rating from "./Rating";
 import VideoPlate from "./VideoPlate";
 import type { Hero, Plate as PlateData } from "./employers";
+import { pageHref } from "./pages";
 import styles from "./work-entry.module.css";
 
 // Plates span the measure from 960px up (776 at 1440, the column less 240
@@ -46,7 +47,7 @@ function ProjectPlate({
 
 /** An employer's hero project: title row, plate, sentence, stack, links. */
 export default function WorkEntry({ project }: { project: Hero }) {
-  const { id, name, detail, rating, ratingCount, plate, sentence, stack, caseStudy } =
+  const { id, name, detail, rating, ratingCount, plate, sentence, stack } =
     project;
   const headingId = `w-${id}`;
   const summaryId = `${headingId}-summary`;
@@ -61,7 +62,7 @@ export default function WorkEntry({ project }: { project: Hero }) {
     >
       <div className={styles.titleRow} data-cascade="">
         <h4 id={headingId} className={styles.title}>
-          {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
+          <Link href={pageHref(project)}>{name}</Link>
         </h4>
         {detail && (
           <span className={styles.meta}>

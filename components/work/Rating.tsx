@@ -52,17 +52,17 @@ function Stars({ rating }: { rating: number }) {
 }
 
 /**
- * The App Store rating: stars, the value, then the count. The count's
- * class lets a narrow layout drop it and keep the stars and the value.
+ * The App Store rating: stars, the value, then the count. Compact, it is
+ * the stars and the value alone, and the count is only in its label.
  */
 export default function Rating({
   rating,
   count,
-  countClassName,
+  compact = false,
 }: {
   rating: number;
   count: number;
-  countClassName?: string;
+  compact?: boolean;
 }) {
   const value = rating.toFixed(1);
 
@@ -75,7 +75,7 @@ export default function Rating({
         <Stars rating={rating} />
         {value}
       </span>
-      <span className={countClassName}> · {count} ratings on the App Store</span>
+      {!compact && <> · {count} ratings on the App Store</>}
     </span>
   );
 }

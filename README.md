@@ -1,8 +1,9 @@
 # scottbarclay.dev
 
 Scott Barclay's portfolio: one scrolling home page in three chapters (About,
-Work, Contact, plus a resume link) and a case study page for Prava at
-`/work/prava`. The design direction is called Vigil: a green-black ground,
+Work, Contact, plus a resume link) and a page for every project at
+`/work/<slug>`, from one template at three depths: Full (Prava), Standard,
+and Note. The design direction is called Vigil: a green-black ground,
 bone text, brass used only as light, and one lit element per viewport.
 
 ## Stack
@@ -91,7 +92,7 @@ like the others.
 Chapters are one gap apart, from a chapter's last element to the next
 chapter's first (`--chapter-gap`, the next chapter's top padding): 120px
 from 1200 up, 96px below. The same gap is above the footer, and on the
-Prava page between its sections. A page that ends before its last chapter's
+project pages between their sections. A page that ends before its last chapter's
 top reaches the midline ends on that chapter all the same: the numeral and
 the nav finish with the page.
 
@@ -103,7 +104,7 @@ the nav finish with the page.
 | 1199 and down | Column 960, opener grid 200 + 40, numerals 96, name 88, company names 44, titles 32, chapter gap 96 |
 | 719 and down | Full width with 20px insets, openers stack, plates bleed to the edge, nav shows numerals only |
 
-The Prava title's top row also moves to 128px from the top at 1920 and wider.
+A project page's top row also moves to 128px from the top at 1920 and wider.
 
 The frame's bar holds only the nav table, centered at every width. The
 footer spans the column at every width.
@@ -114,14 +115,17 @@ footer spans the column at every width.
 app/
   layout.tsx, tokens.css, globals.css
   page.tsx                    Home: chapters I to III
-  work/prava/                 Prava case study
+  work/[slug]/                A project's page, from the data in
+                              components/work/employers.ts
   icon.tsx, apple-icon.tsx    Generated icons (the SB mark)
-  opengraph-image.tsx         Generated share card (Prava has its own)
+  opengraph-image.tsx         Generated share card (each page has its own)
   sitemap.ts, robots.ts
 components/
   frame/                      Sticky frame, nav table
   chapter-opener/             The opener every chapter starts with
-  work/                       Work entries, plates, video plate, diagram
+  work/                       Work entries, plates, video plate, diagram,
+                              and the projects' data and pages
+  project-page/               The page template
   margin/                     Running margin: numeral, label, icon links
   light/, chapters/, reveals/, fade/, scroll/
   text-link/                  Link inside running text

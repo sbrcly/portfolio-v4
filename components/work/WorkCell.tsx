@@ -3,6 +3,7 @@ import Link from "next/link";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import type { Cell } from "./employers";
+import { pageHref } from "./pages";
 import styles from "./work-cell.module.css";
 
 // Two cells across the measure with a 32px gap from 720px up (372 at 1440,
@@ -13,11 +14,12 @@ const CELL_SIZES =
   "(max-width: 719px) calc(-40px + 100vw), (max-width: 959px) calc(-48px + 50vw), (max-width: 1199px) calc(-168px + 50vw), 372px";
 
 /**
- * A project in an employer's grid: a 16:10 plate, the name, the sentence,
- * the stack, any links. A pending project has a labeled slot for a plate.
+ * A project in an employer's grid: a 16:10 plate, the name linked to its
+ * page, the sentence, the stack, any links. A pending project has a labeled
+ * slot for a plate.
  */
 export default function WorkCell({ project }: { project: Cell }) {
-  const { id, name, sentence, stack, plate, caseStudy } = project;
+  const { id, name, sentence, stack, plate } = project;
   return (
     <li
       id={`work-${id}`}
@@ -36,7 +38,7 @@ export default function WorkCell({ project }: { project: Cell }) {
         </Plate>
       )}
       <h4 className={styles.name}>
-        {caseStudy ? <Link href={caseStudy}>{name}</Link> : name}
+        <Link href={pageHref(project)}>{name}</Link>
       </h4>
       <p className={styles.sentence}>{sentence}</p>
       <p className={styles.spec}>

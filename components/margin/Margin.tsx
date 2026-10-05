@@ -36,7 +36,8 @@ const LOAD_MS = 300;
  * size without measuring anything.
  *
  * Only a chapter with nothing to show is timed: the margin fades out in it
- * and back in after it.
+ * and back in after it. A page with no chapters to read (a Note, whose
+ * array is empty) never shows the head at all; the icons keep their place.
  *
  * Numeral and label are decorative and hidden from assistive
  * technology. The icon links are not: they are read, focused, and clicked.
@@ -217,7 +218,7 @@ export default function Margin({
         <div
           ref={head}
           className={styles.head}
-          data-blank={plan.chapters[0]?.id !== chapters[0].id}
+          data-blank={plan.chapters[0]?.id !== chapters[0]?.id || !chapters[0]}
           aria-hidden="true"
         >
           <span className={styles.numeral} data-cascade="">
@@ -230,25 +231,21 @@ export default function Margin({
             </span>
             <span className={styles.axis}>{numeral}</span>
           </span>
-          <span
-            className={styles.labels}
-            style={
-              {
-                // How long the page's longest label is, for the bar.
-                "--label-ch": Math.max(
-                  ...plan.chapters.map(({ label }) => label.length)
-                ),
-              } as React.CSSProperties
-            }
-            data-cascade=""
-          >
+          <span className={styles.labels} data-cascade="">
             {plan.chapters.map(({ id, label, labelOpacity }) => (
               <span
                 key={id}
                 className={styles.label}
                 style={{ opacity: labelOpacity }}
               >
-                {label}
+                {/* How long the label is, for the bar: one that would
+                    reach the nav yields. */}
+                <span
+                  className={styles.fit}
+                  style={{ "--label-ch": label.length } as React.CSSProperties}
+                >
+                  {label}
+                </span>
               </span>
             ))}
           </span>

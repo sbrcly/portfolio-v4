@@ -1,18 +1,26 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import type { Project } from "./employers";
+import { writeUpUrl } from "./links";
+import { pageHref } from "./pages";
 import styles from "./work-entry.module.css";
 
+/** A Full or Standard page is a case study; a Note is reached by the
+    project's name alone. */
+const isCaseStudy = ({ depth }: Project) => depth !== "note";
+
 /** Whether a project has anything for the links' line. */
-export const hasLinks = ({ caseStudy, verify, writeUp, note }: Project) =>
-  Boolean(caseStudy || verify || writeUp || note);
+export const hasLinks = (project: Project) =>
+  Boolean(
+    isCaseStudy(project) || project.verify || project.writeUp || project.note
+  );
 
 /** A project's links, one line: case study, where to verify, write-up. */
 export default function ProjectLinks({ project }: { project: Project }) {
-  const { caseStudy, verify, writeUp, note } = project;
+  const { verify, writeUp, note } = project;
   const parts = [
-    caseStudy && (
-      <Link href={caseStudy} className={styles.caseStudy}>
+    isCaseStudy(project) && (
+      <Link href={pageHref(project)} className={styles.caseStudy}>
         Read the case study
       </Link>
     ),
@@ -30,7 +38,7 @@ export default function ProjectLinks({ project }: { project: Project }) {
       <>
         Write-up:{" "}
         <a
-          href={`https://github.com/sbrcly/${writeUp}`}
+          href={writeUpUrl(writeUp)}
           className={styles.verify}
           target="_blank"
           rel="noopener"

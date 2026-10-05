@@ -6,10 +6,12 @@ type Props = {
   current: string;
   /** Off the home page, chapter links lead back to its anchors. */
   away?: boolean;
+  /** Off the home page, where the current chapter's cell leads instead. */
+  back?: string;
 };
 
 /** The nav table: one cell per chapter, then the resume. */
-export default function NavTable({ current, away = false }: Props) {
+export default function NavTable({ current, away = false, back }: Props) {
   return (
     <nav className={styles.nav} aria-label="Chapters" data-cascade="">
       {CHAPTERS.map(({ id, numeral, label }) => {
@@ -27,7 +29,11 @@ export default function NavTable({ current, away = false }: Props) {
           </>
         );
         return away ? (
-          <Link key={id} href={`/#${id}`} {...props}>
+          <Link
+            key={id}
+            href={(current === id && back) || `/#${id}`}
+            {...props}
+          >
             {content}
           </Link>
         ) : (

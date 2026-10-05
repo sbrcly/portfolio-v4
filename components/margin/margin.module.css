@@ -229,15 +229,19 @@
       lead-3 linear both,
       lead-4 linear both,
       lead-5 linear both,
+      lead-6 linear both,
       trail-1 linear both,
       trail-2 linear both,
       trail-3 linear both,
       trail-4 linear both,
       trail-5 linear both,
+      trail-6 linear both,
       page-end linear both,
       first-turn linear both;
-    animation-timeline: --chapter-0, --chapter-1, --chapter-2, --chapter-3, --chapter-4,
+    animation-timeline: --chapter-0, --chapter-1, --chapter-2, --chapter-3,
+      --chapter-4, --chapter-5,
       --chapter-1, --chapter-2, --chapter-3, --chapter-4, --chapter-5,
+      --chapter-6,
       scroll(root),
       --chapter-0;
     animation-range-start: cover max(100% - 100svh, 50%, 100svh),
@@ -245,6 +249,8 @@
       cover max(100% - 100svh, 50%),
       cover max(100% - 100svh, 50%),
       cover max(100% - 100svh, 50%),
+      cover max(100% - 100svh, 50%),
+      cover 50svh,
       cover 50svh,
       cover 50svh,
       cover 50svh,
@@ -257,6 +263,8 @@
       cover calc(100% - 50svh),
       cover calc(100% - 50svh),
       cover calc(100% - 50svh),
+      cover calc(100% - 50svh),
+      cover min(100svh - var(--frame-height), 50%),
       cover min(100svh - var(--frame-height), 50%),
       cover min(100svh - var(--frame-height), 50%),
       cover min(100svh - var(--frame-height), 50%),
@@ -328,6 +336,17 @@
         ) / 2,
       var(--page-tail)
     );
+    --boundary-6: max(
+      (
+          var(--lead-6) +
+            max(
+              var(--trail-6),
+              var(--trail-6) /
+                max(var(--trail-6) + 1 - var(--page-end), 0.0001)
+            )
+        ) / 2,
+      var(--page-tail)
+    );
   }
 
   /* Reduced motion: the turn is a step at the boundary, or at the page's
@@ -348,6 +367,7 @@
       --boundary-3: max(var(--lead-3), var(--page-end));
       --boundary-4: max(var(--lead-4), var(--page-end));
       --boundary-5: max(var(--lead-5), var(--page-end));
+      --boundary-6: max(var(--lead-6), var(--page-end));
     }
   }
 }
@@ -397,6 +417,15 @@
   }
 }
 
+@keyframes lead-6 {
+  from {
+    --lead-6: 0;
+  }
+  to {
+    --lead-6: 1;
+  }
+}
+
 @keyframes trail-1 {
   from {
     --trail-1: 0;
@@ -439,6 +468,15 @@
   }
   to {
     --trail-5: 1;
+  }
+}
+
+@keyframes trail-6 {
+  from {
+    --trail-6: 0;
+  }
+  to {
+    --trail-6: 1;
   }
 }
 
@@ -735,23 +773,24 @@
   }
 }
 
-/* On a phone the bar's other half is the nav table: four cells, 170px
-   inside the inset (components/frame). Where the page's longest label would
-   reach it, the labels yield and the numeral stands alone. --fits is 1 in a
-   viewport wide enough for both and 0 in a narrower one: the insets, the
-   numeral (0.95 of its size at its widest), the 12px, the label
-   (--label-ch letters of the mono, each 0.6em and its 0.14em of tracking),
-   and the table. tan(atan2()) is the only way to divide a length into a
-   number. */
-@media (max-width: 719px) {
-  .labels {
+/* The bar's other half is the nav table (components/frame): 400px
+   inside the inset with its labels, and on a phone, where it is four cells
+   of numerals, 170px. A label that would reach it yields, and the numeral
+   stands alone. --fits is 1 in a viewport wide enough for both and 0 in a
+   narrower one: the insets, the numeral (0.95 of its size at its widest),
+   the 12px, the label (--label-ch letters of the mono, each 0.6em and its
+   0.14em of tracking), and the table. tan(atan2()) is the only way to
+   divide a length into a number. */
+@media (max-width: 959px) {
+  .fit {
+    --nav: 400px;
     --fits: clamp(
       0,
       tan(
         atan2(
           (
               100vw - 2 * var(--bar-inset) - 0.95 * var(--numeral-size) -
-                12px - var(--label-ch) * 0.74 * var(--mono-size) - 170px
+                12px - var(--label-ch) * 0.74 * var(--mono-size) - var(--nav)
             ) * 1000,
           1px
         )
@@ -759,5 +798,11 @@
       1
     );
     opacity: var(--fits);
+  }
+}
+
+@media (max-width: 719px) {
+  .fit {
+    --nav: 170px;
   }
 }
