@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 980" width="600" height="980" role="img" aria-label="The telemetry funnel, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="telemetry-funnel-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="telemetry-funnel-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="980" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="74" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">BUYER'S PAGE</text>
+<text x="64" y="98" font-size="12" fill="var(--muted, #a89f90)">a cart, an error, a confirmation</text>
+<line x1="300" y1="120" x2="300" y2="156" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="156" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="182" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">CONTENT SCRIPT</text>
+<text x="64" y="206" font-size="12" fill="var(--muted, #a89f90)">notices it; stamps the browser's time</text>
+<text x="536" y="182" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">t1 · browser clock</text>
+<line x1="300" y1="228" x2="300" y2="264" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="264" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="290" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">EXTENSION WORKER</text>
+<text x="64" y="314" font-size="12" fill="var(--muted, #a89f90)">one record, two destinations</text>
+<line x1="300" y1="336" x2="300" y2="372" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="372" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="398" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">INGESTION ENDPOINT</text>
+<text x="64" y="422" font-size="12" fill="var(--muted, #a89f90)">stamps the upload time; writes one document</text>
+<text x="536" y="398" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">t2 · server clock</text>
+<line x1="300" y1="444" x2="300" y2="480" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="480" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="506" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">FIRESTORE</text>
+<text x="64" y="530" font-size="12" fill="var(--muted, #a89f90)">pushes it to every listener</text>
+<line x1="300" y1="552" x2="300" y2="588" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="588" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="614" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">LISTENER</text>
+<text x="64" y="638" font-size="12" fill="var(--muted, #a89f90)">one tab, one collection, newest first</text>
+<line x1="300" y1="660" x2="300" y2="696" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="696" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="722" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">REDUCE</text>
+<text x="64" y="746" font-size="12" fill="var(--muted, #a89f90)">latest per buyer, account, event</text>
+<line x1="300" y1="768" x2="300" y2="804" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-tall-a)"/>
+<rect x="48" y="804" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="830" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">TABLE</text>
+<text x="64" y="854" font-size="12" fill="var(--muted, #a89f90)">a row appears; roll-ups recomputed</text>
+<text x="48" y="940" font-size="11" fill="var(--dim-numeral, #4a5a50)">The worker also sends every record to the warehouse.</text>
+</svg>

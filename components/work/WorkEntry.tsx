@@ -1,11 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import ExtensionDiagram from "./ExtensionDiagram";
+import Diagram from "@/components/diagram/Diagram";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import Rating from "./Rating";
+import VenueLoop from "./VenueLoop";
 import VideoPlate from "./VideoPlate";
-import type { Hero, Plate as PlateData } from "./employers";
+import {
+  hasPage,
+  type Hero,
+  type Plate as PlateData,
+  type Project,
+} from "./employers";
 import { pageHref } from "./pages";
 import styles from "./work-entry.module.css";
 
@@ -41,16 +47,29 @@ function ProjectPlate({
     case "video":
       return <VideoPlate describedBy={describedBy} />;
     case "diagram":
-      return <ExtensionDiagram />;
+      return <Diagram name={plate.name} label={plate.label} />;
+    case "venue":
+      return <VenueLoop label={plate.label} />;
   }
 }
 
-/** An employer's hero project: title row, plate, sentence, stack, links. */
-export default function WorkEntry({ project }: { project: Hero }) {
+/**
+ * An employer's hero: title row, plate, sentence, stack, links. A system's
+ * name is not a link, and its links are to the projects it is made of.
+ */
+export default function WorkEntry({
+  project,
+  cells,
+}: {
+  project: Hero;
+  /** The employer's other projects. */
+  cells: Project[];
+}) {
   const { id, name, detail, rating, ratingCount, plate, sentence, stack } =
     project;
   const headingId = `w-${id}`;
   const summaryId = `${headingId}-summary`;
+  const links = { project, made: hasPage(project) ? [] : cells };
 
   return (
     <article
@@ -62,7 +81,11 @@ export default function WorkEntry({ project }: { project: Hero }) {
     >
       <div className={styles.titleRow} data-cascade="">
         <h4 id={headingId} className={styles.title}>
-          <Link href={pageHref(project)}>{name}</Link>
+          {hasPage(project) ? (
+            <Link href={pageHref(project)}>{name}</Link>
+          ) : (
+            name
+          )}
         </h4>
         {detail && (
           <span className={styles.meta}>
@@ -84,13 +107,21 @@ export default function WorkEntry({ project }: { project: Hero }) {
           {sentence}
         </p>
         <div className={styles.spec}>
+          {stack.placeholder && "Placeholder. "}
           {stack.items.join(" · ")}
-          {hasLinks(project) && (
-            <>
-              <br />
-              <ProjectLinks project={project} />
-            </>
-          )}
+          {hasLinks(links) &&
+            (links.made.length ? (
+              // On phone the cells, next, carry these links.
+              <span className={styles.made}>
+                <br />
+                <ProjectLinks {...links} />
+              </span>
+            ) : (
+              <>
+                <br />
+                <ProjectLinks {...links} />
+              </>
+            ))}
         </div>
       </div>
     </article>

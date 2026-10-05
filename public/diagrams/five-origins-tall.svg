@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1130" width="600" height="1130" role="img" aria-label="Five origins, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="five-origins-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="five-origins-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="1130" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="140" fill="var(--ground, #0e1512)" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="64" y="78" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.3">PORTAL PAGE</text>
+<text x="64" y="98" font-size="11" fill="var(--dim-numeral, #4a5a50)">portal origin</text>
+<text x="64" y="130" font-size="12" fill="var(--muted, #a89f90)">Session token in page storage.</text>
+<text x="64" y="150" font-size="12" fill="var(--muted, #a89f90)">Reloaded to refresh the token.</text>
+<line x1="300" y1="188" x2="300" y2="258" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#five-origins-tall-a)"/>
+<text x="314" y="228" font-size="11" fill="var(--dim-numeral, #4a5a50)">the worker reads the token</text>
+<rect x="48" y="258" width="504" height="140" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="288" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">EXTENSION WORKER</text>
+<text x="64" y="308" font-size="11" fill="var(--dim-numeral, #4a5a50)">extension origin</text>
+<text x="64" y="340" font-size="12" fill="var(--muted, #a89f90)">Routes every message.</text>
+<text x="64" y="360" font-size="12" fill="var(--muted, #a89f90)">Borrows the token and fetches the rules.</text>
+<text x="64" y="380" font-size="12" fill="var(--muted, #a89f90)">Badge: green or red.</text>
+<line x1="300" y1="398" x2="300" y2="468" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#five-origins-tall-ab)"/>
+<text x="314" y="438" font-size="11" fill="var(--brass, #e0ae62)">rules, one-shot reply</text>
+<rect x="48" y="468" width="504" height="140" fill="var(--ground, #0e1512)" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="64" y="498" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.3">MARKETPLACE · ISOLATED WORLD</text>
+<text x="64" y="518" font-size="11" fill="var(--dim-numeral, #4a5a50)">marketplace origin</text>
+<text x="64" y="550" font-size="12" fill="var(--muted, #a89f90)">Waits for the map; polls every 15 s while visible.</text>
+<text x="64" y="570" font-size="12" fill="var(--muted, #a89f90)">Compares, then hands the rules on.</text>
+<line x1="300" y1="608" x2="300" y2="678" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#five-origins-tall-ab)"/>
+<text x="314" y="648" font-size="11" fill="var(--brass, #e0ae62)">window.postMessage</text>
+<rect x="48" y="678" width="504" height="140" fill="var(--ground, #0e1512)" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="64" y="708" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.3">MARKETPLACE · PAGE WORLD</text>
+<text x="64" y="728" font-size="11" fill="var(--dim-numeral, #4a5a50)">marketplace origin</text>
+<text x="64" y="760" font-size="12" fill="var(--muted, #a89f90)">Reads seat IDs from React internals.</text>
+<text x="64" y="780" font-size="12" fill="var(--muted, #a89f90)">Paints rings, fills, notes, the stop sign.</text>
+<line x1="300" y1="818" x2="300" y2="888" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#five-origins-tall-a)"/>
+<text x="314" y="858" font-size="11" fill="var(--dim-numeral, #4a5a50)">origin-checked message</text>
+<rect x="48" y="888" width="504" height="140" fill="var(--ground, #0e1512)" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="64" y="918" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.3">IDENTITY IFRAME</text>
+<text x="64" y="938" font-size="11" fill="var(--dim-numeral, #4a5a50)">identity origin</text>
+<text x="64" y="970" font-size="12" fill="var(--muted, #a89f90)">Watches the verification screen.</text>
+<text x="64" y="990" font-size="12" fill="var(--muted, #a89f90)">Reports to the parent by message.</text>
+</svg>

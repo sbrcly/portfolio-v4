@@ -168,4 +168,10 @@
   .spec {
     margin-top: 16px;
   }
+
+  /* A system's links to its projects' pages: three would wrap, and the
+     projects' cells come straight after with the same links. */
+  .made {
+    display: none;
+  }
 }

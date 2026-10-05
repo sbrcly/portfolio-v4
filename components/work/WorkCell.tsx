@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Diagram from "@/components/diagram/Diagram";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import type { Cell } from "./employers";
@@ -14,9 +15,9 @@ const CELL_SIZES =
   "(max-width: 719px) calc(-40px + 100vw), (max-width: 959px) calc(-48px + 50vw), (max-width: 1199px) calc(-168px + 50vw), 372px";
 
 /**
- * A project in an employer's grid: a 16:10 plate, the name linked to its
- * page, the sentence, the stack, any links. A pending project has a labeled
- * slot for a plate.
+ * A project in an employer's grid: a 16:10 plate (a screenshot, or a
+ * drawing made at that shape), the name linked to its page, the sentence,
+ * the stack, any links. A pending project has a labeled slot for a plate.
  */
 export default function WorkCell({ project }: { project: Cell }) {
   const { id, name, sentence, stack, plate } = project;
@@ -28,7 +29,13 @@ export default function WorkCell({ project }: { project: Cell }) {
       data-fade=""
       data-cascade="children"
     >
-      {plate ? (
+      {plate?.kind === "diagram" ? (
+        <Diagram
+          name={plate.name}
+          label={plate.label}
+          className={styles.plate}
+        />
+      ) : plate ? (
         <Plate className={styles.plate}>
           <Image src={plate.src} alt={plate.alt} fill sizes={CELL_SIZES} />
         </Plate>
@@ -43,7 +50,7 @@ export default function WorkCell({ project }: { project: Cell }) {
       <p className={styles.sentence}>{sentence}</p>
       <p className={styles.spec}>
         {stack.items.join(" · ")}
-        {hasLinks(project) && (
+        {hasLinks({ project }) && (
           <>
             <br />
             <ProjectLinks project={project} />

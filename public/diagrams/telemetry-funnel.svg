@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-label="The telemetry funnel from a buyer's page to the monitor's screen: content script, worker, ingestion endpoint, Firestore, listener, reduce, table, with the two timestamps marked and the warehouse as the second destination." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="telemetry-funnel-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="telemetry-funnel-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="460" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="144" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">BUYER'S PAGE</text>
+<text x="60" y="168" font-size="10" fill="var(--muted, #a89f90)">a cart, an</text>
+<text x="60" y="183" font-size="10" fill="var(--muted, #a89f90)">error, a</text>
+<text x="60" y="198" font-size="10" fill="var(--muted, #a89f90)">confirmation</text>
+<line x1="178" y1="180" x2="187" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="187" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="199" y="144" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">CONTENT SCRIPT</text>
+<text x="199" y="168" font-size="10" fill="var(--muted, #a89f90)">notices it;</text>
+<text x="199" y="183" font-size="10" fill="var(--muted, #a89f90)">stamps the</text>
+<text x="199" y="198" font-size="10" fill="var(--muted, #a89f90)">browser's time</text>
+<line x1="317" y1="180" x2="326" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="326" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="338" y="144" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">WORKER</text>
+<text x="338" y="168" font-size="10" fill="var(--muted, #a89f90)">one record, two</text>
+<text x="338" y="183" font-size="10" fill="var(--muted, #a89f90)">destinations</text>
+<line x1="456" y1="180" x2="465" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="465" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="477" y="144" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">INGESTION</text>
+<text x="477" y="168" font-size="10" fill="var(--muted, #a89f90)">stamps the</text>
+<text x="477" y="183" font-size="10" fill="var(--muted, #a89f90)">upload time;</text>
+<text x="477" y="198" font-size="10" fill="var(--muted, #a89f90)">writes one</text>
+<text x="477" y="213" font-size="10" fill="var(--muted, #a89f90)">document</text>
+<line x1="595" y1="180" x2="604" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="604" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="616" y="144" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">FIRESTORE</text>
+<text x="616" y="168" font-size="10" fill="var(--muted, #a89f90)">pushes it to</text>
+<text x="616" y="183" font-size="10" fill="var(--muted, #a89f90)">every listener</text>
+<line x1="734" y1="180" x2="743" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="743" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="755" y="144" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">LISTENER</text>
+<text x="755" y="168" font-size="10" fill="var(--muted, #a89f90)">one tab, one</text>
+<text x="755" y="183" font-size="10" fill="var(--muted, #a89f90)">collection,</text>
+<text x="755" y="198" font-size="10" fill="var(--muted, #a89f90)">newest first</text>
+<line x1="873" y1="180" x2="882" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="882" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="894" y="144" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">REDUCE</text>
+<text x="894" y="168" font-size="10" fill="var(--muted, #a89f90)">latest per</text>
+<text x="894" y="183" font-size="10" fill="var(--muted, #a89f90)">buyer, account,</text>
+<text x="894" y="198" font-size="10" fill="var(--muted, #a89f90)">event</text>
+<line x1="1012" y1="180" x2="1021" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="1021" y="120" width="130" height="120" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="1033" y="144" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">TABLE</text>
+<text x="1033" y="168" font-size="10" fill="var(--muted, #a89f90)">a row appears;</text>
+<text x="1033" y="183" font-size="10" fill="var(--muted, #a89f90)">roll-ups</text>
+<text x="1033" y="198" font-size="10" fill="var(--muted, #a89f90)">recomputed</text>
+<text x="252" y="96" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="middle">t1 · sent, browser clock</text>
+<line x1="252" y1="104" x2="252" y2="120" stroke="var(--lit, #f3c77e)" stroke-width="1"/>
+<text x="530" y="96" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="middle">t2 · uploaded, server clock</text>
+<line x1="530" y1="104" x2="530" y2="120" stroke="var(--lit, #f3c77e)" stroke-width="1"/>
+<text x="878" y="96" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">the live half: push, no polling</text>
+<line x1="391" y1="240" x2="391" y2="300" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#telemetry-funnel-a)"/>
+<rect x="271" y="300" width="240" height="70" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="287" y="324" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">WAREHOUSE</text>
+<text x="287" y="346" font-size="12" fill="var(--muted, #a89f90)">The system of record; the portal's world.</text>
+<text x="48" y="410" font-size="11" fill="var(--dim-numeral, #4a5a50)">Rows are ordered by t2. The gap from document to screen is not recorded anywhere; the write-up quotes no latency figure.</text>
+</svg>

@@ -7,8 +7,8 @@ import styles from "./work.module.css";
 
 /**
  * Chapter II: one block per employer, most recent first. Each opens with
- * the company's name as a title, then the first project as a full entry,
- * then the rest as a grid. Once the title is under the frame a row repeats
+ * the company's name as a title, then the hero as a full entry, then the
+ * rest as a grid. Once the title is under the frame a row repeats
  * it there, pinned for the rest of the block.
  */
 export default function Work() {
@@ -44,7 +44,7 @@ export default function Work() {
             </p>
           </div>
           <div className={styles.projects}>
-            <WorkEntry project={hero} />
+            <WorkEntry project={hero} cells={cells} />
             {cells.length > 0 && (
               // The role restores the list semantics list-style: none drops.
               <ul className={styles.grid} role="list">

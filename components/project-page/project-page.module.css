@@ -164,11 +164,6 @@
   color: var(--muted);
 }
 
-/* A diagram drawn twice: the tall drawing is the phone's. */
-.tall {
-  display: none;
-}
-
 /* A Note: the paragraphs in the measure under the title block, and the
    links. It ends the page, so the gap is under it. */
 
@@ -447,14 +442,6 @@
   .screens figcaption {
     margin-top: 10px;
     line-height: 1.5;
-  }
-
-  .drawing:has(+ .tall) {
-    display: none;
-  }
-
-  .tall {
-    display: block;
   }
 
   .body {

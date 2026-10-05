@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="The rule's path in seven steps: the map appears, the content script asks, the worker fetches with the borrowed token, the poll runs every fifteen seconds while the tab is visible, the rules are handed into the page world, seat IDs are read from React internals, the seats are painted." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<rect width="1200" height="420" fill="var(--surface, #1a2520)"/>
+<line x1="72" y1="150" x2="1128" y2="150" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<circle cx="72" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="72" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">01</text>
+<text x="72" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Map appears</text>
+<text x="72" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">ISOLATED WORLD</text>
+<text x="72" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">A MutationObserver</text>
+<text x="72" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">waits for the section</text>
+<text x="72" y="238" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">layer, then</text>
+<text x="72" y="254" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">disconnects.</text>
+<circle cx="248" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="248" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">02</text>
+<text x="248" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Content script asks</text>
+<text x="248" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">ISOLATED WORLD</text>
+<text x="248" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">One message to the</text>
+<text x="248" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">worker with the event</text>
+<text x="248" y="238" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">ID.</text>
+<circle cx="424" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="424" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">03</text>
+<text x="424" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Worker fetches</text>
+<text x="424" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">EXTENSION</text>
+<text x="424" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">With the token</text>
+<text x="424" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">borrowed from the open</text>
+<text x="424" y="238" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">portal tab.</text>
+<circle cx="600" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="600" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">04</text>
+<text x="600" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Poll while visible</text>
+<text x="600" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">ISOLATED WORLD</text>
+<text x="600" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">Every 15 seconds;</text>
+<text x="600" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">paused when the tab is</text>
+<text x="600" y="238" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">hidden.</text>
+<circle cx="776" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="776" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">05</text>
+<text x="776" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Handoff</text>
+<text x="776" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">PAGE WORLD</text>
+<text x="776" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">Rules posted across</text>
+<text x="776" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">the world boundary.</text>
+<circle cx="952" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="952" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">06</text>
+<text x="952" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Seat IDs read</text>
+<text x="952" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">PAGE WORLD</text>
+<text x="952" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">From the React</text>
+<text x="952" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">internals on each seat</text>
+<text x="952" y="238" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">element.</text>
+<circle cx="1128" cy="150" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
+<text x="1128" y="94" font-size="11" fill="var(--brass, #e0ae62)" text-anchor="middle">07</text>
+<text x="1128" y="116" font-size="13" fill="var(--text, #e4dbcb)" text-anchor="middle">Paint</text>
+<text x="1128" y="178" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle" letter-spacing="1">PAGE WORLD</text>
+<text x="1128" y="206" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">Rings, section fill,</text>
+<text x="1128" y="222" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">notes; cleared and</text>
+<text x="1128" y="238" font-size="11" fill="var(--muted, #a89f90)" text-anchor="middle">reapplied each pass.</text>
+</svg>

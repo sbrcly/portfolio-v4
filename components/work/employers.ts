@@ -1,22 +1,26 @@
-import type { ComponentType } from "react";
 import type { StaticImageData } from "next/image";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
 import pravaCockpit from "@/public/images/prava-cockpit.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
 import tradingSchedule from "@/public/images/trading-schedule.png";
+import type { DiagramName } from "@/components/diagram/Diagram";
 import { APP_STORE_URL, PRAVA_SITE_URL, writeUpUrl } from "./links";
 import { PRAVA_SCREENS } from "./prava-screens";
 
 /**
  * Chapter II's content: employers, most recent first, each with the
- * projects built there in the order they are shown. The first project is
- * the hero, a full entry in the measure; the rest are cells in the grid
- * under it. A cell has a screenshot or is marked pending and shows a
+ * projects built there in the order they are shown. The first is the hero,
+ * a full entry in the measure; the rest are cells in the grid under it. A
+ * cell has a screenshot or a drawing, or is marked pending and shows a
  * labeled slot in its place. Every project also has a page, and what the
- * page says is here with it.
+ * page says is here with it. A hero that is a system of the employer's
+ * other projects has none: it links to theirs.
  */
 type ImagePlate = { kind: "image"; src: StaticImageData; alt: string };
+
+/** A drawing inlined from public/diagrams (components/diagram). */
+type DiagramPlate = { kind: "diagram"; name: DiagramName; label: string };
 
 export type Plate =
   | ImagePlate
@@ -24,10 +28,12 @@ export type Plate =
   | { kind: "screens"; screens: { src: StaticImageData; alt: string }[] }
   /** The odds console recording (VideoPlate). */
   | { kind: "video" }
-  /** The origin-boundary diagram (ExtensionDiagram). */
-  | { kind: "diagram" };
+  | DiagramPlate
+  /** The on-sale system's venue, looping from 960px up (VenueLoop). */
+  | { kind: "venue"; label: string };
 
-/** What a project is built with. A placeholder is a guess to correct. */
+/** What a project is built with. A placeholder is a guess to correct; a
+    hero's entry says so. */
 export type Stack = { items: string[]; placeholder?: true };
 
 /**
@@ -50,9 +56,7 @@ export type SpecRow = {
 
 /** A picture: a screenshot, or a diagram inlined as SVG so it is set in the
     page's mono, with a taller drawing for the phone if it has one. */
-export type Media =
-  | ImagePlate
-  | { kind: "svg"; Svg: ComponentType; Tall?: ComponentType; alt: string };
+export type Media = ImagePlate | DiagramPlate;
 
 export type Figure = { media: Media; caption: string };
 
@@ -115,11 +119,10 @@ type Paged =
   /** Whatever a Note has not had written is filled in (pages.ts). */
   | { depth: "note"; page?: Partial<NotePage> };
 
-export type Project = Paged & {
+/** What Work shows of a project. */
+type Shown = {
   /** The anchor, "work-prava", and the heading's id. */
   id: string;
-  /** The page's route, /work/<slug>. */
-  slug: string;
   name: string;
   sentence: string;
   /** The sentence stands in for real copy. */
@@ -143,10 +146,34 @@ export type Project = Paged & {
   stack: Stack;
 };
 
-export type Hero = Project & { plate: Plate; pending?: never };
+export type Project = Shown &
+  Paged & {
+    /** The page's route, /work/<slug>. */
+    slug: string;
+    /** Its page is a Note only until its case study is written: Work
+        links to it as one already. */
+    caseStudy?: true;
+  };
+
+/**
+ * A hero that is no one project: the employer's other projects, together.
+ * It has no page of its own, so its name is not a link, and its entry links
+ * to their pages instead.
+ */
+export type System = Shown & { system: true };
+
+export type Hero = (Project | System) & { plate: Plate; pending?: never };
 
 export type Cell = Project &
-  ({ plate: ImagePlate; pending?: never } | { plate?: never; pending: true });
+  (
+    | { plate: ImagePlate | DiagramPlate; pending?: never }
+    | { plate?: never; pending: true }
+  );
+
+/** Whether what Work shows has a page: everything but a system. */
+export const hasPage = <T extends Project | System>(
+  project: T
+): project is Exclude<T, System> => !("system" in project);
 
 export type Employer = {
   /** The anchor, "employer-01", and the heading's id. */
@@ -439,28 +466,73 @@ export const EMPLOYERS: Employer[] = [
     years: "2022 to 2026",
     projects: [
       {
-        id: "marketplace-extension",
-        slug: "marketplace-extension",
-        depth: "note",
-        name: "Marketplace extension",
-        detail: "ticket brokerage · proprietary",
-        plate: { kind: "diagram" },
+        id: "on-sale-system",
+        system: true,
+        name: "The on-sale system",
+        detail: "ticket brokerage · three tools · proprietary",
+        plate: {
+          kind: "venue",
+          label:
+            "A synthetic venue map in the pricing portal: a rule dragged across section 105 lights the seats in its band and appears in the rules panel; the buyer extension paints the same seats on a Ticketmaster event page.",
+        },
+        placeholder: true,
         sentence:
-          "A Chrome extension that runs inside Ticketmaster and other marketplaces. Cross-origin messaging and DOM automation against sites built to resist it.",
-        stack: { items: ["Chrome MV3", "TypeScript", "Node"] },
-        note: "Walkthrough on request",
+          "Placeholder. A rule drawn on a venue map in the portal, resolved to seat IDs at save, served to a Chrome extension that paints it on a buyer's Ticketmaster screen, and watched live as the on-sale runs. Three tools, one rule, over a hundred buyers at one of the larger US brokers.",
+        stack: {
+          items: ["React", "Node", "BigQuery", "Chrome MV3", "Firestore"],
+          placeholder: true,
+        },
       },
       {
         id: "pricing-portal",
         slug: "pricing-portal",
         depth: "note",
+        caseStudy: true,
         name: "Pricing portal",
-        pending: true,
+        plate: {
+          kind: "diagram",
+          name: "pricing-portal-cell",
+          label:
+            "The pricing portal: a rules panel with three rules for one event.",
+        },
         placeholder: true,
-        sentence: "Where buyers write the purchase rules the extension reads.",
-        // No old site records the portal's stack; this is the extension's,
-        // less the Chrome part.
-        stack: { items: ["TypeScript", "Node"], placeholder: true },
+        sentence:
+          "Placeholder. Where analysts price inventory against the market and on-sale managers draw the rules. A team system; my parts are named on its page.",
+        stack: { items: ["React", "Redux", "Node", "BigQuery", "Redis"] },
+      },
+      {
+        id: "buyer-extension",
+        slug: "buyer-extension",
+        depth: "note",
+        caseStudy: true,
+        name: "Buyer extension",
+        plate: {
+          kind: "diagram",
+          name: "buyer-extension-cell",
+          label:
+            "The buyer extension: seats in a rule's band ringed on a venue map, with the rule's note beside them.",
+        },
+        placeholder: true,
+        sentence:
+          "Placeholder. Runs inside Ticketmaster, borrows the portal's session, and paints the rules onto the map a buyer is looking at. Five origins, one rule.",
+        stack: { items: ["Chrome MV3", "JavaScript", "React"] },
+      },
+      {
+        id: "on-sale-monitor",
+        slug: "on-sale-monitor",
+        depth: "note",
+        caseStudy: true,
+        name: "On-sale monitor",
+        plate: {
+          kind: "diagram",
+          name: "on-sale-monitor-cell",
+          label:
+            "The on-sale monitor: the Queue: Events view, one row per event with active queues and positions.",
+        },
+        placeholder: true,
+        sentence:
+          "Placeholder. The extension's telemetry as live tables, with the waiting room rebuilt per buyer and per event. Built alone.",
+        stack: { items: ["React", "Firestore", "Firebase"] },
       },
     ],
   },

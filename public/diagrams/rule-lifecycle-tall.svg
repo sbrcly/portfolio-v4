@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1060" width="600" height="1060" role="img" aria-label="The rule lifecycle, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="rule-lifecycle-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="rule-lifecycle-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="1060" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="72" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">GESTURE</text>
+<text x="64" y="94" font-size="12" fill="var(--muted, #a89f90)">Drag a line across a section, or control-click a seat.</text>
+<line x1="300" y1="152" x2="300" y2="188" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
+<rect x="48" y="188" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="212" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">PANEL</text>
+<text x="64" y="234" font-size="12" fill="var(--muted, #a89f90)">Sections, rows, price limit, quantity; switches.</text>
+<line x1="300" y1="292" x2="300" y2="328" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
+<rect x="48" y="328" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="352" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">RESOLVE</text>
+<text x="64" y="374" font-size="12" fill="var(--muted, #a89f90)">Every active rule to concrete seat IDs, filters applied, in the browser.</text>
+<line x1="300" y1="432" x2="300" y2="468" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
+<rect x="48" y="468" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="492" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">SAVE</text>
+<text x="64" y="514" font-size="12" fill="var(--muted, #a89f90)">Criteria and IDs sent together; a stop flag alerts first.</text>
+<line x1="300" y1="572" x2="300" y2="608" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
+<rect x="48" y="608" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="632" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">APPEND-ONLY STORE</text>
+<text x="64" y="654" font-size="12" fill="var(--muted, #a89f90)">A new timestamped row per save, by author. Nothing is overwritten.</text>
+<line x1="300" y1="712" x2="300" y2="748" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
+<rect x="48" y="748" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="772" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">LATEST-ROW VIEW</text>
+<text x="64" y="794" font-size="12" fill="var(--muted, #a89f90)">&#34;Current&#34; is the newest row for the event.</text>
+<rect x="48" y="888" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="912" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">READ PATH · PORTAL</text>
+<text x="64" y="934" font-size="12" fill="var(--muted, #a89f90)">Freshness check, then a full read on mismatch.</text>
+<rect x="48" y="1000" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="1024" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">READ PATH · EXTENSION</text>
+<text x="64" y="1046" font-size="12" fill="var(--muted, #a89f90)">One query per poll, no cache.</text>
+</svg>

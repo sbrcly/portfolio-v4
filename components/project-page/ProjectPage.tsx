@@ -6,6 +6,7 @@ import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
+import { DiagramDrawing } from "@/components/diagram/Diagram";
 import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
 import Rating from "@/components/work/Rating";
@@ -59,19 +60,7 @@ function Picture({ media, sizes }: { media: Media; sizes: string }) {
     return <Image src={media.src} alt={media.alt} sizes={sizes} />;
   }
   // A diagram: the tall drawing on phone, if there is one.
-  const { Svg, Tall, alt } = media;
-  return (
-    <div role="img" aria-label={alt}>
-      <div className={styles.drawing}>
-        <Svg />
-      </div>
-      {Tall && (
-        <div className={styles.tall}>
-          <Tall />
-        </div>
-      )}
-    </div>
-  );
+  return <DiagramDrawing name={media.name} label={media.label} />;
 }
 
 function PageFigure({

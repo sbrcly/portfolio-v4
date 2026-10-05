@@ -71,7 +71,7 @@ export default function Home() {
                 Then three years of full-stack work at a ticket brokerage:{" "}
                 <TextLink href="#work-pricing-portal">a pricing portal</TextLink>
                 , and{" "}
-                <TextLink href="#work-marketplace-extension">
+                <TextLink href="#work-buyer-extension">
                   a Chrome extension
                 </TextLink>{" "}
                 that runs inside marketplace sites and rewrites what buyers

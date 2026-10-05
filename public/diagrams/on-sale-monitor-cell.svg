@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="The on-sale monitor: the Queue: Events view, one row per event with active queues and positions." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<rect width="800" height="500" fill="var(--surface, #1a2520)"/>
+<text x="48" y="56" font-size="12" fill="var(--muted, #a89f90)">Page load</text>
+<text x="140.8" y="56" font-size="12" fill="var(--muted, #a89f90)">Sign in</text>
+<text x="219.20000000000002" y="56" font-size="12" fill="var(--muted, #a89f90)">Queue</text>
+<text x="283.20000000000005" y="56" font-size="12" fill="var(--muted, #a89f90)">Queue: Users</text>
+<text x="397.6" y="56" font-size="12" fill="var(--lit, #f3c77e)">Queue: Events</text>
+<line x1="397.6" y1="66" x2="491.20000000000005" y2="66" stroke="var(--lit, #f3c77e)" stroke-width="1"/>
+<text x="519.2" y="56" font-size="12" fill="var(--muted, #a89f90)">Cart</text>
+<text x="576" y="56" font-size="12" fill="var(--muted, #a89f90)">Confirmation</text>
+<text x="690.4" y="56" font-size="12" fill="var(--muted, #a89f90)">Checkout errors</text>
+<line x1="48" y1="86" x2="752" y2="86" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="48" y="112" font-size="11" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">EVENT</text>
+<text x="340" y="112" font-size="11" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">ACTIVE</text>
+<text x="430" y="112" font-size="11" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">AVG START</text>
+<text x="540" y="112" font-size="11" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">LOW 30</text>
+<text x="620" y="112" font-size="11" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">HIGH 30</text>
+<text x="690" y="112" font-size="11" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">LOWEST AHEAD</text>
+<line x1="48" y1="170" x2="752" y2="170" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="48" y="150" font-size="14" fill="var(--text, #e4dbcb)">Hartwell Tour · Northside Arena</text>
+<text x="340" y="150" font-size="14" fill="var(--lit, #f3c77e)">14</text>
+<text x="430" y="150" font-size="14" fill="var(--muted, #a89f90)">2,418</text>
+<text x="540" y="150" font-size="14" fill="var(--muted, #a89f90)">612</text>
+<text x="620" y="150" font-size="14" fill="var(--muted, #a89f90)">9,870</text>
+<text x="690" y="150" font-size="14" fill="var(--muted, #a89f90)">188</text>
+<line x1="48" y1="226" x2="752" y2="226" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="48" y="206" font-size="14" fill="var(--text, #e4dbcb)">Linden &amp; Co. · Riverfront Hall</text>
+<text x="340" y="206" font-size="14" fill="var(--lit, #f3c77e)">9</text>
+<text x="430" y="206" font-size="14" fill="var(--muted, #a89f90)">1,106</text>
+<text x="540" y="206" font-size="14" fill="var(--muted, #a89f90)">240</text>
+<text x="620" y="206" font-size="14" fill="var(--muted, #a89f90)">6,320</text>
+<text x="690" y="206" font-size="14" fill="var(--muted, #a89f90)">95</text>
+<line x1="48" y1="282" x2="752" y2="282" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="48" y="262" font-size="14" fill="var(--text, #e4dbcb)">Autumn Series · Grand Pavilion</text>
+<text x="340" y="262" font-size="14" fill="var(--lit, #f3c77e)">6</text>
+<text x="430" y="262" font-size="14" fill="var(--muted, #a89f90)">3,980</text>
+<text x="540" y="262" font-size="14" fill="var(--muted, #a89f90)">1,540</text>
+<text x="620" y="262" font-size="14" fill="var(--muted, #a89f90)">12,110</text>
+<text x="690" y="262" font-size="14" fill="var(--muted, #a89f90)">1,002</text>
+<line x1="48" y1="338" x2="752" y2="338" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="48" y="318" font-size="14" fill="var(--text, #e4dbcb)">Marlowe Live · Civic Theatre</text>
+<text x="340" y="318" font-size="14" fill="var(--lit, #f3c77e)">3</text>
+<text x="430" y="318" font-size="14" fill="var(--muted, #a89f90)">780</text>
+<text x="540" y="318" font-size="14" fill="var(--muted, #a89f90)">410</text>
+<text x="620" y="318" font-size="14" fill="var(--muted, #a89f90)">2,960</text>
+<text x="690" y="318" font-size="14" fill="var(--muted, #a89f90)">331</text>
+<line x1="48" y1="394" x2="752" y2="394" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="48" y="374" font-size="14" fill="var(--text, #e4dbcb)">Cordelia · Westgate Field</text>
+<text x="340" y="374" font-size="14" fill="var(--lit, #f3c77e)">11</text>
+<text x="430" y="374" font-size="14" fill="var(--muted, #a89f90)">5,230</text>
+<text x="540" y="374" font-size="14" fill="var(--muted, #a89f90)">2,002</text>
+<text x="620" y="374" font-size="14" fill="var(--muted, #a89f90)">18,640</text>
+<text x="690" y="374" font-size="14" fill="var(--muted, #a89f90)">1,690</text>
+</svg>

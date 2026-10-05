@@ -8,6 +8,7 @@ import {
   type Rich,
   type Section,
   type SpecRow,
+  hasPage,
 } from "./employers";
 import { writeUpUrl } from "./links";
 
@@ -105,9 +106,9 @@ function resolve(project: Project, employer: Employer): ProjectPage {
 
   // "Next" goes round the employer's Full and Standard pages only; one
   // page alone has nowhere to go.
-  const ring: Project[] = employer.projects.filter(
-    ({ depth }) => depth !== "note"
-  );
+  const ring: Project[] = employer.projects
+    .filter(hasPage)
+    .filter(({ depth }) => depth !== "note");
   const place = ring.indexOf(project);
   const next =
     place >= 0 && ring.length > 1
@@ -129,9 +130,11 @@ function resolve(project: Project, employer: Employer): ProjectPage {
   };
 }
 
-/** Every project's page, in the order of Work. */
+/** Every project's page, in the order of Work. A system has none. */
 export const PAGES: ProjectPage[] = EMPLOYERS.flatMap((employer) =>
-  employer.projects.map((project) => resolve(project, employer))
+  employer.projects
+    .filter(hasPage)
+    .map((project) => resolve(project, employer))
 );
 
 export const findPage = (slug: string) =>
