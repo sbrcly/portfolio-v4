@@ -8,6 +8,8 @@ import Frame from "@/components/frame/Frame";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
+import Rating from "@/components/work/Rating";
+import { PRAVA } from "@/components/work/employers";
 import { APP_STORE_URL, PRAVA_SITE_URL } from "@/components/work/links";
 import { PRAVA_SCREENS } from "@/components/work/prava-screens";
 import pravaCockpit from "@/public/images/prava-cockpit.png";
@@ -80,23 +82,27 @@ export default function PravaPage() {
               <span>
                 <span className={styles.brass}>II</span>&nbsp; Work
               </span>
-              <span className={styles.separator} aria-hidden="true">
-                /
-              </span>
-              <span>01</span>
-              <span className={styles.fill} />
-              <span>2025 to now</span>
-              <span className={styles.separator} aria-hidden="true">
-                /
-              </span>
-              <span>iOS</span>
               <span
                 className={`${styles.separator} ${styles.wide}`}
                 aria-hidden="true"
               >
                 /
               </span>
-              <span className={styles.wide}>Live on the App Store</span>
+              <span className={styles.wide}>01</span>
+              <span className={styles.fill} />
+              <span>2025 to now</span>
+              <span className={styles.separator} aria-hidden="true">
+                /
+              </span>
+              <span>iOS</span>
+              <span className={styles.separator} aria-hidden="true">
+                /
+              </span>
+              <Rating
+                rating={PRAVA.rating!}
+                count={PRAVA.ratingCount!}
+                countClassName={styles.wide}
+              />
             </div>
             <h1 id="p-h1" className={styles.name} data-cascade="">
               Prava

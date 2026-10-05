@@ -1,0 +1,14 @@
+/* The stars stay with the value. */
+.value {
+  white-space: nowrap;
+}
+
+.stars {
+  margin-right: 0.6em;
+  vertical-align: -1px;
+  fill: var(--text);
+}
+
+.empty {
+  fill: var(--rule);
+}

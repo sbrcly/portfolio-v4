@@ -35,6 +35,10 @@ export type Project = {
   placeholder?: true;
   /** An entry's meta line. */
   detail?: string;
+  /** The App Store rating, out of five, shown after the detail as stars. */
+  rating?: number;
+  /** How many ratings it is from. */
+  ratingCount?: number;
   plate?: Plate;
   /** No screenshot yet: the cell shows a labeled slot. */
   pending?: true;
@@ -76,7 +80,9 @@ export const EMPLOYERS: Employer[] = [
       {
         id: "prava",
         name: "Prava",
-        detail: "iOS · live on the App Store",
+        detail: "iOS",
+        rating: 5.0,
+        ratingCount: 51,
         plate: {
           kind: "screens",
           screens: PRAVA_SCREENS.map(({ src, alt }) => ({ src, alt })),
@@ -223,3 +229,6 @@ export const EMPLOYERS: Employer[] = [
     ],
   },
 ];
+
+/** Prava's hero entry, which its case study's top row also reads. */
+export const PRAVA = EMPLOYERS[0].projects[0];

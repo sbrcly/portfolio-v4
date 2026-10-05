@@ -320,10 +320,11 @@
   }
 
   .topRow {
-    gap: 12px;
+    gap: 8px;
   }
 
-  /* The top row keeps to one line: the App Store status is dropped. */
+  /* The top row keeps to one line: the index and the rating's count are
+     dropped. */
   .wide {
     display: none;
   }
