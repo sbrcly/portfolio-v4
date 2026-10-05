@@ -92,9 +92,10 @@
   }
 }
 
-/* The plate bleeds on phone; the label keeps to the column. */
+/* On phone a hero's plate bleeds (plate.module.css) and a cell's keeps to
+   the column, so the two differ in width as well as height. */
 @media (max-width: 719px) {
-  .slotLabel {
-    left: 20px;
+  .cell .plate {
+    margin: 0;
   }
 }

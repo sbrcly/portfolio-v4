@@ -142,6 +142,10 @@
     padding-bottom: 12px;
   }
 
+  .meta {
+    letter-spacing: 0.04em;
+  }
+
   .media {
     margin-top: 24px;
   }

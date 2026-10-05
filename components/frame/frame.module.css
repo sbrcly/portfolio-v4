@@ -16,7 +16,10 @@
   );
 }
 
-/* The nav table is the bar's only content, centered at every width. */
+/* From 960px up the nav table is the bar's only content, centered. Below
+   that the bar also holds the chapter's numeral and label, at its left
+   (components/margin), and the table is at its right (the rules after the
+   table's). */
 .bar {
   display: flex;
   align-items: center;
@@ -63,31 +66,48 @@
   color: var(--lit);
 }
 
-@media (max-width: 719px) {
-  /* Numerals only; each link keeps its full name in aria-label. */
+/* Below 960px: the table at the bar's right, its last cell's padding
+   overhanging the inset so its text ends on the column's edge. A cell is as
+   tall as the bar, which is its tap target, and the current one steps with
+   no transition. */
+@media (max-width: 959px) {
+  .bar {
+    justify-content: flex-end;
+  }
+
   .nav {
-    gap: 18px;
+    margin-right: -16px;
+  }
+
+  .cell {
+    align-items: center;
+    height: var(--bar-height);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .cell,
+  .numeral {
+    transition: none;
+  }
+}
+
+/* Phone: numerals only, in four cells of at least 44 by the bar's 60 with
+   nothing between them; each link keeps its full name in aria-label. */
+@media (max-width: 719px) {
+  .nav {
+    margin-right: -12px;
     letter-spacing: 0.1em;
   }
 
   .cell {
-    /* Vertical padding fills the bar so the tap target is 60px tall;
-       horizontal padding is cancelled so the visual gap stays 18px. */
-    position: relative;
-    align-items: center;
-    height: var(--bar-height);
-    margin: 0 -9px;
-    padding: 0 9px;
+    justify-content: center;
+    min-width: 44px;
+    padding: 0 12px;
   }
 
-  /* Hidden visually, kept in the link's accessible name. */
   .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    display: none;
   }
 
   .numeral {

@@ -42,24 +42,24 @@
   }
 }
 
-/* Phone: email on its own row, the icons on the next, then the colophon and
-   resume link. */
+/* Phone: three lines 20px apart. The icons, the email, then the colophon
+   with the resume link at its right. */
 @media (max-width: 719px) {
   .footer {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 12px 0;
+    gap: 20px 0;
     padding-top: 24px;
     letter-spacing: 0;
   }
 
-  .email {
+  .social {
     grid-column: 1 / -1;
     grid-row: 1;
     justify-self: start;
   }
 
-  .social {
+  .email {
     grid-column: 1 / -1;
     grid-row: 2;
     justify-self: start;

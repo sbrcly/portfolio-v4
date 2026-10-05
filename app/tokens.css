@@ -1,7 +1,9 @@
 /* Vigil design tokens. Values come from design/design_handoff_vigil/README.md.
    Breakpoints (custom properties can't be used in media queries):
    1199px, the first break (rendered at 1024); 719px, the second (rendered at 390).
-   The running margin (design/design_handoff_margin) is pinned from 960px up. */
+   The running margin (design/design_handoff_margin) is pinned from 960px up;
+   below that its numeral and label are in the frame's bar
+   (design/design_handoff_phone). */
 
 :root {
   /* Palette */
@@ -62,8 +64,8 @@
   --bar-height: 72px;
   --bar-inset: 48px;
   --hero-top: 112px; /* hero top row */
-  /* From 960px up: where the running margin's numeral and chapter I's name
-     both start, 24px under the frame. */
+  /* Where chapter I's name starts, 24px under the frame, and from 960px up
+     the running margin's numeral beside it. */
   --top-line: calc(var(--frame-height) + 24px);
   /* The running margin's column and the gap to the measure, from 960px up. */
   --margin-width: 280px;
@@ -93,6 +95,14 @@
     --hero-top: 96px;
     --margin-width: 200px;
     --margin-gap: 40px;
+  }
+}
+
+/* A viewport under 500px tall (a phone on its side) has no room for a name
+   at full size. */
+@media (max-height: 499px) {
+  :root {
+    --name-size: 64px;
   }
 }
 

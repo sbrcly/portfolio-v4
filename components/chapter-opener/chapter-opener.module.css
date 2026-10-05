@@ -1,3 +1,6 @@
+/* From 960px up the measure sits beside the running margin, whose column
+   this grid leaves empty. Below it the measure is the column (the last rules
+   here). */
 .opener {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -5,28 +8,16 @@
   align-items: start;
 }
 
-.head {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.numeral {
-  font-weight: 200;
-  font-size: 140px;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: var(--dim-numeral);
-}
-
+/* The chapter's numeral and label are the running margin's at every width
+   (components/margin): beside the measure from 960px up, in the frame's bar
+   below. The h2 stays in place for headings and aria-labelledby. */
 .label {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: var(--mono-size);
-  line-height: normal;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .measure {
@@ -45,17 +36,9 @@
    only; transitions exist only on the way in, so hiding never animates. */
 
 @media (max-width: 959px) {
-  .opener[data-reveal="hidden"] .numeral {
-    opacity: 0;
-  }
-
   .opener[data-reveal="hidden"] .measure {
     opacity: 0;
     transform: translateY(12px);
-  }
-
-  .opener[data-reveal="shown"] .numeral {
-    transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .opener[data-reveal="shown"] .measure {
@@ -69,7 +52,6 @@
     transform: none;
   }
 
-  .opener[data-reveal="shown"] .numeral,
   .opener[data-reveal="shown"] .measure {
     transition: opacity 200ms;
   }
@@ -80,55 +62,33 @@
     grid-template-columns: 200px 1fr;
     column-gap: 40px;
   }
-
-  .numeral {
-    font-size: 96px;
-  }
 }
 
-/* From 960px the numeral and label are the running margin's
-   (components/margin). The column stays empty beside the measure; the h2
-   stays in place for headings and aria-labelledby. */
-@media (min-width: 960px) {
-  .numeral {
-    display: none;
-  }
-
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 719px) {
+/* Below 960px nothing is beside the measure: it starts on the column's edge
+   and opens on the chapter's top, so the chapter's top padding is the whole
+   distance to its first line. */
+@media (max-width: 959px) {
   .opener {
     display: block;
   }
 
-  .head {
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 16px;
-  }
-
-  .numeral {
-    font-size: 72px;
-  }
-
-  .label {
-    margin-bottom: 4px;
-  }
-
   .measure {
-    margin-top: 20px;
+    padding-top: 0;
   }
 
   .statement {
-    margin-top: 16px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 719px) {
+  .statement {
     line-height: 1.25;
+  }
+
+  /* The name, where the statement is the page's title. */
+  .name {
+    font-size: 48px;
+    line-height: 1.05;
   }
 }

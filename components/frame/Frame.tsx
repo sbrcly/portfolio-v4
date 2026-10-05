@@ -14,7 +14,8 @@ type Props = {
 /**
  * The still frame: a sticky region with the bar inside it. The region fades
  * to transparent below the bar and ignores the pointer; only the bar is
- * interactive.
+ * interactive. Below 960px the bar's left is where the chapter's numeral and
+ * label are (components/margin), over the frame.
  */
 export default function Frame({ chapter }: Props) {
   return (

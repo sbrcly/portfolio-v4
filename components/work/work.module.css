@@ -20,8 +20,6 @@
   /* From the end of a pinned row's run to the next title: with that title
      landed, the row is wholly behind the frame's solid part. */
   --release: calc(var(--frame-tail) + var(--landing));
-  /* The opener's numeral and label to the first title. */
-  margin-top: 48px;
 }
 
 /* The title in the first row, the projects in the second, and the pinned
@@ -210,13 +208,9 @@
   list-style: none;
 }
 
-/* Beside the running margin: the opener has nothing on the page, so the
-   first title opens the chapter, and the blocks sit in the measure. */
+/* The opener has nothing on the page, so the first title opens the
+   chapter. Beside the running margin the blocks sit in the measure. */
 @media (min-width: 960px) {
-  .employers {
-    margin-top: 0;
-  }
-
   .employer {
     margin-left: var(--measure-offset);
   }
@@ -243,7 +237,9 @@
     letter-spacing: 0.04em;
   }
 
+  /* One column, already long: closer under the caption. */
   .grid {
     grid-template-columns: minmax(0, 1fr);
+    margin-top: 64px;
   }
 }

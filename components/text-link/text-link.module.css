@@ -9,3 +9,13 @@
   color: var(--text);
   text-decoration-line: none;
 }
+
+/* Below 960px every link is a 44px target (globals.css). This one wraps
+   with its paragraph, so it stays inline, where padding takes no room and
+   the box is as tall as the font, not the line: 12px each way clears 44. */
+@media (max-width: 959px) {
+  .link {
+    --tap: 12px;
+    display: inline;
+  }
+}

@@ -109,6 +109,24 @@ a:focus-visible {
   text-decoration-color: currentColor;
 }
 
+/* Below 960px, where a link is tapped, every link in the content is a
+   target at least 44px tall: padded out to that on every side, by whole
+   pixels, with margins that take the padding back so nothing moves, and the
+   focus ring kept 4px off the text. A link taller than 44px has no
+   padding. */
+@media (max-width: 959px) {
+  :is(main, footer) a {
+    --tap: max(0px, round(up, (44px - 1lh) / 2, 1px));
+    display: inline-block;
+    margin: calc(-1 * var(--tap));
+    padding: var(--tap);
+  }
+
+  :is(main, footer) a:focus-visible {
+    outline-offset: calc(4px - var(--tap));
+  }
+}
+
 img,
 video {
   display: block;

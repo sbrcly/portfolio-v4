@@ -1,8 +1,7 @@
 import styles from "./chapter-opener.module.css";
 
 type Props = {
-  /** Decorative numeral. The label is the heading. */
-  numeral: string;
+  /** The chapter's heading. Its numeral is the running margin's. */
   label: string;
   /** id for the h2; the enclosing section points aria-labelledby at it. */
   headingId: string;
@@ -11,13 +10,12 @@ type Props = {
    * with neither there is no measure and the opener is its heading alone.
    */
   statement?: string;
-  /** The statement is the page's h1. */
+  /** The statement is the page's h1, and a name. */
   titled?: boolean;
   children?: React.ReactNode;
 };
 
 export default function ChapterOpener({
-  numeral,
   label,
   headingId,
   statement,
@@ -27,10 +25,8 @@ export default function ChapterOpener({
   const Statement = titled ? "h1" : "p";
   return (
     <div className={styles.opener} data-reveal="">
-      <div className={styles.head} data-cascade="">
-        <span className={styles.numeral} aria-hidden="true">
-          {numeral}
-        </span>
+      {/* The grid's first cell: the running margin's column. */}
+      <div>
         <h2 id={headingId} className={styles.label}>
           {label}
         </h2>
@@ -38,7 +34,12 @@ export default function ChapterOpener({
       {(statement || children) && (
         <div className={styles.measure} data-fade="">
           {statement && (
-            <Statement className={styles.statement} data-cascade="">
+            <Statement
+              className={
+                titled ? `${styles.statement} ${styles.name}` : styles.statement
+              }
+              data-cascade=""
+            >
               {statement}
             </Statement>
           )}

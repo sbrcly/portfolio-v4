@@ -42,7 +42,6 @@ export default function Home() {
           data-chapter="0"
         >
           <ChapterOpener
-            numeral="I"
             label="About"
             headingId="h-i"
             statement="Scott Barclay"
@@ -98,7 +97,7 @@ export default function Home() {
           aria-labelledby="h-ii"
           data-chapter="1"
         >
-          <ChapterOpener numeral="II" label="Work" headingId="h-ii" />
+          <ChapterOpener label="Work" headingId="h-ii" />
           <Work />
         </section>
 
@@ -108,7 +107,7 @@ export default function Home() {
           aria-labelledby="h-iii"
           data-chapter="2"
         >
-          <ChapterOpener numeral="III" label="Contact" headingId="h-iii">
+          <ChapterOpener label="Contact" headingId="h-iii">
             <a
               href={`mailto:${EMAIL}`}
               className={styles.contactEmail}

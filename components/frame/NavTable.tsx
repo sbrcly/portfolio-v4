@@ -13,12 +13,13 @@ export default function NavTable({ current, away = false }: Props) {
   return (
     <nav className={styles.nav} aria-label="Chapters" data-cascade="">
       {CHAPTERS.map(({ id, numeral, label }) => {
+        // The link's name is "II Work" at every width: on phone only the
+        // numeral is shown.
         const props = {
           className: styles.cell,
+          "aria-label": `${numeral} ${label}`,
           "aria-current": current === id ? ("page" as const) : undefined,
         };
-        // The link's name is its text, "II Work". On phone the label is
-        // hidden visually but stays in the name.
         const content = (
           <>
             <span className={styles.numeral}>{numeral}</span>{" "}
@@ -35,7 +36,7 @@ export default function NavTable({ current, away = false }: Props) {
           </a>
         );
       })}
-      <a href={RESUME_HREF} className={styles.cell}>
+      <a href={RESUME_HREF} className={styles.cell} aria-label="IV Resume">
         <span className={styles.numeral}>IV</span>{" "}
         <span className={styles.label}>Resume</span>
       </a>

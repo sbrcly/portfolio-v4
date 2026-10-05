@@ -12,9 +12,8 @@
   padding-bottom: var(--chapter-gap);
 }
 
-/* From 960px up the openers' numeral and label are the running margin's, so
-   a chapter's first element is whatever opens its measure, and the top
-   padding is short by how far into the measure that is.
+/* A chapter's first element is whatever opens its measure, and from 960px
+   up the top padding is short by how far into the measure that is.
 
    I About. The block from the name to the last paragraph starts on the top
    line: at load the name's top edge is level with the running margin's
@@ -31,6 +30,16 @@
 
   .contact {
     padding-top: calc(var(--chapter-gap) - 28px);
+  }
+}
+
+/* Below 960px the measure opens on the chapter's top
+   (components/chapter-opener), so the padding is the distance itself: the
+   name starts on the top line, and the email (below) is one gap under
+   chapter II. */
+@media (max-width: 959px) {
+  .first {
+    padding-top: var(--top-line);
   }
 }
 
@@ -92,9 +101,23 @@
   }
 }
 
+/* Below 960px the email opens the chapter with nothing above it. Under 720
+   its line is shorter than a tap target, and the padding out to 44px is
+   taken back on every side, as on any link (globals.css). */
+@media (max-width: 959px) {
+  .contactEmail {
+    margin: calc(-1 * var(--tap));
+  }
+}
+
 @media (max-width: 719px) {
+  .subtitle {
+    font-size: 17px;
+  }
+
   .body {
     gap: 16px;
+    margin-top: 24px;
   }
 
   .contactEmail {

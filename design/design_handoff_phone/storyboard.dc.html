@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r6 · Phone · Storyboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0E1512;color:#E4DBCB;} a{color:inherit;text-decoration:none;}</style>
+</helmet>
+<div data-screen-label="Phone storyboard" style="display:flex;flex-direction:column;gap:56px;padding:40px;background:#0E1512;color:#E4DBCB;font-family:'Spectral',Georgia,serif;font-weight:300;-webkit-font-smoothing:antialiased;">
+
+  <!-- 1. The load cascade, 390 x 664, Option A. Each part starts 8px low and transparent and settles over 480 ms, delayed by its top edge: 0 at the top of the viewport, 400 ms at the fold. -->
+  <section style="display:flex;flex-direction:column;gap:20px;">
+    <h2 style="margin:0;font-weight:300;font-size:24px;line-height:1.2;">1 · The first screen loading</h2>
+    <p style="max-width:720px;margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:#A89F90;">390 × 664 (iOS Safari, toolbar expanded), Option A. The cascade is main's (components/cascade): every part in the first viewport starts transparent and 8px low and settles over 480 ms with a delay of its top edge over the viewport's height × 400 ms. On the phone the bar's numeral and label are parts too (delay 12 ms), so the spine arrives first, the name second (63 ms), the paragraphs after (117 to 367 ms). Nothing below the fold is touched; the first employer's title reveals once as it enters (components/reveals).</p>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <div style="display:flex;flex-direction:column;gap:8px;"><div style="width:195px;height:332px;overflow:hidden;box-shadow:0 0 0 1px #2E3B34;"><div style="zoom:.5;width:390px;height:664px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);"></div>
+      </div></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A89F90;">0 ms · pending, every part hidden</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px;"><div style="width:195px;height:332px;overflow:hidden;box-shadow:0 0 0 1px #2E3B34;"><div style="zoom:.5;width:390px;height:664px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);"></div>
+        <div style="position:absolute;top:0;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;height:60px;opacity:.77;transform:translateY(1.8px);"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-weight:200;font-size:32px;line-height:1;letter-spacing:-.04em;color:#4A5A50;">I</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">About</span></div><div style="display:flex;gap:0;margin-right:-12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#A89F90;"><span style="width:44px;text-align:center;color:#F3C77E;">I</span><span style="width:44px;text-align:center;">II</span><span style="width:44px;text-align:center;">III</span><span style="width:44px;text-align:center;">IV</span></div></div>
+        <div style="position:absolute;top:104px;left:20px;font-weight:300;font-size:48px;line-height:1.05;letter-spacing:-.01em;opacity:.5;transform:translateY(4px);">Scott Barclay</div>
+        <div style="position:absolute;top:162px;left:20px;font-size:17px;opacity:.25;transform:translateY(6px);">Full-Stack Engineer</div>
+        <div style="position:absolute;top:213px;left:20px;right:20px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;opacity:.03;transform:translateY(8px);">I priced sport for a living at a Las Vegas sportsbook. In the evenings I built <b style="font-weight:600;color:#E4DBCB;">a live odds console</b> streamed over Socket.io from BigQuery, <b style="font-weight:600;color:#E4DBCB;">an arbitrage detector</b> across about fifty books, and <b style="font-weight:600;color:#E4DBCB;">a schedule that assigned traders to games</b>. The company moved me into an engineering role.</div>
+      </div></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A89F90;">120 ms · bar .77, name .5, subtitle .25</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px;"><div style="width:195px;height:332px;overflow:hidden;box-shadow:0 0 0 1px #2E3B34;"><div style="zoom:.5;width:390px;height:664px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);"></div>
+        <div style="position:absolute;top:0;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;height:60px;opacity:.95;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-weight:200;font-size:32px;line-height:1;letter-spacing:-.04em;color:#4A5A50;">I</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">About</span></div><div style="display:flex;margin-right:-12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#A89F90;"><span style="width:44px;text-align:center;color:#F3C77E;">I</span><span style="width:44px;text-align:center;">II</span><span style="width:44px;text-align:center;">III</span><span style="width:44px;text-align:center;">IV</span></div></div>
+        <div style="position:absolute;top:104px;left:20px;font-weight:300;font-size:48px;line-height:1.05;letter-spacing:-.01em;opacity:.9;transform:translateY(.8px);">Scott Barclay</div>
+        <div style="position:absolute;top:162px;left:20px;font-size:17px;opacity:.85;transform:translateY(1.2px);">Full-Stack Engineer</div>
+        <div style="position:absolute;top:213px;left:20px;right:20px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;opacity:.8;transform:translateY(1.6px);">I priced sport for a living at a Las Vegas sportsbook. In the evenings I built <b style="font-weight:600;color:#E4DBCB;">a live odds console</b> streamed over Socket.io from BigQuery, <b style="font-weight:600;color:#E4DBCB;">an arbitrage detector</b> across about fifty books, and <b style="font-weight:600;color:#E4DBCB;">a schedule that assigned traders to games</b>. The company moved me into an engineering role.</div>
+        <div style="position:absolute;top:383px;left:20px;right:20px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;opacity:.2;transform:translateY(6.4px);">Then three years of full-stack work at a ticket brokerage: <b style="font-weight:600;color:#E4DBCB;">a pricing portal</b>, and <b style="font-weight:600;color:#E4DBCB;">a Chrome extension</b> that runs inside marketplace sites and rewrites what buyers see.</div>
+      </div></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A89F90;">240 ms · first paragraph .8, second .2</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px;"><div style="width:195px;height:332px;overflow:hidden;box-shadow:0 0 0 1px #2E3B34;"><div style="zoom:.5;width:390px;height:664px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);"></div>
+        <div style="position:absolute;top:0;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;height:60px;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-weight:200;font-size:32px;line-height:1;letter-spacing:-.04em;color:#4A5A50;">I</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">About</span></div><div style="display:flex;margin-right:-12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#A89F90;"><span style="width:44px;text-align:center;color:#F3C77E;">I</span><span style="width:44px;text-align:center;">II</span><span style="width:44px;text-align:center;">III</span><span style="width:44px;text-align:center;">IV</span></div></div>
+        <div style="position:absolute;top:104px;left:20px;font-weight:300;font-size:48px;line-height:1.05;letter-spacing:-.01em;">Scott Barclay</div>
+        <div style="position:absolute;top:162px;left:20px;font-size:17px;">Full-Stack Engineer</div>
+        <div style="position:absolute;top:213px;left:20px;right:20px;display:flex;flex-direction:column;gap:16px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;">
+          <p style="margin:0;">I priced sport for a living at a Las Vegas sportsbook. In the evenings I built <b style="font-weight:600;color:#E4DBCB;">a live odds console</b> streamed over Socket.io from BigQuery, <b style="font-weight:600;color:#E4DBCB;">an arbitrage detector</b> across about fifty books, and <b style="font-weight:600;color:#E4DBCB;">a schedule that assigned traders to games</b>. The company moved me into an engineering role.</p>
+          <p style="margin:0;opacity:.97;">Then three years of full-stack work at a ticket brokerage: <b style="font-weight:600;color:#E4DBCB;">a pricing portal</b>, and <b style="font-weight:600;color:#E4DBCB;">a Chrome extension</b> that runs inside marketplace sites and rewrites what buyers see.</p>
+          <p style="margin:0;opacity:.9;transform:translateY(.8px);">Most recently, <b style="font-weight:600;color:#E4DBCB;">Prava</b>: an iOS prayer and scripture app, designed, built, and shipped alone, with versioned prompts, snapshot-tested fallbacks, and cost work that is measured rather than assumed.</p>
+          <p style="margin:0;opacity:.78;transform:translateY(1.8px);">Away from work I read theology and philosophy and am teaching myself Latin.</p>
+        </div>
+      </div></div><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A89F90;">480 ms · last paragraph .78; settled at 880 ms</span></div>
+    </div>
+  </section>
+
+  <!-- 2. Chapter transition I to II, Option A. The bar's numeral: the second I enters by width over the boundary, the label crossfades over its middle third, the nav steps at .5. -->
+  <section style="display:flex;flex-direction:column;gap:20px;">
+    <h2 style="margin:0;font-weight:300;font-size:24px;line-height:1.2;">2 · A chapter transition, I to II</h2>
+    <p style="max-width:720px;margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:#A89F90;">Option A, the bar's numeral. The boundary is the margin's (margin.module.css): 0 to 1 as II's top rises from the viewport's bottom to the frame, .5 with it on the midline. The second I enters by width and opacity over the whole boundary; the label crossfades over the middle third (About out .33 to .5, Work in .5 to .67); the nav's current cell steps at .5, when the chapter changes. The numeral is left-aligned, so it grows to the right and nothing recentres. On this phone the whole exchange is about 580px of scroll, a thumb's flick and a half. Option B has none of this: its numerals are in flow, and the nav's label is what crossfades.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <sc-for list="{{ transition }}" as="f" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:8px;"><div style="width:195px;height:332px;overflow:hidden;box-shadow:0 0 0 1px #2E3B34;"><div style="zoom:.5;width:390px;height:664px;position:relative;">
+          <div style="position:absolute;left:20px;right:20px;top:{{ f.aboutTop }}px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;">Most recently, <b style="font-weight:600;color:#E4DBCB;">Prava</b>: an iOS prayer and scripture app, designed, built, and shipped alone, with versioned prompts, snapshot-tested fallbacks, and cost work that is measured rather than assumed.<p style="margin:16px 0 0;">Away from work I read theology and philosophy and am teaching myself Latin.</p></div>
+          <div style="position:absolute;left:20px;right:20px;top:{{ f.titleTop }}px;"><div style="font-weight:300;font-size:32px;line-height:1.1;letter-spacing:-.01em;">Faith Platforms Inc.</div><div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:16px;letter-spacing:.04em;color:#A89F90;">Sole engineer · 2025 to now</div><div style="margin-top:40px;font-weight:300;font-size:28px;line-height:1.1;">Prava</div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#A89F90;">iOS · live on the App Store</div><div style="margin:36px -20px 0;height:300px;background:#1A2520;box-shadow:0 0 0 1px #2E3B34;"></div></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);"></div>
+          <div style="position:absolute;top:0;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;height:60px;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="display:inline-flex;font-weight:200;font-size:32px;line-height:1;letter-spacing:-.04em;color:#4A5A50;"><span>I</span><span style="opacity:{{ f.p }};clip-path:{{ f.clip }};">I</span></span><span style="display:grid;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;"><span style="grid-area:1/1;opacity:{{ f.labOut }};">About</span><span style="grid-area:1/1;opacity:{{ f.labIn }};">Work</span></span></div><div style="display:flex;margin-right:-12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#A89F90;"><span style="width:44px;text-align:center;color:{{ f.navI }};">I</span><span style="width:44px;text-align:center;color:{{ f.navII }};">II</span><span style="width:44px;text-align:center;">III</span><span style="width:44px;text-align:center;">IV</span></div></div>
+          <div style="position:absolute;left:0;right:0;top:331px;border-top:1px dashed rgba(224,174,98,.35);"></div>
+        </div></div><span style="max-width:195px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.5;color:#A89F90;">{{ f.caption }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 3. Employer handover Faith Platforms to Etainement on the phone: the pinned row pushed out by the next title, the gap with no row, the new row coming in over 24 of scroll. -->
+  <section style="display:flex;flex-direction:column;gap:20px;">
+    <h2 style="margin:0;font-weight:300;font-size:24px;line-height:1.2;">3 · An employer handover, Faith Platforms to Etainement</h2>
+    <p style="max-width:720px;margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:#A89F90;">As on main at every width (work.module.css), with the phone's numbers. The row pins with its text 16 under the frame (its ground reaches up behind the frame's tail, from 44.8), and is 86 tall when the role wraps (name, 6, two lines). Etainement's title pushes it out when the title's top comes within the block's release (the tail's 35 and the landing's 24) of the row's bottom, so the row leaves before the title reaches it; the title lands 24 under the frame with no row; the new row comes in over the 24 of scroll after the title's bottom passes under the frame's. The bar's II and the nav do not change: the handover is inside the chapter.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+      <sc-for list="{{ handover }}" as="f" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:8px;"><div style="width:195px;height:332px;overflow:hidden;box-shadow:0 0 0 1px #2E3B34;"><div style="zoom:.5;width:390px;height:664px;position:relative;">
+          <div style="position:absolute;left:20px;right:20px;top:{{ f.cellTop }}px;"><div style="height:218px;background:#1A2520;box-shadow:0 0 0 1px #2E3B34;"></div><div style="margin-top:16px;font-weight:400;font-size:20px;line-height:1.3;">Commitment library</div><div style="margin-top:6px;font-family:'Source Sans 3',Arial,sans-serif;font-size:16px;line-height:1.6;color:#A89F90;">The commitments the app offers, written and kept in one place.</div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.8;color:#A89F90;">TypeScript · Next.js · Capacitor · Postgres · Anthropic API</div></div>
+          <div style="position:absolute;left:20px;right:20px;top:{{ f.titleTop }}px;"><div style="font-weight:300;font-size:32px;line-height:1.1;letter-spacing:-.01em;">Etainement</div><div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:16px;letter-spacing:.04em;color:#A89F90;">Full-stack engineer · 2022 to 2026</div><div style="margin-top:40px;font-weight:300;font-size:28px;line-height:1.1;">Marketplace extension</div><div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#A89F90;">ticket brokerage · proprietary</div><div style="margin:36px -20px 0;height:400px;background:#1A2520;box-shadow:0 0 0 1px #2E3B34;"></div></div>
+          <div style="position:absolute;left:0;right:0;top:{{ f.rowTop }}px;height:121px;opacity:{{ f.rowOpacity }};visibility:{{ f.rowVis }};"><div style="position:absolute;inset:0;background:#0E1512;"></div><div style="position:absolute;top:100%;left:0;right:0;height:35px;background:linear-gradient(to bottom,#0E1512 0%,rgba(14,21,18,.72) 50%,rgba(14,21,18,0) 100%);"></div><div style="position:absolute;left:20px;right:20px;top:51px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:16px;"><div style="letter-spacing:.14em;text-transform:uppercase;">{{ f.rowName }}</div><div style="margin-top:6px;letter-spacing:.04em;color:#A89F90;">{{ f.rowRole }}</div></div></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#0E1512 0%,#0E1512 56%,rgba(14,21,18,.72) 78%,rgba(14,21,18,0) 100%);"></div>
+          <div style="position:absolute;top:0;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;height:60px;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-weight:200;font-size:32px;line-height:1;letter-spacing:-.04em;color:#4A5A50;">II</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;color:#A89F90;">Work</span></div><div style="display:flex;margin-right:-12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#A89F90;"><span style="width:44px;text-align:center;">I</span><span style="width:44px;text-align:center;color:#F3C77E;">II</span><span style="width:44px;text-align:center;">III</span><span style="width:44px;text-align:center;">IV</span></div></div>
+        </div></div><span style="max-width:195px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.5;color:#A89F90;">{{ f.caption }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const within = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a)));
+    // Boundary b: II's top at 664 (b 0), 498 (.25), 332 (.5), 206 (.75), 80 (1). About's last paragraph sits 96 above II's top.
+    const transition = [0, .25, .5, .75, 1].map((p, i) => {
+      const titleTop = [664, 498, 332, 206, 80][i] + 0; const cur = p >= .5;
+      return { p, clip: `inset(-1em calc(${(1 - p) * 100}% - ${p * .05}em) -1em -0.05em)`, labOut: 1 - within(p, .33, .5), labIn: within(p, .5, .67), navI: cur ? '#A89F90' : '#F3C77E', navII: cur ? '#F3C77E' : '#A89F90', titleTop: titleTop + 96, aboutTop: titleTop - 110, caption: ['boundary 0 · II\'s top at the viewport\'s bottom', 'boundary .25 · the second I a quarter in', 'boundary .5 · II\'s top on the midline; nav steps, label crossfading', 'boundary .75 · Work in, the II three quarters wide', 'boundary 1 · II whole; Faith Platforms landed'][i] };
+    });
+    // Handover. Row box 121 (35 tail above, 86 row); pinned at 44.8. Release: the row leaves as the next title's top comes within 59 of its bottom (165.8 + 59 = 225).
+    const row = (titleTop) => { const limit = titleTop - 59 - 121; return Math.min(44.8, limit); };
+    const handover = [
+      { titleTop: 420, rowTop: 44.8, rowOpacity: 1, rowVis: 'visible', rowName: 'Faith Platforms Inc.', rowRole: 'Sole engineer · 2025 to now', cellTop: -60, caption: 'Faith Platforms pinned; Etainement\'s title entering at 420' },
+      { titleTop: 180, rowTop: row(180), rowOpacity: 1, rowVis: 'visible', rowName: 'Faith Platforms Inc.', rowRole: 'Sole engineer · 2025 to now', cellTop: -300, caption: 'title at 180: the row pushed up, 45 of it behind the frame' },
+      { titleTop: 104, rowTop: -200, rowOpacity: 0, rowVis: 'hidden', rowName: '', rowRole: '', cellTop: -376, caption: 'title landed 24 under the frame; no row (where #employer-02 lands)' },
+      { titleTop: 16, rowTop: 44.8, rowOpacity: .5, rowVis: 'visible', rowName: 'Etainement', rowRole: 'Full-stack engineer · 2022 to 2026', cellTop: -464, caption: 'title\'s bottom 12 under the frame: Etainement\'s row at .5' },
+      { titleTop: -120, rowTop: 44.8, rowOpacity: 1, rowVis: 'visible', rowName: 'Etainement', rowRole: 'Full-stack engineer · 2022 to 2026', cellTop: -600, caption: 'pinned; the hero\'s plate under the row\'s tail' },
+    ];
+    return { transition, handover };
+  }
+}
+</script>
+</body>
+</html>

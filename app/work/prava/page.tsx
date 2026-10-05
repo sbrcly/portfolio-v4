@@ -147,7 +147,6 @@ export default function PravaPage() {
           data-chapter="1"
         >
           <ChapterOpener
-            numeral="01"
             label="The problem"
             headingId="p-01"
             statement="Faith apps borrow the wrong mechanics."
@@ -183,7 +182,6 @@ export default function PravaPage() {
           data-chapter="2"
         >
           <ChapterOpener
-            numeral="02"
             label="What was built"
             headingId="p-02"
             statement="A full consumer product, run by one person."
@@ -229,7 +227,6 @@ export default function PravaPage() {
           data-chapter="3"
         >
           <ChapterOpener
-            numeral="03"
             label="Three decisions"
             headingId="p-03"
             statement="Decisions I would defend in any interview."
@@ -257,7 +254,6 @@ export default function PravaPage() {
           data-chapter="4"
         >
           <ChapterOpener
-            numeral="04"
             label="The back office"
             headingId="p-04"
             statement="Eleven internal tools nobody sees."
@@ -334,7 +330,6 @@ export default function PravaPage() {
           data-chapter="5"
         >
           <ChapterOpener
-            numeral="05"
             label="Outcome"
             headingId="p-05"
             statement="Live, used across a dozen denominations, paying for itself."

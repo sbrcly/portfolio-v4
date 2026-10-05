@@ -21,6 +21,9 @@ const LOAD_MS = 300;
 /**
  * The running margin: the current chapter's numeral and label pinned beside
  * the measure, the numeral's top edge on the top line under the frame.
+ * Below 960px there is no margin and the same numeral and label are in the
+ * frame's bar, at its left, small and set from the left with no centering
+ * (margin.module.css); the icons and the Work index are the margin's alone.
  *
  * The numeral and label turn with the scroll. Every chapter's label and
  * every glyph the numeral ever shows is in the markup, each with an opacity
@@ -91,7 +94,6 @@ export default function Margin({
       const sections = [
         ...document.querySelectorAll<HTMLElement>("[data-chapter]"),
       ];
-      const wide = window.matchMedia("(min-width: 960px)");
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
       const within = (value: number, from: number, to: number) =>
         Math.min(1, Math.max(0, (value - from) / (to - from)));
@@ -103,7 +105,6 @@ export default function Margin({
       };
 
       stopFrames = onScrollFrame(() => {
-        if (!wide.matches) return;
         const height = window.innerHeight;
         const half = height / 2;
         const scroller = document.documentElement;
@@ -210,9 +211,27 @@ export default function Margin({
           aria-hidden="true"
         >
           <span className={styles.numeral} data-cascade="">
+            {/* In the bar: every numeral unseen in one cell, so the box is
+                as wide as the widest and the label never moves. */}
+            <span className={styles.sizer}>
+              {plan.chapters.map(({ id, numeral }) => (
+                <span key={id}>{numeral}</span>
+              ))}
+            </span>
             <span className={styles.axis}>{numeral}</span>
           </span>
-          <span className={styles.labels} data-cascade="">
+          <span
+            className={styles.labels}
+            style={
+              {
+                // How long the page's longest label is, for the bar.
+                "--label-ch": Math.max(
+                  ...plan.chapters.map(({ label }) => label.length)
+                ),
+              } as React.CSSProperties
+            }
+            data-cascade=""
+          >
             {plan.chapters.map(({ id, label, labelOpacity }) => (
               <span
                 key={id}
