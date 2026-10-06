@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
+import analyticsEngagement from "@/public/images/captures/analytics-engagement-16x10@2x.png";
 import pravaCockpit from "@/public/images/prava-cockpit.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
@@ -148,7 +149,7 @@ type Shown = {
   writeUp?: string;
   /** Somewhere the work can be checked. */
   verify?: { label: string; href: string };
-  /** Plain text in the links' place. */
+  /** Plain text on the links' line, after any links. */
   note?: string;
   /** The mono line under the sentence, items joined with " · ". */
   stack: Stack;
@@ -920,10 +921,16 @@ export const EMPLOYERS: Employer[] = [
         slug: "analytics-dashboard",
         depth: "note",
         name: "Analytics dashboard",
-        pending: true,
+        detail: "back office · internal",
+        plate: {
+          kind: "image",
+          src: analyticsEngagement,
+          alt: "Prava's admin analytics dashboard: daily engagement with a definition-change marker, demo data",
+        },
         placeholder: true,
         sentence:
           "Where Prava's usage and AI cost are measured rather than assumed.",
+        note: "demo data",
         // Prava's stack, assumed shared.
         stack: {
           items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],

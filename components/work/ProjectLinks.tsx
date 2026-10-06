@@ -26,7 +26,7 @@ export const hasLinks = ({ project, made = [] }: Props) =>
   );
 
 /** A project's links, one line: case study (or a system's projects' pages),
-    where to verify, write-up. */
+    where to verify, write-up, then the note in plain text. */
 export default function ProjectLinks({ project, made = [] }: Props) {
   const { verify, writeUp, note } = project;
   const parts = [
