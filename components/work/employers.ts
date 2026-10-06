@@ -2,6 +2,8 @@ import type { StaticImageData } from "next/image";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
 import analyticsEngagement from "@/public/images/captures/analytics-engagement-16x10@2x.png";
 import pravaCockpit from "@/public/images/prava-cockpit.png";
+import pravaCommitmentLibrary from "@/public/images/prava-commitment-library.png";
+import pravaLectionaryTool from "@/public/images/prava-lectionary-tool.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
 import tradingSchedule from "@/public/images/trading-schedule.png";
@@ -942,7 +944,12 @@ export const EMPLOYERS: Employer[] = [
         slug: "lectionary-authoring-tool",
         depth: "note",
         name: "Lectionary authoring tool",
-        pending: true,
+        detail: "back office · internal",
+        plate: {
+          kind: "image",
+          src: pravaLectionaryTool,
+          alt: "The Lectionary authoring tool: Sundays from Ordinary Time into Advent with their authoring status, filters for tradition and cycle, an RCL rights switch, and a week's readings, each with rights and active badges and an Edit button.",
+        },
         placeholder: true,
         sentence:
           "Where the readings for the Church's week are entered and checked.",
@@ -957,7 +964,12 @@ export const EMPLOYERS: Employer[] = [
         slug: "commitment-library",
         depth: "note",
         name: "Commitment library",
-        pending: true,
+        detail: "back office · internal",
+        plate: {
+          kind: "image",
+          src: pravaCommitmentLibrary,
+          alt: "The Commitment library: 488 commitments in a table with filters for category, difficulty, personality, focus area, approval status and life context, each row with its title, description, category, difficulty, image, and edit, preview and delete actions.",
+        },
         placeholder: true,
         sentence: "The commitments the app offers, written and kept in one place.",
         // Prava's stack, assumed shared.
