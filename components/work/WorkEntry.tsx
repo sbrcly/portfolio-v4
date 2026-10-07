@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import Diagram from "@/components/diagram/Diagram";
+import { DiagramDrawing } from "@/components/diagram/Diagram";
+import Lightbox from "@/components/lightbox/Lightbox";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import Rating from "./Rating";
+import StackTokens from "./StackTokens";
 import VenueLoop from "./VenueLoop";
 import VideoPlate from "./VideoPlate";
 import {
@@ -21,6 +23,8 @@ const PLATE_SIZES =
   "(max-width: 719px) 100vw, (max-width: 959px) calc(100vw - 64px), (max-width: 1199px) calc(100vw - 304px), 776px";
 const SCREEN_SIZES =
   "(max-width: 719px) 45vw, (max-width: 959px) 22vw, (max-width: 1199px) 16vw, 166px";
+/** Open at full size: up to 92vw, or less where 92vh bounds it first. */
+export const FULL_SIZES = "92vw";
 
 function ProjectPlate({
   plate,
@@ -32,22 +36,37 @@ function ProjectPlate({
   switch (plate.kind) {
     case "image":
       return (
-        <Plate>
+        <Lightbox
+          alt={plate.alt}
+          full={<Image src={plate.src} alt={plate.alt} sizes={FULL_SIZES} />}
+        >
           <Image src={plate.src} alt={plate.alt} sizes={PLATE_SIZES} />
-        </Plate>
+        </Lightbox>
       );
     case "screens":
+      // Each screen opens on its own; the surface is not a picture.
       return (
         <Plate className={styles.screens}>
           {plate.screens.map(({ src, alt }) => (
-            <Image key={alt} src={src} alt={alt} sizes={SCREEN_SIZES} />
+            <Lightbox
+              key={alt}
+              alt={alt}
+              bare
+              full={<Image src={src} alt={alt} sizes={FULL_SIZES} />}
+            >
+              <Image src={src} alt={alt} sizes={SCREEN_SIZES} />
+            </Lightbox>
           ))}
         </Plate>
       );
     case "video":
       return <VideoPlate describedBy={describedBy} />;
     case "diagram":
-      return <Diagram name={plate.name} label={plate.label} />;
+      return (
+        <Lightbox alt={plate.label}>
+          <DiagramDrawing name={plate.name} label={plate.label} />
+        </Lightbox>
+      );
     case "venue":
       return <VenueLoop label={plate.label} />;
   }
@@ -107,21 +126,19 @@ export default function WorkEntry({
           {sentence}
         </p>
         <div className={styles.spec}>
-          {stack.placeholder && "Placeholder. "}
-          {stack.items.join(" · ")}
-          {hasLinks(links) &&
-            (links.made.length ? (
-              // On phone the cells, next, carry these links.
-              <span className={styles.made}>
-                <br />
-                <ProjectLinks {...links} />
-              </span>
-            ) : (
-              <>
-                <br />
-                <ProjectLinks {...links} />
-              </>
-            ))}
+          <StackTokens items={stack.items} placeholder={stack.placeholder} />
+          {hasLinks(links) && (
+            // On phone the cells, next, carry a system's links.
+            <p
+              className={
+                links.made.length
+                  ? `${styles.links} ${styles.made}`
+                  : styles.links
+              }
+            >
+              <ProjectLinks {...links} />
+            </p>
+          )}
         </div>
       </div>
     </article>

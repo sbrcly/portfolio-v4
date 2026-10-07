@@ -7,9 +7,12 @@ import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
 import Margin, { type MarginChapter } from "@/components/margin/Margin";
 import { DiagramDrawing } from "@/components/diagram/Diagram";
+import Lightbox from "@/components/lightbox/Lightbox";
 import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
 import Rating from "@/components/work/Rating";
+import StackTokens from "@/components/work/StackTokens";
+import { FULL_SIZES } from "@/components/work/WorkEntry";
 import type {
   Block,
   Figure,
@@ -61,12 +64,25 @@ function Text({ children }: { children: Rich }) {
   );
 }
 
+/** A picture in a plate that opens at full size (components/lightbox). */
 function Picture({ media, sizes }: { media: Media; sizes: string }) {
   if (media.kind === "image") {
-    return <Image src={media.src} alt={media.alt} sizes={sizes} />;
+    return (
+      <Lightbox
+        alt={media.alt}
+        full={<Image src={media.src} alt={media.alt} sizes={FULL_SIZES} />}
+      >
+        <Image src={media.src} alt={media.alt} sizes={sizes} />
+      </Lightbox>
+    );
   }
-  // A diagram: the tall drawing on phone, if there is one.
-  return <DiagramDrawing name={media.name} label={media.label} />;
+  // A diagram: the tall drawing on phone, if there is one. The dialog
+  // copies whichever is drawn.
+  return (
+    <Lightbox alt={media.label}>
+      <DiagramDrawing name={media.name} label={media.label} />
+    </Lightbox>
+  );
 }
 
 function PageFigure({
@@ -85,9 +101,7 @@ function PageFigure({
       data-fade=""
       data-cascade="children"
     >
-      <Plate>
-        <Picture media={media} sizes={sizes} />
-      </Plate>
+      <Picture media={media} sizes={sizes} />
       <figcaption>{caption}</figcaption>
     </figure>
   );
@@ -109,7 +123,13 @@ function TitlePlate({ plate }: { plate: PagePlate }) {
       <Plate className={styles.screens}>
         {plate.screens.map(({ src, alt, caption }) => (
           <figure key={caption}>
-            <Image src={src} alt={alt} sizes={SCREEN_SIZES} />
+            <Lightbox
+              alt={alt}
+              bare
+              full={<Image src={src} alt={alt} sizes={FULL_SIZES} />}
+            >
+              <Image src={src} alt={alt} sizes={SCREEN_SIZES} />
+            </Lightbox>
             <figcaption>{caption}</figcaption>
           </figure>
         ))}
@@ -379,11 +399,15 @@ export default function ProjectPage({ page }: { page: PageData }) {
             <div className={styles.intro} data-cascade="children">
               <p className={styles.lede}>{page.lede}</p>
               <dl className={styles.spec}>
-                {page.spec.map(({ label, value }) => (
-                  <Fragment key={label}>
-                    <dt>{label}</dt>
+                {page.spec.map((row) => (
+                  <Fragment key={row.label}>
+                    <dt>{row.label}</dt>
                     <dd>
-                      <Text>{value}</Text>
+                      {"items" in row ? (
+                        <StackTokens items={row.items} />
+                      ) : (
+                        <Text>{row.value}</Text>
+                      )}
                     </dd>
                   </Fragment>
                 ))}

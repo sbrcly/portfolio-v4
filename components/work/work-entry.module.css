@@ -36,7 +36,8 @@
   margin-top: 40px;
 }
 
-/* Phone screens side by side on the surface: four, two on phone. */
+/* Phone screens side by side on the surface: four, two on phone. The
+   surface is the plate; each screen is its own button (components/lightbox). */
 .screens {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -60,7 +61,10 @@
   text-wrap: pretty;
 }
 
-.spec {
+/* Under the sentence: the stack's tokens (StackTokens), then the links'
+   line 16px under them. */
+.links {
+  margin-top: 16px;
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
@@ -68,7 +72,7 @@
   color: var(--muted);
 }
 
-/* Links in the spec run, used through the spec content. */
+/* Links on that line, used through the links' content. */
 .caseStudy {
   color: var(--brass);
   text-decoration-color: rgb(224 174 98 / 0.4);
@@ -130,7 +134,7 @@
   }
 
   .spec {
-    margin-top: 16px;
+    margin-top: 20px;
   }
 }
 
@@ -156,7 +160,7 @@
     padding: 24px 20px;
   }
 
-  .screens > img:nth-child(n + 3) {
+  .screens > :nth-child(n + 3) {
     display: none;
   }
 
@@ -166,7 +170,7 @@
   }
 
   .spec {
-    margin-top: 16px;
+    margin-top: 20px;
   }
 
   /* A system's links to its projects' pages: three would wrap, and the

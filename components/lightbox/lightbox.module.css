@@ -1,0 +1,154 @@
+/* The plate: the button fills it, whatever shape the plate is given (a
+   cell's 16:10, a hero's natural height), and the dialog beside it takes
+   no room, closed or open. */
+.frame {
+  display: grid;
+}
+
+.frame > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.opener {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: inherit;
+  cursor: zoom-in;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.opener > img,
+.opener > svg {
+  width: 100%;
+}
+
+/* The dialog: the whole viewport, the ground at 96% as its scrim, and the
+   picture centered in it. The scrim is the browser's backdrop, which
+   covers the scrollbar's kept gutter too, where the dialog's own box
+   stops short of it; a click on either lands on the dialog itself. */
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--text);
+}
+
+.dialog::backdrop {
+  background: rgb(14 21 18 / 0.96);
+}
+
+/* The picture's room: it scrolls if the picture is ever larger than it,
+   and on touch it pans and pinch-zooms. Margins center the picture so a
+   larger one is reached from its top left, not clipped there. */
+.view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  touch-action: pan-x pan-y pinch-zoom;
+  cursor: zoom-out;
+}
+
+.view > * {
+  margin: auto;
+  cursor: default;
+}
+
+.copy {
+  display: contents;
+}
+
+/* The picture: up to 92vw by 92vh at its own shape, with the plate's rim.
+   Named under the dialog so no rule for a plate's picture (.plate img,
+   .screens img) reaches it.
+   An image keeps its shape from its attributes and is never larger than
+   itself; a copied drawing is as large as the bounds allow, its shape
+   given as --ratio. */
+.dialog .view > img {
+  display: block;
+}
+
+/* A drawing copied with a phone twin keeps the stylesheet's say on which
+   of the two is drawn, so no display here. */
+.dialog .view > img,
+.dialog .copy > svg {
+  width: auto;
+  height: auto;
+  max-width: 92vw;
+  max-height: 92vh;
+  max-height: 92dvh;
+  margin: auto;
+  object-fit: contain;
+  box-shadow: 0 0 0 1px var(--rule);
+  cursor: default;
+}
+
+.dialog .copy > svg {
+  width: min(92vw, 92vh * var(--ratio, 1.6));
+  width: min(92vw, 92dvh * var(--ratio, 1.6));
+  aspect-ratio: var(--ratio, 1.6);
+}
+
+/* The close control: 44px, top right, the site's mono. */
+.close {
+  position: absolute;
+  z-index: 1;
+  top: calc(var(--bar-height) / 2 - 22px);
+  right: calc(var(--bar-inset) - 12px);
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 44px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 160ms;
+}
+
+.close:hover,
+.close:focus-visible {
+  color: var(--brass);
+}
+
+/* Opening fades the scrim and the picture in; closing fades them out
+   where the browser can transition display. */
+@media (prefers-reduced-motion: no-preference) {
+  .dialog,
+  .dialog::backdrop {
+    opacity: 0;
+    transition: opacity 200ms ease-out, display 200ms allow-discrete,
+      overlay 200ms allow-discrete;
+  }
+
+  .dialog[open],
+  .dialog[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    .dialog[open],
+    .dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}

@@ -13,7 +13,7 @@
   aspect-ratio: 16 / 10;
 }
 
-.plate > img {
+.plate img {
   object-fit: cover;
   object-position: left;
 }
@@ -43,13 +43,9 @@
   line-height: 1.3;
 }
 
-.sentence,
-.spec {
-  color: var(--muted);
-}
-
 .sentence {
   margin-top: 6px;
+  color: var(--muted);
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 16px;
@@ -57,13 +53,19 @@
   text-wrap: pretty;
 }
 
-/* The stack, then any links on the line under it. */
-.spec {
-  margin-top: 8px;
+/* The stack's tokens (StackTokens) 20px under the sentence, then any
+   links on the line 16px under them. */
+.stack {
+  margin-top: 20px;
+}
+
+.links {
+  margin-top: 16px;
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: var(--mono-size);
   line-height: 1.8;
+  color: var(--muted);
 }
 
 /* Reveal, below 960px (above it the cell fades with the scroll instead;

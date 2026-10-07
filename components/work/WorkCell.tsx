@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import Diagram from "@/components/diagram/Diagram";
+import { DiagramDrawing } from "@/components/diagram/Diagram";
+import Lightbox from "@/components/lightbox/Lightbox";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
+import StackTokens from "./StackTokens";
+import { FULL_SIZES } from "./WorkEntry";
 import type { Cell } from "./employers";
 import { pageHref } from "./pages";
 import styles from "./work-cell.module.css";
@@ -16,8 +19,9 @@ const CELL_SIZES =
 
 /**
  * A project in an employer's grid: a 16:10 plate (a screenshot, or a
- * drawing made at that shape), the name linked to its page, the sentence,
- * the stack, any links. A pending project has a labeled slot for a plate.
+ * drawing made at that shape) that opens at full size, the name linked to
+ * its page, the sentence, the stack, any links. A pending project has a
+ * labeled slot for a plate.
  */
 export default function WorkCell({ project }: { project: Cell }) {
   const { id, name, sentence, stack, plate } = project;
@@ -30,15 +34,17 @@ export default function WorkCell({ project }: { project: Cell }) {
       data-cascade="children"
     >
       {plate?.kind === "diagram" ? (
-        <Diagram
-          name={plate.name}
-          label={plate.label}
-          className={styles.plate}
-        />
+        <Lightbox alt={plate.label} className={styles.plate}>
+          <DiagramDrawing name={plate.name} label={plate.label} />
+        </Lightbox>
       ) : plate ? (
-        <Plate className={styles.plate}>
+        <Lightbox
+          alt={plate.alt}
+          className={styles.plate}
+          full={<Image src={plate.src} alt={plate.alt} sizes={FULL_SIZES} />}
+        >
           <Image src={plate.src} alt={plate.alt} fill sizes={CELL_SIZES} />
-        </Plate>
+        </Lightbox>
       ) : (
         <Plate className={`${styles.plate} ${styles.slot}`}>
           <span className={styles.slotLabel}>Screenshot pending</span>
@@ -48,15 +54,12 @@ export default function WorkCell({ project }: { project: Cell }) {
         <Link href={pageHref(project)}>{name}</Link>
       </h4>
       <p className={styles.sentence}>{sentence}</p>
-      <p className={styles.spec}>
-        {stack.items.join(" · ")}
-        {hasLinks({ project }) && (
-          <>
-            <br />
-            <ProjectLinks project={project} />
-          </>
-        )}
-      </p>
+      <StackTokens items={stack.items} className={styles.stack} />
+      {hasLinks({ project }) && (
+        <p className={styles.links}>
+          <ProjectLinks project={project} />
+        </p>
+      )}
     </li>
   );
 }

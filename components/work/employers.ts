@@ -36,8 +36,8 @@ export type Plate =
   /** The on-sale system's venue, looping from 960px up (VenueLoop). */
   | { kind: "venue"; label: string };
 
-/** What a project is built with. A placeholder is a guess to correct; a
-    hero's entry says so. */
+/** What a project is built with, one token each (StackTokens). A
+    placeholder is a guess to correct; the row says so first. */
 export type Stack = { items: string[]; placeholder?: true };
 
 /**
@@ -52,11 +52,14 @@ export type Rich =
   | string
   | (string | { em: string } | { text: string; href: string })[];
 
-/** A row of the title block's spec. */
-export type SpecRow = {
-  label: "Role" | "Stack" | "Where" | "Verify" | "Code" | "Write-up";
-  value: Rich;
-};
+/** A row of the title block's spec. The stack is tokens, like a project's
+    entry in Work. */
+export type SpecRow =
+  | {
+      label: "Role" | "Where" | "Verify" | "Code" | "Write-up";
+      value: Rich;
+    }
+  | { label: "Stack"; items: string[] };
 
 /** A picture: a screenshot, or a diagram inlined as SVG so it is set in the
     page's mono, with a taller drawing for the phone if it has one. */
@@ -154,7 +157,7 @@ type Shown = {
   verify?: { label: string; href: string };
   /** Plain text on the links' line, after any links. */
   note?: string;
-  /** The mono line under the sentence, items joined with " · ". */
+  /** The tokens under the sentence. */
   stack: Stack;
 };
 
@@ -201,8 +204,14 @@ const PRAVA_PAGE: SectionedPage = {
     { label: "Role", value: "Sole engineer and designer" },
     {
       label: "Stack",
-      value:
-        "TypeScript · Next.js · Capacitor · Postgres with Prisma · Anthropic API",
+      items: [
+        "TypeScript",
+        "Next.js",
+        "Capacitor",
+        "Postgres",
+        "Prisma",
+        "Anthropic API",
+      ],
     },
     {
       label: "Verify",
@@ -407,7 +416,16 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
     },
     {
       label: "Stack",
-      value: "React · Redux · Node · Express · BigQuery · MySQL · Redis · Sentry",
+      items: [
+        "React",
+        "Redux",
+        "Node",
+        "Express",
+        "BigQuery",
+        "MySQL",
+        "Redis",
+        "Sentry",
+      ],
     },
     { label: "Where", value: ETAINEMENT },
     { label: "Code", value: WALKTHROUGH },
@@ -612,7 +630,10 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
       label: "Role",
       value: "Built and owned by Scott; handed off before leaving.",
     },
-    { label: "Stack", value: "Chrome MV3 · JavaScript · React (popup) · Vite" },
+    {
+      label: "Stack",
+      items: ["Chrome MV3", "JavaScript", "React (popup)", "Vite"],
+    },
     // The Code row says it is proprietary, so Where does not.
     { label: "Where", value: BROKER },
     { label: "Code", value: "proprietary · walkthrough on request" },
@@ -803,7 +824,7 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
     { label: "Role", value: "Built by Scott." },
     {
       label: "Stack",
-      value: "React · Firestore · Firebase Auth and Hosting · Vite",
+      items: ["React", "Firestore", "Firebase Auth and Hosting", "Vite"],
     },
     { label: "Where", value: ETAINEMENT },
     { label: "Code", value: WALKTHROUGH },
@@ -897,7 +918,7 @@ const PROMPT_LAB_PAGE: SectionedPage = {
     { label: "Role", value: ONE_PERSON },
     {
       label: "Stack",
-      value: "TypeScript · Next.js · Postgres with Prisma · Anthropic API",
+      items: ["TypeScript", "Next.js", "Postgres", "Prisma", "Anthropic API"],
     },
     { label: "Where", value: BACK_OFFICE },
     { label: "Code", value: WALKTHROUGH },
@@ -1003,7 +1024,7 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
     { label: "Role", value: ONE_PERSON },
     {
       label: "Stack",
-      value: "TypeScript · Next.js · Postgres with Prisma · PostHog",
+      items: ["TypeScript", "Next.js", "Postgres", "PostHog", "Recharts"],
     },
     { label: "Where", value: BACK_OFFICE },
     { label: "Code", value: WALKTHROUGH },
@@ -1092,7 +1113,7 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
   lede: "Where the readings for the Church's week are entered, checked, and declared ready, for every day of the year across two lectionary traditions.",
   spec: [
     { label: "Role", value: ONE_PERSON },
-    { label: "Stack", value: "TypeScript · Next.js · Postgres with Prisma" },
+    { label: "Stack", items: ["TypeScript", "Next.js", "Postgres", "Prisma"] },
     { label: "Where", value: BACK_OFFICE },
     { label: "Code", value: WALKTHROUGH },
   ],
@@ -1216,7 +1237,14 @@ const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
     { label: "Role", value: ONE_PERSON },
     {
       label: "Stack",
-      value: "TypeScript · Next.js · Postgres with Prisma · Anthropic API",
+      items: [
+        "TypeScript",
+        "Next.js",
+        "Postgres",
+        "Prisma",
+        "Anthropic API",
+        "TanStack Table",
+      ],
     },
     { label: "Where", value: BACK_OFFICE },
     { label: "Code", value: WALKTHROUGH },
@@ -1324,7 +1352,7 @@ export const EMPLOYERS: Employer[] = [
         sentence:
           "Where Prava's prompts are versioned and checked against their fallbacks.",
         stack: {
-          items: ["TypeScript", "Next.js", "Postgres", "Anthropic API"],
+          items: ["TypeScript", "Next.js", "Postgres", "Prisma", "Anthropic API"],
         },
       },
       {
@@ -1343,7 +1371,9 @@ export const EMPLOYERS: Employer[] = [
         sentence:
           "Where Prava's usage and AI cost are measured rather than assumed.",
         note: "demo data",
-        stack: { items: ["TypeScript", "Next.js", "Postgres", "PostHog"] },
+        stack: {
+          items: ["TypeScript", "Next.js", "Postgres", "PostHog", "Recharts"],
+        },
       },
       {
         id: "lectionary-authoring-tool",
@@ -1360,7 +1390,7 @@ export const EMPLOYERS: Employer[] = [
         placeholder: true,
         sentence:
           "Where the readings for the Church's week are entered and checked.",
-        stack: { items: ["TypeScript", "Next.js", "Postgres"] },
+        stack: { items: ["TypeScript", "Next.js", "Postgres", "Prisma"] },
       },
       {
         id: "commitment-library",
@@ -1376,7 +1406,16 @@ export const EMPLOYERS: Employer[] = [
         },
         placeholder: true,
         sentence: "The commitments the app offers, written and kept in one place.",
-        stack: { items: ["TypeScript", "Next.js", "Postgres", "Anthropic API"] },
+        stack: {
+          items: [
+            "TypeScript",
+            "Next.js",
+            "Postgres",
+            "Prisma",
+            "Anthropic API",
+            "TanStack Table",
+          ],
+        },
       },
     ],
   },
@@ -1496,7 +1535,7 @@ export const EMPLOYERS: Employer[] = [
           fact: "About fifty books",
           spec: [
             { label: "Role", value: "Built alone, evenings, while trading" },
-            { label: "Stack", value: "Node · Socket.io · MySQL · GCP" },
+            { label: "Stack", items: ["Node", "Socket.io", "MySQL", "GCP"] },
             {
               label: "Write-up",
               value: [

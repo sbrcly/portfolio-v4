@@ -4,7 +4,9 @@
   box-shadow: 0 0 0 1px var(--rule);
 }
 
-.plate > img {
+/* Wherever it sits in the plate: in the plate's button (components/lightbox)
+   or directly. */
+.plate img {
   width: 100%;
 }
 

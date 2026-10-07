@@ -80,7 +80,7 @@ function unwritten(project: Project, employer: Employer): NotePage {
     lede: "Placeholder. One sentence on what it is and who it was for.",
     spec: [
       { label: "Role", value: employer.role },
-      { label: "Stack", value: stack.items.join(" · ") },
+      { label: "Stack", items: stack.items },
       last,
     ],
     paragraphs: [

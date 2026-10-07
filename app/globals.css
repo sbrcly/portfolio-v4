@@ -37,6 +37,14 @@ html {
   text-size-adjust: 100%;
   /* Anchors and focused elements land below the sticky frame. */
   scroll-padding-top: var(--frame-height);
+  /* The scrollbar's room is kept while the scroll is locked, so nothing
+     moves when a lightbox opens. */
+  scrollbar-gutter: stable;
+}
+
+/* A lightbox is open (components/lightbox): the page stays where it is. */
+html[data-lightbox] {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {

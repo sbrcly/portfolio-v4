@@ -1,9 +1,16 @@
-/* The plate is the button. The rim comes from plate.module.css. */
+/* The plate (the rim comes from plate.module.css) holds the button, which
+   is the plate's whole face, the Full size control over its bottom right
+   corner, and the dialog, which takes no room. */
+.frame {
+  position: relative;
+}
+
 .video {
   position: relative;
   display: block;
   width: 100%;
-  /* The recording's own shape, 2062 x 1080. */
+  /* The recording's own shape, 2062 x 1080: the plate keeps it while the
+     video is away in the dialog. */
   aspect-ratio: 2062 / 1080;
   padding: 0;
   border: 0;
@@ -23,6 +30,53 @@
   height: 100%;
   max-width: none;
   object-fit: cover;
+}
+
+/* In the dialog: its own shape, up to 92vw by 92vh, with the rim. */
+.slot {
+  display: contents;
+}
+
+.media[data-full] {
+  width: auto;
+  height: auto;
+  max-width: 92vw;
+  max-height: 92vh;
+  max-height: 92dvh;
+  margin: auto;
+  object-fit: contain;
+  box-shadow: 0 0 0 1px var(--rule);
+}
+
+/* Full size, bottom right, on the meta's line: the site's small mono,
+   muted, brass under the pointer or the focus, a 44px target. The box
+   reaches 12px past the text on each side, so the text sits 24px in. */
+.fullSize {
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 160ms;
+}
+
+.fullSize:hover,
+.fullSize:focus-visible {
+  color: var(--brass);
 }
 
 /* Play ring */
@@ -87,7 +141,8 @@
   align-items: center;
   gap: 16px;
   height: 44px;
-  padding: 0 24px;
+  /* Room on the right for the Full size control. */
+  padding: 0 112px 0 24px;
   background: linear-gradient(
     to top,
     rgb(14 21 18 / 0.85),
@@ -163,11 +218,6 @@
 }
 
 @media (max-width: 719px) {
-  /* Bleeds with the plate's -20px margins. */
-  .video {
-    width: calc(100% + 40px);
-  }
-
   .ring {
     width: 52px;
     height: 52px;
@@ -187,7 +237,15 @@
     font-size: 10px;
   }
 
+  /* On the meta's line, which is so near the edge that the 44px box
+     reaches a little past the plate; nothing of it shows there. */
+  .fullSize {
+    right: 4px;
+    bottom: -4px;
+    font-size: 10px;
+  }
+
   .bar {
-    padding: 0 16px;
+    padding: 0 96px 0 16px;
   }
 }

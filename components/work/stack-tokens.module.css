@@ -1,0 +1,22 @@
+/* The tokens: JetBrains Mono 11px, upper case, .08em, in the text color,
+   16px apart on a line and 8px between lines. Whoever sets them sets the
+   room above and below. */
+.tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.placeholder {
+  color: var(--muted);
+}

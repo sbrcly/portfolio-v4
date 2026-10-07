@@ -139,7 +139,9 @@
 }
 
 /* The plate under the title, across the column: phone screens on the
-   surface, each with a caption, or one picture with a caption under it. */
+   surface, each with a caption, or one picture with a caption under it.
+   The surface is the plate; each screen opens on its own
+   (components/lightbox). */
 
 .screens {
   display: grid;
