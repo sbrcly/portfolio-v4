@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-label="The presence union: eight legs, one per kind of record a person can leave, fold into one presence per person per Pacific day; many widgets read from the fold and none from the legs; every timestamp is bucketed to a Pacific day before the union, not after." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="presence-union-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="presence-union-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="460" fill="var(--surface, #1a2520)"/>
+<text x="48" y="36" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">EIGHT LEGS</text>
+<rect x="48" y="48" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="68" font-size="10" fill="var(--muted, #a89f90)">activity log</text>
+<path d="M218 64 C 300 64 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="90" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="110" font-size="10" fill="var(--muted, #a89f90)">journal</text>
+<path d="M218 106 C 300 106 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="132" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="152" font-size="10" fill="var(--muted, #a89f90)">Sunday reading</text>
+<path d="M218 148 C 300 148 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="174" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="194" font-size="10" fill="var(--muted, #a89f90)">weekday reading</text>
+<path d="M218 190 C 300 190 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="216" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="236" font-size="10" fill="var(--muted, #a89f90)">Bible chapter</text>
+<path d="M218 232 C 300 232 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="258" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="278" font-size="10" fill="var(--muted, #a89f90)">verse mark</text>
+<path d="M218 274 C 300 274 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="300" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="320" font-size="10" fill="var(--muted, #a89f90)">People</text>
+<path d="M218 316 C 300 316 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="48" y="342" width="170" height="32" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="60" y="362" font-size="10" fill="var(--muted, #a89f90)">surface open</text>
+<path d="M218 358 C 300 358 330 230 380 230" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<text x="48" y="392" font-size="10" fill="var(--muted, #a89f90)">each: a person and a true timestamp</text>
+<rect x="300" y="120" width="100" height="220" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="350" y="112" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="middle">timezone bucketing</text>
+<text x="350" y="352" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">moment -&gt; Pacific day</text>
+<rect x="440" y="180" width="200" height="100" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="452" y="204" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">ONE FOLD</text>
+<text x="452" y="228" font-size="10" fill="var(--muted, #a89f90)">union by person and</text>
+<text x="452" y="243" font-size="10" fill="var(--muted, #a89f90)">Pacific day; present</text>
+<text x="452" y="258" font-size="10" fill="var(--muted, #a89f90)">once, however many</text>
+<text x="452" y="273" font-size="10" fill="var(--muted, #a89f90)">legs</text>
+<line x1="400" y1="230" x2="440" y2="230" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#presence-union-a)"/>
+<text x="760" y="36" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">MANY WIDGETS</text>
+<rect x="760" y="48" width="220" height="40" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="772" y="72" font-size="10" fill="var(--muted, #a89f90)">DAU</text>
+<path d="M640 230 C 700 230 700 68 760 68" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#presence-union-ab)"/>
+<rect x="760" y="104" width="220" height="40" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="772" y="128" font-size="10" fill="var(--muted, #a89f90)">weekly return</text>
+<path d="M640 230 C 700 230 700 124 760 124" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#presence-union-ab)"/>
+<rect x="760" y="160" width="220" height="40" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="772" y="184" font-size="10" fill="var(--muted, #a89f90)">engagement row</text>
+<path d="M640 230 C 700 230 700 180 760 180" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#presence-union-ab)"/>
+<rect x="760" y="216" width="220" height="40" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="772" y="240" font-size="10" fill="var(--muted, #a89f90)">retention by cohort</text>
+<path d="M640 230 C 700 230 700 236 760 236" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#presence-union-ab)"/>
+<rect x="760" y="272" width="220" height="40" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="772" y="296" font-size="10" fill="var(--muted, #a89f90)">definition-change marker</text>
+<path d="M640 230 C 700 230 700 292 760 292" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#presence-union-ab)"/>
+<rect x="760" y="328" width="220" height="40" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="772" y="352" font-size="10" fill="var(--muted, #a89f90)">app health</text>
+<path d="M640 230 C 700 230 700 348 760 348" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#presence-union-ab)"/>
+<text x="760" y="392" font-size="10" fill="var(--muted, #a89f90)">none reads a leg directly</text>
+</svg>

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 794" width="600" height="794" role="img" aria-label="The readiness horizon, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<rect width="600" height="794" fill="var(--surface, #1a2520)"/>
+<text x="48" y="68" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">WEEK</text>
+<text x="150" y="86" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">ROW</text>
+<text x="246" y="86" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">PARSED</text>
+<text x="342" y="86" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">FLOOR</text>
+<text x="438" y="86" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">RIGHTS</text>
+<text x="534" y="86" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">READY</text>
+<text x="48" y="117" font-size="10" fill="var(--muted, #a89f90)">+0</text>
+<rect x="104" y="96" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="96" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="96" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="96" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="96" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="157" font-size="10" fill="var(--muted, #a89f90)">+1</text>
+<rect x="104" y="136" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="136" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="136" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="136" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="136" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="197" font-size="10" fill="var(--muted, #a89f90)">+2</text>
+<rect x="104" y="176" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="176" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="176" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="176" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="176" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="237" font-size="10" fill="var(--muted, #a89f90)">+3</text>
+<rect x="104" y="216" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="216" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="216" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="216" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="216" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="277" font-size="10" fill="var(--muted, #a89f90)">+4</text>
+<rect x="104" y="256" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="256" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="256" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="256" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="256" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="317" font-size="10" fill="var(--muted, #a89f90)">+5</text>
+<rect x="104" y="296" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="296" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="296" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="296" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="296" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="357" font-size="10" fill="var(--muted, #a89f90)">+6</text>
+<rect x="104" y="336" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="336" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="336" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="336" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="336" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="397" font-size="10" fill="var(--muted, #a89f90)">+7</text>
+<rect x="104" y="376" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="376" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="376" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="376" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="376" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="437" font-size="10" fill="var(--muted, #a89f90)">+8</text>
+<rect x="104" y="416" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="416" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="416" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="416" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="416" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="477" font-size="10" fill="var(--muted, #a89f90)">+9</text>
+<rect x="104" y="456" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="456" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="456" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="392" y="456" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="456" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="48" y="537" font-size="10" fill="var(--muted, #a89f90)">+10</text>
+<rect x="104" y="516" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="516" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="516" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="342" y="535" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="392" y="516" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="516" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="48" y="577" font-size="10" fill="var(--muted, #a89f90)">+11</text>
+<rect x="104" y="556" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="200" y="556" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="296" y="556" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="342" y="575" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="392" y="556" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="556" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="48" y="617" font-size="10" fill="var(--muted, #a89f90)">+12</text>
+<rect x="104" y="596" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="150" y="615" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="200" y="596" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="246" y="615" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="296" y="596" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="342" y="615" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="392" y="596" width="92" height="30" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="488" y="596" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="48" y="657" font-size="10" fill="var(--muted, #a89f90)">+13</text>
+<rect x="104" y="636" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="150" y="655" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="200" y="636" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="246" y="655" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="296" y="636" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="342" y="655" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="392" y="636" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="488" y="636" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="48" y="697" font-size="10" fill="var(--muted, #a89f90)">+14</text>
+<rect x="104" y="676" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="150" y="695" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="200" y="676" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="246" y="695" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="296" y="676" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="342" y="695" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="392" y="676" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="488" y="676" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="48" y="737" font-size="10" fill="var(--muted, #a89f90)">+15</text>
+<rect x="104" y="716" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="150" y="735" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="200" y="716" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="246" y="735" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="296" y="716" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="342" y="735" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">missing</text>
+<rect x="392" y="716" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="488" y="716" width="92" height="30" fill="none" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="48" y1="506" x2="552" y2="506" stroke="var(--brass, #e0ae62)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="552" y="501" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">the horizon: the first week any segment is missing</text>
+</svg>

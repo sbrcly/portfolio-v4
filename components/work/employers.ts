@@ -1,9 +1,10 @@
 import type { StaticImageData } from "next/image";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
+import adminHub from "@/public/images/captures/admin-hub-1920@2x.png";
 import analyticsEngagement from "@/public/images/captures/analytics-engagement-16x10@2x.png";
-import pravaCockpit from "@/public/images/prava-cockpit.png";
-import pravaCommitmentLibrary from "@/public/images/prava-commitment-library.png";
-import pravaLectionaryTool from "@/public/images/prava-lectionary-tool.png";
+import commitmentsCommitment from "@/public/images/captures/commitments-commitment-16x10@2x.png";
+import lectionaryWeekReadings from "@/public/images/captures/lectionary-week-readings-16x10@2x.png";
+import promptLabHistoryDiff from "@/public/images/captures/prompt-lab-history-diff-16x10@2x.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
 import tradingSchedule from "@/public/images/trading-schedule.png";
@@ -257,7 +258,7 @@ const PRAVA_PAGE: SectionedPage = {
             {
               term: "AI",
               detail:
-                "Thirteen grounded surfaces, each reading versioned system prompts with snapshot-tested fallbacks",
+                "Eleven grounded surfaces (thirteen at launch), each reading versioned system prompts with snapshot-tested fallbacks",
             },
             {
               term: "Data",
@@ -295,7 +296,7 @@ const PRAVA_PAGE: SectionedPage = {
             },
             {
               title: "The process is the second engineer",
-              text: "Additive-only migrations so nothing is ever un-shippable. Snapshot-tested prompt fallbacks so an AI regression fails a test instead of a user. Features dark-shipped behind flags with written flip runbooks, so turning something on is a decision, not an event.",
+              text: "Additive-only migrations so nothing is ever un-shippable. Snapshot-tested prompt fallbacks so an AI regression fails a test instead of a user. Features dark-shipped behind flags with written flip runbooks, so turning something on is a decision, not an event. Placeholder. Much of it was built with AI agents under direction: discoveries and numbered rulings written down as they were made, and structural checks that pin what the agents produce.",
             },
           ],
         },
@@ -305,12 +306,25 @@ const PRAVA_PAGE: SectionedPage = {
       id: "back-office",
       number: "04",
       label: "The back office",
-      statement: "Eleven internal tools nobody sees.",
+      statement: "Twelve internal tools nobody sees.",
       body: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "The Prompt Lab versions every system prompt behind the thirteen AI surfaces and shows history, diffs, and drift between the database and the in-code fallback. The Profile Simulator builds a user from life contexts and runs the selection algorithm, scores included, so tuning the matcher takes an afternoon instead of a release cycle.",
+            [
+              "Twelve tools on one hub, over 140 admin routes, built and used by one person. The ",
+              { text: "Prompt Lab", href: "/work/prompt-lab" },
+              " versions the system prompts, voice fragments, and theology groundings behind the eleven governed surfaces (thirteen at launch) and shows history, diffs, and a flag when the live version has diverged from the shipped fallback. The Profile Simulator builds a user from life contexts and runs the selection algorithm, scores included, so tuning the matcher takes an afternoon instead of a release cycle.",
+            ],
+            [
+              "Four of the twelve have pages of their own: the Prompt Lab, the ",
+              { text: "analytics dashboard", href: "/work/analytics-dashboard" },
+              ", the ",
+              { text: "lectionary authoring tool", href: "/work/lectionary-authoring-tool" },
+              ", and the ",
+              { text: "commitment library", href: "/work/commitment-library" },
+              ".",
+            ],
           ],
         },
         {
@@ -319,10 +333,10 @@ const PRAVA_PAGE: SectionedPage = {
             {
               media: {
                 kind: "image",
-                src: pravaCockpit,
-                alt: "Prava's admin home: a grid of eleven internal tool cards including Analytics, Commitments, Memory Verse, Prayers and Creeds, Lectionary, Teaching, Discovery, Prompt Lab, and more.",
+                src: adminHub,
+                alt: "Prava's admin home, Tools for managing Prava: a grid of twelve internal tool cards, Analytics, Commitments, Memory Verse, Prayers and Creeds, Lectionary, Teaching, Discovery, Prompt Lab, AI Outputs, Target profiles, Paywall test, and Design system.",
               },
-              caption: "The cockpit: eleven tools, one stack.",
+              caption: "The hub: twelve tools, one stack.",
             },
           ],
         },
@@ -870,6 +884,402 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
   share: VENUE_STILL,
 };
 
+/** The back-office pages share a top row, a role, and a way back. */
+const BACK_OFFICE = "Prava's back office · one of twelve tools over 140 admin routes";
+const ONE_PERSON = "Built and used by one person";
+const INTERNAL = "Internal tool";
+
+const PROMPT_LAB_PAGE: SectionedPage = {
+  kind: INTERNAL,
+  fact: "Eleven AI surfaces",
+  lede: "Where the system prompts behind Prava's eleven AI surfaces are versioned, published, and checked against the code they would fall back to.",
+  spec: [
+    { label: "Role", value: ONE_PERSON },
+    {
+      label: "Stack",
+      value: "TypeScript · Next.js · Postgres with Prisma · Anthropic API",
+    },
+    { label: "Where", value: BACK_OFFICE },
+    { label: "Code", value: WALKTHROUGH },
+  ],
+  plate: {
+    media: {
+      kind: "image",
+      src: promptLabHistoryDiff,
+      alt: "The Prompt Lab's version history for the weekly-reflection surface, marked diverged: three versions, the newest active and the oldest the seed, with Edit from and Roll back actions, and a body diff between two versions of its system prompt, removed lines in red and added lines in green.",
+    },
+    caption:
+      "History and diff for one surface. Prompts and groundings may be shown; nothing of a person's is.",
+  },
+  sections: [
+    {
+      id: "does",
+      number: "01",
+      label: "What it does",
+      statement: "A prompt is a row before it is a string.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. Every governed AI surface in the app reads its system prompt through one resolver rather than from a constant. The resolver keys on the surface and the person's tradition, answers from a sixty-second cache when it can, and otherwise does one cold read under a time budget. The prompt is assembled from its parts: the surface's own text, a grounding chosen for the tradition, and the shared voice every surface speaks in.",
+            "Placeholder. If anything on that path fails, for any of nine named reasons, the call falls back to the in-code producer: the same prompt as shipped code, pinned byte for byte to the seeded prompts by snapshot checks. Either way the generation ledger is stamped with the version served or the reason it fell back, so a fallback is a fact in a table and not a guess.",
+          ],
+        },
+        {
+          kind: "facts",
+          facts: [
+            { term: "Surfaces", detail: "Eleven governed; thirteen at launch" },
+            {
+              term: "Identity",
+              detail: "A 143-cell matrix, one cell per surface and denomination",
+            },
+            {
+              term: "Cache",
+              detail: "Sixty seconds per key; one cold read under budget on a miss",
+            },
+            {
+              term: "Ledger",
+              detail:
+                "Every generation, with the version served or the reason it fell back",
+            },
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "prompt-read-path",
+                label:
+                  "The prompt read path: call site, resolver, sixty-second cache, cold read under budget, assembly, the nine-reason fallback to the in-code producer, and the ledger stamp.",
+              },
+              caption:
+                "The read path, and the fallback beside it. Brass is the ledger, the one thing every read touches.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "hard",
+      number: "02",
+      label: "What was hard",
+      statement: "Publishing one edit that eleven prompts can depend on.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. A prompt is an entity with a pointer to its published version; versions accumulate underneath and never change. One draft at a time is edited in place, diffed against what is published, and published by moving the pointer. A rollback is the same move pointed at an older version, which is why there is no undo to write.",
+            "Placeholder. The shared voice and the groundings are shared, so one edit can change what every surface says. When an edit fans out, publishing passes through an impact review that lists every dependent with what it reads now and what it will read after, and a digest of that review is checked again inside the publish, so what was reviewed is what ships. The history and diff on the plate is the same comparison, kept for every version.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "entity-version-pointer",
+                label:
+                  "The entity, version, pointer model: an entity with a pointer to its published version, versions appended beneath it, the draft to published state machine with rollback, and the impact review a fan-out edit passes through.",
+              },
+              caption:
+                "One pointer per entity; versions append; the impact review stands between a fan-out edit and publish.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  links: { note: WALKTHROUGH },
+};
+
+const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
+  kind: INTERNAL,
+  fact: "Demo data shown",
+  lede: "Where Prava's usage and its AI pipeline are measured rather than assumed, from one definition of presence that every widget reads.",
+  spec: [
+    { label: "Role", value: ONE_PERSON },
+    {
+      label: "Stack",
+      value: "TypeScript · Next.js · Postgres with Prisma · PostHog",
+    },
+    { label: "Where", value: BACK_OFFICE },
+    { label: "Code", value: WALKTHROUGH },
+  ],
+  plate: {
+    media: {
+      kind: "image",
+      src: analyticsEngagement,
+      alt: "The analytics dashboard's Daily Engagement chart for a month, demo data: a presence line with Sundays shaded, a dashed line above it, a dashed marker on 09-25 labelled Presence + activity ledger, and under it per-pillar practicing users stacked by Journal, People, Pray, and Scripture.",
+    },
+    caption: "Engagement, with the definition-change marker. Demo data.",
+  },
+  sections: [
+    {
+      id: "does",
+      number: "01",
+      label: "What it does",
+      statement: "Present means present on any of eight legs, once.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. Eight kinds of record can show that a person was there: the prayer and scripture logs, a journal entry, a Sunday reading, a weekday reading, a Bible chapter read to its end, a mark on a verse, a request to the people a person prays for, and the ledger of surfaces opened. Opening the app is not one of them. The dashboard folds all eight into one presence per person per day, and every widget on it reads that fold. None reads a leg directly; a source scan in the check chain fails if one tries.",
+            "Placeholder. The day is one day for everyone. Activity rows also carry a date written in the person's own timezone, and filtering on it silently drops anyone east of UTC, so the dashboard filters only true timestamps and buckets every one of them to a Pacific day before the union. Two timezone bugs taught it that.",
+          ],
+        },
+        {
+          kind: "facts",
+          facts: [
+            {
+              term: "Pipeline",
+              detail:
+                "The generation ledger read back as counts, outcomes, and median latency per AI surface",
+            },
+            {
+              term: "Markers",
+              detail:
+                "A definition change is drawn on the chart the day it lands; twenty-five are dated",
+            },
+            {
+              term: "Data",
+              detail:
+                "Demo data in every capture; the real figures stay off the internet",
+            },
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "presence-union",
+                label:
+                  "The presence union: eight legs, one per kind of record, bucketed to the Pacific day and folded into one presence per person per day, read by many widgets.",
+              },
+              caption:
+                "Eight legs, one fold, many widgets. The dashed box is the timezone step, which happens first.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "hard",
+      number: "02",
+      label: "What was hard",
+      statement: "Changing what a number means without lying about the past.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. When the definition of present widened from four sources to eight, every chart would have shown a jump that was not growth. The fix was a marker: the day the definition changed is drawn on the chart as a dashed line, the aggregate cards carry a chip, and the note is printed once under the view. Nothing is backfilled; history is kept broken at a dated line rather than rewritten.",
+            "Placeholder. The second hard part was showing the dashboard at all. A demo mode answers every route from one seeded synthetic world with a frozen clock, and a check script loads its modules with a database stand-in that throws on any access, so the captures on this page could not contain a real person if they tried.",
+          ],
+        },
+      ],
+    },
+  ],
+  links: { note: WALKTHROUGH },
+};
+
+const LECTIONARY_TOOL_PAGE: SectionedPage = {
+  kind: INTERNAL,
+  fact: "Two lectionary traditions",
+  lede: "Where the readings for the Church's week are entered, checked, and declared ready, for every day of the year across two lectionary traditions.",
+  spec: [
+    { label: "Role", value: ONE_PERSON },
+    { label: "Stack", value: "TypeScript · Next.js · Postgres with Prisma" },
+    { label: "Where", value: BACK_OFFICE },
+    { label: "Code", value: WALKTHROUGH },
+  ],
+  plate: {
+    media: {
+      kind: "image",
+      src: lectionaryWeekReadings,
+      alt: "The lectionary tool's week view: two Revised Common Lectionary weekday sets, A:P:22:MON and A:P:22:TUE, each with a first reading, a psalm, and a second reading as citations, every row with rights and active badges and an Edit button, and an Edit set button on each set.",
+    },
+    caption:
+      "Two weekdays' readings in one tradition. Citations and badges; no scripture text.",
+  },
+  sections: [
+    {
+      id: "does",
+      number: "01",
+      label: "What it does",
+      statement: "From a date to a set of readings, for any tradition.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. A date goes through two engines. The Sunday engine finds the season, the Sunday within it, and the year's cycle; the day engine builds the whole liturgical year, settles feasts on a thirteen-level precedence scale, and transfers one that lands on a day it cannot outrank. A Revised Common weekday keys to its nearest Sunday. The result is one slot key that names the day without naming the year, so a row written once serves every time the calendar comes round.",
+            "Placeholder. The person's tradition maps to an ordered list of lectionaries, Roman, Revised Common, or one and then the other, and the first with readings for that key wins. A day with none returns nothing rather than something wrong. Checks sweep every Sunday to 2034 in both traditions, and the day engine's check runs 9,002 assertions, one winner per day among them, so a change to either engine fails before it moves a feast.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "date-to-slot",
+                label:
+                  "The date-to-slot pipeline: date, Sunday engine, day engine with precedence and transfers, the Revised Common weekday's Sunday, a year-independent slot key, and the ordered list of lectionaries tried until one has readings.",
+              },
+              caption:
+                "Date to slot key to candidate chain. Brass is the first candidate with readings.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "hard",
+      number: "02",
+      label: "What was hard",
+      statement: "Knowing which week is actually ready.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. A week is not ready because its readings are named. A reading is ready when its row is active, its citation parses into verse ranges, the text of every range is cached in the floor translation the app can always show, and the rights to show it are cleared. The tool draws that as a horizon: how many consecutive weeks ahead are whole, and for each week what is missing, with the missing unit as the way in to fix it.",
+            "Placeholder. The horizon ends at the first week any unit is missing. Beyond it the app serves nothing for that day rather than a guess: the home card does not render, and the morning push has nothing to send. Text is fetched once at write time, under a provider's daily cap, so the read path never waits on anyone.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "readiness-horizon",
+                label:
+                  "The readiness horizon: sixteen weeks ahead as columns, a row each for an active row, parsed segments, the floor text cached, and rights cleared, and a Ready row filled only where every row above it is; a dashed line marks the first week with a unit missing.",
+              },
+              caption:
+                "Sixteen weeks ahead, four rows of requirements, and Ready. The dashed line is the horizon.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "holds",
+      number: "03",
+      label: "What holds it",
+      statement: "Two traditions, one key, 9,002 pinned days.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. The tool was built and is used by one person, and the readings, authored week by week, took longer than the engines. The precedence and transfer tables still carry a note that they await a pass against the missal, and the check scripts say so rather than hide it.",
+          ],
+        },
+        {
+          kind: "facts",
+          facts: [
+            {
+              term: "Readings",
+              detail:
+                "Authored week by week, Sundays and weekdays, as citations typed the way a missal prints them",
+            },
+            {
+              term: "Traditions",
+              detail:
+                "Two: the Roman Lectionary for Mass and the Revised Common Lectionary; each of the app's traditions maps to one or both",
+            },
+            {
+              term: "Assertions",
+              detail:
+                "9,002 in the day engine's check alone, run with every change",
+            },
+            {
+              term: "Rights",
+              detail: "Per reading, cleared before its week can be Ready",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  links: { note: WALKTHROUGH },
+};
+
+const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
+  kind: INTERNAL,
+  fact: "About four hundred acts",
+  lede: "The acts the app offers, about four hundred of them, written and kept in one place, with the funnel that chooses one.",
+  spec: [
+    { label: "Role", value: ONE_PERSON },
+    {
+      label: "Stack",
+      value: "TypeScript · Next.js · Postgres with Prisma · Anthropic API",
+    },
+    { label: "Where", value: BACK_OFFICE },
+    { label: "Code", value: WALKTHROUGH },
+  ],
+  plate: {
+    media: {
+      kind: "image",
+      src: commitmentsCommitment,
+      alt: "The commitment library's detail view for one act, Watch a young mom's kids for an hour: a painted image of a mother on the floor with two small children, Copy Details and Export JSON buttons, and the act's title, its category, Act of Faith, and its difficulty, Hard.",
+    },
+    caption:
+      "One act, as written and as kept. The pillar is out of the client; the library is not.",
+  },
+  sections: [
+    {
+      id: "does",
+      number: "01",
+      label: "What it does",
+      statement: "About four hundred acts, and the funnel that picks one.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. An act is a small, concrete commitment the app can offer: a thing to do today, in a category, at a difficulty, for a life context. The library holds about four hundred, each with its text, its steps, its tags, an approval status, and a preview of how it reads in the app. Drafting them is helped: a rough idea and a target profile go to the model and come back as a filled form, and a duplicate finder reads the approved rows for pairs that say the same thing.",
+            "Placeholder. Choosing one is the funnel. Eligibility, a split into universal acts and personalized ones, an exclusion of what was done lately or shown yesterday, hard gates on life context and the rest, a weighted score and its penalties, and a pick that takes the top act eighty-five times in a hundred and another at random otherwise. If all four of the day share a category the last is swapped out, and the set is cached per person per day and logged with its score sheet. The Profile Simulator on the Prava page replays this for a built person.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "selection-funnel",
+                label:
+                  "The selection funnel: eligibility, the split into universal and personalized pools, recency exclusion, hard gates, weighted score, penalties, the 85/15 pick, the diversity nudge, and the cache and log.",
+              },
+              caption: "Each stage removes; none adds. Brass is the pick.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "hard",
+      number: "02",
+      label: "What was hard",
+      statement:
+        "Removing a pillar from the client and keeping it on the server.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. The Act pillar was removed from the shipped client in July 2026. The server side remains: the library, the funnel, the logs, and this tool. The feature is returning.",
+            "Placeholder. Taking a pillar out without breaking what was built on it meant cutting the client and leaving the server whole: the backend ships ahead of the app, so an older build on someone's phone can still ask for its daily set and be answered. The schema is additive-only, so nothing was dropped; the client simply stopped asking. That is the decision the Prava page calls the process being the second engineer, applied in reverse.",
+          ],
+        },
+      ],
+    },
+  ],
+  links: { note: WALKTHROUGH },
+};
+
 export const EMPLOYERS: Employer[] = [
   {
     id: "01",
@@ -890,7 +1300,7 @@ export const EMPLOYERS: Employer[] = [
           screens: PRAVA_SCREENS.map(({ src, alt }) => ({ src, alt })),
         },
         sentence:
-          "An iOS prayer and scripture app built around the Church's week rather than a streak. Thirteen AI surfaces read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.",
+          "An iOS prayer and scripture app built around the Church's week rather than a streak. Eleven AI surfaces (thirteen at launch) read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.",
         stack: {
           items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
         },
@@ -901,27 +1311,27 @@ export const EMPLOYERS: Employer[] = [
       {
         id: "prompt-lab",
         slug: "prompt-lab",
-        depth: "note",
+        depth: "standard",
+        page: PROMPT_LAB_PAGE,
         name: "Prompt Lab",
         detail: "back office · internal",
         plate: {
           kind: "image",
-          src: pravaPromptLab,
-          alt: "The Prompt Lab: versioned system prompt surfaces with history, diffs, and drift between database and in-code fallback.",
+          src: promptLabHistoryDiff,
+          alt: "The Prompt Lab's history and diff view for one surface: its versions listed, the active one marked, and a diff between two of them.",
         },
         placeholder: true,
         sentence:
           "Where Prava's prompts are versioned and checked against their fallbacks.",
-        // Prava's stack, assumed shared.
         stack: {
-          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
-          placeholder: true,
+          items: ["TypeScript", "Next.js", "Postgres", "Anthropic API"],
         },
       },
       {
         id: "analytics-dashboard",
         slug: "analytics-dashboard",
-        depth: "note",
+        depth: "standard",
+        page: ANALYTICS_DASHBOARD_PAGE,
         name: "Analytics dashboard",
         detail: "back office · internal",
         plate: {
@@ -933,50 +1343,40 @@ export const EMPLOYERS: Employer[] = [
         sentence:
           "Where Prava's usage and AI cost are measured rather than assumed.",
         note: "demo data",
-        // Prava's stack, assumed shared.
-        stack: {
-          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
-          placeholder: true,
-        },
+        stack: { items: ["TypeScript", "Next.js", "Postgres", "PostHog"] },
       },
       {
         id: "lectionary-authoring-tool",
         slug: "lectionary-authoring-tool",
-        depth: "note",
+        depth: "standard",
+        page: LECTIONARY_TOOL_PAGE,
         name: "Lectionary authoring tool",
         detail: "back office · internal",
         plate: {
           kind: "image",
-          src: pravaLectionaryTool,
-          alt: "The Lectionary authoring tool: Sundays from Ordinary Time into Advent with their authoring status, filters for tradition and cycle, an RCL rights switch, and a week's readings, each with rights and active badges and an Edit button.",
+          src: lectionaryWeekReadings,
+          alt: "The lectionary authoring tool's week view: two weekday sets of readings as citations, each row with rights and active badges and an Edit button.",
         },
         placeholder: true,
         sentence:
           "Where the readings for the Church's week are entered and checked.",
-        // Prava's stack, assumed shared.
-        stack: {
-          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
-          placeholder: true,
-        },
+        stack: { items: ["TypeScript", "Next.js", "Postgres"] },
       },
       {
         id: "commitment-library",
         slug: "commitment-library",
-        depth: "note",
+        depth: "standard",
+        page: COMMITMENT_LIBRARY_PAGE,
         name: "Commitment library",
         detail: "back office · internal",
         plate: {
           kind: "image",
-          src: pravaCommitmentLibrary,
-          alt: "The Commitment library: 488 commitments in a table with filters for category, difficulty, personality, focus area, approval status and life context, each row with its title, description, category, difficulty, image, and edit, preview and delete actions.",
+          src: commitmentsCommitment,
+          alt: "The commitment library open on one act: its image, its title, its category, and its difficulty.",
         },
         placeholder: true,
         sentence: "The commitments the app offers, written and kept in one place.",
-        // Prava's stack, assumed shared.
-        stack: {
-          items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
-          placeholder: true,
-        },
+        stack: { items: ["TypeScript", "Next.js", "Postgres", "Anthropic API"] },
       },
     ],
   },

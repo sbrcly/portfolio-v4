@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1048" width="600" height="1048" role="img" aria-label="The selection funnel, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="selection-funnel-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="selection-funnel-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="1048" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="72" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">ELIGIBILITY</text>
+<text x="64" y="96" font-size="12" fill="var(--muted, #a89f90)">about 400 acts; approved, active, curated; nothing</text>
+<text x="64" y="112" font-size="12" fill="var(--muted, #a89f90)">seasonal</text>
+<line x1="300" y1="136" x2="300" y2="172" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="172" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="196" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">POOL SPLIT</text>
+<text x="64" y="220" font-size="12" fill="var(--muted, #a89f90)">two pools: universal acts and personalized ones</text>
+<line x1="300" y1="244" x2="300" y2="280" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="280" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="304" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">RECENCY EXCLUSION</text>
+<text x="64" y="328" font-size="12" fill="var(--muted, #a89f90)">done lately, or shown yesterday, is out</text>
+<line x1="300" y1="352" x2="300" y2="388" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="388" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="412" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">HARD GATES</text>
+<text x="64" y="436" font-size="12" fill="var(--muted, #a89f90)">life context, church, age, gender, required activity</text>
+<line x1="300" y1="460" x2="300" y2="496" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="496" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="520" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">WEIGHTED SCORE</text>
+<text x="64" y="544" font-size="12" fill="var(--muted, #a89f90)">category, personality, barriers, focus, journey</text>
+<line x1="300" y1="568" x2="300" y2="604" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="604" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="628" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">PENALTIES</text>
+<text x="64" y="652" font-size="12" fill="var(--muted, #a89f90)">shown, not chosen: minus three each</text>
+<line x1="300" y1="676" x2="300" y2="712" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="712" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="736" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">85 / 15 PICK</text>
+<text x="64" y="760" font-size="12" fill="var(--muted, #a89f90)">the top act 85 times in 100; another at random</text>
+<line x1="300" y1="784" x2="300" y2="820" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#selection-funnel-tall-ab)"/>
+<rect x="48" y="820" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="844" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">DIVERSITY NUDGE</text>
+<text x="64" y="868" font-size="12" fill="var(--muted, #a89f90)">four of one category: the last is swapped out</text>
+<line x1="300" y1="892" x2="300" y2="928" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-tall-a)"/>
+<rect x="48" y="928" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="952" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">CACHE AND LOG</text>
+<text x="64" y="976" font-size="12" fill="var(--muted, #a89f90)">one answer per person per day; the score sheet kept</text>
+</svg>

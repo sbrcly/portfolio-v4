@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-label="The prompt read path: a call site asks the resolver; a sixty-second cache answers or a cold read runs within its budget; the prompt is assembled from its parts; any of nine reasons sends the call to the in-code producer instead; either way the ledger is stamped with what was served and why." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="prompt-read-path-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="prompt-read-path-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="460" fill="var(--surface, #1a2520)"/>
+<rect x="60" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="72" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">CALL SITE</text>
+<text x="72" y="158" font-size="10" fill="var(--muted, #a89f90)">one of eleven AI</text>
+<text x="72" y="173" font-size="10" fill="var(--muted, #a89f90)">surfaces asks for its</text>
+<text x="72" y="188" font-size="10" fill="var(--muted, #a89f90)">prompt</text>
+<line x1="230" y1="175" x2="242" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="242" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="254" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">RESOLVER</text>
+<text x="254" y="158" font-size="10" fill="var(--muted, #a89f90)">by surface key and the</text>
+<text x="254" y="173" font-size="10" fill="var(--muted, #a89f90)">person's tradition</text>
+<line x1="412" y1="175" x2="424" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="424" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="436" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">CACHE · 60 S</text>
+<text x="436" y="158" font-size="10" fill="var(--muted, #a89f90)">a hit answers here; a</text>
+<text x="436" y="173" font-size="10" fill="var(--muted, #a89f90)">miss goes cold</text>
+<line x1="594" y1="175" x2="606" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="606" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="618" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">COLD READ</text>
+<text x="618" y="158" font-size="10" fill="var(--muted, #a89f90)">one query, under a</text>
+<text x="618" y="173" font-size="10" fill="var(--muted, #a89f90)">time budget</text>
+<line x1="776" y1="175" x2="788" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="788" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="800" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">ASSEMBLY</text>
+<text x="800" y="158" font-size="10" fill="var(--muted, #a89f90)">the body, a grounding</text>
+<text x="800" y="173" font-size="10" fill="var(--muted, #a89f90)">for the tradition, the</text>
+<text x="800" y="188" font-size="10" fill="var(--muted, #a89f90)">shared voice</text>
+<line x1="958" y1="175" x2="970" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="970" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="982" y="134" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">LEDGER STAMP</text>
+<text x="982" y="158" font-size="10" fill="var(--muted, #a89f90)">version served or</text>
+<text x="982" y="173" font-size="10" fill="var(--muted, #a89f90)">fallback reason,</text>
+<text x="982" y="188" font-size="10" fill="var(--muted, #a89f90)">outcome, latency</text>
+<rect x="606" y="310" width="352" height="96" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="618" y="334" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">IN-CODE PRODUCER</text>
+<text x="618" y="358" font-size="10" fill="var(--muted, #a89f90)">the fallback: the same prompt as shipped code,</text>
+<text x="618" y="373" font-size="10" fill="var(--muted, #a89f90)">snapshot-tested against the seeded prompts</text>
+<path d="M691 240 L691 310" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-a)" stroke-dasharray="3 3"/>
+<path d="M873 240 L873 310" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-a)" stroke-dasharray="3 3"/>
+<path d="M958 358 L1055 358 L1055 240" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#prompt-read-path-ab)"/>
+<text x="60" y="322" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">NINE REASONS TO FALL BACK</text>
+<line x1="60" y1="340" x2="60" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="82" y1="340" x2="82" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="104" y1="340" x2="104" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="126" y1="340" x2="126" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="148" y1="340" x2="148" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="170" y1="340" x2="170" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="192" y1="340" x2="192" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="214" y1="340" x2="214" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<line x1="236" y1="340" x2="236" y2="356" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<text x="60" y="378" font-size="10" fill="var(--muted, #a89f90)">each one named on the ledger row;</text>
+<text x="60" y="393" font-size="10" fill="var(--muted, #a89f90)">a fallback is a fact, not a guess</text>
+<text x="60" y="86" font-size="10" fill="var(--lit, #f3c77e)">the read path</text>
+<text x="606" y="298" font-size="10" fill="var(--lit, #f3c77e)">the fallback</text>
+</svg>

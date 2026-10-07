@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-label="The date-to-slot pipeline: a date goes to the Sunday engine or the day engine, where precedence and transfers are settled; a Revised Common weekday keys to its Sunday; a year-independent slot key names the day; the person's tradition gives an ordered list of lectionaries, tried until one has readings." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<rect width="1200" height="460" fill="var(--surface, #1a2520)"/>
+<rect x="60" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="72" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">DATE</text>
+<text x="72" y="158" font-size="10" fill="var(--muted, #a89f90)">any calendar day, in</text>
+<text x="72" y="173" font-size="10" fill="var(--muted, #a89f90)">the person's timezone</text>
+<line x1="230" y1="175" x2="242" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="242" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="254" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">SUNDAY ENGINE</text>
+<text x="254" y="158" font-size="10" fill="var(--muted, #a89f90)">the season and the</text>
+<text x="254" y="173" font-size="10" fill="var(--muted, #a89f90)">Sunday within it</text>
+<line x1="412" y1="175" x2="424" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="424" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="436" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">DAY ENGINE</text>
+<text x="436" y="158" font-size="10" fill="var(--muted, #a89f90)">feasts by precedence;</text>
+<text x="436" y="173" font-size="10" fill="var(--muted, #a89f90)">transfers when two</text>
+<text x="436" y="188" font-size="10" fill="var(--muted, #a89f90)">land together</text>
+<line x1="594" y1="175" x2="606" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="606" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="618" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">RCL ANCHOR</text>
+<text x="618" y="158" font-size="10" fill="var(--muted, #a89f90)">a weekday keys to its</text>
+<text x="618" y="173" font-size="10" fill="var(--muted, #a89f90)">Sunday: back to Wed,</text>
+<line x1="776" y1="175" x2="788" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="788" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="800" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">SLOT KEY</text>
+<text x="800" y="158" font-size="10" fill="var(--muted, #a89f90)">one year-independent</text>
+<text x="800" y="173" font-size="10" fill="var(--muted, #a89f90)">key that names the</text>
+<text x="800" y="188" font-size="10" fill="var(--muted, #a89f90)">day; rows are reused</text>
+<line x1="958" y1="175" x2="970" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="970" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="982" y="134" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">CANDIDATE CHAIN</text>
+<text x="982" y="158" font-size="10" fill="var(--muted, #a89f90)">the person's tradition</text>
+<text x="982" y="173" font-size="10" fill="var(--muted, #a89f90)">maps to an ordered</text>
+<text x="982" y="188" font-size="10" fill="var(--muted, #a89f90)">list of lectionaries</text>
+<rect x="818" y="320" width="68" height="44" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="852" y="347" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">first</text>
+<line x1="886" y1="342" x2="894" y2="342" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="894" y="320" width="68" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="928" y="347" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">second</text>
+<line x1="962" y1="342" x2="970" y2="342" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="970" y="320" width="68" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="1004" y="347" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">third</text>
+<line x1="1038" y1="342" x2="1046" y2="342" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="1046" y="320" width="68" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="1080" y="347" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">none</text>
+<text x="818" y="308" font-size="10" fill="var(--lit, #f3c77e)">tried in order; the first with readings wins</text>
+<path d="M1055 240 L1055 292" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="242" y="320" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">PRECEDENCE</text>
+<text x="242" y="342" font-size="10" fill="var(--muted, #a89f90)">a feast outranks the Sunday or it does not; a feast</text>
+<text x="242" y="357" font-size="10" fill="var(--muted, #a89f90)">on a Sunday it cannot outrank moves to the next</text>
+<text x="242" y="372" font-size="10" fill="var(--muted, #a89f90)">free day: a transfer. Both engines agree on the key.</text>
+<text x="60" y="86" font-size="10" fill="var(--lit, #f3c77e)">9,002 assertions pin the day engine: one winner per day</text>
+</svg>

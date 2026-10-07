@@ -124,12 +124,15 @@
 }
 
 .spec a,
+.body a,
 .links a {
   text-decoration-color: var(--rule);
 }
 
 .spec a:hover,
 .spec a:focus-visible,
+.body a:hover,
+.body a:focus-visible,
 .links a:hover,
 .links a:focus-visible {
   text-decoration-color: currentColor;

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 772" width="600" height="772" role="img" aria-label="The entity, version, pointer model, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="entity-version-pointer-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="entity-version-pointer-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="772" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="72" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">ENTITY</text>
+<text x="64" y="96" font-size="12" fill="var(--muted, #a89f90)">one surface, one fragment, one grounding; it holds the</text>
+<text x="64" y="112" font-size="12" fill="var(--muted, #a89f90)">pointer</text>
+<line x1="300" y1="136" x2="300" y2="172" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#entity-version-pointer-tall-a)"/>
+<rect x="48" y="172" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="196" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">VERSIONS, APPEND-ONLY</text>
+<text x="64" y="220" font-size="12" fill="var(--muted, #a89f90)">v1, v2 superseded; v3 published; v4 draft. Rows</text>
+<text x="64" y="236" font-size="12" fill="var(--muted, #a89f90)">never change</text>
+<line x1="300" y1="260" x2="300" y2="296" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#entity-version-pointer-tall-a)"/>
+<rect x="48" y="296" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="320" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">DRAFT</text>
+<text x="64" y="344" font-size="12" fill="var(--muted, #a89f90)">edited in place; a roll back publishes any older</text>
+<text x="64" y="360" font-size="12" fill="var(--muted, #a89f90)">version</text>
+<line x1="300" y1="384" x2="300" y2="420" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#entity-version-pointer-tall-a)"/>
+<rect x="48" y="420" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="444" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">IN REVIEW</text>
+<text x="64" y="468" font-size="12" fill="var(--muted, #a89f90)">the diff against what is published</text>
+<line x1="300" y1="492" x2="300" y2="528" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#entity-version-pointer-tall-a)"/>
+<rect x="48" y="528" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="64" y="552" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">IMPACT REVIEW</text>
+<text x="64" y="576" font-size="12" fill="var(--muted, #a89f90)">when the edit fans out: every dependent, before and</text>
+<text x="64" y="592" font-size="12" fill="var(--muted, #a89f90)">after, with a digest that binds publish to the review</text>
+<text x="536" y="552" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">fan-out</text>
+<line x1="300" y1="616" x2="300" y2="652" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#entity-version-pointer-tall-ab)"/>
+<rect x="48" y="652" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="676" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">PUBLISHED</text>
+<text x="64" y="700" font-size="12" fill="var(--muted, #a89f90)">the pointer moves here; nothing else moves</text>
+</svg>

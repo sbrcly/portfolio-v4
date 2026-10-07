@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 832" width="600" height="832" role="img" aria-label="The prompt read path, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="prompt-read-path-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="prompt-read-path-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="832" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="72" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">CALL SITE</text>
+<text x="64" y="96" font-size="12" fill="var(--muted, #a89f90)">one of eleven AI surfaces asks for its prompt</text>
+<line x1="300" y1="120" x2="300" y2="156" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-tall-a)"/>
+<rect x="48" y="156" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="180" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">RESOLVER</text>
+<text x="64" y="204" font-size="12" fill="var(--muted, #a89f90)">by surface key and the person's tradition</text>
+<line x1="300" y1="228" x2="300" y2="264" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-tall-a)"/>
+<rect x="48" y="264" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="288" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">CACHE · 60 S</text>
+<text x="64" y="312" font-size="12" fill="var(--muted, #a89f90)">a hit answers here; a miss goes cold</text>
+<text x="536" y="288" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">60 s</text>
+<line x1="300" y1="336" x2="300" y2="372" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-tall-a)"/>
+<rect x="48" y="372" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="396" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">COLD READ</text>
+<text x="64" y="420" font-size="12" fill="var(--muted, #a89f90)">one query, under a time budget</text>
+<text x="536" y="396" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">cold-read budget</text>
+<line x1="300" y1="444" x2="300" y2="480" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-tall-a)"/>
+<rect x="48" y="480" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="504" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">ASSEMBLY</text>
+<text x="64" y="528" font-size="12" fill="var(--muted, #a89f90)">the body, a grounding for the tradition, the shared voice</text>
+<line x1="300" y1="552" x2="300" y2="588" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#prompt-read-path-tall-a)"/>
+<rect x="48" y="588" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="64" y="612" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">IN-CODE PRODUCER</text>
+<text x="64" y="636" font-size="12" fill="var(--muted, #a89f90)">nine reasons send the call here; the prompt as</text>
+<text x="64" y="652" font-size="12" fill="var(--muted, #a89f90)">shipped code, snapshot-tested against the seed</text>
+<line x1="300" y1="676" x2="300" y2="712" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#prompt-read-path-tall-ab)"/>
+<rect x="48" y="712" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="736" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">LEDGER STAMP</text>
+<text x="64" y="760" font-size="12" fill="var(--muted, #a89f90)">version served or fallback reason, outcome, latency</text>
+</svg>

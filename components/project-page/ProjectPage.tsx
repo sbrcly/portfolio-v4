@@ -48,6 +48,11 @@ function Text({ children }: { children: Rich }) {
       part
     ) : "em" in part ? (
       <em key={index}>{part.em}</em>
+    ) : part.href.startsWith("/") ? (
+      // Another page here: no new tab.
+      <Link key={index} href={part.href}>
+        {part.text}
+      </Link>
     ) : (
       <a key={index} href={part.href} target="_blank" rel="noopener">
         {part.text}

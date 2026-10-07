@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-label="The selection funnel: about four hundred acts pass eligibility, split into universal and personalized pools, lose what was done lately or shown yesterday, pass the hard gates, take a weighted score and its penalties, and one is picked, the best eighty-five times in a hundred and another at random otherwise; a diversity nudge swaps out a fourth of one category, and the set is cached and logged." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="selection-funnel-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="selection-funnel-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="460" fill="var(--surface, #1a2520)"/>
+<rect x="60" y="36" width="560" height="46" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="72" y="56" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">ELIGIBILITY</text>
+<text x="72" y="71" font-size="10" fill="var(--muted, #a89f90)">about 400 acts; approved, active, curated; nothing seasonal</text>
+<line x1="340" y1="82" x2="340" y2="90" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="90" y="90" width="500" height="46" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="102" y="110" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">POOL SPLIT</text>
+<text x="102" y="125" font-size="10" fill="var(--muted, #a89f90)">two pools: universal acts and personalized ones</text>
+<line x1="340" y1="136" x2="340" y2="144" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="120" y="144" width="440" height="46" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="132" y="164" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">RECENCY EXCLUSION</text>
+<text x="132" y="179" font-size="10" fill="var(--muted, #a89f90)">done lately, or shown yesterday, is out</text>
+<line x1="340" y1="190" x2="340" y2="198" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="150" y="198" width="380" height="46" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="162" y="218" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">HARD GATES</text>
+<text x="162" y="233" font-size="10" fill="var(--muted, #a89f90)">life context, church, age, gender, required activity</text>
+<line x1="340" y1="244" x2="340" y2="252" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="180" y="252" width="320" height="46" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="192" y="272" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">WEIGHTED SCORE</text>
+<text x="192" y="287" font-size="10" fill="var(--muted, #a89f90)">category, personality, barriers, focus, journey</text>
+<line x1="340" y1="298" x2="340" y2="306" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="210" y="306" width="260" height="46" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="222" y="326" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">PENALTIES</text>
+<text x="222" y="341" font-size="10" fill="var(--muted, #a89f90)">shown, not chosen: minus three each</text>
+<line x1="340" y1="352" x2="340" y2="360" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+<rect x="190" y="360" width="300" height="46" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="202" y="380" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">85 / 15 PICK</text>
+<text x="202" y="395" font-size="10" fill="var(--muted, #a89f90)">the top act 85 in 100; another at random</text>
+<rect x="680" y="340" width="220" height="80" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="692" y="364" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">DIVERSITY NUDGE</text>
+<text x="692" y="388" font-size="10" fill="var(--muted, #a89f90)">four of one category: the</text>
+<text x="692" y="403" font-size="10" fill="var(--muted, #a89f90)">last is swapped out</text>
+<rect x="940" y="340" width="220" height="80" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="952" y="364" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">CACHE AND LOG</text>
+<text x="952" y="388" font-size="10" fill="var(--muted, #a89f90)">one answer per person</text>
+<text x="952" y="403" font-size="10" fill="var(--muted, #a89f90)">per day; the score sheet kept</text>
+<path d="M490 383 L680 380" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#selection-funnel-ab)"/>
+<line x1="900" y1="380" x2="940" y2="380" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-a)"/>
+<path d="M790 340 C 790 220 640 160 622 59" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#selection-funnel-a)" stroke-dasharray="3 3"/>
+<text x="800" y="300" font-size="10" fill="var(--muted, #a89f90)">reshapes the set</text>
+<text x="760" y="60" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">THE FUNNEL</text>
+<text x="760" y="84" font-size="10" fill="var(--muted, #a89f90)">each stage removes; none adds.</text>
+<text x="760" y="99" font-size="10" fill="var(--muted, #a89f90)">the simulator replays this with a built person</text>
+<text x="760" y="114" font-size="10" fill="var(--muted, #a89f90)">and shows the score sheet, so tuning takes</text>
+<text x="760" y="129" font-size="10" fill="var(--muted, #a89f90)">an afternoon instead of a release.</text>
+</svg>

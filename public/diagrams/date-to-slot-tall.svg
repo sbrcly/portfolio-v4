@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 724" width="600" height="724" role="img" aria-label="The date-to-slot pipeline, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="date-to-slot-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="date-to-slot-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="724" fill="var(--surface, #1a2520)"/>
+<rect x="48" y="48" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="72" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">DATE</text>
+<text x="64" y="96" font-size="12" fill="var(--muted, #a89f90)">any calendar day, in the person's timezone</text>
+<line x1="300" y1="120" x2="300" y2="156" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#date-to-slot-tall-a)"/>
+<rect x="48" y="156" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="180" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">SUNDAY ENGINE</text>
+<text x="64" y="204" font-size="12" fill="var(--muted, #a89f90)">the season and the Sunday within it</text>
+<line x1="300" y1="228" x2="300" y2="264" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#date-to-slot-tall-a)"/>
+<rect x="48" y="264" width="504" height="88" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="288" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">DAY ENGINE</text>
+<text x="64" y="312" font-size="12" fill="var(--muted, #a89f90)">feasts by precedence; transfers when two land</text>
+<text x="64" y="328" font-size="12" fill="var(--muted, #a89f90)">together</text>
+<text x="536" y="288" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">precedence · transfers</text>
+<line x1="300" y1="352" x2="300" y2="388" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#date-to-slot-tall-a)"/>
+<rect x="48" y="388" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="412" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">RCL ANCHOR</text>
+<text x="64" y="436" font-size="12" fill="var(--muted, #a89f90)">a weekday keys to its Sunday: back to Wed, forward from Thu</text>
+<line x1="300" y1="460" x2="300" y2="496" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#date-to-slot-tall-a)"/>
+<rect x="48" y="496" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="520" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">SLOT KEY</text>
+<text x="64" y="544" font-size="12" fill="var(--muted, #a89f90)">one year-independent key that names the day; rows are reused</text>
+<line x1="300" y1="568" x2="300" y2="604" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#date-to-slot-tall-a)"/>
+<rect x="48" y="604" width="504" height="72" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="628" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">CANDIDATE CHAIN</text>
+<text x="64" y="652" font-size="12" fill="var(--muted, #a89f90)">the person's tradition maps to an ordered list of lectionaries</text>
+<text x="536" y="628" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="end">first with readings wins</text>
+</svg>
