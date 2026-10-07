@@ -1322,7 +1322,7 @@ export const EMPLOYERS: Employer[] = [
         name: "Prava",
         detail: "iOS",
         rating: 5.0,
-        ratingCount: 51,
+        ratingCount: 52,
         plate: {
           kind: "screens",
           screens: PRAVA_SCREENS.map(({ src, alt }) => ({ src, alt })),
