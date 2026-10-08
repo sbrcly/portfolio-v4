@@ -12,6 +12,12 @@ type Props = {
   statement?: string;
   /** The statement is the page's h1, and a name. */
   titled?: boolean;
+  /**
+   * The statement is what the running margin reads the chapter by, on a
+   * page read that way: it carries the chapter's timeline (data-chapter-edge,
+   * globals.css).
+   */
+  edge?: boolean;
   children?: React.ReactNode;
 };
 
@@ -20,6 +26,7 @@ export default function ChapterOpener({
   headingId,
   statement,
   titled = false,
+  edge = false,
   children,
 }: Props) {
   const Statement = titled ? "h1" : "p";
@@ -39,6 +46,7 @@ export default function ChapterOpener({
                 titled ? `${styles.statement} ${styles.name}` : styles.statement
               }
               data-cascade=""
+              data-chapter-edge={edge ? "" : undefined}
             >
               {statement}
             </Statement>

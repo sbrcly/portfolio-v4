@@ -19,6 +19,13 @@ export type { IndexEmployer, MarginChapter };
 // link, a reload mid-page), not a handover: it swaps without animating.
 const LOAD_MS = 300;
 
+// The banded head's line, as a fraction of the viewport's height, and the
+// scroll over which a section arrives at it, or the page ends: the same as
+// margin.module.css (36svh and 120px), for the script that stands in for
+// the timelines.
+const LINE = 0.36;
+const BAND = 120;
+
 /**
  * The running margin: the current chapter's numeral and label pinned beside
  * the measure, the numeral's top edge on the top line under the frame.
@@ -35,14 +42,23 @@ const LOAD_MS = 300;
  * chapter's weight, so the numeral is centered in every font and at every
  * size without measuring anything.
  *
- * Only a chapter with nothing to show is timed: the margin fades out in it
- * and back in after it. A page with no chapters to read (a Note, whose
- * array is empty) never shows the head at all; the icons keep their place.
+ * Where the chapters turn is the page's (turn). On the home page a chapter
+ * is current from its top on the viewport's midline and the numeral turns
+ * over the viewport of scroll around that, with a chapter that has nothing
+ * to show timed: the margin fades out in it and back in after it. On a
+ * project page the chapters are read by their statements (data-chapter-edge)
+ * against a line 36svh down the viewport, the numeral turning over the
+ * 120px of scroll before each statement reaches it, and nothing is timed:
+ * the blank title block before the first section is the head itself fading
+ * in on the first section's boundary (margin.module.css, the banded head).
+ * A page with no chapters to read (a Note, whose array is empty) never
+ * shows the head at all; the icons keep their place.
  *
  * Numeral and label are decorative and hidden from assistive
  * technology. The icon links are not: they are read, focused, and clicked.
  * They stand in a row from the column's edge and never move: pinned where
- * they clear the footer by 40px when the page ends.
+ * they clear the footer by 40px when the page ends. A page can leave them
+ * to its footer instead (icons), as the project pages do.
  *
  * On the home page the margin also holds the Work index (WorkIndex.tsx),
  * under the label while chapter II is current. It comes after the icons, so
@@ -51,38 +67,59 @@ const LOAD_MS = 300;
 export default function Margin({
   chapters,
   index,
+  turn = "top",
+  icons = true,
 }: {
   chapters: MarginChapter[];
   /** The Work index's lines. The page's second chapter must be the work. */
   index?: IndexEmployer[];
+  /**
+   * What a chapter is read by: its own top, on the viewport's midline, or
+   * its statement (data-chapter-edge), on the line 36svh down.
+   */
+  turn?: "top" | "statement";
+  /** Whether the icon links stand in the margin; the footer has them else. */
+  icons?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const head = useRef<HTMLDivElement>(null);
   const nav = useRef<HTMLElement>(null);
   const plan = useMemo(() => planMargin(chapters), [chapters]);
+  const banded = turn === "statement";
+  // Banded: the chapter the head first has something for, if blank ones
+  // come before it, whose boundary is the head's own presence; and the last
+  // chapter, which the page's end brings in.
+  const shown = plan.chapters[0]
+    ? chapters.findIndex((chapter) => chapter.id === plan.chapters[0].id)
+    : -1;
+  const last = chapters.length - 1;
 
   useEffect(() => {
     const rootEl = root.current;
     const headEl = head.current;
     if (!rootEl || !headEl) return;
 
-    const mounted = performance.now();
-    const loading = () => performance.now() - mounted < LOAD_MS;
-    const onChapter = () => {
-      const empty = !plan.chapters.some(
-        (chapter) => chapter.id === getCurrentChapter()
-      );
-      if (empty === (headEl.dataset.blank === "true")) return;
-      if (loading()) headEl.dataset.phase = "load";
-      headEl.dataset.blank = String(empty);
-      if (headEl.dataset.phase) {
-        // Commit the swap before transitions come back.
-        void headEl.offsetWidth;
-        delete headEl.dataset.phase;
-      }
-    };
-    const unsubscribeChapter = subscribeChapter(onChapter);
-    onChapter();
+    // Timed, by the current chapter: the head out of and into a blank one.
+    let unsubscribeChapter: (() => void) | undefined;
+    if (!banded) {
+      const mounted = performance.now();
+      const loading = () => performance.now() - mounted < LOAD_MS;
+      const onChapter = () => {
+        const empty = !plan.chapters.some(
+          (chapter) => chapter.id === getCurrentChapter()
+        );
+        if (empty === (headEl.dataset.blank === "true")) return;
+        if (loading()) headEl.dataset.phase = "load";
+        headEl.dataset.blank = String(empty);
+        if (headEl.dataset.phase) {
+          // Commit the swap before transitions come back.
+          void headEl.offsetWidth;
+          delete headEl.dataset.phase;
+        }
+      };
+      unsubscribeChapter = subscribeChapter(onChapter);
+      onChapter();
+    }
 
     // Without view timelines, the boundaries' progress is written here, by
     // the rules in margin.module.css: the lead on the outgoing chapter, the
@@ -110,7 +147,31 @@ export default function Margin({
         }
       };
 
-      stopFrames = onScrollFrame(() => {
+      // Banded: each section's statement over the band up to the line, and
+      // the last section over the page's last 120px as well.
+      if (banded) {
+        const edges = sections.map((section) =>
+          section.querySelector<HTMLElement>("[data-chapter-edge]")
+        );
+        stopFrames = onScrollFrame(() => {
+          const height = window.innerHeight;
+          const scroller = document.documentElement;
+          const end = scroller.scrollHeight - scroller.clientHeight;
+          const foot = within(window.scrollY, end - BAND, end);
+          edges.forEach((edge, index) => {
+            if (!edge) return;
+            const top = edge.getBoundingClientRect().top;
+            const reach = within(height * LINE - top, -BAND, 0);
+            const progress = Math.max(reach, index === last ? foot : 0);
+            write(
+              `--boundary-${index}`,
+              reduced.matches ? Math.floor(progress) : progress
+            );
+          });
+        });
+      }
+
+      if (!banded) stopFrames = onScrollFrame(() => {
         const height = window.innerHeight;
         const half = height / 2;
         const scroller = document.documentElement;
@@ -166,11 +227,11 @@ export default function Margin({
     const stopIndex = nav.current ? followWork(nav.current) : undefined;
 
     return () => {
-      unsubscribeChapter();
+      unsubscribeChapter?.();
       stopFrames?.();
       stopIndex?.();
     };
-  }, [plan]);
+  }, [banded, last, plan]);
 
   const glyphs = plan.glyphs.map(({ char, before, opacity, width }, index) => (
     <span key={index} className={styles.run}>
@@ -203,22 +264,39 @@ export default function Margin({
   return (
     <div
       ref={root}
-      className={index ? `${styles.margin} ${styles.indexed}` : styles.margin}
+      className={[
+        styles.margin,
+        index && styles.indexed,
+        banded && styles.banded,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={
-        index &&
-        ({
-          "--index-employers": index.length,
-          "--index-tallest": Math.max(
-            ...index.map(({ projects }) => projects.length)
-          ),
-        } as React.CSSProperties)
+        {
+          ...(index && {
+            "--index-employers": index.length,
+            "--index-tallest": Math.max(
+              ...index.map(({ projects }) => projects.length)
+            ),
+          }),
+          ...(banded && last > 0 && { [`--ends-${last}`]: 1 }),
+        } as React.CSSProperties
       }
     >
       <div className={styles.column}>
         <div
           ref={head}
           className={styles.head}
-          data-blank={plan.chapters[0]?.id !== chapters[0]?.id || !chapters[0]}
+          data-blank={
+            banded
+              ? undefined
+              : plan.chapters[0]?.id !== chapters[0]?.id || !chapters[0]
+          }
+          style={
+            banded && shown > 0
+              ? { opacity: `var(--boundary-${shown})` }
+              : undefined
+          }
           aria-hidden="true"
         >
           <span className={styles.numeral} data-cascade="">
@@ -250,7 +328,7 @@ export default function Margin({
             ))}
           </span>
         </div>
-        <SocialIcons className={styles.social} />
+        {icons && <SocialIcons className={styles.social} />}
         {index && <WorkIndex ref={nav} employers={index} />}
       </div>
     </div>

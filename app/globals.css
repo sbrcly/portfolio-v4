@@ -299,6 +299,44 @@ button {
 }
 
 /* 0 to 1 over the last half viewport of the page. */
+/* A section's statement rising to the line, on a project page (the running
+   margin's banded head): one per section. */
+@property --reach-1 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-2 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-3 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-4 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-5 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-6 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
 @property --page-end {
   syntax: "<number>";
   inherits: false;
@@ -413,12 +451,44 @@ button {
   view-timeline-inset: 0px;
 }
 
+/* A project page's sections are read by their statements (data-chapter-edge,
+   components/chapter-opener): each statement's own timeline, numbered like
+   its section. */
+[data-chapter="1"] [data-chapter-edge] {
+  view-timeline-name: --edge-1;
+}
+
+[data-chapter="2"] [data-chapter-edge] {
+  view-timeline-name: --edge-2;
+}
+
+[data-chapter="3"] [data-chapter-edge] {
+  view-timeline-name: --edge-3;
+}
+
+[data-chapter="4"] [data-chapter-edge] {
+  view-timeline-name: --edge-4;
+}
+
+[data-chapter="5"] [data-chapter-edge] {
+  view-timeline-name: --edge-5;
+}
+
+[data-chapter="6"] [data-chapter-edge] {
+  view-timeline-name: --edge-6;
+}
+
+[data-chapter-edge] {
+  view-timeline-axis: block;
+  view-timeline-inset: 0px;
+}
+
 /* The employers' timelines (components/work) are scoped here too, for the
    Work index in the running margin. One per employer. */
 body {
   timeline-scope: --chapter-0, --chapter-1, --chapter-2, --chapter-3,
-    --chapter-4, --chapter-5, --chapter-6, --employer-01, --employer-02,
-    --employer-03;
+    --chapter-4, --chapter-5, --chapter-6, --edge-1, --edge-2, --edge-3,
+    --edge-4, --edge-5, --edge-6, --employer-01, --employer-02, --employer-03;
 }
 
 /* The content fade. A block is at full opacity while its center is within
