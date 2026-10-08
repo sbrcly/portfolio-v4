@@ -119,8 +119,9 @@ export default function Home() {
                 I want to be on a team again.
               </p>
               <p>
-                Outside work I read, and I keep sharpening what I already know.
-                Where my focus is now:
+                Outside work I read, keep learning, run marathons, play tennis,
+                and spend the rest of my time with my family. Where my focus is
+                now:
               </p>
               {/* The project pages' spec rows (components/project-page), with
                   a value of several lines stacked. */}
