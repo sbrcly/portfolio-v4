@@ -279,7 +279,12 @@ function PageSection({
       aria-labelledby={headingId}
       data-chapter={chapter}
     >
-      <ChapterOpener label={label} headingId={headingId} statement={statement}>
+      <ChapterOpener
+        label={label}
+        headingId={headingId}
+        statement={statement}
+        edge
+      >
         {opening.map((block, index) => (
           <TextBlock key={index} block={block} />
         ))}
@@ -311,8 +316,13 @@ function PageSection({
  * on its left; the name; the lede and the spec. Under it a Full or Standard
  * page has a plate and then its numbered sections, each a chapter the
  * running margin reads (01 to 06; nothing in the title chapter, so the
- * margin arrives with 01 and empties again above it). A Note has three
- * paragraphs and no sections, so its margin has nothing to read.
+ * margin arrives with 01 and empties again above it). A section is current
+ * from the moment its statement's top rises past the line 36svh down the
+ * viewport, and the numeral turns over the 120px of scroll before that, in
+ * either direction; the last section is current at the page's bottom as
+ * well, over its last 120px of scroll (components/margin). A Note has three
+ * paragraphs and no sections, so its margin has nothing to read. The icon
+ * links are the footer's at every width; the margin holds none.
  *
  * The three ways back (the top row, the nav's II, the closing link) all go
  * to the employer's block in chapter II.
@@ -342,7 +352,7 @@ export default function ProjectPage({ page }: { page: PageData }) {
   return (
     <>
       <Frame chapter="ii" back={back} />
-      <Margin chapters={margin} />
+      <Margin chapters={margin} turn="statement" icons={false} />
       <main id="content">
         {/* The title, and the plate or the paragraphs under it, are one
             chapter. */}
@@ -436,7 +446,7 @@ export default function ProjectPage({ page }: { page: PageData }) {
           />
         ))}
       </main>
-      <Footer />
+      <Footer icons />
       <Reveals />
       <Fade />
     </>

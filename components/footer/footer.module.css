@@ -21,10 +21,17 @@
   color: var(--brass);
 }
 
-/* The icon links, below 960px: from there up the running margin has them. */
+/* The icon links, below 960px: from there up the running margin has them.
+   On a page whose margin holds none they are here at every width (Footer.tsx
+   icons), in the line between the email and the resume link; each link's
+   target is 44px, the icon and half the gap on every side. */
 .social {
   --gap: 24px;
   display: none;
+}
+
+.row {
+  display: flex;
 }
 
 @media (max-width: 959px) {

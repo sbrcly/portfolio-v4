@@ -372,6 +372,134 @@
   }
 }
 
+/* The banded head (Margin.tsx, turn "statement"): a project page, whose
+   chapters are read by their statements (globals.css, --edge-n). A section
+   arrives as its statement rises to the line 36svh down the viewport: its
+   boundary runs over the 120px of scroll that bring the statement's top up
+   to that line, from its top at 36svh + 120px to its top on the line, so
+   the outgoing numeral and label fade as the incoming ones arrive and the
+   new ones are whole as the statement crosses. The last section arrives at
+   the page's end too, whether or not its statement reaches the line: over
+   the page's last 120px of scroll, whole at its bottom (--ends-n marks the
+   last section, Margin.tsx). The first chapter is
+   the title block, which the head has nothing for: the head itself is as
+   present as the first section's boundary (Margin.tsx). Nothing here is
+   timed, and nothing is held: a section arrived at by its link, which lands
+   above the line, shows its numeral whole on arrival. Reduced motion: a
+   step at the line, or at the end. Without view timelines, Margin.tsx
+   writes the boundaries by the same rules. */
+@supports (animation-timeline: view()) {
+  .banded {
+    animation: reach-1 linear both,
+      reach-2 linear both,
+      reach-3 linear both,
+      reach-4 linear both,
+      reach-5 linear both,
+      reach-6 linear both,
+      page-end linear both;
+    animation-timeline: --edge-1, --edge-2, --edge-3, --edge-4, --edge-5,
+      --edge-6, scroll(root);
+    animation-range-start: cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      calc(100% - 120px);
+    animation-range-end: cover 64svh,
+      cover 64svh,
+      cover 64svh,
+      cover 64svh,
+      cover 64svh,
+      cover 64svh,
+      100%;
+    --boundary-1: max(
+      var(--reach-1),
+      var(--page-end) * var(--ends-1, 0)
+    );
+    --boundary-2: max(
+      var(--reach-2),
+      var(--page-end) * var(--ends-2, 0)
+    );
+    --boundary-3: max(
+      var(--reach-3),
+      var(--page-end) * var(--ends-3, 0)
+    );
+    --boundary-4: max(
+      var(--reach-4),
+      var(--page-end) * var(--ends-4, 0)
+    );
+    --boundary-5: max(
+      var(--reach-5),
+      var(--page-end) * var(--ends-5, 0)
+    );
+    --boundary-6: max(
+      var(--reach-6),
+      var(--page-end) * var(--ends-6, 0)
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .banded {
+      animation-timing-function: steps(1, jump-end);
+    }
+  }
+}
+
+@keyframes reach-1 {
+  from {
+    --reach-1: 0;
+  }
+  to {
+    --reach-1: 1;
+  }
+}
+
+@keyframes reach-2 {
+  from {
+    --reach-2: 0;
+  }
+  to {
+    --reach-2: 1;
+  }
+}
+
+@keyframes reach-3 {
+  from {
+    --reach-3: 0;
+  }
+  to {
+    --reach-3: 1;
+  }
+}
+
+@keyframes reach-4 {
+  from {
+    --reach-4: 0;
+  }
+  to {
+    --reach-4: 1;
+  }
+}
+
+@keyframes reach-5 {
+  from {
+    --reach-5: 0;
+  }
+  to {
+    --reach-5: 1;
+  }
+}
+
+@keyframes reach-6 {
+  from {
+    --reach-6: 0;
+  }
+  to {
+    --reach-6: 1;
+  }
+}
+
 @keyframes lead-1 {
   from {
     --lead-1: 0;
@@ -511,6 +639,12 @@
 /* The labels' own opacity is the scroll's. */
 .label {
   transition-property: color;
+}
+
+/* The banded head's own opacity is the scroll's (an inline style,
+   Margin.tsx), never timed. */
+.banded .head {
+  transition: none;
 }
 
 .head[data-blank="true"],
