@@ -66,6 +66,18 @@
   text-wrap: pretty;
 }
 
+/* The opening line: the serif at 400, at the running text's size. */
+.opening {
+  font-family: var(--font-serif-regular);
+  font-weight: 400;
+}
+
+/* The closing rows: the project pages' spec (components/project-page), whose
+   grid and type this inherits. A value of several lines stacks them. */
+.rows dd > span {
+  display: block;
+}
+
 /* III Contact. No statement: the email opens the measure, 28px under its
    top (the measure's own 12px and this margin). */
 
@@ -118,6 +130,12 @@
   .body {
     gap: 16px;
     margin-top: 24px;
+  }
+
+  /* The spec's phone top margin is for the project page's title block; here
+     the rows follow the body's gap like any paragraph. */
+  .body > .rows {
+    margin-top: 0;
   }
 
   .contactEmail {

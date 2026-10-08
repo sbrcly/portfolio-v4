@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
 import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
@@ -8,6 +9,7 @@ import Margin, {
   type IndexEmployer,
   type MarginChapter,
 } from "@/components/margin/Margin";
+import projectStyles from "@/components/project-page/project-page.module.css";
 import Reveals from "@/components/reveals/Reveals";
 import TextLink from "@/components/text-link/TextLink";
 import Work from "@/components/work/Work";
@@ -28,6 +30,21 @@ const INDEX: IndexEmployer[] = EMPLOYERS.map(({ id, name, projects }) => ({
   name,
   projects: projects.map(({ id, name }) => ({ id, name })),
 }));
+
+// About's closing rows: where the focus is now.
+const FOCUS: { label: string; lines: string[] }[] = [
+  {
+    label: "Reading",
+    lines: [
+      "The Road, Cormac McCarthy",
+      "The Spirit of the Liturgy, Joseph Ratzinger",
+      "Writing to Learn, William Zinsser",
+      "Designing Data-Intensive Applications, Martin Kleppmann (reread)",
+    ],
+  },
+  { label: "Studying", lines: ["AI engineering"] },
+  { label: "Running", lines: ["Maui Oceanfront Marathon, 17 January 2027"] },
+];
 
 export default function Home() {
   return (
@@ -51,42 +68,74 @@ export default function Home() {
               Full-Stack Engineer
             </p>
             <div className={styles.body} data-cascade="children">
+              <p className={styles.opening}>
+                From sports trader on a Las Vegas trading floor to full-stack
+                engineer shipping a prayer and scripture app.
+              </p>
               <p>
-                I priced sport for a living at a Las Vegas sportsbook. In the
-                evenings I built{" "}
+                The trading floor needed tools it did not have, so I built them.
+                The first was a Python script that gave every matchup its proper
+                ID and mapped it to a trader. That script became a department: I
+                helped hire a data analyst, and the two of us built tools for
+                the floor, reporting to a senior vice president. I have been
+                writing software since.
+              </p>
+              <p>
+                Most recently I designed, built, and shipped{" "}
+                <TextLink href="#work-prava">Prava</TextLink>, an AI-powered iOS
+                prayer and scripture app, as its only engineer. Before that I
+                spent nearly four years at one of the largest ticket brokers in
+                the country, integrating with Ticketmaster and other ticketing
+                services through{" "}
+                <TextLink href="#work-buyer-extension">
+                  custom Chrome extensions
+                </TextLink>{" "}
+                that talked to{" "}
+                <TextLink href="#work-pricing-portal">
+                  our pricing portal
+                </TextLink>
+                . There was no blueprint and no documentation for any of it, and
+                I learned more there than I think I could have in any other
+                industry.
+              </p>
+              <p>
+                The trading desk tools are still here too:{" "}
                 <TextLink href="#work-live-odds-console">
                   a live odds console
-                </TextLink>{" "}
-                streamed over Socket.io from BigQuery,{" "}
+                </TextLink>
+                ,{" "}
                 <TextLink href="#work-arbitrage-detector">
                   an arbitrage detector
                 </TextLink>{" "}
-                across about fifty books, and{" "}
+                that caught the gaps sharp bettors were picking off, and{" "}
                 <TextLink href="#work-trading-schedule">
-                  a schedule that assigned traders to games
+                  a trader schedule
                 </TextLink>
-                . The company moved me into an engineering role.
+                . Each was built alone, and together they saved traders hours a
+                week.
               </p>
               <p>
-                Then three years of full-stack work at a ticket brokerage:{" "}
-                <TextLink href="#work-pricing-portal">a pricing portal</TextLink>
-                , and{" "}
-                <TextLink href="#work-buyer-extension">
-                  a Chrome extension
-                </TextLink>{" "}
-                that runs inside marketplace sites and rewrites what buyers
-                see.
+                I have learned what I wanted to learn from shipping an app solo.
+                I want to be on a team again.
               </p>
               <p>
-                Most recently, <TextLink href="#work-prava">Prava</TextLink>:
-                an iOS prayer and scripture app, designed, built, and shipped
-                alone, with versioned prompts, snapshot-tested fallbacks, and
-                cost work that is measured rather than assumed.
+                Outside work I read, and I keep sharpening what I already know.
+                Where my focus is now:
               </p>
-              <p>
-                Away from work I read theology and philosophy and am teaching
-                myself Latin.
-              </p>
+              {/* The project pages' spec rows (components/project-page), with
+                  a value of several lines stacked. */}
+              <dl className={`${projectStyles.spec} ${styles.rows}`}>
+                {FOCUS.map(({ label, lines }) => (
+                  <Fragment key={label}>
+                    <dt>{label}</dt>
+                    <dd>
+                      {lines.map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                    </dd>
+                  </Fragment>
+                ))}
+              </dl>
             </div>
           </ChapterOpener>
         </section>

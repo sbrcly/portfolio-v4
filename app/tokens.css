@@ -21,6 +21,7 @@
 
   /* Type families (variables set by next/font in app/layout.tsx) */
   --font-serif: var(--font-spectral), Georgia, serif;
+  --font-serif-regular: var(--font-spectral-regular), Georgia, serif;
   --font-serif-italic: var(--font-spectral-italic), Georgia, serif;
   --font-sans: var(--font-source-sans), Arial, sans-serif;
   --font-sans-italic: var(--font-source-sans-italic), Arial, sans-serif;
