@@ -234,11 +234,11 @@ const PRAVA_PAGE: SectionedPage = {
           kind: "paragraphs",
           paragraphs: [
             "Most of them are habit trackers in vestments: streaks, scores, completion rings, and the quiet guilt of a missed day. Those mechanics reward showing up and punish honesty. The moment a practice becomes a scoreboard, people perform for the app instead of telling it the truth.",
-            "What I wanted already existed and was two thousand years old: the Church's week, its lectionary, its prayers, its creeds. Prava puts that at the center across twelve traditions, in each tradition's own words.",
+            "What I wanted already existed, and had for two thousand years: the Church's week, its lectionary, its prayers, its creeds. Prava puts that at the center across twelve traditions, in each tradition's own words.",
             [
               "The founding rule is ",
               { em: "record, not score" },
-              ". It reads like product copy. It turned out to be an engineering constraint that shaped the schema, the prompts, and what the app refuses to measure.",
+              ". That sounds like a slogan. It turned out to be an engineering constraint that shaped the schema, the prompts, and what the app refuses to measure.",
             ],
           ],
         },
@@ -253,7 +253,7 @@ const PRAVA_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "A native-feeling iOS app with a daily journal, prayer and scripture surfaces, a weekly lectionary, and small accountability circles. The AI teaches and reflects. It never touches the Church's fixed texts: creeds and historic prayers render exactly as written, enforced by CI scanners rather than good intentions.",
+            "A native-feeling iOS app with a daily journal, prayer and scripture surfaces, a weekly lectionary, and a People tab for praying for others by name. The AI teaches and reflects. It never touches the Church's fixed texts: creeds and historic prayers render exactly as written, enforced by CI scanners rather than good intentions. Outside the code, a team of UGC creators I recruit and manage, each with tracked links into the app.",
           ],
         },
         {
@@ -267,7 +267,7 @@ const PRAVA_PAGE: SectionedPage = {
             {
               term: "AI",
               detail:
-                "Eleven grounded surfaces (thirteen at launch), each reading versioned system prompts with snapshot-tested fallbacks",
+                "Eleven grounded surfaces, each reading versioned system prompts with snapshot-tested fallbacks (thirteen at launch)",
             },
             {
               term: "Data",
@@ -276,6 +276,11 @@ const PRAVA_PAGE: SectionedPage = {
             {
               term: "Revenue",
               detail: "Freemium subscriptions, monthly and annual",
+            },
+            {
+              term: "Growth",
+              detail:
+                "A creator program of UGC creators, recruited and managed directly, with per-creator links tracked in the analytics dashboard",
             },
             {
               term: "Infra",
@@ -297,7 +302,7 @@ const PRAVA_PAGE: SectionedPage = {
           items: [
             {
               title: "AI cost in three waves",
-              text: "Waste first: redundant calls and oversized context. Then small-model routing for five surfaces where quality held. Then prompt caching, with a usage-event table in Postgres that checks the cache metrics the provider reports. A cost optimization you cannot measure independently is a rumor.",
+              text: "Waste first: redundant calls and oversized context. Then routing the surfaces where quality held to a smaller model. Then prompt caching, with every call's token counts (input, output, cache written, cache read) written to a usage table in Postgres so the savings could be checked against the provider's bill rather than taken on faith.",
             },
             {
               title: "Philosophy as a schema constraint",
@@ -305,7 +310,7 @@ const PRAVA_PAGE: SectionedPage = {
             },
             {
               title: "The process is the second engineer",
-              text: "Additive-only migrations so nothing is ever un-shippable. Snapshot-tested prompt fallbacks so an AI regression fails a test instead of a user. Features dark-shipped behind flags with written flip runbooks, so turning something on is a decision, not an event. Placeholder. Much of it was built with AI agents under direction: discoveries and numbered rulings written down as they were made, and structural checks that pin what the agents produce.",
+              text: "Additive-only migrations so nothing is ever un-shippable. Snapshot-tested prompt fallbacks so an AI regression fails a test instead of a user. Features dark-shipped behind flags with written flip runbooks, so turning something on is a decision, not an event. And since late 2025, AI coding agents working under direction: a read-only discovery before any change, rulings written down and numbered, builds scoped small and checked on a device, and a chain of structural checks that pins what the agents produce rather than trusting it.",
             },
           ],
         },
@@ -321,9 +326,9 @@ const PRAVA_PAGE: SectionedPage = {
           kind: "paragraphs",
           paragraphs: [
             [
-              "Twelve tools on one hub, over 140 admin routes, built and used by one person. The ",
+              "Twelve tools on one hub, over 140 admin routes. The ",
               { text: "Prompt Lab", href: "/work/prompt-lab" },
-              " versions the system prompts, voice fragments, and theology groundings behind the eleven governed surfaces (thirteen at launch) and shows history, diffs, and a flag when the live version has diverged from the shipped fallback. The Profile Simulator builds a user from life contexts and runs the selection algorithm, scores included, so tuning the matcher takes an afternoon instead of a release cycle.",
+              " versions the system prompts, voice fragments, and theology groundings behind the eleven governed surfaces, and shows history, diffs, and a flag when the live version has diverged from the shipped fallback. The lectionary authoring tool turns a citation typed the way a missal prints it into readings the app can serve, with a horizon that shows what is ready for the weeks ahead. The Profile Simulator inside the commitment library builds a user from life contexts and runs the selection algorithm, scores included, so tuning the matcher takes an afternoon instead of a release cycle.",
             ],
             [
               "Four of the twelve have pages of their own: the Prompt Lab, the ",
@@ -383,7 +388,7 @@ const PRAVA_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "On the App Store since Easter 2026, with paying subscribers on monthly and annual plans. The specific numbers stay off the internet on purpose and are available in an interview.",
+            "On the App Store since Easter 2026, with paying subscribers on monthly and annual plans.",
           ],
         },
       ],
@@ -1328,7 +1333,7 @@ export const EMPLOYERS: Employer[] = [
           screens: PRAVA_SCREENS.map(({ src, alt }) => ({ src, alt })),
         },
         sentence:
-          "An iOS prayer and scripture app built around the Church's week rather than a streak. Eleven AI surfaces (thirteen at launch) read versioned prompts with snapshot-tested fallbacks. Designed, built, and shipped solo.",
+          "An iOS prayer and scripture app built around the Church's week rather than a streak. Every AI feature in it reads a versioned prompt with a tested fallback behind it. Designed, built, and shipped solo.",
         stack: {
           items: ["TypeScript", "Next.js", "Capacitor", "Postgres", "Anthropic API"],
         },
