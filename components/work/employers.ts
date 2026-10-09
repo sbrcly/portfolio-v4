@@ -1142,8 +1142,8 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. A date goes through two engines. The Sunday engine finds the season, the Sunday within it, and the year's cycle; the day engine builds the whole liturgical year, settles feasts on a thirteen-level precedence scale, and transfers one that lands on a day it cannot outrank. A Revised Common weekday keys to its nearest Sunday. The result is one slot key that names the day without naming the year, so a row written once serves every time the calendar comes round.",
-            "Placeholder. The person's tradition maps to an ordered list of lectionaries, Roman, Revised Common, or one and then the other, and the first with readings for that key wins. A day with none returns nothing rather than something wrong. Checks sweep every Sunday to 2034 in both traditions, and the day engine's check runs 9,002 assertions, one winner per day among them, so a change to either engine fails before it moves a feast.",
+            "A date goes through two engines. The Sunday engine finds the season, the Sunday within it, and the year's cycle. The day engine builds the whole liturgical year, settles feasts on a thirteen-level precedence scale, and transfers one that lands on a day it cannot outrank. A Revised Common weekday keys to its nearest Sunday. The result is one slot key that names the day without naming the year, so a row written once serves every time the calendar comes round.",
+            "The person's tradition maps to an ordered list of lectionaries (Roman, Revised Common, or one and then the other) and the first with readings for that key wins. A day with none returns nothing rather than something wrong. Checks sweep every Sunday to 2034 in both traditions, and the day engine's check runs 9,002 assertions, one winner per day among them, so a change to either engine fails before it moves a feast.",
           ],
         },
         {
@@ -1172,8 +1172,8 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. A week is not ready because its readings are named. A reading is ready when its row is active, its citation parses into verse ranges, the text of every range is cached in the floor translation the app can always show, and the rights to show it are cleared. The tool draws that as a horizon: how many consecutive weeks ahead are whole, and for each week what is missing, with the missing unit as the way in to fix it.",
-            "Placeholder. The horizon ends at the first week any unit is missing. Beyond it the app serves nothing for that day rather than a guess: the home card does not render, and the morning push has nothing to send. Text is fetched once at write time, under a provider's daily cap, so the read path never waits on anyone.",
+            "A week is not ready because its readings are named. A reading is ready when its row is active, its citation parses into verse ranges, the text of every range is cached in the public-domain translation the app can always show, and the rights to show it are cleared. The tool draws that as a horizon: how many consecutive weeks ahead are whole, and for each week what is missing. Each missing unit opens the sheet that fixes it.",
+            "The horizon ends at the first week with anything missing. Beyond it the app serves nothing for that day rather than a guess: the home card does not render, and the morning push has nothing to send. Text is fetched once at write time, under a provider's daily cap, so the read path never waits on anyone.",
           ],
         },
         {
@@ -1197,12 +1197,12 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
       id: "holds",
       number: "03",
       label: "What holds it",
-      statement: "Two traditions, one key, 9,002 pinned days.",
+      statement: "Two traditions, one key, 9,002 assertions.",
       body: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. The tool was built and is used by one person, and the readings, authored week by week, took longer than the engines. The precedence and transfer tables still carry a note that they await a pass against the missal, and the check scripts say so rather than hide it.",
+            "The readings, authored week by week, have taken longer than the engines. The precedence and transfer tables still carry a note that they await a line-by-line pass against the missal, and the check scripts say so rather than hide it.",
           ],
         },
         {
@@ -1216,7 +1216,7 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
             {
               term: "Traditions",
               detail:
-                "Two: the Roman Lectionary for Mass and the Revised Common Lectionary; each of the app's traditions maps to one or both",
+                "Two, the Roman Lectionary for Mass and the Revised Common Lectionary; each of the app's traditions maps to one or both",
             },
             {
               term: "Assertions",
@@ -1391,7 +1391,6 @@ export const EMPLOYERS: Employer[] = [
           src: lectionaryWeekReadings,
           alt: "The lectionary authoring tool's week view: two weekday sets of readings as citations, each row with rights and active badges and an Edit button.",
         },
-        placeholder: true,
         sentence:
           "Where the readings for the Church's week are entered and checked.",
         stack: { items: ["TypeScript", "Next.js", "Postgres", "Prisma"] },

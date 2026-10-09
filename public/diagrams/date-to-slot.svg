@@ -19,7 +19,9 @@
 <rect x="606" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="618" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">RCL ANCHOR</text>
 <text x="618" y="158" font-size="10" fill="var(--muted, #a89f90)">a weekday keys to its</text>
-<text x="618" y="173" font-size="10" fill="var(--muted, #a89f90)">Sunday: back to Wed,</text>
+<text x="618" y="173" font-size="10" fill="var(--muted, #a89f90)">Sunday: back through</text>
+<text x="618" y="188" font-size="10" fill="var(--muted, #a89f90)">Wednesday, forward</text>
+<text x="618" y="203" font-size="10" fill="var(--muted, #a89f90)">from Thursday</text>
 <line x1="776" y1="175" x2="788" y2="175" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
 <rect x="788" y="110" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="800" y="134" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">SLOT KEY</text>
