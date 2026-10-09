@@ -1048,13 +1048,13 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
       id: "does",
       number: "01",
       label: "What it does",
-      statement: "Present means present on any of eight legs, once.",
+      statement: "Present means one of eight things happened that day.",
       body: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. Eight kinds of record can show that a person was there: the prayer and scripture logs, a journal entry, a Sunday reading, a weekday reading, a Bible chapter read to its end, a mark on a verse, a request to the people a person prays for, and the ledger of surfaces opened. Opening the app is not one of them. The dashboard folds all eight into one presence per person per day, and every widget on it reads that fold. None reads a leg directly; a source scan in the check chain fails if one tries.",
-            "Placeholder. The day is one day for everyone. Activity rows also carry a date written in the person's own timezone, and filtering on it silently drops anyone east of UTC, so the dashboard filters only true timestamps and buckets every one of them to a Pacific day before the union. Two timezone bugs taught it that.",
+            "Eight kinds of record can show that a person was there: the prayer and scripture logs, a journal entry, a Sunday reading, a weekday reading, a Bible chapter read to its end, a mark on a verse, a request to the people a person prays for, and the ledger of surfaces opened. Opening the app is not one of them. The dashboard folds all eight into one presence per person per day, and every widget reads that fold. None reads a source directly; a source scan in the check chain fails if one tries.",
+            "The day is one day for everyone. Activity rows also carry a date written in the person's own timezone, and filtering on it silently drops anyone east of UTC, so the dashboard filters only true timestamps and buckets every one of them to a Pacific day before the union. That rule came after two timezone bugs, not before.",
           ],
         },
         {
@@ -1073,7 +1073,7 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
             {
               term: "Data",
               detail:
-                "Demo data in every capture; the real figures stay off the internet",
+                "Every capture on this page is demo data",
             },
           ],
         },
@@ -1085,10 +1085,10 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
                 kind: "diagram",
                 name: "presence-union",
                 label:
-                  "The presence union: eight legs, one per kind of record, bucketed to the Pacific day and folded into one presence per person per day, read by many widgets.",
+                  "The presence union: eight sources, one per kind of record, bucketed to the Pacific day and folded into one presence per person per day, read by many widgets.",
               },
               caption:
-                "Eight legs, one fold, many widgets. The dashed box is the timezone step, which happens first.",
+                "Eight sources, one fold, many widgets. The dashed box is the timezone step, which happens first.",
             },
           ],
         },
@@ -1103,8 +1103,8 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. When the definition of present widened from four sources to eight, every chart would have shown a jump that was not growth. The fix was a marker: the day the definition changed is drawn on the chart as a dashed line, the aggregate cards carry a chip, and the note is printed once under the view. Nothing is backfilled; history is kept broken at a dated line rather than rewritten.",
-            "Placeholder. The second hard part was showing the dashboard at all. A demo mode answers every route from one seeded synthetic world with a frozen clock, and a check script loads its modules with a database stand-in that throws on any access, so the captures on this page could not contain a real person if they tried.",
+            "When the definition of present widened from four sources to eight, every chart would have shown a jump that was not growth. The fix was a marker: the day the definition changed is drawn on the chart as a dashed line, the aggregate cards carry a chip, and the note is printed once under the view. Nothing is backfilled; history is kept broken at a dated line rather than rewritten.",
+            "The second hard part was showing the dashboard at all. A demo mode answers every route from one seeded synthetic world with a frozen clock, and a check script loads its modules with a database stand-in that throws on any access. Every number in the captures on this page is generated.",
           ],
         },
       ],
@@ -1372,9 +1372,8 @@ export const EMPLOYERS: Employer[] = [
           src: analyticsEngagement,
           alt: "Prava's admin analytics dashboard: daily engagement with a definition-change marker, demo data",
         },
-        placeholder: true,
         sentence:
-          "Where Prava's usage and AI cost are measured rather than assumed.",
+          "Where Prava's usage and its AI pipeline are measured rather than assumed.",
         note: "demo data",
         stack: {
           items: ["TypeScript", "Next.js", "Postgres", "PostHog", "Recharts"],
