@@ -146,7 +146,7 @@ export default function Home() {
             <div className={styles.body} data-cascade="children">
               <p className={styles.opening}>
                 From sports trader on a Las Vegas trading floor to full-stack
-                engineer shipping a prayer and scripture app.
+                engineer shipping an AI-powered prayer and scripture app.
               </p>
               <FeaturedRow />
               <p>

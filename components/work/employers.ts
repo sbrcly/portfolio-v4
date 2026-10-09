@@ -474,9 +474,9 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. Analysts work through events where the company holds tickets, see their own listings beside the current market, and change prices by hand or by rule. On-sale managers plan what to buy and draw, on a venue map, the seats the business wants. That drawing is what the buyer extension paints.",
-            "Placeholder. The portal has no data of its own. Everything comes from, and is written to, a backend that reads three point-of-sale systems live, keeps its record in a warehouse, and caches what it can.",
-            "Placeholder. Eight people built it over two years. What follows is the part of it that is mine.",
+            "A ticket broker holds thousands of tickets across hundreds of events and has to price each one against what everyone else is asking. That is the analysts' job. They work through the events where the company holds inventory, see their own listings next to the current market, and change prices by hand or by rule. Separately, before a big on-sale, managers plan what to buy and draw on the venue map the sections and rows they want. The pricing portal is the internal web app where both of these happen, and the drawing the manager makes there is what the buyer extension paints onto Ticketmaster.",
+            "The portal keeps no data of its own. Everything it shows comes from, and everything it changes goes to, a backend that reads three separate point-of-sale systems live, keeps its long-term record in BigQuery, the company's data warehouse, and caches what it can in between.",
+            "Eight people built the portal over its life. What follows is the part of it that is mine.",
           ],
         },
       ],
@@ -490,7 +490,7 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. Second of about eight contributors by commits, with the clearest ownership in the rule-authoring panel the extension consumes, the first generation of the analysts' worklist, and the platform work on the backend.",
+            "I was second of about eight contributors by commits. My clearest ownership was the rule-authoring panel, the part of the portal where managers draw the buy rules the extension reads; the first generation of the analysts' worklist, the screen where they price; and the platform work on the backend that the facts below describe.",
           ],
         },
         {
@@ -534,8 +534,8 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. A manager needs to say \"these sections, these rows, up to this price\" in seconds, during an on-sale. Control-click picks a seat and starts a rule for its section. Control-drag draws a line, not a box: the seats within a band around it are collected by a point-in-polygon test. Every rule can also be typed.",
-            "Placeholder. On submit the browser walks every seat in the venue and resolves each active rule to concrete IDs, applying the three filters. The saved record carries both the readable criteria and the resolved list, which is why the extension never has to filter.",
+            "During an on-sale a manager needs to say \"these sections, these rows, up to this price\" in seconds, on a map, not in a form. Control-click on a seat starts a rule for its section. Control-drag draws a line across the map, not a box, and every seat within a band around that line is collected by a point-in-polygon test, which is how a manager sweeps a curved block of seats in one motion. Every rule can also be typed in by hand.",
+            "When the manager submits, the browser walks every seat in the venue and resolves each active rule to a list of concrete seat IDs, applying the three filters (section, row, and price). The saved record carries both the readable criteria and that resolved list. This is why the extension never has to interpret a rule on Ticketmaster's page: it only has to check whether a seat ID is in the list.",
           ],
         },
         {
@@ -564,8 +564,8 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. One event in four resizable panels. Clicking a section on the map filters the market table; with Control it filters own listings too; hovering a row lights its section. Section and row filters accept single values, lists, and ranges, with a fallback when names differ between sources.",
-            "Placeholder. Edits are staged, not sent, and saved in one bulk request. A price far enough under the market's lowest comparable opens a blocking popup first, where the price can be corrected before confirming. It is the one action here that costs money immediately if it is wrong.",
+            "The analysts' screen shows one event in four resizable panels: the venue map, the market, the company's own listings, and the controls. Clicking a section on the map filters the market table to that section; holding Control filters the company's own listings too; hovering a row lights its section on the map. The section and row filters accept single values, lists, and ranges, with a fallback for when the point-of-sale system and the marketplace spell a section name differently.",
+            "Price edits are staged, not sent. An analyst can change twenty prices and save them in one request. If a new price is far enough under the lowest comparable price on the market, a blocking popup opens first, with the price editable inside it, before anything is sent. It is the one action on the screen that costs money immediately if it is wrong.",
           ],
         },
         {
@@ -606,19 +606,19 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
           items: [
             {
               title: "The manual price update and its audit trail",
-              text: "Placeholder. The backend looks up which point of sale owns the event and pushes the change. Only if the whole push succeeds does it append an audit row per listing: who, when, old price, new price. The partial-failure branch is the honest part of the drawing.",
+              text: "A price change has to reach the right point-of-sale system, and there are three. The backend looks up which one owns the event and pushes the change. Only if the whole push succeeds does it append an audit row per listing: who, when, old price, new price. The branch where the push half-fails, and what gets recorded then, is the part of the drawing I would walk through first.",
             },
             {
               title: "The rules service and the stop alert",
-              text: "Placeholder. A save sanitises the record, posts an alert if the stop switch is set, appends a row, writes per-seat notifications, and warms the cache. The portal reads through a freshness check; the extension reads the latest-row view directly.",
+              text: "Saving a rule set does five things in order: sanitises the record, posts an alert to the buyers if the manager set the stop switch (which tells everyone to stop buying), appends the new row, writes a per-seat notification, and warms the cache. The portal reads rules back through a freshness check; the extension reads the latest row directly, because during a sale it cannot afford a stale answer.",
             },
             {
               title: "Cost attribution by service account and page",
-              text: "Placeholder. Four warehouse clients, one per product area, and a metadata comment on every query naming the tool and page, so warehouse cost can be read per page from the job log. The most transferable technique in the repo.",
+              text: "BigQuery bills per query. The backend uses four warehouse clients, one per product area, and stamps a metadata comment on every query naming the tool and page that issued it, so the cost of the warehouse can be read per page from the job log. Of everything in the repo this is the technique I would carry to any company that pays for a warehouse.",
             },
             {
               title: "The telemetry write buffer",
-              text: "Placeholder. Login telemetry batched into the warehouse every ten seconds or a hundred records, with retry and a flush on shutdown, so a stream of single-row writes never reaches a store built for the opposite.",
+              text: "The portal records logins and page views. Rather than write each as its own row into a store built for large batches, a buffer collects them and flushes every ten seconds or every hundred records, whichever comes first, with retries and a final flush on shutdown so nothing is lost when the server restarts.",
             },
           ],
         },
@@ -633,8 +633,8 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. The role model is real and well normalised and is enforced only in the browser. The price guard, likewise. Two managers editing one event overwrite each other, last write wins. And five table libraries where one would do.",
-            "Placeholder. What stood in for tests was a staging environment and, from 2025, Sentry with replay and source maps, which I wired. The first thing it found is a story for an interview.",
+            "The role model is real and well normalised, and it is enforced only in the browser; a request with the right shape would pass. The price guard is the same. Two managers editing one event's rules at the same time overwrite each other, last write wins, with no warning. And the frontend uses five different table libraries where one would do.",
+            "What stood in for tests was a staging environment and, from 2025, Sentry with session replay and source maps, which I wired in. It is a better safety net than nothing and a worse one than a test suite, and I would start with the test suite now.",
           ],
         },
       ],
@@ -1006,7 +1006,7 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
   years: "2023 to 2026",
   lede: "A read-only, real-time dashboard that turns the buyer extension's telemetry into live tables, with per-buyer and per-event waiting-room roll-ups for watching an on-sale as it happens.",
   spec: [
-    { label: "Role", value: "Built by Scott." },
+    { label: "Role", value: "Sole engineer" },
     {
       label: "Stack",
       items: ["React", "Firestore", "Firebase Auth and Hosting", "Vite"],
@@ -1034,8 +1034,8 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. The extension records each step of a purchase: event page load, sign-in, waiting-room position, cart attempt, checkout error, order confirmation. A copy of every record lands as a document in Firestore. The monitor signs a viewer in, listens to one collection at a time, and renders the newest records as rows, one tab per record type.",
-            "Placeholder. Nothing is polled and nothing is written back. A row appears when its document does. A keyword filter and a pause button are the only controls.",
+            "During an on-sale, the buyer extension records each step a buyer takes on Ticketmaster: the event page loading, the sign-in, the position in the waiting room, a cart attempt, a checkout error, an order confirmation. A copy of every one of those records lands as a document in Firestore, Google's real-time document database. The monitor is a web page for managers that signs a viewer in, subscribes to one collection of those documents at a time, and renders the newest ones as rows, with one tab per record type.",
+            "Nothing is polled and nothing is written back. A row appears on the manager's screen the moment its document exists. A keyword filter and a pause button are the only controls, because during a sale a manager has no attention to spare for anything else.",
           ],
         },
         {
@@ -1064,8 +1064,8 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. The waiting room produces a stream of position records per browser tab. The monitor has to turn that into \"who is in which queue right now, and how well placed are they\". Group by buyer, account, and event and keep the newest; count the groups seen in the last three minutes as active; track count, lowest, highest, and average over thirty; and the lowest users-ahead within the hour, because on-sales start on the hour.",
-            "Placeholder. This took the most iteration of anything in the project, and was pulled out into pure functions in the 2026 rewrite. Its honest limit: the key leaves out the tab, so one buyer with two tabs on one account collapses into one queue.",
+            "The waiting room was the hard part. Ticketmaster puts buyers in a queue before a sale and reports their position every few seconds, and the extension forwards every report, so each open browser tab produces a stream of position records. The monitor has to turn that stream into an answer to one question: who is in which queue right now, and how well placed are they? The rules that settled it: group records by buyer, account, and event and keep only the newest; count a group as active if it reported in the last three minutes; track the count, lowest, highest, and average position over the last thirty; and keep the lowest number of users ahead seen within the hour, because on-sales start on the hour and that number is the one managers ask for.",
+            "This took more iteration than anything else in the project, and in the 2026 rewrite I pulled it out into pure functions so it could be reasoned about on its own. Its known limit: the grouping key leaves out the browser tab, so one buyer with two tabs open on one account collapses into a single queue entry.",
           ],
         },
         {
