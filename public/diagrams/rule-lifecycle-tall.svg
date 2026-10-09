@@ -22,7 +22,7 @@
 <line x1="300" y1="432" x2="300" y2="468" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
 <rect x="48" y="468" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="64" y="492" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">SAVE</text>
-<text x="64" y="514" font-size="12" fill="var(--muted, #a89f90)">Criteria and IDs sent together; a stop flag alerts first.</text>
+<text x="64" y="514" font-size="12" fill="var(--muted, #a89f90)">Criteria and IDs sent together; a stop switch alerts first.</text>
 <line x1="300" y1="572" x2="300" y2="608" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-lifecycle-tall-ab)"/>
 <rect x="48" y="608" width="504" height="104" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="64" y="632" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.3">APPEND-ONLY STORE</text>

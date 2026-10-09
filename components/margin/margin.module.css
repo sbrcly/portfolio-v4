@@ -381,7 +381,8 @@
    new ones are whole as the statement crosses. The last section arrives at
    the page's end too, whether or not its statement reaches the line: over
    the page's last 120px of scroll, whole at its bottom (--ends-n marks the
-   last section, Margin.tsx). The first chapter is
+   last section, Margin.tsx). Nine boundaries are registered, for a Featured
+   page's nine sections; a shorter page leaves the rest at zero. The first chapter is
    the title block, which the head has nothing for: the head itself is as
    present as the first section's boundary (Margin.tsx). Nothing here is
    timed, and nothing is held: a section arrived at by its link, which lands
@@ -396,10 +397,16 @@
       reach-4 linear both,
       reach-5 linear both,
       reach-6 linear both,
+      reach-7 linear both,
+      reach-8 linear both,
+      reach-9 linear both,
       page-end linear both;
     animation-timeline: --edge-1, --edge-2, --edge-3, --edge-4, --edge-5,
-      --edge-6, scroll(root);
+      --edge-6, --edge-7, --edge-8, --edge-9, scroll(root);
     animation-range-start: cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
+      cover calc(64svh - 120px),
       cover calc(64svh - 120px),
       cover calc(64svh - 120px),
       cover calc(64svh - 120px),
@@ -407,6 +414,9 @@
       cover calc(64svh - 120px),
       calc(100% - 120px);
     animation-range-end: cover 64svh,
+      cover 64svh,
+      cover 64svh,
+      cover 64svh,
       cover 64svh,
       cover 64svh,
       cover 64svh,
@@ -436,6 +446,18 @@
     --boundary-6: max(
       var(--reach-6),
       var(--page-end) * var(--ends-6, 0)
+    );
+    --boundary-7: max(
+      var(--reach-7),
+      var(--page-end) * var(--ends-7, 0)
+    );
+    --boundary-8: max(
+      var(--reach-8),
+      var(--page-end) * var(--ends-8, 0)
+    );
+    --boundary-9: max(
+      var(--reach-9),
+      var(--page-end) * var(--ends-9, 0)
     );
   }
 
@@ -497,6 +519,33 @@
   }
   to {
     --reach-6: 1;
+  }
+}
+
+@keyframes reach-7 {
+  from {
+    --reach-7: 0;
+  }
+  to {
+    --reach-7: 1;
+  }
+}
+
+@keyframes reach-8 {
+  from {
+    --reach-8: 0;
+  }
+  to {
+    --reach-8: 1;
+  }
+}
+
+@keyframes reach-9 {
+  from {
+    --reach-9: 0;
+  }
+  to {
+    --reach-9: 1;
   }
 }
 

@@ -5,15 +5,15 @@
 <line x1="72" y1="104" x2="728" y2="104" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="72" y="150" font-size="13" fill="var(--brass, #e0ae62)">01</text>
 <text x="112" y="150" font-size="17" fill="var(--text, #e4dbcb)">Section 105 · Rows B to F</text>
-<text x="112" y="176" font-size="14" fill="var(--muted, #a89f90)">Up to $240 · max 4</text>
+<text x="112" y="176" font-size="14" fill="var(--muted, #a89f90)">max 4</text>
 <text x="112" y="200" font-size="12" fill="var(--lit, #f3c77e)" letter-spacing="1.2">Active</text>
 <text x="72" y="246" font-size="13" fill="var(--brass, #e0ae62)">02</text>
 <text x="112" y="246" font-size="17" fill="var(--text, #e4dbcb)">Sections 201 to 204</text>
-<text x="112" y="272" font-size="14" fill="var(--muted, #a89f90)">Up to $160 · max 2</text>
+<text x="112" y="272" font-size="14" fill="var(--muted, #a89f90)">max 2</text>
 <text x="112" y="296" font-size="12" fill="var(--lit, #f3c77e)" letter-spacing="1.2">Active</text>
 <text x="72" y="342" font-size="13" fill="var(--brass, #e0ae62)">03</text>
 <text x="112" y="342" font-size="17" fill="var(--text, #e4dbcb)">Section 112 · Row A</text>
-<text x="112" y="368" font-size="14" fill="var(--muted, #a89f90)">Up to $410 · max 2</text>
+<text x="112" y="368" font-size="14" fill="var(--muted, #a89f90)">max 2</text>
 <text x="112" y="392" font-size="12" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1.2">Off</text>
 <line x1="72" y1="430" x2="728" y2="430" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
 <text x="72" y="446" font-size="12" fill="var(--muted, #a89f90)" letter-spacing="1">Master on · Stop off</text>

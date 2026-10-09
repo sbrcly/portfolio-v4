@@ -11,6 +11,7 @@ import Lightbox from "@/components/lightbox/Lightbox";
 import Reveals from "@/components/reveals/Reveals";
 import Plate from "@/components/work/Plate";
 import Rating from "@/components/work/Rating";
+import ExtensionLoop from "@/components/work/ExtensionLoop";
 import StackTokens from "@/components/work/StackTokens";
 import { FULL_SIZES } from "@/components/work/WorkEntry";
 import type {
@@ -109,6 +110,20 @@ function PageFigure({
 
 /** The plate under the title block, across the column. */
 function TitlePlate({ plate }: { plate: PagePlate }) {
+  if ("kind" in plate && plate.kind === "loop") {
+    // Featured: the loop, from 960px up; the still elsewhere.
+    return (
+      <figure
+        className={`${styles.column} ${styles.plate}`}
+        data-reveal=""
+        data-fade=""
+        data-cascade="children"
+      >
+        <ExtensionLoop label={plate.label} />
+        <figcaption>{plate.caption}</figcaption>
+      </figure>
+    );
+  }
   if ("media" in plate) {
     return (
       <PageFigure
@@ -311,12 +326,14 @@ function PageSection({
 }
 
 /**
- * A project's page, at any of the three depths (components/work/employers).
+ * A project's page, at any of the four depths (components/work/employers).
  * The title block is the same at all of them: the top row, with the way back
- * on its left; the name; the lede and the spec. Under it a Full or Standard
- * page has a plate and then its numbered sections, each a chapter the
- * running margin reads (01 to 06; nothing in the title chapter, so the
- * margin arrives with 01 and empties again above it). A section is current
+ * on its left; the name; the lede and the spec. Under it a Featured, Full,
+ * or Standard page has a plate and then its numbered sections, each a
+ * chapter the running margin reads (01 to 09; nothing in the title chapter,
+ * so the margin arrives with 01 and empties again above it). A Featured
+ * page's plate is the loop, and its top row says "Featured" in brass before
+ * the years; nothing else in the chrome marks the depth. A section is current
  * from the moment its statement's top rises past the line 36svh down the
  * viewport, and the numeral turns over the 120px of scroll before that, in
  * either direction; the last section is current at the page's bottom as
@@ -375,9 +392,20 @@ export default function ProjectPage({ page }: { page: PageData }) {
                   {employer.name}
                 </span>
               </Link>
-              {/* What does not fit beside the years wraps out of sight. */}
+              {/* What does not fit beside the years wraps out of sight. A
+                  Featured page says so first, in brass: the one mark of its
+                  depth; on phone it is all that stays of the right half. */}
               <div className={styles.meta}>
-                <span>{page.years}</span>{" "}
+                {project.depth === "featured" ? (
+                  <>
+                    <span className={styles.brass}>Featured</span>{" "}
+                    <span className={styles.more}>
+                      {separator} {page.years}
+                    </span>
+                  </>
+                ) : (
+                  <span>{page.years}</span>
+                )}{" "}
                 {kind && (
                   <span className={styles.more}>
                     {separator} {kind}

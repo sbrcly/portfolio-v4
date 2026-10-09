@@ -298,6 +298,24 @@ button {
   initial-value: 0;
 }
 
+@property --boundary-7 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-8 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --boundary-9 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
 /* 0 to 1 over the last half viewport of the page. */
 /* A section's statement rising to the line, on a project page (the running
    margin's banded head): one per section. */
@@ -332,6 +350,24 @@ button {
 }
 
 @property --reach-6 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-7 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-8 {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --reach-9 {
   syntax: "<number>";
   inherits: false;
   initial-value: 0;
@@ -453,7 +489,7 @@ button {
 
 /* A project page's sections are read by their statements (data-chapter-edge,
    components/chapter-opener): each statement's own timeline, numbered like
-   its section. */
+   its section. Nine, for a Featured page. */
 [data-chapter="1"] [data-chapter-edge] {
   view-timeline-name: --edge-1;
 }
@@ -478,6 +514,18 @@ button {
   view-timeline-name: --edge-6;
 }
 
+[data-chapter="7"] [data-chapter-edge] {
+  view-timeline-name: --edge-7;
+}
+
+[data-chapter="8"] [data-chapter-edge] {
+  view-timeline-name: --edge-8;
+}
+
+[data-chapter="9"] [data-chapter-edge] {
+  view-timeline-name: --edge-9;
+}
+
 [data-chapter-edge] {
   view-timeline-axis: block;
   view-timeline-inset: 0px;
@@ -488,7 +536,8 @@ button {
 body {
   timeline-scope: --chapter-0, --chapter-1, --chapter-2, --chapter-3,
     --chapter-4, --chapter-5, --chapter-6, --edge-1, --edge-2, --edge-3,
-    --edge-4, --edge-5, --edge-6, --employer-01, --employer-02, --employer-03;
+    --edge-4, --edge-5, --edge-6, --edge-7, --edge-8, --edge-9, --employer-01,
+    --employer-02, --employer-03;
 }
 
 /* The content fade. A block is at full opacity while its center is within

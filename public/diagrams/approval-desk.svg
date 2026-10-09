@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500" role="img" aria-label="The approval desk as the extension leaves it: a table of carted tickets with the rows that match a rule highlighted, a gauge per event showing how close it is to its maximum, and a bonus button whose click posts to Slack. Synthetic rows." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="approval-desk-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="approval-desk-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="500" fill="var(--surface, #1a2520)"/>
+<text x="48" y="40" font-size="10" fill="var(--lit, #f3c77e)">the approval desk, as the extension leaves it · synthetic rows</text>
+<rect x="48" y="60" width="848" height="361" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="88" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">EVENT</text>
+<text x="304" y="88" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">SEC · ROW</text>
+<text x="414" y="88" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">QTY</text>
+<text x="474" y="88" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">BUYER</text>
+<text x="574" y="88" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">STATUS</text>
+<text x="674" y="88" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">OF MAX</text>
+<line x1="48" y1="100" x2="896" y2="100" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="124" font-size="11" fill="var(--muted, #a89f90)">Hartwell Tour · Sat</text>
+<text x="304" y="124" font-size="11" fill="var(--muted, #a89f90)">104 · F</text>
+<text x="414" y="124" font-size="11" fill="var(--muted, #a89f90)">2</text>
+<text x="474" y="124" font-size="11" fill="var(--muted, #a89f90)">Buyer 07</text>
+<text x="574" y="124" font-size="11" fill="var(--muted, #a89f90)">carted</text>
+<rect x="674" y="117" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="117" width="45" height="6" fill="var(--dim-numeral, #4a5a50)"/>
+<text x="804" y="124" font-size="10" fill="var(--muted, #a89f90)">3 / 8</text>
+<line x1="49" y1="140" x2="895" y2="140" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="49" y="141" width="846" height="38" fill="var(--brass, #e0ae62)" opacity=".07"/>
+<line x1="49" y1="141" x2="49" y2="179" stroke="var(--brass, #e0ae62)" stroke-width="2"/>
+<text x="64" y="164" font-size="11" fill="var(--text, #e4dbcb)">Hartwell Tour · Sat</text>
+<text x="304" y="164" font-size="11" fill="var(--text, #e4dbcb)">105 · C</text>
+<text x="414" y="164" font-size="11" fill="var(--text, #e4dbcb)">2</text>
+<text x="474" y="164" font-size="11" fill="var(--text, #e4dbcb)">Buyer 14</text>
+<text x="574" y="164" font-size="11" fill="var(--brass, #e0ae62)">matches rule 01</text>
+<rect x="674" y="157" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="157" width="75" height="6" fill="var(--brass, #e0ae62)"/>
+<text x="804" y="164" font-size="10" fill="var(--muted, #a89f90)">5 / 8</text>
+<rect x="828" y="150" width="56" height="20" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="856" y="164" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle" letter-spacing="1">BONUS</text>
+<line x1="49" y1="180" x2="895" y2="180" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="204" font-size="11" fill="var(--muted, #a89f90)">Northside Arena · Fri</text>
+<text x="304" y="204" font-size="11" fill="var(--muted, #a89f90)">221 · A</text>
+<text x="414" y="204" font-size="11" fill="var(--muted, #a89f90)">4</text>
+<text x="474" y="204" font-size="11" fill="var(--muted, #a89f90)">Buyer 02</text>
+<text x="574" y="204" font-size="11" fill="var(--muted, #a89f90)">carted</text>
+<rect x="674" y="197" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="197" width="80" height="6" fill="var(--dim-numeral, #4a5a50)"/>
+<text x="804" y="204" font-size="10" fill="var(--muted, #a89f90)">4 / 6</text>
+<line x1="49" y1="220" x2="895" y2="220" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="49" y="221" width="846" height="38" fill="var(--brass, #e0ae62)" opacity=".07"/>
+<line x1="49" y1="221" x2="49" y2="259" stroke="var(--brass, #e0ae62)" stroke-width="2"/>
+<text x="64" y="244" font-size="11" fill="var(--text, #e4dbcb)">Hartwell Tour · Sat</text>
+<text x="304" y="244" font-size="11" fill="var(--text, #e4dbcb)">105 · B</text>
+<text x="414" y="244" font-size="11" fill="var(--text, #e4dbcb)">2</text>
+<text x="474" y="244" font-size="11" fill="var(--text, #e4dbcb)">Buyer 19</text>
+<text x="574" y="244" font-size="11" fill="var(--brass, #e0ae62)">matches rule 01</text>
+<rect x="674" y="237" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="237" width="105" height="6" fill="var(--brass, #e0ae62)"/>
+<text x="804" y="244" font-size="10" fill="var(--muted, #a89f90)">7 / 8</text>
+<line x1="49" y1="260" x2="895" y2="260" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="284" font-size="11" fill="var(--muted, #a89f90)">Riverside Hall · Sun</text>
+<text x="304" y="284" font-size="11" fill="var(--muted, #a89f90)">12 · D</text>
+<text x="414" y="284" font-size="11" fill="var(--muted, #a89f90)">2</text>
+<text x="474" y="284" font-size="11" fill="var(--muted, #a89f90)">Buyer 11</text>
+<text x="574" y="284" font-size="11" fill="var(--muted, #a89f90)">approved</text>
+<rect x="674" y="277" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="277" width="60" height="6" fill="var(--dim-numeral, #4a5a50)"/>
+<text x="804" y="284" font-size="10" fill="var(--muted, #a89f90)">2 / 4</text>
+<line x1="49" y1="300" x2="895" y2="300" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="324" font-size="11" fill="var(--muted, #a89f90)">Hartwell Tour · Sun</text>
+<text x="304" y="324" font-size="11" fill="var(--muted, #a89f90)">103 · G</text>
+<text x="414" y="324" font-size="11" fill="var(--muted, #a89f90)">1</text>
+<text x="474" y="324" font-size="11" fill="var(--muted, #a89f90)">Buyer 14</text>
+<text x="574" y="324" font-size="11" fill="var(--muted, #a89f90)">carted</text>
+<rect x="674" y="317" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="317" width="15" height="6" fill="var(--dim-numeral, #4a5a50)"/>
+<text x="804" y="324" font-size="10" fill="var(--muted, #a89f90)">1 / 8</text>
+<line x1="49" y1="340" x2="895" y2="340" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="49" y="341" width="846" height="38" fill="var(--brass, #e0ae62)" opacity=".07"/>
+<line x1="49" y1="341" x2="49" y2="379" stroke="var(--brass, #e0ae62)" stroke-width="2"/>
+<text x="64" y="364" font-size="11" fill="var(--text, #e4dbcb)">Northside Arena · Fri</text>
+<text x="304" y="364" font-size="11" fill="var(--text, #e4dbcb)">220 · B</text>
+<text x="414" y="364" font-size="11" fill="var(--text, #e4dbcb)">2</text>
+<text x="474" y="364" font-size="11" fill="var(--text, #e4dbcb)">Buyer 05</text>
+<text x="574" y="364" font-size="11" fill="var(--brass, #e0ae62)">matches rule 01</text>
+<rect x="674" y="357" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="357" width="120" height="6" fill="var(--lit, #f3c77e)"/>
+<text x="804" y="364" font-size="10" fill="var(--lit, #f3c77e)">6 / 6</text>
+<line x1="49" y1="380" x2="895" y2="380" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="404" font-size="11" fill="var(--muted, #a89f90)">Riverside Hall · Sun</text>
+<text x="304" y="404" font-size="11" fill="var(--muted, #a89f90)">14 · A</text>
+<text x="414" y="404" font-size="11" fill="var(--muted, #a89f90)">2</text>
+<text x="474" y="404" font-size="11" fill="var(--muted, #a89f90)">Buyer 08</text>
+<text x="574" y="404" font-size="11" fill="var(--muted, #a89f90)">carted</text>
+<rect x="674" y="397" width="120" height="6" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<rect x="674" y="397" width="120" height="6" fill="var(--lit, #f3c77e)"/>
+<text x="804" y="404" font-size="10" fill="var(--lit, #f3c77e)">4 / 4</text>
+<path d="M884 160 L930 160 L930 196 L944 196" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#approval-desk-ab)"/>
+<rect x="944" y="150" width="208" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="960" y="174" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">SLACK · #ON-SALE-DESK</text>
+<text x="960" y="198" font-size="11" fill="var(--text, #e4dbcb)">Bonus · Hartwell Tour · Sat</text>
+<text x="960" y="216" font-size="11" fill="var(--text, #e4dbcb)">Sec 105 Row C · 2 seats</text>
+<text x="960" y="234" font-size="11" fill="var(--muted, #a89f90)">Buyer 14 · posted by the desk</text>
+<text x="960" y="256" font-size="10" fill="var(--brass, #e0ae62)">one click, one post</text>
+<text x="944" y="316" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">OF MAX</text>
+<text x="944" y="338" font-size="10" fill="var(--muted, #a89f90)">Each event has a maximum in the</text>
+<text x="944" y="353" font-size="10" fill="var(--muted, #a89f90)">portal. The gauge shows how many</text>
+<text x="944" y="368" font-size="10" fill="var(--muted, #a89f90)">of it are carted or approved so</text>
+<text x="944" y="383" font-size="10" fill="var(--muted, #a89f90)">far; a full gauge turns lit.</text>
+<text x="48" y="470" font-size="10" fill="var(--dim-numeral, #4a5a50)">Brass: a carted row that matches a rule, and the one button the extension adds. Names, prices, accounts, and the tool’s own name are not in the drawing; the rows are invented.</text>
+</svg>

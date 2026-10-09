@@ -19,7 +19,8 @@ import { PRAVA_SCREENS } from "./prava-screens";
  * cell has a screenshot or a drawing, or is marked pending and shows a
  * labeled slot in its place. Every project also has a page, and what the
  * page says is here with it. A hero that is a system of the employer's
- * other projects has none: it links to theirs.
+ * other projects would have none, and would link to theirs; none is one
+ * now.
  */
 type ImagePlate = { kind: "image"; src: StaticImageData; alt: string };
 
@@ -33,19 +34,21 @@ export type Plate =
   /** The odds console recording (VideoPlate). */
   | { kind: "video" }
   | DiagramPlate
-  /** The on-sale system's venue, looping from 960px up (VenueLoop). */
-  | { kind: "venue"; label: string };
+  /** The buyer extension's venue, looping from 960px up (ExtensionLoop). */
+  | { kind: "loop"; label: string };
 
 /** What a project is built with, one token each (StackTokens). A
     placeholder is a guess to correct; the row says so first. */
 export type Stack = { items: string[]; placeholder?: true };
 
 /**
- * A project's page (app/work/[slug]), at one of three depths. Full: the
- * title block, a plate, five or six numbered sections. Standard: the same
- * with two sections. Note: the title block and three paragraphs.
+ * A project's page (app/work/[slug]), at one of four depths. Featured: Full
+ * with a plate that moves, a system section, two drawings where one would
+ * not do, and a closing outcome section; nine sections. Full: the title
+ * block, a plate, five or six numbered sections. Standard: the same with
+ * two sections. Note: the title block and three paragraphs.
  */
-export type Depth = "full" | "standard" | "note";
+export type Depth = "featured" | "full" | "standard" | "note";
 
 /** Running text: a string, or a run of strings, emphasis, and links. */
 export type Rich =
@@ -67,12 +70,14 @@ export type Media = ImagePlate | DiagramPlate;
 
 export type Figure = { media: Media; caption: string };
 
-/** The plate under the title block. Screens carry their own captions. */
+/** The plate under the title block. Screens carry their own captions. A
+    Featured page's plate is the loop (ExtensionLoop), with a caption. */
 export type PagePlate =
   | {
       kind: "screens";
       screens: { src: StaticImageData; alt: string; caption: string }[];
     }
+  | { kind: "loop"; label: string; caption: string }
   | Figure;
 
 /** One part of a section's body, under its statement. */
@@ -88,7 +93,7 @@ export type Block =
 export type Section = {
   /** The anchor, "problem". */
   id: string;
-  /** "01" to "06": the running margin's numeral. */
+  /** "01" to "09": the running margin's numeral. */
   number: string;
   /** The running margin's label, and the section's heading. */
   label: string;
@@ -130,7 +135,7 @@ export type SectionedPage = PageContent & {
 export type NotePage = PageContent & { paragraphs: Rich[] };
 
 type Paged =
-  | { depth: "full" | "standard"; page: SectionedPage }
+  | { depth: "featured" | "full" | "standard"; page: SectionedPage }
   /** Whatever a Note has not had written is filled in (pages.ts). */
   | { depth: "note"; page?: Partial<NotePage> };
 
@@ -404,11 +409,6 @@ export const WALKTHROUGH = "Walkthrough on request";
 const BROKER = "Etainement, one of the larger US brokers";
 const ETAINEMENT = `${BROKER} · proprietary`;
 
-/** What the on-sale system's venue shows: the hero's plate in Work, and the
-    still its three projects share (app/og/on-sale-system.png). */
-const VENUE =
-  "A synthetic venue map in the pricing portal: a rule dragged across section 105 lights the seats in its band and appears in the rules panel; the buyer extension paints the same seats on a Ticketmaster event page.";
-const VENUE_STILL: ShareImage = { src: "/og/on-sale-system.png", alt: VENUE };
 
 const PRICING_PORTAL_PAGE: SectionedPage = {
   kind: "Web app and API",
@@ -592,7 +592,7 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
             },
             {
               title: "The rules service and the stop alert",
-              text: "Placeholder. A save sanitises the record, posts an alert if the stop flag is set, appends a row, writes per-seat notifications, and warms the cache. The portal reads through a freshness check; the extension reads the latest-row view directly.",
+              text: "Placeholder. A save sanitises the record, posts an alert if the stop switch is set, appends a row, writes per-seat notifications, and warms the cache. The portal reads through a freshness check; the extension reads the latest-row view directly.",
             },
             {
               title: "Cost attribution by service account and page",
@@ -623,35 +623,46 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
     },
   ],
   links: { note: WALKTHROUGH },
-  share: VENUE_STILL,
+};
+
+/** What the buyer extension's loop shows: the hero's plate in Work and the
+    page's title plate; the still is the share image (app/og). */
+const EXTENSION_PLATE =
+  "A synthetic venue map on a buyer's Ticketmaster screen with the extension's overlay painted: rings on the seats rule 01 names in section 105, a fill on the section, a note with the count and the criteria, and the stop overlay that replaces the paint when the rule set says stop.";
+const EXTENSION_STILL: ShareImage = {
+  src: "/og/buyer-extension.png",
+  alt: EXTENSION_PLATE,
 };
 
 const BUYER_EXTENSION_PAGE: SectionedPage = {
   kind: "Chrome extension",
   fact: "Over a hundred buyers",
-  lede: "A Chrome extension that runs inside Ticketmaster, reads the buy rules an on-sale manager saved in the portal, and paints them onto the venue map a buyer is already looking at.",
+  lede: "Placeholder. A Chrome extension that runs inside Ticketmaster during an on-sale: it paints a manager's buy rules onto the venue map a buyer is already looking at, records the purchase as it happens, and brings a verification code to the screen it is needed on.",
   spec: [
-    {
-      label: "Role",
-      value: "Built and owned by Scott; handed off before leaving.",
-    },
+    { label: "Role", value: "Sole engineer; handed off before leaving" },
     {
       label: "Stack",
-      items: ["Chrome MV3", "JavaScript", "React (popup)", "Vite"],
+      items: [
+        "Chrome MV3",
+        "JavaScript",
+        "React",
+        "Vite",
+        "Node and Express",
+        "Python",
+        "Postgres",
+        "Firestore",
+        "BigQuery",
+      ],
     },
     // The Code row says it is proprietary, so Where does not.
     { label: "Where", value: BROKER },
-    { label: "Code", value: "proprietary · walkthrough on request" },
+    { label: "Code", value: "Proprietary, walkthrough on request" },
   ],
   plate: {
-    media: {
-      kind: "diagram",
-      name: "buyer-extension-cell",
-      label:
-        "A synthetic venue map on a buyer's screen: the seats inside rule 01's band ringed in light, the rule's note beside them.",
-    },
+    kind: "loop",
+    label: EXTENSION_PLATE,
     caption:
-      "What a buyer sees. The map is the marketplace's; the rings, the note, and the stop sign are the extension's. Synthetic venue, synthetic rule.",
+      "What a buyer sees, in the order the extension paints it: rings, the section fill, the note, and, when the rule set says stop, the overlay. Loops at fourteen seconds; still under reduced motion. Synthetic venue, synthetic rule.",
   },
   sections: [
     {
@@ -663,18 +674,78 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. During an on-sale a buyer has a venue map on screen and a few minutes to act. The rules for what to buy live in another tool, on another origin, written by someone else. Reading them from a second window costs the seconds the sale is decided in.",
-            "Placeholder. The marketplace's page is not built to be read by anyone but the marketplace: seat elements carry no usable ID, the map renders late and re-renders on zoom, the markup changes under you, and the response bodies that would settle every question are off limits to an extension under Manifest V3.",
-            "Placeholder. The job was to put the rule where the buyer is looking, without owning the page, a login, or a store listing.",
+            "Placeholder. During an on-sale a buyer has a venue map on screen and a few minutes to act. The rules for what to buy live in another tool, on another origin, written by a manager who is watching twenty buyers at once. Reading them from a second window costs the seconds the sale is decided in.",
+            "Placeholder. The page is not built to be read by anyone but the marketplace: seat elements carry no usable ID, the map renders late and re-renders on zoom, the markup changes under you, and the response bodies that would settle every question are off limits to an extension under Manifest V3.",
+            "Placeholder. The job was to put the rule where the buyer is looking, keep a record of what happened without asking anyone to type it, and get a verification code onto that screen when the page asks for one, all without owning the page, a login, or a store listing.",
           ],
         },
       ],
     },
     {
-      id: "origins",
+      id: "system",
       number: "02",
-      label: "Where the rule crosses",
-      statement: "Five origins, one rule.",
+      label: "The system",
+      statement: "Five things that talked to each other for ninety minutes.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. The pricing portal is where managers wrote the buy rules, a maximum number of tickets per event, and limits per account. The extension is the only part that touches everything else: inside Ticketmaster it painted the rules on the map, recorded the purchase journey, and surfaced verification codes; inside the approval desk it highlighted the carted tickets that matched a rule, showed how close an event was to its maximum, and added a bonus button that posted to Slack.",
+            "Placeholder. Behind the code relay sat an Express service and a Python mail hook. Between them they got a verification code from an inbox or from a bank of phone lines behind an SMS gateway to the buyer's screen and clipboard. None of the five could see the others directly; everything that passed between them is on one edge of the map below.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "system-map",
+                label:
+                  "The system map: the buyer extension at the centre; the pricing portal to its left sending rules and lending its token; Ticketmaster pages above, read for seats and the cart and painted with rings, fill, note, and the stop; the approval desk to its right receiving highlighted rows, the per-event maximum, and the bonus button; the code relay below, asked for a code and returning it to screen and clipboard.",
+              },
+              caption:
+                "The five parts, one labelled flow on each edge. Brass is what the extension carries; grey is what it reads.",
+            },
+          ],
+        },
+        {
+          kind: "facts",
+          facts: [
+            {
+              term: "Pricing portal",
+              detail:
+                "Buy rules, a maximum per event, limits per account; lends the extension its session",
+            },
+            {
+              term: "Extension",
+              detail:
+                "Paints, records, surfaces codes; the only part that touches all four others",
+            },
+            {
+              term: "Ticketmaster",
+              detail:
+                "The event page, the map, the cart, the confirmation; read and decorated, never changed",
+            },
+            {
+              term: "Approval desk",
+              detail:
+                "Where managers approved carted tickets; the extension shades its rows and adds one button",
+            },
+            {
+              term: "Code relay",
+              detail:
+                "Express and a Python mail hook; an inbox and an SMS gateway with hundreds of ports. The same service carries the telemetry into the warehouse",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "path",
+      number: "03",
+      label: "The rule's path",
+      statement: "Five origins, seven steps, one rule.",
       body: [
         {
           kind: "paragraphs",
@@ -695,49 +766,6 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
               caption:
                 "The five origins. Brass is the rule; grey is what has to happen for it to move.",
             },
-          ],
-        },
-        {
-          kind: "facts",
-          facts: [
-            {
-              term: "Worker",
-              detail:
-                "Routes every message; borrows the portal token; the badge is its status light",
-            },
-            {
-              term: "Content script",
-              detail:
-                "Detects the page type, waits for the map, polls, compares, hands on",
-            },
-            {
-              term: "Page world",
-              detail:
-                "Reads seat IDs from the site's own React internals and paints",
-            },
-            {
-              term: "Identity iframe",
-              detail:
-                "A content script inside the cross-origin frame, reporting by origin-checked message",
-            },
-            {
-              term: "Popup",
-              detail:
-                "One React form, pre-filled with the captured cart for a human to correct",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "path",
-      number: "03",
-      label: "The rule's path",
-      statement: "From the map appearing to the paint, in seven steps.",
-      body: [
-        {
-          kind: "figures",
-          figures: [
             {
               media: {
                 kind: "diagram",
@@ -746,24 +774,134 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
                   "The rule's path in seven steps: the map appears, the content script asks, the worker fetches with the borrowed token, the poll runs every fifteen seconds while the tab is visible, the rules are handed into the page world, seat IDs are read from React internals, the seats are painted.",
               },
               caption:
-                "No long-lived ports anywhere: one-shot messages with a reply, and window messages across the world boundary.",
+                "Seven steps from the map appearing to the paint. No long-lived ports anywhere: one-shot messages with a reply, and window messages across the world boundary.",
             },
           ],
         },
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. The poll runs every 15 seconds while the tab is visible and stops when it is hidden. A pass that finds nothing changed stops before the paint. Panning or zooming repaints from the last rules, one second after movement stops, with no network call.",
-            "Placeholder. If no portal tab is open the fetch fails and the badge turns red; the buyer knows before the sale does.",
+            "Placeholder. The poll runs every 15 seconds while the tab is visible and stops when it is hidden. A pass that finds nothing changed stops before the paint. Panning or zooming repaints from the last rules, one second after movement stops, with no network call. If no portal tab is open the fetch fails and the badge turns red; the buyer knows before the sale does.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "relay",
+      number: "04",
+      label: "The code relay",
+      statement: "A code arrives on the screen it is needed on.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. When the page asks for a verification code, the content script asks the worker, the worker asks an Express service, and the HTTP response is held open until the code exists. The service checks first: a code for that line from the last fifteen minutes is returned without opening anything. Otherwise, for a phone line, it opens that line's port on the SMS gateway and polls the store every ten seconds for up to ninety; when the text lands, the gateway's webhook writes the code to Firestore, keyed by line. For an inbox, a Python mail hook runs once per email, parses it with every field in its own try block, and upserts the latest code per address into Postgres.",
+            "Placeholder. Either way the held response returns the code and the port is released, on a code and on a timeout alike. The worker hands it to the page and puts it on the clipboard, so the buyer sees it where they are and can paste it. Nothing on this path reads a password or touches the account itself; the relay moves one six-digit string from where it landed to where it was needed.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "code-relay",
+                label:
+                  "The code relay as a sequence: the page asks the worker, the worker asks the service, the service opens a port on the SMS gateway; the SMS lands and the webhook posts the code, or the mail hook reads it from an inbox; the code is stored; the worker polls until it is there and hands it to the page and the clipboard.",
+              },
+              caption:
+                "The sequence, page to clipboard. Brass is the code; grey is the asking. Two ways in, two stores, one poll, and a release on every exit.",
+            },
+          ],
+        },
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. The gateway holds hundreds of ports, grouped under gateway IDs, and a group can have only one port open at a time; a text only arrives on an open port. So the service is also a scheduler: a port-state map, a queue per group, and a record of which line each group is serving. A request whose group is busy waits in the queue with its response still open; when the current port closes, the next request opens the next port. The list of lines is refreshed from the gateway once a day. The drawing below is what the service is doing while the buyer waits.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "port-scheduler",
+                label:
+                  "The port scheduler: three SMS gateways, each with groups of sixteen ports, one port open per group, and a queue of waiting requests beside each group.",
+              },
+              caption:
+                "Gateways, groups, one open port, the queue. Check first, bounded poll, release on every exit. Counts and IDs are invented.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "desk",
+      number: "05",
+      label: "The approval desk",
+      statement: "The same rule, read from the manager's side.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. Managers approved purchases in a third-party tool: a table of carted tickets, one row per cart, re-rendered constantly. The extension runs there too. It groups the rows by event, fetches each event's rules once, and shades every row whose seats match a rule, so a manager scanning two hundred rows sees the ones the plan asked for.",
+            "Placeholder. Each event's maximum from the portal becomes a gauge: how many tickets are carted or approved against it, and a full gauge turns lit. One button is added to each matching row. A click posts the event, the seats, and the buyer to a Slack channel, which is how a bonus was recorded; the button's state is kept in extension storage so every open tab agrees.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "approval-desk",
+                label:
+                  "The approval desk as the extension leaves it: a table of carted tickets with the rows that match a rule highlighted, a gauge per event showing how close it is to its maximum, and a bonus button whose click posts to Slack. Synthetic rows.",
+              },
+              caption:
+                "The table as the extension leaves it: matching rows, the gauge, the button, its post. Every row is invented; the tool is not named.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "telemetry",
+      number: "06",
+      label: "The telemetry",
+      statement: "Every step of the purchase, recorded without a keystroke.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. The event page loading, the waiting room position, the sign-in, the cart, a failed cart, a checkout error, the confirmation: each is noticed on the page, stamped with the browser's clock, and sent through the worker to two places. The warehouse keeps it for good. Firestore keeps it for the next hour, which is where the on-sale monitor reads it.",
+            "Placeholder. The ingestion endpoint stamps a second time on arrival, and the monitor orders rows by that one. The gap between the two clocks can be measured from stored data; the gap from document to screen cannot, so no latency figure is quoted anywhere on this site.",
+          ],
+        },
+        {
+          kind: "figures",
+          figures: [
+            {
+              media: {
+                kind: "diagram",
+                name: "telemetry-funnel",
+                label:
+                  "The telemetry funnel from a buyer's page to the monitor's screen: content script, worker, ingestion endpoint, Firestore, listener, reduce, table, with the two timestamps marked and the warehouse as the second destination.",
+              },
+              caption:
+                "Which clock stamps the record where. The live half is push; nothing on it polls.",
+            },
           ],
         },
       ],
     },
     {
       id: "hard",
-      number: "04",
-      label: "The hard parts",
-      statement: "In the order they were met.",
+      number: "07",
+      label: "Hard parts",
+      statement: "Nine, in the order they were met.",
       body: [
         {
           kind: "items",
@@ -778,7 +916,7 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
             },
             {
               title: "Timing on a late-rendering single-page app",
-              text: "Placeholder. Content scripts start before the body exists; the map arrives seconds later and re-renders on zoom. Observers wait for one specific element and fire once, a debounce absorbs the zoom, a re-entrancy flag keeps two passes from overlapping, and everything pauses while the tab is hidden.",
+              text: "Placeholder. Content scripts start before the body exists; the map arrives seconds later and re-renders on zoom. Observers wait for one specific element and fire once, a debounce absorbs the zoom, a re-entrancy guard keeps two passes from overlapping, and everything pauses while the tab is hidden.",
             },
             {
               title: "The cross-origin identity iframe",
@@ -793,8 +931,16 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
               text: "Placeholder. Sixty of the site's test hooks are targeted, each written three ways because the site has spelled the attribute three ways over time. Parsers prefer the page's embedded data and fall back to the DOM; order confirmation has three layers, the last of them a human.",
             },
             {
-              title: "The two-tier cache on the distribution portal",
-              text: "Placeholder. A second surface re-renders its table constantly. The first version refetched rules per row. The current one scopes the observer, debounces, groups rows by event, shares one in-flight request per event, and caches in memory and then in extension storage.",
+              title: "The two-tier cache on the approval desk",
+              text: "Placeholder. The desk re-renders its table constantly. The first version refetched rules per row. The current one scopes the observer, debounces, groups rows by event, shares one in-flight request per event, and caches in memory and then in extension storage.",
+            },
+            {
+              title: "Recording a purchase nobody typed in",
+              text: "Placeholder. A cart, a failed cart, a checkout error, and a confirmation each look different on the page and none of them announces itself. Each is read from the page's embedded data first and the DOM second, keyed to the browser tab so one buyer's three tabs stay three purchases, and sent with a reference the buyer sees in a toast. The popup is the third layer: the captured cart, pre-filled, for a human to correct.",
+            },
+            {
+              title: "The port scheduler",
+              text: "Placeholder. Hundreds of ports, grouped under gateway IDs, and only one port open per group at a time, so two requests in a group must never fight over it. The discipline: check the store before opening anything, hold the caller's response open while it waits in the group's queue, bound the poll at ninety seconds, and release the port on every exit path, failure included, so one bad line can never hold a group. A status route showed the map and the queues live during a sale.",
             },
           ],
         },
@@ -802,22 +948,38 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
     },
     {
       id: "differently",
-      number: "05",
+      number: "08",
       label: "What I would do differently",
-      statement: "Three things, in order of regret.",
+      statement: "Four things, in order of regret.",
       body: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. A guard for the day the site's internals change shape: today a break paints zero seats and the only signal is a note that reads zero. Then tests, of which there are none. Then one shared rules cache on the marketplace side instead of one poll per tab.",
-            "Placeholder. Over a hundred buyers used it through two seasons of on-sales. The numbers behind that stay off the internet on purpose and are available in an interview.",
+            "Placeholder. A guard for the day the site's internals change shape: today a break paints zero seats and the only signal is a note that reads zero. Then tests, of which there are none, in a codebase with twenty-one observers across eleven files. Then one shared rules cache on the marketplace side instead of one poll per tab.",
+            "Placeholder. Last, the port scheduler's state. The codes themselves moved to Firestore so a restart mid-sale would not lose them; the port map and the queues stayed in process memory, so a restart starts them empty with buyers still waiting on held responses. It never bit during a sale. It would have.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "outcome",
+      number: "09",
+      label: "Outcome",
+      statement:
+        "Over a hundred buyers, two seasons of on-sales, handed off running.",
+      body: [
+        {
+          kind: "paragraphs",
+          paragraphs: [
+            "Placeholder. The extension went from a three-hundred-line prototype to the part of the on-sale every buyer had open, and the only part that touched the portal, the marketplace, the approval desk, and the code relay at once. It was handed off before I left with the service, the hook, and the scheduler documented and running.",
+            "Placeholder. The numbers behind that, purchases tracked, events covered, codes relayed, stay off the internet on purpose and are available in an interview.",
           ],
         },
       ],
     },
   ],
   links: { note: WALKTHROUGH },
-  share: VENUE_STILL,
+  share: EXTENSION_STILL,
 };
 
 const ON_SALE_MONITOR_PAGE: SectionedPage = {
@@ -907,7 +1069,6 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
     },
   ],
   links: { note: WALKTHROUGH },
-  share: VENUE_STILL,
 };
 
 /** The back-office pages share a top row, a role, and a way back. */
@@ -1440,20 +1601,31 @@ export const EMPLOYERS: Employer[] = [
     years: "2022 to 2026",
     projects: [
       {
-        id: "on-sale-system",
-        system: true,
-        name: "The on-sale system",
-        detail: "ticket brokerage · three tools · proprietary",
+        id: "buyer-extension",
+        slug: "buyer-extension",
+        depth: "featured",
+        page: BUYER_EXTENSION_PAGE,
+        name: "Buyer extension",
+        detail: "featured · Chrome extension · proprietary",
         plate: {
-          kind: "venue",
-          label: VENUE,
+          kind: "loop",
+          label:
+            "A synthetic venue map on a buyer's Ticketmaster screen with the extension's overlay painted: rings on the seats rule 01 names in section 105, a fill on the section, a note with the count and the criteria, and the stop overlay.",
         },
         placeholder: true,
         sentence:
-          "Placeholder. A rule drawn on a venue map in the portal, resolved to seat IDs at save, served to a Chrome extension that paints it on a buyer's Ticketmaster screen, and watched live as the on-sale runs. Three tools, one rule, over a hundred buyers at one of the larger US brokers.",
+          "Placeholder. A Chrome extension that ran inside Ticketmaster for over a hundred buyers at one of the larger US brokers: it painted the manager's rules onto the venue map, recorded the purchase as it happened, and brought a verification code to the screen it was needed on. Sole engineer, five systems, one rule.",
         stack: {
-          items: ["React", "Node", "BigQuery", "Chrome MV3", "Firestore"],
-          placeholder: true,
+          items: [
+            "Chrome MV3",
+            "JavaScript",
+            "React",
+            "Node and Express",
+            "Python",
+            "Postgres",
+            "Firestore",
+            "BigQuery",
+          ],
         },
       },
       {
@@ -1472,23 +1644,6 @@ export const EMPLOYERS: Employer[] = [
         sentence:
           "Placeholder. Where analysts price inventory against the market and on-sale managers draw the rules. A team system; my parts are named on its page.",
         stack: { items: ["React", "Redux", "Node", "BigQuery", "Redis"] },
-      },
-      {
-        id: "buyer-extension",
-        slug: "buyer-extension",
-        depth: "full",
-        page: BUYER_EXTENSION_PAGE,
-        name: "Buyer extension",
-        plate: {
-          kind: "diagram",
-          name: "buyer-extension-cell",
-          label:
-            "The buyer extension: seats in a rule's band ringed on a venue map, with the rule's note beside them.",
-        },
-        placeholder: true,
-        sentence:
-          "Placeholder. Runs inside Ticketmaster, borrows the portal's session, and paints the rules onto the map a buyer is looking at. Five origins, one rule.",
-        stack: { items: ["Chrome MV3", "JavaScript", "React"] },
       },
       {
         id: "on-sale-monitor",

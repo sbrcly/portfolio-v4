@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { DiagramDrawing } from "@/components/diagram/Diagram";
 import Lightbox from "@/components/lightbox/Lightbox";
+import ExtensionLoop from "./ExtensionLoop";
 import Plate from "./Plate";
 import ProjectLinks, { hasLinks } from "./ProjectLinks";
 import Rating from "./Rating";
 import StackTokens from "./StackTokens";
-import VenueLoop from "./VenueLoop";
 import VideoPlate from "./VideoPlate";
 import {
   hasPage,
@@ -67,8 +67,8 @@ function ProjectPlate({
           <DiagramDrawing name={plate.name} label={plate.label} />
         </Lightbox>
       );
-    case "venue":
-      return <VenueLoop label={plate.label} />;
+    case "loop":
+      return <ExtensionLoop label={plate.label} />;
   }
 }
 

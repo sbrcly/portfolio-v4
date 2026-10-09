@@ -9,6 +9,10 @@ import styles from "./diagram.module.css";
  * 720px. The rest keep their shape at every width.
  */
 const TALL = {
+  "system-map": true,
+  "code-relay": true,
+  "port-scheduler": true,
+  "approval-desk": true,
   "five-origins": true,
   "rule-path": true,
   "rule-lifecycle": true,
@@ -22,7 +26,8 @@ const TALL = {
   "selection-funnel": true,
   "pricer-wireframe": false,
   "sheet-anatomy": false,
-  "on-sale-system": false,
+  "buyer-extension": false,
+  "buyer-extension-still": false,
   "on-sale-system-still": false,
   "on-sale-monitor-plate": false,
   "pricing-portal-cell": false,
@@ -72,15 +77,20 @@ function Drawing({
 }
 
 /** The drawing alone, for a plate that is already there: the tall one
-    below 720px, if it has one. */
+    below 720px, if it has one. A drawing without one can be classed, for a
+    plate that shows one of two (components/work/ExtensionLoop). */
 export function DiagramDrawing({
   name,
   label,
+  className,
 }: {
   name: DiagramName;
   label: string;
+  className?: string;
 }) {
-  if (!TALL[name]) return <Drawing file={name} label={label} />;
+  if (!TALL[name]) {
+    return <Drawing file={name} label={label} className={className} />;
+  }
   return (
     <>
       <Drawing file={name} label={label} className={styles.wide} />

@@ -1,32 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="The rule's path, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
-<rect width="600" height="900" fill="var(--surface, #1a2520)"/>
-<line x1="72" y1="60" x2="72" y2="840" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<circle cx="72" cy="60" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="50" font-size="13" fill="var(--text, #e4dbcb)">01  Map appears</text>
-<text x="100" y="70" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">ISOLATED WORLD</text>
-<text x="100" y="90" font-size="11" fill="var(--muted, #a89f90)">A MutationObserver waits for the section layer, then disconnects.</text>
-<circle cx="72" cy="190" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="180" font-size="13" fill="var(--text, #e4dbcb)">02  Content script asks</text>
-<text x="100" y="200" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">ISOLATED WORLD</text>
-<text x="100" y="220" font-size="11" fill="var(--muted, #a89f90)">One message to the worker with the event ID.</text>
-<circle cx="72" cy="320" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="310" font-size="13" fill="var(--text, #e4dbcb)">03  Worker fetches</text>
-<text x="100" y="330" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">EXTENSION</text>
-<text x="100" y="350" font-size="11" fill="var(--muted, #a89f90)">With the token borrowed from the open portal tab.</text>
-<circle cx="72" cy="450" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="440" font-size="13" fill="var(--text, #e4dbcb)">04  Poll while visible</text>
-<text x="100" y="460" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">ISOLATED WORLD</text>
-<text x="100" y="480" font-size="11" fill="var(--muted, #a89f90)">Every 15 seconds; paused when the tab is hidden.</text>
-<circle cx="72" cy="580" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="570" font-size="13" fill="var(--text, #e4dbcb)">05  Handoff</text>
-<text x="100" y="590" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">PAGE WORLD</text>
-<text x="100" y="610" font-size="11" fill="var(--muted, #a89f90)">Rules posted across the world boundary.</text>
-<circle cx="72" cy="710" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="700" font-size="13" fill="var(--text, #e4dbcb)">06  Seat IDs read</text>
-<text x="100" y="720" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">PAGE WORLD</text>
-<text x="100" y="740" font-size="11" fill="var(--muted, #a89f90)">From the React internals on each seat element.</text>
-<circle cx="72" cy="840" r="5" fill="var(--surface, #1a2520)" stroke="var(--brass, #e0ae62)" stroke-width="1.5"/>
-<text x="100" y="830" font-size="13" fill="var(--text, #e4dbcb)">07  Paint</text>
-<text x="100" y="850" font-size="10" fill="var(--dim-numeral, #4a5a50)" letter-spacing="1">PAGE WORLD</text>
-<text x="100" y="870" font-size="11" fill="var(--muted, #a89f90)">Rings, section fill, notes; cleared and reapplied each pass.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 870" width="600" height="870" role="img" aria-label="The rule’s path, stacked for the phone." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="rule-path-tall-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="rule-path-tall-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="600" height="870" fill="var(--surface, #1a2520)"/>
+<text x="48" y="36" font-size="10" fill="var(--lit, #f3c77e)">the rule’s path, stacked</text>
+<rect x="48" y="52" width="504" height="94" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="76" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">01 · MAP APPEARS</text>
+<text x="64" y="92" font-size="10" fill="var(--dim-numeral, #4a5a50)">isolated world</text>
+<text x="64" y="114" font-size="12" fill="var(--muted, #a89f90)">A MutationObserver waits for the section</text>
+<text x="64" y="130" font-size="12" fill="var(--muted, #a89f90)">layer, then disconnects.</text>
+<line x1="300" y1="146" x2="300" y2="174" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#rule-path-tall-a)"/>
+<rect x="48" y="174" width="504" height="78" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="198" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">02 · CONTENT SCRIPT ASKS</text>
+<text x="64" y="214" font-size="10" fill="var(--dim-numeral, #4a5a50)">isolated world</text>
+<text x="64" y="236" font-size="12" fill="var(--muted, #a89f90)">One message to the worker with the event ID.</text>
+<line x1="300" y1="252" x2="300" y2="280" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#rule-path-tall-a)"/>
+<rect x="48" y="280" width="504" height="94" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="304" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">03 · WORKER FETCHES</text>
+<text x="64" y="320" font-size="10" fill="var(--dim-numeral, #4a5a50)">extension</text>
+<text x="64" y="342" font-size="12" fill="var(--muted, #a89f90)">With the token borrowed from the open portal</text>
+<text x="64" y="358" font-size="12" fill="var(--muted, #a89f90)">tab.</text>
+<line x1="300" y1="374" x2="300" y2="402" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#rule-path-tall-a)"/>
+<rect x="48" y="402" width="504" height="94" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="426" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">04 · POLL WHILE VISIBLE</text>
+<text x="64" y="442" font-size="10" fill="var(--dim-numeral, #4a5a50)">isolated world</text>
+<text x="64" y="464" font-size="12" fill="var(--muted, #a89f90)">Every 15 seconds; paused when the tab is</text>
+<text x="64" y="480" font-size="12" fill="var(--muted, #a89f90)">hidden.</text>
+<line x1="300" y1="496" x2="300" y2="524" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#rule-path-tall-a)"/>
+<rect x="48" y="524" width="504" height="78" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="548" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">05 · HANDOFF</text>
+<text x="64" y="564" font-size="10" fill="var(--dim-numeral, #4a5a50)">page world</text>
+<text x="64" y="586" font-size="12" fill="var(--muted, #a89f90)">Rules posted across the world boundary.</text>
+<line x1="300" y1="602" x2="300" y2="630" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-path-tall-ab)"/>
+<rect x="48" y="630" width="504" height="78" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="64" y="654" font-size="11" fill="var(--text, #e4dbcb)" letter-spacing="1.2">06 · SEAT IDS READ</text>
+<text x="64" y="670" font-size="10" fill="var(--dim-numeral, #4a5a50)">page world</text>
+<text x="64" y="692" font-size="12" fill="var(--muted, #a89f90)">From the React internals on each seat element.</text>
+<line x1="300" y1="708" x2="300" y2="736" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#rule-path-tall-ab)"/>
+<rect x="48" y="736" width="504" height="94" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="64" y="760" font-size="11" fill="var(--brass, #e0ae62)" letter-spacing="1.2">07 · PAINT</text>
+<text x="64" y="776" font-size="10" fill="var(--dim-numeral, #4a5a50)">page world</text>
+<text x="64" y="798" font-size="12" fill="var(--muted, #a89f90)">Rings, section fill, the note, or the stop</text>
+<text x="64" y="814" font-size="12" fill="var(--muted, #a89f90)">overlay.</text>
 </svg>

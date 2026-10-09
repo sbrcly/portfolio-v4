@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="The system map: the buyer extension at the centre; the pricing portal to its left sending rules and lending its token; Ticketmaster pages above, read for seats and the cart and painted with rings, fill, note, and the stop; the approval desk to its right receiving highlighted rows, the per-event maximum, and the bonus button; the code relay below, asked for a code and returning it to screen and clipboard." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="system-map-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="system-map-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="620" fill="var(--surface, #1a2520)"/>
+<text x="60" y="40" font-size="10" fill="var(--lit, #f3c77e)">the system, with the extension at the centre</text>
+<rect x="515" y="70" width="170" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="527" y="94" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">TICKETMASTER PAGES</text>
+<text x="527" y="118" font-size="10" fill="var(--muted, #a89f90)">the event page, the</text>
+<text x="527" y="133" font-size="10" fill="var(--muted, #a89f90)">map, the cart, the</text>
+<text x="527" y="148" font-size="10" fill="var(--muted, #a89f90)">confirmation. Not ours.</text>
+<rect x="60" y="250" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="72" y="274" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">PRICING PORTAL</text>
+<text x="72" y="298" font-size="10" fill="var(--muted, #a89f90)">where managers write</text>
+<text x="72" y="313" font-size="10" fill="var(--muted, #a89f90)">buy rules, a maximum</text>
+<text x="72" y="328" font-size="10" fill="var(--muted, #a89f90)">per event, and limits</text>
+<text x="72" y="343" font-size="10" fill="var(--muted, #a89f90)">per account.</text>
+<rect x="515" y="250" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="527" y="274" font-size="10" fill="var(--brass, #e0ae62)" letter-spacing="1">BUYER EXTENSION</text>
+<text x="527" y="298" font-size="10" fill="var(--muted, #a89f90)">inside the page: paints</text>
+<text x="527" y="313" font-size="10" fill="var(--muted, #a89f90)">the rules, records the</text>
+<text x="527" y="328" font-size="10" fill="var(--muted, #a89f90)">journey, surfaces the</text>
+<text x="527" y="343" font-size="10" fill="var(--muted, #a89f90)">code.</text>
+<rect x="970" y="250" width="170" height="130" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="982" y="274" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">THE APPROVAL DESK</text>
+<text x="982" y="298" font-size="10" fill="var(--muted, #a89f90)">where managers approve</text>
+<text x="982" y="313" font-size="10" fill="var(--muted, #a89f90)">carted tickets. The</text>
+<text x="982" y="328" font-size="10" fill="var(--muted, #a89f90)">extension decorates its</text>
+<text x="982" y="343" font-size="10" fill="var(--muted, #a89f90)">table.</text>
+<rect x="515" y="450" width="170" height="120" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="527" y="474" font-size="10" fill="var(--text, #e4dbcb)" letter-spacing="1">THE CODE RELAY</text>
+<text x="527" y="498" font-size="10" fill="var(--muted, #a89f90)">an Express service and</text>
+<text x="527" y="513" font-size="10" fill="var(--muted, #a89f90)">a Python mail hook</text>
+<text x="527" y="528" font-size="10" fill="var(--muted, #a89f90)">behind an SMS gateway</text>
+<text x="527" y="543" font-size="10" fill="var(--muted, #a89f90)">and an inbox.</text>
+<line x1="230" y1="300" x2="513" y2="300" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#system-map-ab)"/>
+<text x="372" y="290" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">rules for one event, on each poll</text>
+<line x1="513" y1="340" x2="232" y2="340" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#system-map-a)"/>
+<text x="372" y="358" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">borrows the token from the open tab</text>
+<line x1="565" y1="190" x2="565" y2="248" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#system-map-a)"/>
+<text x="555" y="224" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="end">seat IDs, the cart, the confirmation</text>
+<line x1="635" y1="248" x2="635" y2="192" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#system-map-ab)"/>
+<text x="645" y="224" font-size="10" fill="var(--brass, #e0ae62)">rings, fill, note, the stop</text>
+<line x1="685" y1="300" x2="968" y2="300" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#system-map-ab)"/>
+<text x="827" y="290" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">rows that match a rule; the maximum</text>
+<line x1="685" y1="340" x2="968" y2="340" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#system-map-ab)"/>
+<text x="827" y="358" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">the bonus button, posted to Slack</text>
+<line x1="565" y1="380" x2="565" y2="448" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#system-map-a)"/>
+<text x="555" y="418" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="end">a code is requested</text>
+<line x1="635" y1="448" x2="635" y2="382" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#system-map-ab)"/>
+<text x="645" y="418" font-size="10" fill="var(--brass, #e0ae62)">the code, to screen and clipboard</text>
+<text x="60" y="600" font-size="10" fill="var(--dim-numeral, #4a5a50)">Brass: what the extension carries. Grey: what it reads. Dashed boxes are pages the extension does not own. Five parts; the extension is the only one that touches the other four.</text>
+</svg>

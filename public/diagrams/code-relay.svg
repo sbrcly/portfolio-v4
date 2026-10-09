@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-label="The code relay as a sequence: the page asks the worker, the worker asks the service and the response is held open; the service returns a recent code at once or opens the line’s port on the SMS gateway; the text lands and the webhook writes the code, or the mail hook upserts it from an inbox; the service polls the store every ten seconds for up to ninety; the held response returns and the port is released; the worker hands the code to the page and the clipboard." font-family="var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)">
+<defs>
+<marker id="code-relay-a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1"/>
+</marker>
+<marker id="code-relay-ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0 0.5 L7 4 L0 7.5" fill="none" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+</marker>
+</defs>
+<rect width="1200" height="640" fill="var(--surface, #1a2520)"/>
+<text x="48" y="36" font-size="10" fill="var(--lit, #f3c77e)">one code, from the request on the page to the clipboard</text>
+<rect x="25" y="56" width="150" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="100" y="74" font-size="10" fill="var(--text, #e4dbcb)" text-anchor="middle" letter-spacing="1">THE PAGE</text>
+<text x="100" y="90" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">isolated world</text>
+<line x1="100" y1="100" x2="100" y2="586" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="2 4"/>
+<rect x="225" y="56" width="150" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="300" y="74" font-size="10" fill="var(--text, #e4dbcb)" text-anchor="middle" letter-spacing="1">WORKER</text>
+<text x="300" y="90" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">extension</text>
+<line x1="300" y1="100" x2="300" y2="586" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="2 4"/>
+<rect x="425" y="56" width="150" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="500" y="74" font-size="10" fill="var(--text, #e4dbcb)" text-anchor="middle" letter-spacing="1">SERVICE</text>
+<text x="500" y="90" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">Node and Express</text>
+<line x1="500" y1="100" x2="500" y2="586" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="2 4"/>
+<rect x="625" y="56" width="150" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="700" y="74" font-size="10" fill="var(--text, #e4dbcb)" text-anchor="middle" letter-spacing="1">SMS GATEWAY</text>
+<text x="700" y="90" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">hundreds of ports</text>
+<line x1="700" y1="100" x2="700" y2="586" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="2 4"/>
+<rect x="825" y="56" width="150" height="44" fill="var(--ground, #0e1512)" stroke="var(--rule, #2e3b34)" stroke-width="1"/>
+<text x="900" y="74" font-size="10" fill="var(--text, #e4dbcb)" text-anchor="middle" letter-spacing="1">MAIL HOOK</text>
+<text x="900" y="90" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">Python, one run per email</text>
+<line x1="900" y1="100" x2="900" y2="586" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="2 4"/>
+<rect x="1025" y="56" width="150" height="44" fill="var(--ground, #0e1512)" stroke="var(--brass, #e0ae62)" stroke-width="1"/>
+<text x="1100" y="74" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle" letter-spacing="1">THE STORES</text>
+<text x="1100" y="90" font-size="10" fill="var(--dim-numeral, #4a5a50)" text-anchor="middle">Postgres · Firestore</text>
+<line x1="1100" y1="100" x2="1100" y2="586" stroke="var(--rule, #2e3b34)" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="100" y1="140" x2="300" y2="140" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#code-relay-a)"/>
+<text x="200" y="132" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">01 · the page asks for a code</text>
+<line x1="300" y1="180" x2="500" y2="180" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#code-relay-a)"/>
+<text x="400" y="172" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">02 · forwarded; the response is held open</text>
+<line x1="500" y1="220" x2="1100" y2="220" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#code-relay-a)"/>
+<text x="800" y="212" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">03 · a code from the last fifteen minutes? return it</text>
+<line x1="500" y1="260" x2="700" y2="260" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#code-relay-a)"/>
+<text x="600" y="252" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">04 · else open this line’s port, one per group</text>
+<text x="500" y="286" font-size="10" fill="var(--lit, #f3c77e)" text-anchor="middle">the port scheduler lives here</text>
+<line x1="500" y1="292" x2="500" y2="304" stroke="var(--lit, #f3c77e)" stroke-width="1"/>
+<line x1="700" y1="330" x2="1100" y2="330" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#code-relay-ab)"/>
+<text x="900" y="322" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">05 · the text lands; the webhook writes the code</text>
+<line x1="900" y1="370" x2="1100" y2="370" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#code-relay-ab)"/>
+<text x="1000" y="362" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">05b · or the mail hook upserts the latest code per address</text>
+<line x1="500" y1="420" x2="1100" y2="420" stroke="var(--dim-numeral, #4a5a50)" stroke-width="1" marker-end="url(#code-relay-a)"/>
+<text x="800" y="412" font-size="10" fill="var(--muted, #a89f90)" text-anchor="middle">06 · the service polls every ten seconds, up to ninety</text>
+<line x1="1100" y1="450" x2="500" y2="450" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#code-relay-ab)"/>
+<text x="800" y="442" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">the code</text>
+<line x1="500" y1="490" x2="300" y2="490" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#code-relay-ab)"/>
+<text x="400" y="482" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">07 · the held response returns; the port is released</text>
+<line x1="300" y1="530" x2="100" y2="530" stroke="var(--brass, #e0ae62)" stroke-width="1" marker-end="url(#code-relay-ab)"/>
+<text x="200" y="522" font-size="10" fill="var(--brass, #e0ae62)" text-anchor="middle">08 · to the page and the clipboard</text>
+<text x="48" y="610" font-size="10" fill="var(--dim-numeral, #4a5a50)">Brass: the code. Grey: the asking. Two ways in (a port, an inbox), two stores, one poll, and the port released on every exit,</text>
+<text x="48" y="624" font-size="10" fill="var(--dim-numeral, #4a5a50)">timeout included. No hosts, line numbers, or code values anywhere in the drawing.</text>
+</svg>
