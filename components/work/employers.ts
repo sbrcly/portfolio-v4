@@ -168,6 +168,10 @@ type Shown = {
   note?: string;
   /** The tokens under the sentence. */
   stack: Stack;
+  /** Left out everywhere for now (EMPLOYERS below): Work, the index, the
+      featured row, the sitemap, and its page, which is not found. Its
+      content stays here for when it is shown. */
+  hidden?: boolean;
   /** On the home page's featured row, as which of its two. One project
       each, checked below. */
   featured?: Featured;
@@ -1498,7 +1502,8 @@ const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
   links: { note: WALKTHROUGH },
 };
 
-export const EMPLOYERS: Employer[] = [
+/** Every employer with every project, hidden ones too. */
+const ALL_EMPLOYERS: Employer[] = [
   {
     id: "01",
     name: "Faith Platforms Inc.",
@@ -1530,6 +1535,7 @@ export const EMPLOYERS: Employer[] = [
         // A grounded question surface for Prava, not built yet: its slot in
         // the grid and its place on the home page's featured row, with the
         // round 10 handoff's still (design/design_handoff_featured_row).
+        // Hidden until it is built.
         id: "ask-the-reading",
         slug: "ask-the-reading",
         depth: "note",
@@ -1541,6 +1547,7 @@ export const EMPLOYERS: Employer[] = [
           items: ["TypeScript", "Next.js", "Postgres", "Anthropic API"],
           placeholder: true,
         },
+        hidden: true,
         featured: "ai",
         featuredHidden: true,
         featuredPlate: {
@@ -1776,16 +1783,29 @@ export const EMPLOYERS: Employer[] = [
   },
 ];
 
+/** What the site shows: each employer less its hidden projects. A hero
+    cannot be hidden, so the hero stays first. */
+export const EMPLOYERS: Employer[] = ALL_EMPLOYERS.map((employer) => {
+  const [hero, ...cells] = employer.projects;
+  if (hero.hidden) {
+    throw new Error(`${employer.name}'s hero ${hero.id} cannot be hidden`);
+  }
+  return {
+    ...employer,
+    projects: [hero, ...cells.filter(({ hidden }) => !hidden)],
+  };
+});
+
 export type FeaturedProject = Project & { featured: Featured };
 
 /** The order the home page's opening line names the two halves. */
 const FEATURED_ORDER: Featured[] = ["engineering", "ai"];
 
 /** The featured projects on the row, engineering then AI (app/page.tsx),
-    less any hidden. One project each word, hidden or not: a second with
-    the same word fails the build here. */
+    less any hidden from the row or the site. One project each word, hidden
+    or not: a second with the same word fails the build here. */
 export const FEATURED: FeaturedProject[] = FEATURED_ORDER.flatMap((featured) => {
-  const projects: FeaturedProject[] = EMPLOYERS.flatMap(({ projects }) =>
+  const projects: FeaturedProject[] = ALL_EMPLOYERS.flatMap(({ projects }) =>
     projects.filter(hasPage).flatMap((project) =>
       project.featured === featured ? [{ ...project, featured }] : []
     )
@@ -1797,7 +1817,9 @@ export const FEATURED: FeaturedProject[] = FEATURED_ORDER.flatMap((featured) => 
         .join(", ")}`
     );
   }
-  return projects.filter(({ featuredHidden }) => !featuredHidden);
+  return projects.filter(
+    ({ hidden, featuredHidden }) => !hidden && !featuredHidden
+  );
 });
 
 /** Whether a project is on the row, for its mark in the Work index. */
