@@ -912,15 +912,15 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
 
 /** The back-office pages share a top row, a role, and a way back. */
 const BACK_OFFICE = "Prava's back office · one of twelve tools over 140 admin routes";
-const ONE_PERSON = "Built and used by one person";
+const SOLE_ENGINEER = "Sole engineer";
 const INTERNAL = "Internal tool";
 
 const PROMPT_LAB_PAGE: SectionedPage = {
   kind: INTERNAL,
   fact: "Eleven AI surfaces",
-  lede: "Where the system prompts behind Prava's eleven AI surfaces are versioned, published, and checked against the code they would fall back to.",
+  lede: "Where the system prompts behind Prava's eleven AI surfaces are versioned, published, and checked against the code they fall back to.",
   spec: [
-    { label: "Role", value: ONE_PERSON },
+    { label: "Role", value: SOLE_ENGINEER },
     {
       label: "Stack",
       items: ["TypeScript", "Next.js", "Postgres", "Prisma", "Anthropic API"],
@@ -947,8 +947,8 @@ const PROMPT_LAB_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. Every governed AI surface in the app reads its system prompt through one resolver rather than from a constant. The resolver keys on the surface and the person's tradition, answers from a sixty-second cache when it can, and otherwise does one cold read under a time budget. The prompt is assembled from its parts: the surface's own text, a grounding chosen for the tradition, and the shared voice every surface speaks in.",
-            "Placeholder. If anything on that path fails, for any of nine named reasons, the call falls back to the in-code producer: the same prompt as shipped code, pinned byte for byte to the seeded prompts by snapshot checks. Either way the generation ledger is stamped with the version served or the reason it fell back, so a fallback is a fact in a table and not a guess.",
+            "Every AI surface in the app reads its system prompt through one resolver instead of from a constant. The resolver keys on the surface and the person's tradition, answers from a sixty-second cache when it can, and otherwise does one cold read under a time budget. The prompt is assembled from three parts: the surface's own text, a grounding chosen for the tradition, and the shared voice every surface speaks in.",
+            "If anything on that path fails, for any of nine named reasons, the call falls back to the in-code version of the same prompt, pinned byte for byte to the seeded prompts by snapshot checks. Either way the generation ledger records the version served or the reason it fell back.",
           ],
         },
         {
@@ -957,7 +957,8 @@ const PROMPT_LAB_PAGE: SectionedPage = {
             { term: "Surfaces", detail: "Eleven governed; thirteen at launch" },
             {
               term: "Identity",
-              detail: "A 143-cell matrix, one cell per surface and denomination",
+              detail:
+                "A 143-cell matrix (surface by denomination) proving the seed equals the code",
             },
             {
               term: "Cache",
@@ -991,13 +992,13 @@ const PROMPT_LAB_PAGE: SectionedPage = {
       id: "hard",
       number: "02",
       label: "What was hard",
-      statement: "Publishing one edit that eleven prompts can depend on.",
+      statement: "One edit can change what eleven surfaces say.",
       body: [
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. A prompt is an entity with a pointer to its published version; versions accumulate underneath and never change. One draft at a time is edited in place, diffed against what is published, and published by moving the pointer. A rollback is the same move pointed at an older version, which is why there is no undo to write.",
-            "Placeholder. The shared voice and the groundings are shared, so one edit can change what every surface says. When an edit fans out, publishing passes through an impact review that lists every dependent with what it reads now and what it will read after, and a digest of that review is checked again inside the publish, so what was reviewed is what ships. The history and diff on the plate is the same comparison, kept for every version.",
+            "A prompt is an entity with a pointer to its published version; versions accumulate underneath it and never change. One draft at a time is edited in place, diffed against what is published, and published by moving the pointer. A rollback is the same move, pointed at an older version.",
+            "The shared voice and the groundings are shared, so an edit to either fans out. When it does, publishing passes through an impact review that lists every dependent surface with what it reads now and what it will read after. A digest of that review is checked again inside the publish, so what was reviewed is what ships. The version history and diff in the screenshot at the top of the page are the same comparison, kept for every version.",
           ],
         },
         {
@@ -1011,7 +1012,7 @@ const PROMPT_LAB_PAGE: SectionedPage = {
                   "The entity, version, pointer model: an entity with a pointer to its published version, versions appended beneath it, the draft to published state machine with rollback, and the impact review a fan-out edit passes through.",
               },
               caption:
-                "One pointer per entity; versions append; the impact review stands between a fan-out edit and publish.",
+                "One pointer per entity, versions only ever added, and an impact review between a fan-out edit and its publish.",
             },
           ],
         },
@@ -1026,7 +1027,7 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
   fact: "Demo data shown",
   lede: "Where Prava's usage and its AI pipeline are measured rather than assumed, from one definition of presence that every widget reads.",
   spec: [
-    { label: "Role", value: ONE_PERSON },
+    { label: "Role", value: SOLE_ENGINEER },
     {
       label: "Stack",
       items: ["TypeScript", "Next.js", "Postgres", "PostHog", "Recharts"],
@@ -1117,7 +1118,7 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
   fact: "Two lectionary traditions",
   lede: "Where the readings for the Church's week are entered, checked, and declared ready, for every day of the year across two lectionary traditions.",
   spec: [
-    { label: "Role", value: ONE_PERSON },
+    { label: "Role", value: SOLE_ENGINEER },
     { label: "Stack", items: ["TypeScript", "Next.js", "Postgres", "Prisma"] },
     { label: "Where", value: BACK_OFFICE },
     { label: "Code", value: WALKTHROUGH },
@@ -1239,7 +1240,7 @@ const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
   fact: "About four hundred acts",
   lede: "The acts the app offers, about four hundred of them, written and kept in one place, with the funnel that chooses one.",
   spec: [
-    { label: "Role", value: ONE_PERSON },
+    { label: "Role", value: SOLE_ENGINEER },
     {
       label: "Stack",
       items: [
@@ -1353,7 +1354,6 @@ export const EMPLOYERS: Employer[] = [
           src: promptLabHistoryDiff,
           alt: "The Prompt Lab's history and diff view for one surface: its versions listed, the active one marked, and a diff between two of them.",
         },
-        placeholder: true,
         sentence:
           "Where Prava's prompts are versioned and checked against their fallbacks.",
         stack: {
