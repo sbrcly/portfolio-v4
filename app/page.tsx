@@ -186,7 +186,7 @@ export default function Home() {
                 </TextLink>{" "}
                 that caught the gaps sharp bettors were picking off, and{" "}
                 <TextLink href="#work-trading-schedule">
-                  a trader schedule
+                  a trading schedule
                 </TextLink>
                 . Each was built alone, and together they saved traders hours a
                 week.

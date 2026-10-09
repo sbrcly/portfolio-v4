@@ -504,7 +504,7 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
             {
               term: "Stale sheet",
               detail:
-                "The first generation of the analysts' virtualised worklist",
+                "The first generation of the analysts' virtualized worklist",
             },
             {
               term: "Pricer",
@@ -586,7 +586,7 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
                 kind: "diagram",
                 name: "sheet-anatomy",
                 label:
-                  "Anatomy of the virtualised stale-inventory sheet: pinned columns, a sticky header, a rendered window of rows inside a taller list, a sparkline per cell, and a totals row synced to the scroll.",
+                  "Anatomy of the virtualized stale-inventory sheet: pinned columns, a sticky header, a rendered window of rows inside a taller list, a sparkline per cell, and a totals row synced to the scroll.",
               },
               caption:
                 "The analysts' worklist: what is rendered and what is only height.",
@@ -610,7 +610,7 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
             },
             {
               title: "The rules service and the stop alert",
-              text: "Saving a rule set does five things in order: sanitises the record, posts an alert to the buyers if the manager set the stop switch (which tells everyone to stop buying), appends the new row, writes a per-seat notification, and warms the cache. The portal reads rules back through a freshness check; the extension reads the latest row directly, because during a sale it cannot afford a stale answer.",
+              text: "Saving a rule set does five things in order: sanitizes the record, posts an alert to the buyers if the manager set the stop switch (which tells everyone to stop buying), appends the new row, writes a per-seat notification, and warms the cache. The portal reads rules back through a freshness check; the extension reads the latest row directly, because during a sale it cannot afford a stale answer.",
             },
             {
               title: "Cost attribution by service account and page",
@@ -633,7 +633,7 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The role model is real and well normalised, and it is enforced only in the browser; a request with the right shape would pass. The price guard is the same. Two managers editing one event's rules at the same time overwrite each other, last write wins, with no warning. And the frontend uses five different table libraries where one would do.",
+            "The role model is real and well normalized, and it is enforced only in the browser; a request with the right shape would pass. The price guard is the same. Two managers editing one event's rules at the same time overwrite each other, last write wins, with no warning. And the frontend uses five different table libraries where one would do.",
             "What stood in for tests was a staging environment and, from 2025, Sentry with session replay and source maps, which I wired in. It is a better safety net than nothing and a worse one than a test suite, and I would start with the test suite now.",
           ],
         },
@@ -720,10 +720,10 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
                 kind: "diagram",
                 name: "system-map",
                 label:
-                  "The system map: the buyer extension at the centre; the pricing portal to its left sending rules and lending its token; Ticketmaster pages above, read for seats and the cart and painted with rings, fill, note, and the stop; the approval desk to its right receiving highlighted rows, the per-event maximum, and the bonus button; the code relay below, asked for a code and returning it to screen and clipboard.",
+                  "The system map: the buyer extension at the center; the pricing portal to its left sending rules and lending its token; Ticketmaster pages above, read for seats and the cart and painted with rings, fill, note, and the stop; the approval desk to its right receiving highlighted rows, the per-event maximum, and the bonus button; the code relay below, asked for a code and returning it to screen and clipboard.",
               },
               caption:
-                "The five parts, one labelled flow on each edge. Brass is what the extension carries; grey is what it reads.",
+                "The five parts, one labeled flow on each edge. Brass is what the extension carries; gray is what it reads.",
             },
           ],
         },
@@ -779,10 +779,10 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
                 kind: "diagram",
                 name: "five-origins",
                 label:
-                  "Five origins: the portal page, the extension worker, the marketplace isolated world, the marketplace page world, and the identity iframe, with the rule travelling from the worker through the isolated world into the page world.",
+                  "Five origins: the portal page, the extension worker, the marketplace isolated world, the marketplace page world, and the identity iframe, with the rule traveling from the worker through the isolated world into the page world.",
               },
               caption:
-                "The five origins. Brass is the rule; grey is what has to happen for it to move.",
+                "The five origins. Brass is the rule; gray is what has to happen for it to move.",
             },
             {
               media: {
@@ -829,7 +829,7 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
                   "The code relay as a sequence: the page asks the worker, the worker asks the service, the service opens a port on the SMS gateway; the SMS lands and the webhook posts the code, or the mail hook reads it from an inbox; the code is stored; the worker polls until it is there and hands it to the page and the clipboard.",
               },
               caption:
-                "The sequence, page to clipboard. Brass is the code; grey is the asking. Two ways in, two stores, one poll, and a release on every exit.",
+                "The sequence, page to clipboard. Brass is the code; gray is the asking. Two ways in, two stores, one poll, and a release on every exit.",
             },
           ],
         },
@@ -1218,7 +1218,7 @@ const ANALYTICS_DASHBOARD_PAGE: SectionedPage = {
     media: {
       kind: "image",
       src: analyticsEngagement,
-      alt: "The analytics dashboard's Daily Engagement chart for a month, demo data: a presence line with Sundays shaded, a dashed line above it, a dashed marker on 09-25 labelled Presence + activity ledger, and under it per-pillar practicing users stacked by Journal, People, Pray, and Scripture.",
+      alt: "The analytics dashboard's Daily Engagement chart for a month, demo data: a presence line with Sundays shaded, a dashed line above it, a dashed marker on 09-25 labeled Presence + activity ledger, and under it per-pillar practicing users stacked by Journal, People, Pray, and Scripture.",
     },
     caption: "Engagement, with the definition-change marker. Demo data.",
   },
@@ -1507,7 +1507,6 @@ const ALL_EMPLOYERS: Employer[] = [
   {
     id: "01",
     name: "Faith Platforms Inc.",
-    // Placeholder role line and years.
     role: "Sole engineer",
     years: "2025 to now",
     projects: [
@@ -1641,7 +1640,6 @@ const ALL_EMPLOYERS: Employer[] = [
   {
     id: "02",
     name: "Etainement",
-    // Placeholder role line and years.
     role: "Full-stack engineer",
     years: "2022 to 2026",
     projects: [
@@ -1712,8 +1710,7 @@ const ALL_EMPLOYERS: Employer[] = [
   {
     id: "03",
     name: "Caesars Sportsbook",
-    // Placeholder role line and years.
-    role: "Developer analyst, promoted from trader",
+    role: "Software developer, promoted from trader",
     years: "2018 to 2022",
     projects: [
       {
@@ -1727,6 +1724,14 @@ const ALL_EMPLOYERS: Employer[] = [
           "Competitor prices pulled into BigQuery and streamed to the trading desk over Socket.io every five seconds. Green when a line moves toward the bettor, red when it moves away. This is the console running live on the desk.",
         stack: { items: ["Node", "Socket.io", "BigQuery", "MySQL"] },
         writeUp: "Odds-Display-Public",
+        page: {
+          lede: "A live table of competitor sportsbooks' prices, streamed to the Caesars trading desk every five seconds, so traders could see where our line sat against the market without opening fifty tabs.",
+          paragraphs: [
+            "A sportsbook trader sets the price on every bet the book offers and moves it as money comes in and as the game changes. The trader needs to know what every other book is asking for the same bet, because a price out of step with the market is either leaving money on the table or inviting sharp bettors to take it. Before this console, finding that out meant checking competitor sites one at a time.",
+            "The console has two halves. An ingestion service I built first (the Odds Tracker write-up) pulls odds from competitor sportsbooks through their APIs, parses them, and stores every update in BigQuery. The console itself queries that table and pushes the result to every connected trader over Socket.io, a library for streaming data to a browser without the browser asking for it. Every five seconds the table updates in place, and each cell is colored by movement: green when a line has moved in the bettor's favor, red when it has moved against them. Traders switch between moneyline, spread, and total, filter by league, and star games to keep a favorites tab. The part that took the longest to get right was keeping the table steady while it changed under the trader's eyes: diffing each update against the last so only the moved cells recolor, instead of redrawing the table and losing the trader's place.",
+            "It ran on the trading floor in Las Vegas, and the 33-second recording above is the console live on the desk. The write-up on GitHub describes the two services and their schema; the code itself was the book's.",
+          ],
+        },
       },
       {
         id: "arbitrage-detector",
@@ -1746,6 +1751,12 @@ const ALL_EMPLOYERS: Employer[] = [
         page: {
           kind: "Trading desk tool",
           fact: "About fifty books",
+          lede: "A tool that compared every bet Caesars offered against the same bet at about fifty other sportsbooks, once a minute, and flagged any pair of prices a bettor could take both sides of for a guaranteed profit.",
+          paragraphs: [
+            "An arbitrage in betting is a gap between two books: if Caesars prices one side of a game high enough and a competitor prices the other side high enough, a bettor can back both outcomes and profit whichever way the game goes. The bettor's gain is the book's loss, and sharp bettors run software to find these gaps within seconds. A trader who sees the gap first can move the line and close it.",
+            "The server pulls live odds from Caesars and from about fifty other books through their APIs, pairs each of our markets with the equivalent market elsewhere, and works out whether taking both sides would come out ahead. Any pair that does becomes a row in a table that is pushed to every open screen over Socket.io on a one-minute cycle, with the game, the market, our price, the competitor's price, and the margin. The hard part was the pairing: fifty books spell team names, periods, and lines differently, and a false match is worse than a missed one because it sends a trader to move a line that was fine.",
+            "I built it in the evenings while still trading, before the company moved me into an engineering role. It ran on the desk beside the odds console; a flagged row meant a line that was about to be hit, the trader moved it, and the row disappeared on the next cycle. The write-up on GitHub has screenshots and the structure of the code.",
+          ],
           spec: [
             { label: "Role", value: "Built alone, evenings, while trading" },
             { label: "Stack", items: ["Node", "Socket.io", "MySQL", "GCP"] },
@@ -1775,6 +1786,14 @@ const ALL_EMPLOYERS: Employer[] = [
           "Pulls every game from the data feeds and assigns traders by shift and league coverage. A game nobody owns stays flagged until someone takes it.",
         stack: { items: ["Node", "Express", "MySQL", "feed APIs"] },
         writeUp: "Trading-Schedule-Public",
+        page: {
+          lede: "A scheduling tool that pulled every game the book offered from its two data feeds and assigned a trader to each one, so nothing went live without an owner.",
+          paragraphs: [
+            "A sportsbook trades hundreds of games a day across dozens of leagues, and each one needs a trader watching it. The first tool I ever built for the desk was a Python script that gave every matchup a proper ID and mapped it to a trader. That script is what got me moved into a development role, and this is what it grew into.",
+            "The schedule pulls every upcoming game from the BetRadar and BetGenius feeds, the two data providers the book bought its fixtures from, and assigns traders by their shifts and the leagues they cover. Traders open their own page to see their games, with stats at the bottom, and filter by date, keyword, or league. Any game with no trader attached shows a notification until someone takes it. One wrinkle the feeds caused: both providers list many of the same games under different IDs, so the schedule has a duplicates view that shows only the games listed twice, one per feed, so they can be reconciled by hand rather than traded twice.",
+            "It ran on the trading floor in Las Vegas and was the desk's record of who owned what. The write-up on GitHub walks through every screen.",
+          ],
+        },
       },
     ],
   },
