@@ -2,7 +2,7 @@ import type { StaticImageData } from "next/image";
 import arbitrageTable from "@/public/images/arbitrage-table.png";
 import adminHub from "@/public/images/captures/admin-hub-1920@2x.png";
 import analyticsEngagement from "@/public/images/captures/analytics-engagement-16x10@2x.png";
-import commitmentsCommitment from "@/public/images/captures/commitments-commitment-16x10@2x.png";
+import commitmentsSimulator from "@/public/images/captures/commitments-simulator-16x10@2x.png";
 import lectionaryWeekReadings from "@/public/images/captures/lectionary-week-readings-16x10@2x.png";
 import promptLabHistoryDiff from "@/public/images/captures/prompt-lab-history-diff-16x10@2x.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
@@ -1238,7 +1238,7 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
 const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
   kind: INTERNAL,
   fact: "About four hundred acts",
-  lede: "The acts the app offers, about four hundred of them, written and kept in one place, with the funnel that chooses one.",
+  lede: "The acts the app offers, written and kept in one place, with the funnel that chooses one for each person each day.",
   spec: [
     { label: "Role", value: SOLE_ENGINEER },
     {
@@ -1258,11 +1258,11 @@ const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
   plate: {
     media: {
       kind: "image",
-      src: commitmentsCommitment,
-      alt: "The commitment library's detail view for one act, Watch a young mom's kids for an hour: a painted image of a mother on the floor with two small children, Copy Details and Export JSON buttons, and the act's title, its category, Act of Faith, and its difficulty, Hard.",
+      src: commitmentsSimulator,
+      alt: "The commitment library's Profile Simulator: a built profile, the scored table with one breakdown open, and the day's four acts",
     },
     caption:
-      "One act, as written and as kept. The pillar is out of the client; the library is not.",
+      "The Profile Simulator: a built person, the score sheet, and the day's four acts.",
   },
   sections: [
     {
@@ -1274,8 +1274,8 @@ const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. An act is a small, concrete commitment the app can offer: a thing to do today, in a category, at a difficulty, for a life context. The library holds about four hundred, each with its text, its steps, its tags, an approval status, and a preview of how it reads in the app. Drafting them is helped: a rough idea and a target profile go to the model and come back as a filled form, and a duplicate finder reads the approved rows for pairs that say the same thing.",
-            "Placeholder. Choosing one is the funnel. Eligibility, a split into universal acts and personalized ones, an exclusion of what was done lately or shown yesterday, hard gates on life context and the rest, a weighted score and its penalties, and a pick that takes the top act eighty-five times in a hundred and another at random otherwise. If all four of the day share a category the last is swapped out, and the set is cached per person per day and logged with its score sheet. The Profile Simulator on the Prava page replays this for a built person.",
+            "An act is a small, concrete commitment the app can offer: a thing to do today, in a category, at a difficulty, for a life context. The library holds about four hundred, each with its text, its steps, its tags, an approval status, and a preview of how it reads in the app. A rough idea and a target profile go to the model and come back as a filled form, and a duplicate finder reads the approved rows for pairs that say the same thing.",
+            "Choosing one is the funnel. Eligibility, a split into universal acts and personalized ones, an exclusion of what was done lately or shown yesterday, hard gates on life context and the rest, a weighted score and its penalties, and a pick that takes the top act eighty-five times in a hundred and another at random otherwise. If all four of the day share a category the last is swapped out, and the set is cached per person per day and logged with its score sheet. The Profile Simulator in the screenshot above replays all of it for a built person, score sheet included.",
           ],
         },
         {
@@ -1304,8 +1304,8 @@ const COMMITMENT_LIBRARY_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "Placeholder. The Act pillar was removed from the shipped client in July 2026. The server side remains: the library, the funnel, the logs, and this tool. The feature is returning.",
-            "Placeholder. Taking a pillar out without breaking what was built on it meant cutting the client and leaving the server whole: the backend ships ahead of the app, so an older build on someone's phone can still ask for its daily set and be answered. The schema is additive-only, so nothing was dropped; the client simply stopped asking. That is the decision the Prava page calls the process being the second engineer, applied in reverse.",
+            "The Act pillar was removed from the shipped client in July 2026. The server side remains: the library, the funnel, the logs, and this tool. The feature is returning.",
+            "Taking a pillar out without breaking what was built on it meant cutting the client and leaving the server whole. The backend ships ahead of the app, so an older build on someone's phone can still ask for its daily set and be answered. The schema is additive-only, so nothing was dropped; the client simply stopped asking.",
           ],
         },
       ],
@@ -1404,10 +1404,9 @@ export const EMPLOYERS: Employer[] = [
         detail: "back office · internal",
         plate: {
           kind: "image",
-          src: commitmentsCommitment,
-          alt: "The commitment library open on one act: its image, its title, its category, and its difficulty.",
+          src: commitmentsSimulator,
+          alt: "The commitment library's Profile Simulator: a built profile, the scored table with one breakdown open, and the day's four acts",
         },
-        placeholder: true,
         sentence: "The commitments the app offers, written and kept in one place.",
         stack: {
           items: [
