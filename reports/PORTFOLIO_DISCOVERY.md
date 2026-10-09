@@ -44,7 +44,7 @@ Five findings that matter most:
 
 `app/layout.tsx` wraps everything with the nav, footer, Lamplight, and ScrollReveal. `app/template.tsx` wraps each page in React's `<ViewTransition>`.
 
-The live site at scottbarclay.dev returns 200 on every route and is served by Vercel. The public GitHub repo `sbrcly/portfolio-v4` has the same five most recent commits as the local checkout (head `e55cbc8`, 27 July 2026), and the live resume is byte-identical to `public/resume.pdf`. So live, GitHub, and local all match, and all three are two months old.
+The live site at scottbarclay.dev returns 200 on every route and is served by Vercel. The public GitHub repo `sbrcly/portfolio-v4` has the same five most recent commits as the local checkout (head `e55cbc8`, 27 July 2026), and the live resume is byte-identical to `public/Scott-Barclay-Resume.pdf`. So live, GitHub, and local all match, and all three are two months old.
 
 ### Components
 
@@ -76,7 +76,7 @@ Supporting files: `lib/og-font.ts` (fetches subset fonts from Google at build ti
 | `images/inplay-odds.png` | 1336 x 590 | 124 KB | Experience |
 | `images/arbitrage-table.png` | 3840 x 1983 | 210 KB | Experience |
 | `videos/odds-display-demo.mp4` | 2062 x 1080, 33 s, H.264, no audio | 856 KB | Experience |
-| `resume.pdf` | 1 page, US letter | 51 KB | Connect |
+| `Scott-Barclay-Resume.pdf` | 1 page, US letter | 51 KB | Connect |
 
 Every image is referenced. None is orphaned. All twelve are PNG and all go through `next/image`, so visitors receive resized WebP (confirmed on the live site: the 640px variant of `prava-home` is 36 KB). The two Incognito files are large as source files but are never sent raw.
 
@@ -85,7 +85,7 @@ Every image is referenced. None is orphaned. All twelve are PNG and all go throu
 - Created 27 July 2026, 10:45 PDT, exported from LibreOffice 24.2. Author metadata is "Un-named" and there is no document title.
 - One page. Sections: header, Summary, Experience (Prava, Etainement, William Hill / Caesars), Skills, Education.
 - The PDF contains no clickable links. Every URL in the header is plain text.
-- The filename a recruiter ends up with is `resume.pdf`.
+- The filename a recruiter ends up with is `Scott-Barclay-Resume.pdf`.
 
 Extracted text, condensed but with every claim preserved:
 
@@ -499,7 +499,7 @@ Ranked by expected effect on getting an interview. Sizes: "part" means part of o
 
 **1. Resume header and links.**
 Chooses between: sending the July PDF as is, or reissuing it.
-Lean: reissue. Fix the location line to whatever is true today, print the real LinkedIn address or claim the short one, make every URL a live link, set the PDF title and author, and name the file `Scott-Barclay-Resume.pdf`.
+Lean: reissue. Fix the location line to whatever is true today, print the real LinkedIn address or claim the short one, make every URL a live link, set the PDF title and author, and name the file `Scott-Barclay-Scott-Barclay-Resume.pdf`.
 Why: the resume is the document most likely to be read, and its first line is currently wrong on its face. A relocation date in the past is the kind of small error that gets a careful candidate filed as careless. The dead LinkedIn text can send a recruiter to a stranger.
 Size: part. The resume source is not in this repo, so Scott edits the document; a session only swaps the file and renames the download.
 

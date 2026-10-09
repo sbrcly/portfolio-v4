@@ -1,5 +1,5 @@
 export const EMAIL = "scottbarclay02@gmail.com";
-export const RESUME_HREF = "/resume.pdf";
+export const RESUME_HREF = "/Scott-Barclay-Resume.pdf";
 
 /** Chapters I to III are sections of the home page. IV is the resume link. */
 export const CHAPTERS = [

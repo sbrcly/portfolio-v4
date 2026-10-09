@@ -158,7 +158,7 @@ set in `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`.
 
 ## Assets
 
-- `public/resume.pdf`: the resume behind "IV Resume"
+- `public/Scott-Barclay-Resume.pdf`: the resume behind "IV Resume"
 - `public/videos/odds-display-demo.mp4`: the odds console recording, 33
   seconds, silent, H.264, 2062 x 1080
 - `public/images/odds-console-poster.webp` and

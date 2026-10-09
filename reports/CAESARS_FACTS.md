@@ -9,7 +9,7 @@ Sources:
 - `reports/PORTFOLIO_DISCOVERY.md` and `reports/COPY_INVENTORY.md`.
 - **`reports/LEGACY_PORTFOLIO_DISCOVERY.md` does not exist.** It is not in the working tree, and no branch in git history has it. The only other file with "DISCOVERY" in its name under `portfolio/` is `design/prava-back-office/BACK_OFFICE_DISCOVERY.md`, which never mentions the three tools.
 - The old site's copy, taken from git at `0949307^` (the commit before "overhaul phase 1: strip old site"): `app/experience/page.tsx`, `app/about/page.tsx` and `app/page.tsx`.
-- `public/resume.pdf`, extracted with `pdftotext`.
+- `public/Scott-Barclay-Resume.pdf`, extracted with `pdftotext`.
 - Every file under `design/` that mentions the tools.
 
 ---
@@ -52,7 +52,7 @@ When a project has no `page` object, or a page that leaves fields out, these val
 
 `app/layout.tsx:73`: "Software engineer. Trading desk tools, a marketplace Chrome extension, and an iOS app designed, built, and shipped alone."
 
-### Resume (`public/resume.pdf`)
+### Resume (`public/Scott-Barclay-Resume.pdf`)
 
 ```
 Developer Analyst (promoted from Trader) · William Hill / Caesars                                 2018–2022 · Las Vegas, NV

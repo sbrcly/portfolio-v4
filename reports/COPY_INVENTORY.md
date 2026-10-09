@@ -2,7 +2,7 @@
 
 Read-only pass on 9 October 2026. The checkout started on `main` at 46be0f9 (clean) and, while this pass ran, was switched by another session to branch `hide-pending` with one uncommitted change to `components/work/employers.ts`: a `Shown.hidden` flag, set on Ask the reading, that drops it from Work, the Work index, the featured row, the sitemap, and the page routes (its page is then not found). The copy itself is identical in both states; where the two differ in what renders, the entry says so. Nothing was changed by this pass; this file is the only one written.
 
-What was walked: `components/work/employers.ts`, `components/work/pages.ts`, `app/page.tsx`, the project page route and template (`app/work/[slug]/`, `components/project-page/ProjectPage.tsx`), every component that renders text (`components/work/*`, `frame`, `footer`, `margin`, `social`, `lightbox`, `chapter-opener`), `app/layout.tsx`, the share-card generators (`app/opengraph-image.tsx`, `app/work/[slug]/opengraph-image.tsx`, `app/og/buyer-extension.png/route.tsx`, `lib/*`), `app/not-found.tsx`, `app/sitemap.ts`, `app/robots.ts`, the text inside every drawing in `public/diagrams/*.svg`, `README.md`, and the text of `public/resume.pdf`.
+What was walked: `components/work/employers.ts`, `components/work/pages.ts`, `app/page.tsx`, the project page route and template (`app/work/[slug]/`, `components/project-page/ProjectPage.tsx`), every component that renders text (`components/work/*`, `frame`, `footer`, `margin`, `social`, `lightbox`, `chapter-opener`), `app/layout.tsx`, the share-card generators (`app/opengraph-image.tsx`, `app/work/[slug]/opengraph-image.tsx`, `app/og/buyer-extension.png/route.tsx`, `lib/*`), `app/not-found.tsx`, `app/sitemap.ts`, `app/robots.ts`, the text inside every drawing in `public/diagrams/*.svg`, `README.md`, and the text of `public/Scott-Barclay-Resume.pdf`.
 
 A string is listed if it begins with "Placeholder", is flagged by a `placeholder` field or a `// Placeholder` comment in the source, is a labelled empty slot, or reads as unwritten. No "TODO", "TBD", "lorem", "20XX", empty sentence, or sample statistic was found anywhere in the source; every placeholder on the site is the word "Placeholder" or a flag.
 
@@ -329,7 +329,7 @@ Every drawing's text was read. The only placeholder text is the line above in `b
 
 ### README and resume
 
-`README.md` and `public/resume.pdf` contain no placeholder strings. Both have stale references; see the list below.
+`README.md` and `public/Scott-Barclay-Resume.pdf` contain no placeholder strings. Both have stale references; see the list below.
 
 ---
 
@@ -362,7 +362,7 @@ Every drawing's text was read. The only placeholder text is the line above in `b
 - `employers.ts` `PRICING_PORTAL_PAGE` lede: "these are the parts I built inside it over three years" against the employer's years "2022 to 2026".
 - `employers.ts` `ON_SALE_MONITOR_PAGE` `years: "2023 to 2026"` and section 02: "pulled out into pure functions in the 2026 rewrite".
 
-**Resume (`public/resume.pdf`, linked as "IV Resume" in the nav and footer; last changed 27 July 2026)**
+**Resume (`public/Scott-Barclay-Resume.pdf`, linked as "IV Resume" in the nav and footer; last changed 27 July 2026)**
 
 - Header: "Seattle, WA (relocating September 2026)". September has passed.
 - "thirteen grounded surfaces" and "eleven admin tools" versus the site's eleven surfaces and twelve tools.
