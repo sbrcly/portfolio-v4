@@ -1,12 +1,14 @@
 import type { Ref } from "react";
 import { employerTimeline } from "@/components/work/employer-timeline";
+import type { Featured } from "@/components/work/employers";
 import styles from "./margin.module.css";
 
-/** An employer's line and its projects' lines, the hero first. */
+/** An employer's line and its projects' lines, the hero first. A featured
+    project (the home page's row) carries a mark before its line. */
 export type IndexEmployer = {
   id: string;
   name: string;
-  projects: { id: string; name: string }[];
+  projects: { id: string; name: string; featured?: Featured }[];
 };
 
 /**
@@ -22,6 +24,10 @@ export type IndexEmployer = {
  * the scroll's (margin.module.css, work-index.ts): an employer's line reads
  * its own title's timeline and the next employer's. No aria-current: the
  * brightness is a reading position, not a selected page.
+ *
+ * The two featured projects have a 4px brass square in the gutter before
+ * their lines, whatever their brightness: the mark says featured, the
+ * brightness says where the reader is.
  */
 export default function WorkIndex({
   employers,
@@ -56,7 +62,10 @@ export default function WorkIndex({
             </a>
             <ul className={styles.tier} role="list" inert>
               {projects.map((project) => (
-                <li key={project.id}>
+                <li
+                  key={project.id}
+                  className={project.featured ? styles.featured : undefined}
+                >
                   <a href={`#work-${project.id}`} className={styles.line}>
                     {project.name}
                   </a>

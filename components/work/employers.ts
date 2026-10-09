@@ -139,6 +139,10 @@ type Paged =
   /** Whatever a Note has not had written is filled in (pages.ts). */
   | { depth: "note"; page?: Partial<NotePage> };
 
+/** The home page's featured row (app/page.tsx): a project is featured as
+    the engineering one or the AI one, the label's second word. */
+export type Featured = "engineering" | "ai";
+
 /** What Work shows of a project. */
 type Shown = {
   /** The anchor, "work-prava", and the heading's id. */
@@ -164,6 +168,16 @@ type Shown = {
   note?: string;
   /** The tokens under the sentence. */
   stack: Stack;
+  /** On the home page's featured row, as which of its two. One project
+      each, checked below. */
+  featured?: Featured;
+  /** Off the row for now, keeping its word: the check below still counts
+      it, so a second project cannot take the word meanwhile. */
+  featuredHidden?: boolean;
+  /** The row's sentence, where Work's is not it. */
+  featuredSentence?: string;
+  /** The row's plate, where the project has none in Work yet. */
+  featuredPlate?: DiagramPlate;
 };
 
 export type Project = Shown &
@@ -1513,6 +1527,30 @@ export const EMPLOYERS: Employer[] = [
         page: PRAVA_PAGE,
       },
       {
+        // A grounded question surface for Prava, not built yet: its slot in
+        // the grid and its place on the home page's featured row, with the
+        // round 10 handoff's still (design/design_handoff_featured_row).
+        id: "ask-the-reading",
+        slug: "ask-the-reading",
+        depth: "note",
+        name: "Ask the reading",
+        pending: true,
+        sentence:
+          "A question asked after the day's reading, answered only from the passage retrieved for it, with the citation shown.",
+        stack: {
+          items: ["TypeScript", "Next.js", "Postgres", "Anthropic API"],
+          placeholder: true,
+        },
+        featured: "ai",
+        featuredHidden: true,
+        featuredPlate: {
+          kind: "diagram",
+          name: "ask-the-reading",
+          label:
+            "Ask the reading, a grounded question surface for Prava: a question asked after the reading, the passage retrieved for it with its source, and an answer that cites that passage and nothing else.",
+        },
+      },
+      {
         id: "prompt-lab",
         slug: "prompt-lab",
         depth: "standard",
@@ -1606,12 +1644,15 @@ export const EMPLOYERS: Employer[] = [
         depth: "featured",
         page: BUYER_EXTENSION_PAGE,
         name: "Buyer extension",
-        detail: "featured · Chrome extension · proprietary",
+        detail: "Chrome extension · proprietary",
         plate: {
           kind: "loop",
           label:
             "A synthetic venue map on a buyer's Ticketmaster screen with the extension's overlay painted: rings on the seats rule 01 names in section 105, a fill on the section, a note with the count and the criteria, and the stop overlay.",
         },
+        featured: "engineering",
+        featuredSentence:
+          "Inside Ticketmaster during an on-sale, painting a manager's buy rules onto the map a buyer is already looking at.",
         placeholder: true,
         sentence:
           "Placeholder. A Chrome extension that ran inside Ticketmaster for over a hundred buyers at one of the larger US brokers: it painted the manager's rules onto the venue map, recorded the purchase as it happened, and brought a verification code to the screen it was needed on. Sole engineer, five systems, one rule.",
@@ -1735,3 +1776,30 @@ export const EMPLOYERS: Employer[] = [
   },
 ];
 
+export type FeaturedProject = Project & { featured: Featured };
+
+/** The order the home page's opening line names the two halves. */
+const FEATURED_ORDER: Featured[] = ["engineering", "ai"];
+
+/** The featured projects on the row, engineering then AI (app/page.tsx),
+    less any hidden. One project each word, hidden or not: a second with
+    the same word fails the build here. */
+export const FEATURED: FeaturedProject[] = FEATURED_ORDER.flatMap((featured) => {
+  const projects: FeaturedProject[] = EMPLOYERS.flatMap(({ projects }) =>
+    projects.filter(hasPage).flatMap((project) =>
+      project.featured === featured ? [{ ...project, featured }] : []
+    )
+  );
+  if (projects.length > 1) {
+    throw new Error(
+      `More than one project is featured as ${featured}: ${projects
+        .map(({ id }) => id)
+        .join(", ")}`
+    );
+  }
+  return projects.filter(({ featuredHidden }) => !featuredHidden);
+});
+
+/** Whether a project is on the row, for its mark in the Work index. */
+export const isFeatured = ({ id }: Pick<Project, "id">) =>
+  FEATURED.some((project) => project.id === id);

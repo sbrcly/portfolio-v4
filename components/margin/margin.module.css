@@ -881,6 +881,23 @@
   margin-bottom: var(--index-pad);
 }
 
+/* A featured project's mark: a 4px brass square in the tier's indent, 6px
+   in from the employer's edge and centered on the line. The line's own
+   color is still the scroll's. */
+.featured {
+  position: relative;
+}
+
+.featured::before {
+  content: "";
+  position: absolute;
+  top: calc((var(--index-line) - 4px) / 2);
+  left: -10px;
+  width: 4px;
+  height: 4px;
+  background: var(--brass);
+}
+
 @media (max-width: 1199px) {
   .margin {
     --numeral-size: 96px;

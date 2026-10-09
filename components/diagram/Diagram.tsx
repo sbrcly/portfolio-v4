@@ -33,6 +33,7 @@ const TALL = {
   "pricing-portal-cell": false,
   "buyer-extension-cell": false,
   "on-sale-monitor-cell": false,
+  "ask-the-reading": false,
 } as const;
 
 export type DiagramName = keyof typeof TALL;
@@ -59,15 +60,17 @@ function Drawing({
   file,
   label,
   className,
+  viewBox,
 }: {
   file: string;
   label: string;
   className?: string;
+  viewBox?: string;
 }) {
-  const { viewBox, inner } = read(file);
+  const { viewBox: own, inner } = read(file);
   return (
     <svg
-      viewBox={viewBox}
+      viewBox={viewBox ?? own}
       role="img"
       aria-label={label}
       className={className ? `${styles.drawing} ${className}` : styles.drawing}
@@ -78,18 +81,28 @@ function Drawing({
 
 /** The drawing alone, for a plate that is already there: the tall one
     below 720px, if it has one. A drawing without one can be classed, for a
-    plate that shows one of two (components/work/ExtensionLoop). */
+    plate that shows one of two, and cropped to a viewBox of the page's
+    instead of the file's (components/work/ExtensionLoop). */
 export function DiagramDrawing({
   name,
   label,
   className,
+  viewBox,
 }: {
   name: DiagramName;
   label: string;
   className?: string;
+  viewBox?: string;
 }) {
   if (!TALL[name]) {
-    return <Drawing file={name} label={label} className={className} />;
+    return (
+      <Drawing
+        file={name}
+        label={label}
+        className={className}
+        viewBox={viewBox}
+      />
+    );
   }
   return (
     <>

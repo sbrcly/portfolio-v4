@@ -1,5 +1,7 @@
 import { Fragment } from "react";
+import Link from "next/link";
 import ChapterOpener from "@/components/chapter-opener/ChapterOpener";
+import { DiagramDrawing } from "@/components/diagram/Diagram";
 import Fade from "@/components/fade/Fade";
 import Footer from "@/components/footer/Footer";
 import Frame from "@/components/frame/Frame";
@@ -12,8 +14,17 @@ import Margin, {
 import projectStyles from "@/components/project-page/project-page.module.css";
 import Reveals from "@/components/reveals/Reveals";
 import TextLink from "@/components/text-link/TextLink";
+import ExtensionLoop from "@/components/work/ExtensionLoop";
+import Plate from "@/components/work/Plate";
 import Work from "@/components/work/Work";
-import { EMPLOYERS } from "@/components/work/employers";
+import {
+  EMPLOYERS,
+  FEATURED,
+  type FeaturedProject,
+  isFeatured,
+} from "@/components/work/employers";
+import { pageHref } from "@/components/work/pages";
+import entryStyles from "@/components/work/work-entry.module.css";
 import styles from "./page.module.css";
 
 // What the running margin reads in each chapter: the openers' labels.
@@ -24,12 +35,77 @@ const MARGIN: MarginChapter[] = [
 ];
 
 // The Work index's lines: each employer, and its projects in the order they
-// are shown.
+// are shown, the ones on the featured row marked.
 const INDEX: IndexEmployer[] = EMPLOYERS.map(({ id, name, projects }) => ({
   id,
   name,
-  projects: projects.map(({ id, name }) => ({ id, name })),
+  projects: projects.map((project) => ({
+    id: project.id,
+    name: project.name,
+    featured: isFeatured(project) ? project.featured : undefined,
+  })),
 }));
+
+/** The label's second word. */
+const FEATURED_AS = { engineering: "engineering", ai: "AI" } as const;
+
+/** A featured project's plate: the extension's loop, whole, or a drawing,
+    the project's own or the one it has for the row. Each keeps its
+    drawing's shape. */
+function FeaturedPlate({ project }: { project: FeaturedProject }) {
+  const { plate, featuredPlate } = project;
+  if (plate?.kind === "loop") {
+    return <ExtensionLoop label={plate.label} />;
+  }
+  const drawing = featuredPlate ?? (plate?.kind === "diagram" ? plate : null);
+  if (!drawing) throw new Error(`${project.id} has no plate for the row`);
+  return (
+    <Plate>
+      <DiagramDrawing name={drawing.name} label={drawing.label} />
+    </Plate>
+  );
+}
+
+/**
+ * The featured row, under the opening line that names both halves: the
+ * engineering project and the AI one, side by side across the measure
+ * (one under the other on the phone). Each is its plate, a mono label with
+ * "Featured" in brass, the name, one sentence, and the link to the case
+ * study; nothing of Work's stack, years, or meta line. The two are
+ * children of the About body, whose grid seats them in one row and whose
+ * cascade takes each as one part (they share a top edge, so they arrive
+ * together). One alone spans the measure. A project with no page yet
+ * links to its cell in Work.
+ */
+function FeaturedRow() {
+  const alone = FEATURED.length === 1;
+  return FEATURED.map((project) => {
+    const { id, featured, name, sentence, featuredSentence, pending } = project;
+    const href = pending ? `#work-${id}` : pageHref(project);
+    return (
+      <article
+        key={id}
+        id={`featured-${featured}`}
+        className={alone ? `${styles.item} ${styles.alone}` : styles.item}
+        aria-labelledby={`f-${featured}`}
+      >
+        <FeaturedPlate project={project} />
+        <p className={styles.label}>
+          <span className={styles.brass}>Featured</span> · {FEATURED_AS[featured]}
+        </p>
+        <h3 id={`f-${featured}`} className={styles.name}>
+          <Link href={href}>{name}</Link>
+        </h3>
+        <p className={styles.blurb}>{featuredSentence ?? sentence}</p>
+        <p className={styles.read}>
+          <Link href={href} className={entryStyles.caseStudy}>
+            Read the case study
+          </Link>
+        </p>
+      </article>
+    );
+  });
+}
 
 // About's closing rows: where the focus is now.
 const FOCUS: { label: string; lines: string[] }[] = [
@@ -72,6 +148,7 @@ export default function Home() {
                 From sports trader on a Las Vegas trading floor to full-stack
                 engineer shipping a prayer and scripture app.
               </p>
+              <FeaturedRow />
               <p>
                 The trading floor needed tools it did not have, so I built them.
                 The first was a Python script that gave every matchup its proper

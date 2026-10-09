@@ -50,13 +50,16 @@
 }
 
 /* Running text, in the sans. Muted, so its links (components/text-link)
-   stand out in the text color, at 600. */
+   stand out in the text color, at 600.
+
+   A grid of two columns across the measure, so the featured row's two
+   items (below) sit side by side in it with a 32px gap; everything else
+   spans both and keeps to the paragraphs' 680. */
 .body {
   --text-link-weight: 600;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 680px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 32px;
   margin-top: 32px;
   font-family: var(--font-sans);
   font-weight: 400;
@@ -66,10 +69,76 @@
   text-wrap: pretty;
 }
 
+.body > * {
+  grid-column: 1 / -1;
+  max-width: 680px;
+}
+
 /* The opening line: the serif at 400, at the running text's size. */
 .opening {
   font-family: var(--font-serif-regular);
   font-weight: 400;
+}
+
+/* The featured row (page.tsx): one item in each column, or one alone
+   across both, 4px closer under the opening line than the body's gap, and
+   the paragraph after it 12px further off. Nothing behind the text; the
+   plate's rim is the item's only edge, and the plate is its drawing's
+   shape. */
+.body > .item {
+  grid-column: auto;
+  min-width: 0;
+  max-width: none;
+  margin-top: 4px;
+}
+
+.body > .alone {
+  grid-column: 1 / -1;
+}
+
+.item + p {
+  margin-top: 12px;
+}
+
+/* The mono label, with "Featured" in brass. */
+.label {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-small-size);
+  line-height: 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.brass {
+  color: var(--brass);
+}
+
+/* The name, a link, at the cells' size in Work (work-cell.module.css). */
+.name {
+  margin-top: 6px;
+  font-family: var(--font-serif-regular);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.blurb {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* The link's line, as under an entry in Work; the link is the entry's
+   case-study link (work-entry.module.css). */
+.read {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--mono-size);
+  line-height: 1.8;
 }
 
 /* The closing rows: the project pages' spec (components/project-page), whose
@@ -128,8 +197,31 @@
   }
 
   .body {
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     margin-top: 24px;
+  }
+
+  /* The featured items one under the other, 40px apart, their plates
+     bleeding to the viewport's edges (components/work/Plate). */
+  .body > .item {
+    margin-top: 8px;
+  }
+
+  .item + .item {
+    margin-top: 24px;
+  }
+
+  .item + p {
+    margin-top: 8px;
+  }
+
+  .label {
+    margin-top: 12px;
+  }
+
+  .name {
+    margin-top: 4px;
   }
 
   /* The spec's phone top margin is for the project page's title block; here
