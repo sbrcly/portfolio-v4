@@ -244,8 +244,7 @@ export default function Home() {
               {EMAIL}
             </a>
             <p className={styles.contactNote} data-cascade="">
-              Replies within a day. Any project here can be walked through at
-              whatever depth you want, including the proprietary ones.
+              Replies within a day. Happy to walk through any project here in as much depth as you like, including the ones whose code I cannot show.
             </p>
           </ChapterOpener>
         </section>
