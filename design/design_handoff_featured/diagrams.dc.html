@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Vigil r9 · Diagrams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;300&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>html,body{margin:0;background:#0E1512;color:#E4DBCB;} a{color:#E0AE62;} a:hover{color:#F3C77E;} img{display:block;max-width:100%;height:auto;}</style>
+</helmet>
+<div data-screen-label="Diagrams" style="max-width:1760px;margin:0 auto;padding:64px 48px 120px;font-family:'Spectral',Georgia,serif;font-weight:300;color:#E4DBCB;-webkit-font-smoothing:antialiased;">
+  <h1 style="margin:0;font-weight:200;font-size:56px;line-height:1;letter-spacing:-.02em;">Round 9 · the drawings</h1>
+  <p style="margin:16px 0 0;max-width:720px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;color:#A89F90;">The hero, four new diagrams, and three refreshed ones, wide beside tall. Round 8 vocabulary: thin strokes, the dim and the ink, brass for the thing that moves, lit for a note. Synthetic venue, synthetic rows.</p>
+  <div style="display:flex;flex-direction:column;gap:64px;margin-top:64px;">
+    <figure style="margin:0;"><figcaption style="margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">hero-extension · the loop, and the still</figcaption><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;"><div style="box-shadow:0 0 0 1px #2E3B34;"><img src="svg/hero-extension.svg" alt="The hero loop"></div><div style="box-shadow:0 0 0 1px #2E3B34;"><img src="svg/hero-extension-still.svg" alt="The hero still"></div></div></figure>
+    <sc-for list="{{ diagrams }}" as="d" hint-placeholder-count="7">
+      <figure style="margin:0;"><figcaption style="margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A89F90;">{{ d.name }} · {{ d.q }}</figcaption><div style="display:grid;grid-template-columns:2fr 1fr;gap:32px;align-items:start;"><div style="box-shadow:0 0 0 1px #2E3B34;"><img src="{{ d.wide }}" alt="{{ d.name }} wide"></div><div style="box-shadow:0 0 0 1px #2E3B34;"><img src="{{ d.tall }}" alt="{{ d.name }} tall"></div></div></figure>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const names = [['system-map','what are the five parts and what passes between them'],['code-relay','how does a code get from a port to the clipboard'],['port-scheduler','why only one port is ever open per group'],['approval-desk','what the manager sees after the extension has been through the table'],['five-origins','where does the rule cross a boundary'],['rule-path','in what order'],['telemetry-funnel','which clock stamps the record where']];
+    return { diagrams: names.map(([n,q]) => ({ name: n, q, wide: `svg/${n}.svg`, tall: `svg/${n}-tall.svg` })) };
+  }
+}
+</script>
+</body>
+</html>
