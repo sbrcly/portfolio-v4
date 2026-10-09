@@ -3,7 +3,7 @@ import arbitrageTable from "@/public/images/arbitrage-table.png";
 import adminHub from "@/public/images/captures/admin-hub-1920@2x.png";
 import analyticsEngagement from "@/public/images/captures/analytics-engagement-16x10@2x.png";
 import commitmentsSimulator from "@/public/images/captures/commitments-simulator-16x10@2x.png";
-import lectionaryWeekReadings from "@/public/images/captures/lectionary-week-readings-16x10@2x.png";
+import lectionaryEditSheet from "@/public/images/captures/lectionary-edit-sheet-16x10@2x.png";
 import promptLabHistoryDiff from "@/public/images/captures/prompt-lab-history-diff-16x10@2x.png";
 import pravaPromptLab from "@/public/images/prava-prompt-lab.png";
 import pravaSimulator from "@/public/images/prava-simulator.png";
@@ -1119,18 +1119,21 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
   lede: "Where the readings for the Church's week are entered, checked, and declared ready, for every day of the year across two lectionary traditions.",
   spec: [
     { label: "Role", value: SOLE_ENGINEER },
-    { label: "Stack", items: ["TypeScript", "Next.js", "Postgres", "Prisma"] },
+    {
+      label: "Stack",
+      items: ["TypeScript", "Next.js", "Postgres", "Prisma", "Anthropic API"],
+    },
     { label: "Where", value: BACK_OFFICE },
     { label: "Code", value: WALKTHROUGH },
   ],
   plate: {
     media: {
       kind: "image",
-      src: lectionaryWeekReadings,
-      alt: "The lectionary tool's week view: two Revised Common Lectionary weekday sets, A:P:22:MON and A:P:22:TUE, each with a first reading, a psalm, and a second reading as citations, every row with rights and active badges and an Edit button, and an Edit set button on each set.",
+      src: lectionaryEditSheet,
+      alt: "The lectionary tool's edit sheet for a Sunday psalm: the citation, the text cached in five translations, and a teaching note",
     },
     caption:
-      "Two weekdays' readings in one tradition. Citations and badges; no scripture text.",
+      "One reading's edit sheet: citation, cached text per translation, and the teaching note.",
   },
   sections: [
     {
@@ -1144,6 +1147,7 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
           paragraphs: [
             "A date goes through two engines. The Sunday engine finds the season, the Sunday within it, and the year's cycle. The day engine builds the whole liturgical year, settles feasts on a thirteen-level precedence scale, and transfers one that lands on a day it cannot outrank. A Revised Common weekday keys to its nearest Sunday. The result is one slot key that names the day without naming the year, so a row written once serves every time the calendar comes round.",
             "The person's tradition maps to an ordered list of lectionaries (Roman, Revised Common, or one and then the other) and the first with readings for that key wins. A day with none returns nothing rather than something wrong. Checks sweep every Sunday to 2034 in both traditions, and the day engine's check runs 9,002 assertions, one winner per day among them, so a change to either engine fails before it moves a feast.",
+            "Every reading can carry a short teaching note, and every week a theme. Both are drafted with Claude: the model is sent the passage in the public-domain translation (never a licensed one) and returns a draft into the sheet, where it is read, edited, and saved by hand. A draft that is not saved is never stored, and the app serves only what was saved.",
           ],
         },
         {
@@ -1226,6 +1230,11 @@ const LECTIONARY_TOOL_PAGE: SectionedPage = {
             {
               term: "Rights",
               detail: "Per reading, cleared before its week can be Ready",
+            },
+            {
+              term: "Drafting",
+              detail:
+                "Teaching notes and week themes drafted with Claude from the public-domain text, saved only after review",
             },
           ],
         },
@@ -1388,12 +1397,14 @@ export const EMPLOYERS: Employer[] = [
         detail: "back office · internal",
         plate: {
           kind: "image",
-          src: lectionaryWeekReadings,
-          alt: "The lectionary authoring tool's week view: two weekday sets of readings as citations, each row with rights and active badges and an Edit button.",
+          src: lectionaryEditSheet,
+          alt: "The lectionary tool's edit sheet for a Sunday psalm: the citation, the text cached in five translations, and a teaching note",
         },
         sentence:
           "Where the readings for the Church's week are entered and checked.",
-        stack: { items: ["TypeScript", "Next.js", "Postgres", "Prisma"] },
+        stack: {
+          items: ["TypeScript", "Next.js", "Postgres", "Prisma", "Anthropic API"],
+        },
       },
       {
         id: "commitment-library",
