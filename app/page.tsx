@@ -140,10 +140,14 @@ export default function Home() {
             statement="Scott Barclay"
             titled
           >
-            <p className={styles.subtitle} data-cascade="">
+            <p className={styles.subtitle} data-cascade="" data-fade-part="">
               Full-Stack Engineer
             </p>
-            <div className={styles.body} data-cascade="children">
+            <div
+              className={styles.body}
+              data-cascade="children"
+              data-fade-part=""
+            >
               <p className={styles.opening}>
                 From sports trader on a Las Vegas trading floor to full-stack
                 engineer shipping an AI-powered prayer and scripture app.

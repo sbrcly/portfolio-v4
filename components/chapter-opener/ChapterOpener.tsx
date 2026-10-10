@@ -39,13 +39,14 @@ export default function ChapterOpener({
         </h2>
       </div>
       {(statement || children) && (
-        <div className={styles.measure} data-fade="">
+        <div className={styles.measure} data-fade="parts">
           {statement && (
             <Statement
               className={
                 titled ? `${styles.statement} ${styles.name}` : styles.statement
               }
               data-cascade=""
+              data-fade-part=""
               data-chapter-edge={edge ? "" : undefined}
             >
               {statement}

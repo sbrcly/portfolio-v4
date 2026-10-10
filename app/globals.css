@@ -540,21 +540,45 @@ body {
     --employer-02, --employer-03;
 }
 
-/* The content fade. A block is at full opacity while its center is within
-   25svh of the viewport's midline, falls linearly to 0.15 as the center
-   reaches the top or bottom edge, and stays there beyond. The range runs
-   from the center on the bottom edge to the center on the top edge, whatever
-   the block's height. */
+/* The content fade. A block is at full opacity from the moment its top edge
+   is 60svh down the viewport until its bottom edge is 15svh down, whatever
+   the block's height. It rises from 0.15 over the 25svh of scroll before
+   that and falls back over the 25svh after, so a block is at about 0.66 as
+   its last line leaves the top. The two edges are two animations, since the
+   scroll between them is the block's height: each drives a registered
+   number, and the opacity is the lower of the two. They never overlap.
+
+   A block with parts (data-fade="parts": a section's measure or the text
+   after a figure) that stands taller than 80svh is lit as a whole, and its
+   parts (data-fade-part: a statement, a paragraph group, a numbered item)
+   fade in its place. The script in components/fade marks it data-fade-tall
+   and keeps the mark current. */
+@property --fade-in {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --fade-out {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
 @media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
-  [data-fade] {
+  [data-fade]:not([data-fade-tall]),
+  [data-fade-tall] [data-fade-part] {
     opacity: var(--fade, 1);
   }
 
   @supports (animation-timeline: view()) {
-    [data-fade] {
-      animation: fade linear both;
-      animation-timeline: view(block 0px);
-      animation-range: cover calc(50% - 50svh) cover calc(50% + 50svh);
+    [data-fade]:not([data-fade-tall]),
+    [data-fade-tall] [data-fade-part] {
+      opacity: min(var(--fade-in), var(--fade-out));
+      animation: fade-in linear both, fade-out linear both;
+      animation-timeline: view(block 0px), view(block 0px);
+      animation-range: cover 15svh cover 40svh,
+        cover calc(100% - 15svh) cover calc(100% + 10svh);
     }
   }
 }
@@ -568,13 +592,20 @@ html[data-cascade-pending]
   opacity: 0;
 }
 
-@keyframes fade {
-  0%,
-  100% {
-    opacity: 0.15;
+@keyframes fade-in {
+  from {
+    --fade-in: 0.15;
   }
-  25%,
-  75% {
-    opacity: 1;
+  to {
+    --fade-in: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    --fade-out: 1;
+  }
+  to {
+    --fade-out: 0.15;
   }
 }

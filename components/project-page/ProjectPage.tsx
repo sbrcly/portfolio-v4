@@ -155,7 +155,7 @@ function TitlePlate({ plate }: { plate: PagePlate }) {
 
 function Paragraphs({ paragraphs }: { paragraphs: Rich[] }) {
   return (
-    <div className={styles.body} data-cascade="children">
+    <div className={styles.body} data-cascade="children" data-fade-part="">
       {paragraphs.map((paragraph, index) => (
         <p key={index}>
           <Text>{paragraph}</Text>
@@ -174,7 +174,7 @@ function TextBlock({ block }: { block: TextBlockData }) {
       return <Paragraphs paragraphs={block.paragraphs} />;
     case "facts":
       return (
-        <dl className={styles.facts} data-cascade="children">
+        <dl className={styles.facts} data-cascade="children" data-fade-part="">
           {block.facts.map(({ term, detail }) => (
             <Fragment key={term}>
               <dt>{term}</dt>
@@ -187,7 +187,7 @@ function TextBlock({ block }: { block: TextBlockData }) {
       return (
         <div className={styles.items} data-cascade="children">
           {block.items.map(({ title, text }, index) => (
-            <div key={title} className={styles.item}>
+            <div key={title} className={styles.item} data-fade-part="">
               <span className={styles.itemIndex} aria-hidden="true">
                 {ROMAN[index]}
               </span>
@@ -232,7 +232,7 @@ function Figures({ figures, lead }: { figures: Figure[]; lead: boolean }) {
 function Links({ page }: { page: PageData }) {
   const { note, primary, more, next } = page.links;
   return (
-    <div className={styles.links} data-cascade="children">
+    <div className={styles.links} data-cascade="children" data-fade-part="">
       {note && <span className={styles.aside}>{note}</span>}
       {primary && (
         <a
@@ -257,8 +257,9 @@ function Links({ page }: { page: PageData }) {
 
 /**
  * A numbered section, which is a chapter. Its body is taken in runs: text
- * sits in the measure, each run fading with the scroll as one block, and
- * figures stand between the runs, each fading alone. The first run opens
+ * sits in the measure, each run fading with the scroll as one block (or,
+ * taller than 80svh, part by part: components/fade), and figures stand
+ * between the runs, each fading alone. The first run opens
  * under the statement. The page's closing links end the last section.
  */
 function PageSection({
@@ -313,7 +314,7 @@ function PageSection({
             lead={index === 0 && opening.length === 0}
           />
         ) : (
-          <div key={index} className={styles.after} data-fade="">
+          <div key={index} className={styles.after} data-fade="parts">
             {run.text.map((block, place) => (
               <TextBlock key={place} block={block} />
             ))}
@@ -456,7 +457,7 @@ export default function ProjectPage({ page }: { page: PageData }) {
           {page.plate && <TitlePlate plate={page.plate} />}
 
           {sections.length === 0 && (
-            <div className={styles.note} data-reveal="" data-fade="">
+            <div className={styles.note} data-reveal="" data-fade="parts">
               <Paragraphs paragraphs={page.paragraphs} />
               <Links page={page} />
             </div>
