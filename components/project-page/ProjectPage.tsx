@@ -435,9 +435,14 @@ export default function ProjectPage({ page }: { page: PageData }) {
             >
               {name}
             </h1>
-            <div className={styles.intro} data-cascade="children">
-              <p className={styles.lede}>{page.lede}</p>
-              <dl className={styles.spec}>
+            {/* The lede is one part of the load cascade and each spec row
+                another: a row's term and detail share a top edge, so they
+                arrive together. */}
+            <div className={styles.intro}>
+              <p className={styles.lede} data-cascade="">
+                {page.lede}
+              </p>
+              <dl className={styles.spec} data-cascade="children">
                 {page.spec.map((row) => (
                   <Fragment key={row.label}>
                     <dt>{row.label}</dt>

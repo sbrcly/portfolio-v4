@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Source_Sans_3, Spectral } from "next/font/google";
 import { CascadeGuard, CascadePlan } from "@/components/cascade/Cascade";
+import CascadeOnNavigation from "@/components/cascade/CascadeOnNavigation";
 import Loaded from "@/components/scroll/Loaded";
 import { OPEN_GRAPH } from "@/lib/open-graph";
 import "./tokens.css";
@@ -108,6 +109,9 @@ export default function RootLayout({
         </a>
         {children}
         <CascadePlan />
+        {/* After the page, so its effect runs after the page's own, where
+            Next places the scroll. */}
+        <CascadeOnNavigation />
       </body>
     </html>
   );

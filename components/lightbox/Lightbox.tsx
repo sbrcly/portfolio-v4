@@ -10,7 +10,8 @@ type Props = {
   alt: string;
   /** On the plate, with the rim. */
   className?: string;
-  /** Without the rim: a screen on a surface that has its own. */
+  /** Without the rim: a screen on a surface that has its own. Its picture
+      grows unclipped under the pointer, off the surface. */
   bare?: boolean;
   /** The plate's content, as the page shows it. */
   children: React.ReactNode;
@@ -63,7 +64,11 @@ export default function Lightbox({
     open(opener.current);
   };
 
-  const frame = [styles.frame, bare ? "" : plate.plate, className ?? ""]
+  const frame = [
+    styles.frame,
+    bare ? styles.bare : plate.plate,
+    className ?? "",
+  ]
     .filter(Boolean)
     .join(" ");
 

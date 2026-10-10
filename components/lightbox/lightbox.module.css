@@ -28,6 +28,27 @@
   width: 100%;
 }
 
+/* Under the pointer the picture grows a step, 1.03 over 400 ms with the
+   house easing, and settles back when the pointer leaves: hover means
+   "this opens". A plate's rim clips it, so the frame does not grow; a bare
+   screen on a surface grows off the surface instead. Nothing moves on
+   touch, where there is no pointer to hover, or under reduced motion. */
+.frame:not(.bare) > .opener {
+  overflow: hidden;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .opener > img,
+  .opener > svg {
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .opener:hover > img,
+  .opener:hover > svg {
+    transform: scale(1.03);
+  }
+}
+
 /* The dialog: the whole viewport, the ground at 96% as its scrim, and the
    picture centered in it. The scrim is the browser's backdrop, which
    covers the scrollbar's kept gutter too, where the dialog's own box

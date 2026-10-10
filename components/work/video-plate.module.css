@@ -32,6 +32,22 @@
   object-fit: cover;
 }
 
+/* Under the pointer, anywhere on the plate, the recording grows a step
+   inside the face's clip, as a picture in a lightbox plate does
+   (components/lightbox): the plate opens at full size too. Not in the
+   dialog, where the pointer is still over the plate's frame, and not on
+   touch or under reduced motion. The face keeps the pointer cursor: a
+   click there plays. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .media {
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .frame:hover .media:not([data-full]) {
+    transform: scale(1.03);
+  }
+}
+
 /* In the dialog: its own shape, up to 92vw by 92vh, with the rim. */
 .slot {
   display: contents;
