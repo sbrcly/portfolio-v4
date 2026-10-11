@@ -1516,7 +1516,7 @@ const ALL_EMPLOYERS: Employer[] = [
         name: "Prava",
         detail: "iOS",
         rating: 5.0,
-        ratingCount: 53,
+        ratingCount: 54,
         plate: {
           kind: "screens",
           screens: PRAVA_SCREENS.map(({ src, alt }) => ({ src, alt })),
