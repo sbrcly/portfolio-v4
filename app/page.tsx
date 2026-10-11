@@ -112,7 +112,7 @@ const FOCUS: { label: string; lines: string[] }[] = [
   {
     label: "Reading",
     lines: [
-      "The Road, Cormac McCarthy",
+      "Crime and Punishment, Fyodor Dostoevsky",
       "The Spirit of the Liturgy, Joseph Ratzinger",
       "Writing to Learn, William Zinsser",
       "Designing Data-Intensive Applications, Martin Kleppmann (reread)",
