@@ -425,7 +425,7 @@ const PRAVA_PAGE: SectionedPage = {
 
 export const WALKTHROUGH = "Walkthrough on request";
 const BROKER =
-  "Etainement, a seven-person broker with some of the highest volume in the US";
+  "Etainement, a small team of brokers with some of the highest volume in the US";
 const ETAINEMENT = `${BROKER} · proprietary`;
 
 
@@ -1676,7 +1676,7 @@ const ALL_EMPLOYERS: Employer[] = [
         featuredSentence:
           "Inside Ticketmaster during an on-sale, painting a manager's buy rules onto the map a buyer is already looking at.",
         sentence:
-          "A Chrome extension that ran inside Ticketmaster for over a hundred buyers at a seven-person ticket broker that did some of the highest volume in the country. It painted the manager's buy rules onto Ticketmaster's seat map, recorded each purchase as it happened, and brought the verification code to the screen that asked for it. I built every part of it.",
+          "A Chrome extension that ran inside Ticketmaster for over a hundred buyers at a small team of ticket brokers that did some of the highest volume in the country. It painted the manager's buy rules onto Ticketmaster's seat map, recorded each purchase as it happened, and brought the verification code to the screen that asked for it. I built every part of it.",
         stack: {
           items: [
             "Chrome MV3",
