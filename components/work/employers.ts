@@ -424,7 +424,8 @@ const PRAVA_PAGE: SectionedPage = {
 };
 
 export const WALKTHROUGH = "Walkthrough on request";
-const BROKER = "Etainement, one of the larger US brokers";
+const BROKER =
+  "Etainement, a seven-person broker with some of the highest volume in the US";
 const ETAINEMENT = `${BROKER} · proprietary`;
 
 
@@ -474,7 +475,11 @@ const PRICING_PORTAL_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "A ticket broker holds thousands of tickets across hundreds of events and has to price each one against what everyone else is asking. That is the analysts' job. They work through the events where the company holds inventory, see their own listings next to the current market, and change prices by hand or by rule. Separately, before a big on-sale, managers plan what to buy and draw on the venue map the sections and rows they want. The pricing portal is the internal web app where both of these happen, and the drawing the manager makes there is what the buyer extension paints onto Ticketmaster.",
+            [
+              "A ticket broker holds thousands of tickets across hundreds of events and has to price each one against what everyone else is asking. That is the analysts' job. They work through the events where the company holds inventory, see their own listings next to the current market, and change prices by hand or by rule. Separately, before a big on-sale, managers plan what to buy and draw on the venue map the sections and rows they want. The pricing portal is the internal web app where both of these happen, and the drawing the manager makes there is what the ",
+              { text: "buyer extension", href: "/work/buyer-extension" },
+              " paints onto Ticketmaster.",
+            ],
             "The portal keeps no data of its own. Everything it shows comes from, and everything it changes goes to, a backend that reads three separate point-of-sale systems live, keeps its long-term record in BigQuery, the company's data warehouse, and caches what it can in between.",
             "Eight people built the portal over its life. What follows is the part of it that is mine.",
           ],
@@ -708,7 +713,11 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "The company's pricing portal, a separate internal web app, is where managers wrote the buy rules: which sections and rows, up to what price, with a maximum number of tickets per event and per account. The extension was the only piece of software that touched everything else. Inside Ticketmaster it painted those rules on the map, recorded the purchase as it moved from cart to confirmation, and surfaced verification codes. Inside the company's approval desk, a third-party tool where managers approved each cart, it highlighted the carted tickets that matched a rule, showed how close an event was to its maximum, and added a button that posted a bonus to Slack.",
+            [
+              "The company's ",
+              { text: "pricing portal", href: "/work/pricing-portal" },
+              ", a separate internal web app, is where managers wrote the buy rules: which sections and rows, up to what price, with a maximum number of tickets per event and per account. The extension was the only piece of software that touched everything else. Inside Ticketmaster it painted those rules on the map, recorded the purchase as it moved from cart to confirmation, and surfaced verification codes. Inside the company's approval desk, a third-party tool where managers approved each cart, it highlighted the carted tickets that matched a rule, showed how close an event was to its maximum, and added a button that posted a bonus to Slack.",
+            ],
             "Verification codes came from two places: an email inbox, or one of a bank of phone lines connected to an SMS gateway. Two small services I wrote moved a code from where it landed to the buyer's screen: an Express service that the extension called, and a Python script that ran once for every email that arrived. The five parts (portal, extension, approval desk, relay service, mail hook) could not talk to each other directly. Everything that passed between them is drawn on the map below.",
           ],
         },
@@ -895,7 +904,11 @@ const BUYER_EXTENSION_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "As a buyer moves through a sale, the extension notices each step on the page: the event page loading, the position in the waiting room, the sign-in, the cart, a failed cart, a checkout error, the confirmation. Each is stamped with the browser's clock and sent through the worker to two places. BigQuery, the company's data warehouse, keeps it for good. Firestore keeps it for the next hour, which is where the on-sale monitor reads it to show managers what every buyer is doing right now.",
+            [
+              "As a buyer moves through a sale, the extension notices each step on the page: the event page loading, the position in the waiting room, the sign-in, the cart, a failed cart, a checkout error, the confirmation. Each is stamped with the browser's clock and sent through the worker to two places. BigQuery, the company's data warehouse, keeps it for good. Firestore keeps it for the next hour, which is where the ",
+              { text: "on-sale monitor", href: "/work/on-sale-monitor" },
+              " reads it to show managers what every buyer is doing right now.",
+            ],
             "The ingestion endpoint stamps a second time on arrival, and the monitor orders rows by that one. The gap between the two clocks can be measured from stored data; the gap from stored document to a manager's screen cannot, so I quote no latency figure anywhere on this site.",
           ],
         },
@@ -1034,7 +1047,11 @@ const ON_SALE_MONITOR_PAGE: SectionedPage = {
         {
           kind: "paragraphs",
           paragraphs: [
-            "During an on-sale, the buyer extension records each step a buyer takes on Ticketmaster: the event page loading, the sign-in, the position in the waiting room, a cart attempt, a checkout error, an order confirmation. A copy of every one of those records lands as a document in Firestore, Google's real-time document database. The monitor is a web page for managers that signs a viewer in, subscribes to one collection of those documents at a time, and renders the newest ones as rows, with one tab per record type.",
+            [
+              "During an on-sale, the ",
+              { text: "buyer extension", href: "/work/buyer-extension" },
+              " records each step a buyer takes on Ticketmaster: the event page loading, the sign-in, the position in the waiting room, a cart attempt, a checkout error, an order confirmation. A copy of every one of those records lands as a document in Firestore, Google's real-time document database. The monitor is a web page for managers that signs a viewer in, subscribes to one collection of those documents at a time, and renders the newest ones as rows, with one tab per record type.",
+            ],
             "Nothing is polled and nothing is written back. A row appears on the manager's screen the moment its document exists. A keyword filter and a pause button are the only controls, because during a sale a manager has no attention to spare for anything else.",
           ],
         },
@@ -1659,7 +1676,7 @@ const ALL_EMPLOYERS: Employer[] = [
         featuredSentence:
           "Inside Ticketmaster during an on-sale, painting a manager's buy rules onto the map a buyer is already looking at.",
         sentence:
-          "A Chrome extension that ran inside Ticketmaster for over a hundred buyers at one of the larger ticket brokers in the country. It painted the manager's buy rules onto Ticketmaster's seat map, recorded each purchase as it happened, and brought the verification code to the screen that asked for it. I built every part of it.",
+          "A Chrome extension that ran inside Ticketmaster for over a hundred buyers at a seven-person ticket broker that did some of the highest volume in the country. It painted the manager's buy rules onto Ticketmaster's seat map, recorded each purchase as it happened, and brought the verification code to the screen that asked for it. I built every part of it.",
         stack: {
           items: [
             "Chrome MV3",

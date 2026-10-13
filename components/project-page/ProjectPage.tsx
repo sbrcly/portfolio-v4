@@ -13,6 +13,7 @@ import Plate from "@/components/work/Plate";
 import Rating from "@/components/work/Rating";
 import ExtensionLoop from "@/components/work/ExtensionLoop";
 import StackTokens from "@/components/work/StackTokens";
+import TextLink from "@/components/text-link/TextLink";
 import { FULL_SIZES } from "@/components/work/WorkEntry";
 import type {
   Block,
@@ -44,8 +45,19 @@ const groupSizes = (count: number) =>
 
 const ROMAN = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"];
 
-/** Running text with its emphasis and links. */
-function Text({ children }: { children: Rich }) {
+/**
+ * Running text with its emphasis and links. In a paragraph, a link to
+ * another page here is set as the home page's About sets its links
+ * (TextLink: the full text color, 600, no underline); in the spec it is
+ * the row's plain link.
+ */
+function Text({
+  children,
+  paragraph,
+}: {
+  children: Rich;
+  paragraph?: boolean;
+}) {
   if (typeof children === "string") return children;
   return children.map((part, index) =>
     typeof part === "string" ? (
@@ -54,9 +66,15 @@ function Text({ children }: { children: Rich }) {
       <em key={index}>{part.em}</em>
     ) : part.href.startsWith("/") ? (
       // Another page here: no new tab.
-      <Link key={index} href={part.href}>
-        {part.text}
-      </Link>
+      paragraph ? (
+        <TextLink key={index} href={part.href}>
+          {part.text}
+        </TextLink>
+      ) : (
+        <Link key={index} href={part.href}>
+          {part.text}
+        </Link>
+      )
     ) : (
       <a key={index} href={part.href} target="_blank" rel="noopener">
         {part.text}
@@ -158,7 +176,7 @@ function Paragraphs({ paragraphs }: { paragraphs: Rich[] }) {
     <div className={styles.body} data-cascade="children" data-fade-part="">
       {paragraphs.map((paragraph, index) => (
         <p key={index}>
-          <Text>{paragraph}</Text>
+          <Text paragraph>{paragraph}</Text>
         </p>
       ))}
     </div>

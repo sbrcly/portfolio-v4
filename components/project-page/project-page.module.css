@@ -195,8 +195,10 @@
   padding-bottom: var(--chapter-gap);
 }
 
-/* Running text, in the sans; its emphasis is the sans italic. */
+/* Running text, in the sans; its emphasis is the sans italic. A link to
+   another page is the About paragraphs' (TextLink): the sans at 600. */
 .body {
+  --text-link-weight: 600;
   display: flex;
   flex-direction: column;
   gap: 20px;

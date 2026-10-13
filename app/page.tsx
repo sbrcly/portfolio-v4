@@ -165,9 +165,10 @@ export default function Home() {
                 Most recently I designed, built, and shipped{" "}
                 <TextLink href="#work-prava">Prava</TextLink>, an AI-powered iOS
                 prayer and scripture app, as its only engineer. Before that I
-                spent nearly four years at one of the largest ticket brokers in
-                the country, integrating with Ticketmaster and other ticketing
-                services through{" "}
+                spent nearly four years at Etainement, a seven-person ticket
+                broker that did some of the highest volume in the country,
+                integrating with Ticketmaster and other ticketing services
+                through{" "}
                 <TextLink href="#work-buyer-extension">
                   custom Chrome extensions
                 </TextLink>{" "}
